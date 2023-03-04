@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="broadcast-wrapper">
+     <ion-row  class="header-section">
+      <ion-col size="2" size-sm="2" size-md="2" size-lg="0"> 
+        <ion-menu-button></ion-menu-button>
+      </ion-col>  
+      <ion-col size="10" size-sm="10" size-md="10" size-lg="12" id="btn-wrapper">
+        Broadcast Sms Report
+      </ion-col>
+    </ion-row>    
+  <ion-row id="form-container">
+  <ion-col >
+    <ion-button class="btnsize"   (click)="broadCast()">Add New Broadcast</ion-button>
+    </ion-col>
+  </ion-row>
+  </div> 
+  <div id="export-wrapper">
+    <!-- <ion-img src="assets/student_Details/print.svg"  class="toolbar-row" (click)="btnOnClick()"></ion-img> -->
+    <ion-img src="assets/student_Details/pdf.svg" class="toolbar-row" (click)="createPdf()"></ion-img>
+    <ion-img src="assets/student_Details/excel.svg" class="toolbar-row"  (click)="exportToExcel()"> </ion-img>
+       <!-- <ion-img src="assets/student_Details/refresher.svg" class="toolbar-row" (click)="refresh()"></ion-img> -->
+    </div> 
+   </ion-toolbar>
+</ion-header>
+<ion-content>
+ <div class="grid_Container">
+  <jqxGrid
+  (onRowselect)="myGridOnRowSelect($event)"
+  [pageable]="true"
+  [selectionmode]="'singlerow'"
+  [showfilterrow]="true"
+  [filterable]="true"
+  [sortable]="true"
+  [width]="'100%'"
+  [source]="dataAdapter" 
+  [columns]="columns" 
+  [autoheight]="true"
+  [theme]="'material'"
+  [enabletooltips]="true" 
+  #myGrid 
+  style="font-size:16px;text-align: center !important;">
+  </jqxGrid>
+</div>
+</ion-content>

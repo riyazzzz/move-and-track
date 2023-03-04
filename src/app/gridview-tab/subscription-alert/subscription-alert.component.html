@@ -1,0 +1,29 @@
+
+<ion-header class='header'>
+  <ion-row><ion-col size='11'>Subscription Alert !</ion-col> 
+
+    <ion-col size='1' (click)='closeModal()'><ion-icon  name="close-circle-outline"></ion-icon></ion-col> 
+  </ion-row>  
+</ion-header>
+<ion-content>
+
+  
+  <!-- <ion-card  *ngFor="let items of expiryDatas">
+ 
+    <ion-row class='expiry'>
+      <ion-row><ion-col size="6" size-lg="6"  size-md="3.5">Plate No</ion-col><ion-col size="6" size-lg="6"  size-md="3.5">Plate No</ion-col></ion-row>
+      <ion-col size="5" size-lg="6"  size-md="3.5" style="padding-top: 10px;"><ion-icon name="person"  style="padding-right:5px;color:red;padding-top: 5px;font-size: 10px;"></ion-icon>{{items.plateNo}}</ion-col>
+     <ion-card class="expData" style="font-size: 10px;"> <ion-col size-lg="6"  size-md="3.5" size="5">{{items.expiryDate}}</ion-col></ion-card>
+    </ion-row>
+  </ion-card> -->
+  <ion-card class='expiry' *ngFor="let items of expiryDatas">
+    <ion-row><ion-col size="6" size-lg="6"  size-md="3.5">Plate No</ion-col>
+      <ion-col size="6" size-lg="6"  size-md="3.5">Expiry Date</ion-col>
+  </ion-row>
+ <ion-row>
+  <ion-col size="6" size-lg="6"  size-md="3.5" style="padding-top: 0px;"><ion-icon name="person"  style="padding-right:5px;color:red;padding-top: 5px;font-size: 10px;"></ion-icon>{{items.plateNo}}</ion-col>
+  <ion-col size="6" size-lg="6"  size-md="3.5" style="padding: 0px;"><ion-icon name="calendar"  style="padding-right:5px;color:red;padding-top: 5px;font-size: 10px;"></ion-icon>{{items.expiryDate}}</ion-col>
+  </ion-row>
+  </ion-card>
+
+</ion-content>  

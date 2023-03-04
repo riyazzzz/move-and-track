@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="appHeader">
+      Ak Livetrack
+    </ion-title>
+    
+  </ion-toolbar>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwNE2J8f2FWG2grjrxUzCa6GAUPoNbgso"></script>
+</ion-header>
+
+<ion-content >
+  <!-- <app-vtslivetrack [AkLiveChange]="akData" ></app-vtslivetrack> -->
+  <form [formGroup]="akLiveForm">
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="6" size-lg="3" >
+  <ion-input placeholder="TRIP ID" formControlName="tripId">
+  
+  </ion-input>
+      </ion-col>
+      <ion-col  size="12" size-sm="12" size-md="6" size-lg="3">
+        <ion-input placeholder="PLATE NUMBER" formControlName="plateno">
+    
+  </ion-input>
+      </ion-col>
+      <ion-col size="12" size-sm="12" size-md="6" size-lg="3">
+        <ion-input  formControlName="tripstartdate" type="date" >
+    
+        </ion-input>
+      </ion-col>
+      <ion-col style="text-align:center" size="12" size-sm="12" size-md="6" size-lg="3">
+        <ion-button (click)="onSubmit()" [disabled]="!akLiveForm.valid">
+       Submit
+        </ion-button>
+      </ion-col>
+      </ion-row>
+    </form>
+</ion-content>

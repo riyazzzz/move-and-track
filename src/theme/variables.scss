@@ -1,0 +1,790 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+
+:root {
+  /** primary **/
+  --ion-color-primary: #3880ff;
+  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3171e0;
+  --ion-color-primary-tint: #4c8dff;
+
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /**   custom styles  **/
+  --ion-color-appColor: #32384b;
+  //--ion-color-appColor: #2C97CC;
+  --ion-color-themeLight: white;
+  --ion-color-themeDark: grey;
+
+  --ion-color-running: rgb(61, 252, 44);
+  --ion-color-idle: rgb(0, 3, 156);
+  --ion-color-stop: rgb(255, 0, 0);
+  --ion-color-overspeed: rgb(248, 134, 4);
+  --ion-color-nodata: rgb(0, 0, 0);
+  --ion-color-towed: rgb(248, 61, 248);
+
+  // ion-tab-button.tab-selected {
+  //   ion-icon,
+  //   ion-label {
+  //     color: var(--ion-color-light) !important;
+  //     --ion-color-base: var(--ion-color-light) !important;
+  //     --background:var(--ion-color-light);
+  //     border-top: "3px solid white";
+  //   }
+  // }
+
+  // ion-tab-button {
+  //   --color-selected: rgb(255, 255, 255);
+  //   --border-top-selected:3px solid white;
+  //  }
+  // ion-tab-bar {
+  //   --background: var(--ion-color-dark) !important;
+  // }
+  //  ion-tab-button {
+  //   --ripple-color: var(--ion-color-medium);
+  //   --color: var(--ion-color-dark);
+  //   --color-selected: var(--ion-color-medium);
+  //   --background-focused:var(--ion-color-dark) !important;
+  // }
+
+  // ion-tab-button.tab-selected {
+  //   --background: var(--ion-color-dark) !important;
+  //   --background-focused:var(--ion-color-dark) !important;
+  //   --color-selected: var(--ion-color-light);
+  // }
+
+  .appHeader {
+    --background: var(--ion-color-themeLight);
+    --color: black;
+  }
+
+  .appTab {
+    --background: var(--ion-color-themeLight);
+    --color: black;
+  }
+
+  .itemBorderColor {
+    border: var(--ion-color-themeLight);
+  }
+
+  .appLightBackground {
+    --color: black;
+    --background: var(--ion-color-themeLight);
+  }
+
+  .appDarkBackground {
+    --background: var(--ion-color-themeLight);
+  }
+
+  .appDarkBackground {
+    --color: var(--ion-color-themeLight);
+  }
+
+  .appHeaderTitle {
+    background-color: var(--ion-color-themeLight);
+    color: black;
+    padding: 4px;
+    border-bottom: 1px solid var(--ion-color-themeLight);
+  }
+
+  .header-md:after {
+    left: 0;
+    bottom: -5px;
+    background-position: left 0 top -2px;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-image: none;
+    background-repeat: repeat-x;
+    content: "";
+  }
+
+  jqxGrid[id^="myGrid"] {
+    color: transparent !important;
+  }
+
+  span[id^="myGrid"] {
+    color: transparent !important;
+  }
+
+  .ionic-selectable-value {
+    flex: 1;
+    padding-top: 2px !important;
+    padding-bottom: 13px;
+    padding-left: 5px;
+    overflow: hidden;
+  }
+
+  @media only screen and(min-width:320px) and(max-width:699px) {
+    .ticket-form .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .custom-modal .modal-wrapper {
+      height: 100%;
+      width: 100%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 50%;
+      width: 50%;
+      border-radius: 5px;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media only screen and(min-width:700px) and(max-width:1010px) {
+    .ticket-form .modal-wrapper {
+      width: 50%;
+      height: 70%;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 50%;
+      height: 95%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 50%;
+      height: 90%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 50%;
+      width: 50%;
+      border-radius: 5px;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+  }
+
+  @media only screen and(min-width:1011px) {
+    .ticket-form .modal-wrapper {
+      width: 38%;
+      height: 76%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 40%;
+      height: 66%;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 50%;
+      height: 90%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 50%;
+      width: 50%;
+      border-radius: 5px;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+  }
+
+  @media only screen and(min-width:320px) and(max-width:699px) {
+    .ticket-form .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media only screen and(min-width:700px) and(max-width:1010px) {
+    .ticket-form .modal-wrapper {
+      width: 50%;
+      height: 70%;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 50%;
+      height: 95%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 50%;
+      height: 70%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 40%;
+      width: 30%;
+      border-radius: 5px;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 30%;
+      height: 90%;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+
+    .tripform .modal-wrapper {
+      height: 94%;
+      width: 98%;
+    }
+
+    .expenseform .modal-wrapper {
+      height: 95%;
+      width: 75%;
+    }
+
+    .addexpenseform .modal-wrapper {
+      height: 35%;
+      width: 80%;
+    }
+
+    .saleform .modal-wrapper {
+      height: 65%;
+      width: 80%;
+    }
+
+    .jobcardform .modal-wrapper {
+      height: 95%;
+      width: 95%;
+    }
+  }
+
+  @media only screen and(min-width:1011px) {
+    .ticket-form .modal-wrapper {
+      width: 38%;
+      height: 76%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 40%;
+      height: 66%;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 50%;
+      height: 90%;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 30%;
+      height: 90%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 40%;
+      width: 30%;
+      border-radius: 5px;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+
+    .tripform .modal-wrapper {
+      height: 93%;
+      width: 70%;
+    }
+
+    .expenseform .modal-wrapper {
+      height: 95%;
+      width: 60%;
+    }
+
+    .addexpenseform .modal-wrapper {
+      height: 35%;
+      width: 60%;
+    }
+
+    .saleform .modal-wrapper {
+      height: 68%;
+      width: 55%;
+    }
+
+    .jobcardform .modal-wrapper {
+      height: 85%;
+      width: 95%;
+    }
+  }
+
+  @media only screen and(min-width:320px) and(max-width:699px) {
+    .ticket-form .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .manage_fleet .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .maintanence .modal-wrapper {
+      height: 99%;
+      width: 100%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 60%;
+      width: 80%;
+      border-radius: 5px;
+    }
+  }
+
+  @media only screen and(min-width:700px) and(max-width:1010px) {
+    .ticket-form .modal-wrapper {
+      width: 50%;
+      height: 70%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 40%;
+      width: 30%;
+      border-radius: 5px;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 50%;
+      height: 95%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 50%;
+      height: 90%;
+    }
+
+    .manage_fleet .modal-wrapper {
+      width: 50%;
+      height: 70%;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 30%;
+      height: 90%;
+    }
+
+    .maintanence .modal-wrapper {
+      height: 98%;
+      width: 60%;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+  }
+
+  @media only screen and(min-width:1011px) {
+    .ticket-form .modal-wrapper {
+      width: 38%;
+      height: 76%;
+    }
+
+    .custome_fleet .modal-wrapper {
+      width: 40%;
+      height: 90%;
+    }
+
+    .manage_fleet .modal-wrapper {
+      width: 45%;
+      height: 70%;
+    }
+
+    .custom-modal .modal-wrapper {
+      width: 35%;
+      height: 85%;
+    }
+
+    .user_feature .modal-wrapper {
+      width: 30%;
+      height: 90%;
+    }
+
+    .custom-modaladv .modal-wrapper {
+      height: 40%;
+      width: 30%;
+      border-radius: 5px;
+    }
+
+    .maintanence .modal-wrapper {
+      height: 93%;
+      width: 45%;
+    }
+
+    .custom-renewal .modal-wrapper {
+      width: 60%;
+      height: 90%;
+    }
+  }
+
+  @media only screen and(min-width:1200px) {
+    // old data
+    // .maintanence .modal-wrapper {
+    //   height: 93%;
+    //   width: 35%;
+    // }
+    .maintanence .modal-wrapper {
+      height: 60%;
+      width: 45%;
+    }
+
+    .tripform .modal-wrapper {
+      height: 90%;
+      width: 55%;
+    }
+
+    .expenseform .modal-wrapper {
+      height: 95%;
+      width: 45%;
+    }
+
+    .addexpenseform .modal-wrapper {
+      height: 30%;
+      width: 45%;
+    }
+
+    .saleform .modal-wrapper {
+      height: 60%;
+      width: 40%;
+    }
+    .tranportform .modal-wrapper {
+      height: 75%;
+      width: 40%;
+    }
+
+    .statusform .modal-wrapper {
+      height: 80%;
+      width: 40%;
+    }
+
+    .simupdateform .modal-wrapper {
+      height: 60%;
+      width: 40%;
+    }
+
+    .commentform .modal-wrapper {
+      height: 75%;
+      width: 40%;
+    }
+
+    .payform .modal-wrapper {
+      height: 90%;
+      width: 40%;
+    }
+
+    .paydetailform .modal-wrapper {
+      height: 85%;
+      width: 60%;
+    }
+
+    .viewform .modal-wrapper {
+      height: 70%;
+      width: 60%;
+    }
+
+    .viewserialfrom .modal-wrapper {
+      height: 70%;
+      width: 60%;
+    }
+    .validityform .modal-wrapper {
+      height: 35%;
+      width: 35%;
+    }
+    .renewalrequest .modal-wrapper {
+      height: 50%;
+      width: 40%;
+    }
+
+    .esimviewserialdetailform .modal-wrapper {
+      height: 60%;
+      width: 60%;
+    }
+
+    .companyform .modal-wrapper {
+      height: 70%;
+      width: 60%;
+    }
+
+    .jobcardform .modal-wrapper {
+      height: 75%;
+      width: 95%;
+    }
+  }
+
+  .header-background-color {
+    --background: #f6b221;
+  }
+
+  @media only screen and (min-width: 319px) and (max-width: 767px) {
+    .broadcast-css .modal-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .bus-route-css .modal-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .route-css .modal-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .school-enable .modal-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .gate_Details .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .my-custome-css .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .my-StudentDetailsPage .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .my-class-css .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .my-parent-css .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .student-routeandTrip .modal-wrapper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .route-form .modal-wrapper {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1100px) {
+    .my-StudentDetailsPage .modal-wrapper {
+      width: 97%;
+      height: 90%;
+    }
+
+    .broadcast-css .modal-wrapper {
+      width: 59%;
+      height: 67%;
+    }
+
+    .bus-route-css .modal-wrapper {
+      width: 95%;
+      height: 97%;
+    }
+
+    .route-css .modal-wrapper {
+      width: 43% !important;
+      height: 32% !important;
+    }
+
+    .school-enable .modal-wrapper {
+      width: 47% !important;
+      height: 71% !important;
+    }
+
+    .my-custome-css .modal-wrapper {
+      width: 50%;
+      height: 42%;
+    }
+
+    .my-class-css .modal-wrapper {
+      width: 45%;
+      height: 63%;
+    }
+
+    .my-parent-css .modal-wrapper {
+      width: 53%;
+      height: 90%;
+    }
+
+    .gate_Details .modal-wrapper {
+      width: 50%;
+      height: 50%;
+    }
+
+    .student-routeandTrip .modal-wrapper {
+      width: 92%;
+      height: 98%;
+      zoom: 94%;
+    }
+
+    .route-form .modal-wrapper {
+      width: 45% !important;
+      height: 88% !important;
+    }
+  }
+
+  @media only screen and (min-width: 1101px) {
+    .my-StudentDetailsPage .modal-wrapper {
+      width: 55%;
+      height: 75%;
+    }
+
+    .my-custome-css .modal-wrapper {
+      width: 35%;
+      height: 45%;
+    }
+
+    .my-class-css .modal-wrapper {
+      width: 32%;
+      height: 60%;
+    }
+
+    .broadcast-css .modal-wrapper {
+      width: 40% !important;
+      height: 65% !important;
+    }
+
+    .gate_Details .modal-wrapper {
+      width: 33%;
+      height: 50%;
+    }
+
+    .my-parent-css .modal-wrapper {
+      width: 32%;
+      height: 90%;
+    }
+  }
+
+  .bus-route-css .modal-wrapper {
+    width: 95%;
+    height: 97%;
+  }
+
+  .school-enable .modal-wrapper {
+    width: 38%;
+    height: 67%;
+  }
+
+  .route-css .modal-wrapper {
+    width: 33%;
+    height: 30%;
+  }
+
+  .student-routeandTrip .modal-wrapper {
+    width: 92%;
+    height: 98%;
+    zoom: 97%;
+  }
+
+  .route-form .modal-wrapper {
+    width: 33%;
+    height: 65%;
+  }
+}

@@ -1,0 +1,118 @@
+ion-card-content {
+  padding: 5px;
+}
+ion-label {
+  padding: 0 3px;
+}
+.noPadding {
+  --ion-grid-column-padding: 0px 1px;
+}
+.borderRound {
+  border: 1px solid #c3c3c3;
+  border-radius: 5px;
+}
+.headDetail {
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+}
+.topMargin {
+  margin-top: 10px;
+}
+.legendFont {
+  font-size: 7px;
+}
+.legendFlex {
+  display: inline-flex;
+}
+.circle {
+  height: 8px;
+  width: 8px;
+  margin: 4px;
+  border-radius: 20px;
+  background: orangered;
+}
+.circleGreen {
+  height: 8px;
+  width: 8px;
+  margin: 4px;
+  border-radius: 20px;
+  background: #55b35f;
+}
+.square {
+  height: 8px;
+  width: 8px;
+}
+.green {
+  background: #55b35f;
+  color: white;
+}
+.red {
+  background: rgba(255, 0, 0);
+  color: white;
+}
+.blue {
+  background: rgb(1, 83, 190);
+  color: white;
+}
+.pink {
+  background: rgb(204, 67, 193);
+  color: white;
+}
+.fontSmall {
+  font-size: smaller;
+  font-weight: bold;
+}
+.textCenter {
+  text-align: center;
+  justify-content: center;
+}
+.darkText {
+  color: rgb(58, 58, 58);
+}
+.roundedCorner {
+  border-radius: 3px;
+}
+.xSmallFont {
+  font-size: x-small;
+}
+.bgAlert {
+  background: #555555;
+  height: 4vh;
+  font-size: 7px;
+  color: white;
+  /* border-radius: 5px; */
+  align-items: center;
+}
+.fontLarge {
+  font-size: 20px;
+  margin-top: 15%;
+}
+.fontXLarge {
+  font-size: 35px;
+  text-align: center;
+  justify-content: center;
+}
+.scoreBg {
+  color: white;
+}
+.greenBg {
+  background: #009e00;
+  margin-bottom: 1px;
+  border-radius: 11px 0px 0px 11px;
+}
+.yellowBg {
+  background: #e0e400;
+  margin-bottom: 6px;
+  border-radius: 11px 0px 0px 11px;
+}
+.redBg {
+  background: #d80000;
+  margin-bottom: 6px;
+  border-radius: 11px 0px 0px 11px;
+}
+.blueAlertBg {
+  background: #ff4500;
+}
+.purpleAlertBg {
+  background: #ff6170;
+}

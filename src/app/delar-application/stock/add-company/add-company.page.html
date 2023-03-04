@@ -1,0 +1,62 @@
+<ion-header >
+  <ion-toolbar mode="md" class="appHeader" >
+    <ion-grid class='background' >
+      <ion-row >
+        <ion-col size="2" style='align-self: center;'>
+          <ion-icon (click)= 'getBack()' name="arrow-round-back"></ion-icon>
+        </ion-col>
+        <ion-col style='padding: 0px;'>
+          <ion-title>Add Stock</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class='background'>
+    <form  class='formPadding' [formGroup]="addImei">
+      <ion-item>
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input formControlName="imeiNo" placeholder="Imei No"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-icon slot="start"  name="md-phone-portrait"></ion-icon>
+        <ion-input formControlName="simNo" placeholder="Serial No"></ion-input>
+      </ion-item>
+      <ion-item class="appLightBackground labelSpacing">
+        <ion-icon slot="start"  name="business"></ion-icon>
+        <ion-label class='textcolor'>  Manufacture</ion-label>
+        <ion-select formControlName="manufacture" (ionChange)= "getModelData($event,manufacture)" placeHolder = 'Manufacture'>
+          <ion-select-option *ngFor="let manufacture of manufacture" [value]="manufacture.type">
+            {{manufacture.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item [disabled] = "!manufacture" class="appLightBackground labelSpacing">
+        <ion-icon slot="start"  name="contacts"></ion-icon>
+        <ion-label class='textcolor'>Model</ion-label>
+        <ion-select [disabled] = "!manufacture" formControlName="model" placeHolder = 'Model'>
+          <ion-select-option *ngFor="let model of model" [value]="model">
+            {{model}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="appLightBackground labelSpacing">
+        <ion-icon slot="start"  name="logo-slack"></ion-icon>
+        <ion-label class='textcolor'>Provider</ion-label>
+        <ion-select formControlName="provider" placeHolder = 'Provider'>
+          <ion-select-option *ngFor="let provider of provider" [value]="provider.sim">
+            {{provider.sim}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </form> 
+    
+  <ion-col size="6" offset="4">
+    <ion-button class='appHeader' (click)="onSubmit()" shape="round">
+      <ion-icon name="add-circle-outline"></ion-icon>Add
+    </ion-button>
+  </ion-col>
+  
+</ion-content>

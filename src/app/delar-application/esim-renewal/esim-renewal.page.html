@@ -1,0 +1,229 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title *ngIf="myPlatform != 'desktop'">Renewal Request</ion-title>
+    <ion-title *ngIf="myPlatform == 'desktop'">Request Details</ion-title>
+    <ion-button
+      *ngIf="myPlatform == 'desktop'"
+      slot="end"
+      class="submitBtn"
+      size="small"
+      (click)="newfunc()"
+      >Export</ion-button
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-dealer-detail"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Ca Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-renewal"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Renewal Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-topup-request-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Topup Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-extend-oneyear-request-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Extend 1 Yr Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-certificate-request"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Certificate Request</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="myPlatform != 'desktop'">
+      <ion-col class="form-field">
+        <ion-row class="form-field">
+          <ion-col>
+            <ion-row class="upperRows">
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 1  }"
+                (click)="getData(1)"
+                size="2.4"
+              >
+                <ion-label>Renewal 1</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 2}"
+                (click)="getData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 2</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 3}"
+                (click)="getData(3)"
+                size="2.4"
+              >
+                <ion-label>Renewal 3</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 4}"
+                (click)="getData(4)"
+                size="2.4"
+              >
+                <ion-label>Renewal 4</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 5}"
+                (click)="getData(5)"
+                size="2.4"
+              >
+                <ion-label>Renewal 5</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="form-field" style="margin: 15px; text-align: end">
+          <ion-col>
+            <ion-chip class="owl" (click)="customFilter('yellow')"
+              >1 Week Left</ion-chip
+            >
+            <ion-chip class="days" (click)="customFilter('orange')"
+              >15 Days Left</ion-chip
+            >
+            <ion-chip class="oml" (click)="customFilter('blue')"
+              >One Month Left
+            </ion-chip>
+            <ion-chip class="exp" (click)="customFilter('red')"
+              >Expired</ion-chip
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 1  }"
+        (click)="getData(1)"
+        size="1.2"
+      >
+        <ion-label>Renewal 1</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 2}"
+        (click)="getData(2)"
+        size="1.2"
+      >
+        <ion-label>Renewal 2</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 3}"
+        (click)="getData(3)"
+        size="1.2"
+      >
+        <ion-label>Renewal 3</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 4}"
+        (click)="getData(4)"
+        size="1.2"
+      >
+        <ion-label>Renewal 4</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 5}"
+        (click)="getData(5)"
+        size="1.2"
+      >
+        <ion-label>Renewal 5</ion-label>
+      </ion-col>
+      <ion-col style="text-align: end">
+        <ion-chip class="owl" (click)="customFilter('yellow')"
+          >1 Week Left</ion-chip
+        >
+        <ion-chip class="days" (click)="customFilter('orange')"
+          >15 Days Left</ion-chip
+        >
+        <ion-chip class="oml" (click)="customFilter('blue')"
+          >One Month Left
+        </ion-chip>
+        <ion-chip class="exp" (click)="customFilter('red')">Expired</ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="margin: 10px 0px 0px">
+        <ion-label>
+          <span class="dealer-label">Total Selected Row :</span>
+          <span class="dealer-data">{{selectedRow?.length}}</span>
+        </ion-label>
+      </ion-col>
+      <ion-col style="margin: 5px 0px 0px; text-align: end">
+        <ion-button
+          class="submitbtn"
+          (click)="openModel()"
+          [disabled]="showButton"
+          >Request for Renewal</ion-button
+        >
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding: 10px">
+      <ion-col size="12">
+        <jqxGrid
+          #myGrid
+          [selectionmode]="'checkbox'"
+          (onRowclick)="myGridOnRowclick($event)"
+          (onRowselect)="myGridOnRowSelect($event)"
+          (onRowunselect)="myGridOnRowSelect($event)"
+          [enablebrowserselection]="true"
+          [theme]="'material'"
+          [width]="'99.5%'"
+          [autoheight]="true"
+          [source]="dataAdapter"
+          [sortable]="true"
+          [filterable]="true"
+          [columns]="columns"
+          [columnsresize]="true"
+          [enabletooltips]="true"
+          [pageable]="true"
+          [showfilterrow]="true"
+          style="
+            font-size: 16px;
+            text-align: center !important;
+            margin: auto;
+            cursor: pointer;
+          "
+        >
+        </jqxGrid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

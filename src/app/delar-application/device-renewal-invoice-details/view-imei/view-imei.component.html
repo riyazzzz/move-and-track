@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>View IMEI</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="padding: 10px">
+    <ion-col size="12">
+      <jqxGrid
+        #myGrid
+        (onRowclick)="myGridOnRowSelect($event)"
+        [enablebrowserselection]="true"
+        [theme]="'material'"
+        [width]="'99.5%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [pagesizeoptions]="page"
+        [sortable]="true"
+        [filterable]="true"
+        [columns]="columns"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        style="
+          font-size: 16px;
+          text-align: left;
+          margin: auto;
+          cursor: pointer;
+          padding-left: 5px;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

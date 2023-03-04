@@ -1,0 +1,30 @@
+@media only screen and(min-width:10px) and(max-width:767px) {
+  .form-field {
+    zoom: 80%;
+    margin: 5% auto 3px;
+  }
+  #submitbtn {
+    width: 40%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .form-field {
+    margin: 3% auto 5px;
+    padding: 0px 20px;
+  }
+
+  #submitbtn {
+    width: 38%;
+  }
+}
+#submitbtn {
+  --background: #6252ee !important;
+}
+.submitBtn {
+  margin: 0px 40px 0px 0px;
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+  --color-hover: white;
+}

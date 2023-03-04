@@ -1,0 +1,87 @@
+ <ion-header *ngIf="myPlatform !== 'desktop'">
+   <ion-toolbar>
+     <ion-grid>
+      <ion-row>
+        <ion-col size='2'>
+          <ion-icon name="arrow-back" (click)="getBackcard()"></ion-icon>
+        </ion-col>
+        <ion-col size='10'>
+          {{subNew}}
+        </ion-col>
+      </ion-row>
+     </ion-grid>
+     </ion-toolbar>
+ </ion-header>
+ <ion-row  class="container" >
+  <ion-col *ngIf="!conversation" style="position:absolute;left:15%;overflow-y:hidden;">
+    <app-nodata-image></app-nodata-image>
+     </ion-col>
+      <ion-col  size="12" class="main-wrapper" >
+      <ion-row>
+     <div class="ticket-id">Ticket ID : {{id}}</div>
+    <ion-col  *ngFor="let items of conversation;let i=index;" size="12" style="margin:1px 0px">
+  <ion-row   *ngIf="items.body.length == items.body_text.length+11" 
+[ngClass]="items.body_text ==  '.' ? 'imgBlock':'from-wrapper' ">
+  <ion-col size=12 class="wrapper-container" >
+    {{items.body_text}}
+      </ion-col>
+        </ion-row>
+        <div  *ngIf="acknowledge"  style="width: 283px;" [ngClass]="items.body_text == ''? 'display-wrapper':'to-wrapper'">
+          <div class="wrapper-container" >
+           Welcome to Apmkingstrack Technologies your queries will be verified soon.
+          </div>
+        </div>
+          <ion-row  style="clear: both;overflow: hidden;
+            white-space: nowrap;" *ngIf='items.attachments[0] != undefined'>   
+              <ion-col size=12 >
+                <img src= {{items.attachments[0].attachment_url}}  onerror="this.style.display='none'"  
+                  [ngClass]="items.attachments[0]['content_type'] !== 'application/octet-stream'   ? 'dataBlock':'imgBlock'" class="thum_nail"  (click)="enlargeImage(items.attachments[0].attachment_url)"/>
+                </ion-col>
+              <ion-col size="12" class="date_label" [ngClass]="items.attachments[0]['content_type'] !== 'application/octet-stream'   ? 'dataBlock':'imgBlock'"   >
+            <ion-row >
+          <ion-col  class="date_block">{{ items.created_at | date:'medium' }}</ion-col>
+        </ion-row>
+      </ion-col>
+        </ion-row>
+          <ion-row *ngIf='items.attachments[0] != undefined ' >
+            <ion-col size=12>
+              <audio controls=""   style="float:right;outline:none;" [ngClass]="items.attachments[0]['content_type'] === 'application/octet-stream'   ? 'dataBlock':'imgBlock'" >
+                <source [src]="items.attachments[0].attachment_url"     type="audio/wav" >
+                  </audio>
+                    </ion-col>
+                  <ion-col size="12" class="date_label" *ngIf='items.attachments[0] != undefined ' [ngClass]="items.attachments[0]['content_type'] === 'application/octet-stream'   ? 'dataBlock':'imgBlock'">
+                 <ion-row>
+                <ion-col class="date_block">{{ items.created_at | date:'medium' }}</ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <div  style="margin: 0;" *ngIf="items.body.length != items.body_text.length+11" 
+           [ngClass]="items.body_text == ''? 'display-wrapper':'to-wrapper'">
+             <div class="wrapper-container">
+               {{items.body_text}}
+                 </div>
+                 </div> 
+                 </ion-col>
+               <ion-row id="0">
+              <ion-col  size="6" size-sm="10" size-lg="11" size-md="11">  
+             <ion-item class="tickets-item">
+           <ion-input type="text" placeholder="Write your queries" style="--padding-top:0;
+          font-size: 13px;" [(ngModel)]='image'    (keyup)="enableSendbtn($event)" ></ion-input>
+        <ion-icon  id="yourBtn"  (click)="getFile()" name="attach" class="attach-iconc" (click)="enableSendbtn($event)"></ion-icon>
+          <div style='height: 0px;width: 0px; overflow:hidden;outline: none;'>
+            <input id="upfile" type="file" value="upload" [(ngModel)]='image'    ng2FileSelect  [uploader]="uploader" (change)="subject($event)" multiple  />
+              </div>
+               </ion-item>
+                </ion-col>
+                 <ion-col size-sm="2" size-lg="1" size-md="1" class="send-col">
+                   <a href="#0">
+                    <ion-icon name="mic" class="send-icon"  *ngIf="!recording && !sendbtn"  (click)="initiateRecording()" ></ion-icon> 
+                     <ion-icon name="mic-off" class="send-icon" *ngIf="recording && !sendbtn"  (click)="stopRecording()" ></ion-icon>
+                    <ion-icon name="send"   class="send-icon" *ngIf="sendbtn" (click)="sendReplyMsg();"  ></ion-icon> 
+                    </a>
+                    </ion-col>
+                   </ion-row> 
+              </ion-row>
+           
+
+

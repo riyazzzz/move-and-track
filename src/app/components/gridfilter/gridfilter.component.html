@@ -1,0 +1,81 @@
+<!------Filter Division-------->
+<ion-row class="filterSortHeading">FILTER BY</ion-row>
+<ion-row class="container" style="padding: 5px 0px 13px 0px;">
+  <ion-col class="innerPadding">
+    <!-------Make Model--------->
+      <ion-row class="innerPadding">
+        <ion-col size="1" class="innerPadding">
+          <ion-img src="assets/filter_img/cars.svg" class="carSvg"></ion-img>
+        </ion-col>
+        <ion-col size="11" class="makeModel ion-text-start"> 
+          Make Model
+        </ion-col>
+      </ion-row>
+      <!------makeSelectionTag------>
+       <ion-row class="innerPadding">
+        <ion-col size="6" class="innerPadding">  
+          <ion-select [(ngModel)]="makeFilter" (ionChange) = 'filteringValue("make",makeFilter)'  interface="popover"  placeholder="Make" class="makeSelection " style="margin-top: 0px !important;">
+            <ion-select-option *ngFor="let make of make" value={{make}}>{{make}}</ion-select-option>
+          </ion-select>
+         </ion-col>    
+      <!------modelSelectionTag------>
+         <ion-col size="6" class="innerPadding">  
+          <ion-select  [(ngModel)]="modalFilter" (ionChange) = 'filteringValue("model",modalFilter)'  interface="popover"  placeholder="Model" class="modelSelection ">
+            <ion-select-option *ngFor="let model of modal" value={{model}}>{{model}}</ion-select-option>
+          </ion-select>
+         </ion-col>       
+      </ion-row>
+    
+    <!-------Make ModelEnd--------->
+    <!---------Vehicle Status--------->
+    <ion-row class="innerPadding" style="padding-top: 10px;">
+      <ion-col size="1" class="innerPadding">
+        <ion-img src="assets/filter_img/delivery-truck.svg" class="statusTruck" ></ion-img>
+      </ion-col>
+      <ion-col size="11"  class="innerPadding vehicleStatus ion-text-start" > 
+        VehicleStatus
+      </ion-col>
+    </ion-row>
+    
+    <ion-row class="innerPadding">     
+      <ion-col size="6" class="innerPadding">
+        <ion-select  [(ngModel)]="vehicleFilter" (ionChange) = 'filteringValue()'  interface="popover"  placeholder="VehicleStatus" class="statusSelection">
+          <ion-select-option *ngFor='let vehiclestatus of vehicleStatus' value="{{vehiclestatus}}">{{vehiclestatus}}</ion-select-option>
+        </ion-select>
+      </ion-col> 
+      <!--------vehicleSince---------->
+           <ion-col size="6" class="innerPadding">
+            <ion-row class="innerPadding">
+              <ion-col size="4" style="padding-right: 2px;"class="innerPadding ion-text-end" >Since</ion-col>
+              <ion-col size="8" class="innerPadding">
+                <ion-select [(ngModel)]="timeFilter" (ionChange) = 'filteringValue()'  interface="popover" class="vehicleSince">
+                  <ion-select-option value="10">10 Min</ion-select-option>
+                  <ion-select-option value="20">20 Min</ion-select-option>
+                  <ion-select-option value="30">30 Min</ion-select-option>
+                  <ion-select-option value="40">40 Min</ion-select-option>
+                  <ion-select-option value="50">50 Min</ion-select-option>
+                  <ion-select-option value="60">60 Min</ion-select-option>
+                </ion-select> 
+              </ion-col>
+            </ion-row>
+      </ion-col>
+    </ion-row>
+    <!---------FleetManagers----------->
+    <ion-row class="innerPadding" style="padding-top: 10px;">
+      <ion-col size="1" class="innerPadding">
+        <ion-img src="assets/filter_img/users-2-icon.svg" class="usersSvg" ></ion-img>
+      </ion-col>
+      <ion-col size="11"  class="managers innerPadding ion-text-start"> 
+        Fleet Managers
+      </ion-col>
+    </ion-row>
+    <ion-row class="innerPadding">
+      <ion-col  class="innerPadding" >
+        <ion-select [(ngModel)]="fleetFilter" (ionChange) = 'filteringValue()'  interface="popover" placeholder="FleetManagers" class="managersSelction">
+          <ion-select-option *ngFor = 'let fleetManager of fleetManager' value="{{fleetManager}}">{{fleetManager}}</ion-select-option>
+        </ion-select> 
+      </ion-col>
+    </ion-row>
+  
+  </ion-col>
+</ion-row>

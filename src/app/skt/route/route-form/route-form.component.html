@@ -1,0 +1,95 @@
+<!----------Route form start------------>
+<ion-header style="height: 100px;">
+  <ion-toolbar>
+    <ion-row style="padding:0 0 0 10px">
+      <ion-col size="1">
+        <ion-icon name="arrow-back" style="float: right;color: gray;font-size: 25px; margin:0px auto;"
+          (click)="closeModal()"></ion-icon>
+      </ion-col>
+      <ion-col size="11">
+        <ion-title class="popup-head">Route and Trip Details</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<div class="routeTripcontainer">
+  <form [formGroup]="routeTripLogin">
+    <div class="select-container">
+      <!-- <ion-row>
+        <ion-col size="4" class="label-column">
+          Route Name :
+        </ion-col>
+        <ion-col size="8">
+          <select class="select-routeinfo stu-input route-info stu-select-box text-select-box"
+            formControlName="routeName">
+            <option value="" disabled selected hidden class="option-head">Select route name</option>
+            <option *ngFor="let routes of  routetype" [value]="routes">{{routes}}</option>
+          </select>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+        <ion-col size="4" class="label-column">
+          Vehicle Name :
+        </ion-col>
+        <ion-col size="8">
+          <select class="stu-input select-routeinfo route-info stu-select-box text-select-box"
+            formControlName="plateNo">
+            <option value="" disabled selected hidden class="option-head">Select plate number</option>
+            <option *ngFor="let vehicles of vehicletype" [value]="vehicles">{{vehicles}}</option>
+          </select>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        <ion-col size="4" class="label-column">
+          Trip Type :
+        </ion-col>
+        <ion-col size="8">
+          <select class="stu-input select-routeinfo route-info stu-select-box text-select-box" formControlName="type">
+            <option value="" disabled selected hidden class="option-head">Select trip type</option>
+            <option *ngFor="let trips of type" [value]="trips">{{trips}}</option>
+          </select>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+        <ion-col size="4" class="label-column">
+          Trip Name :
+        </ion-col>
+        <ion-col size="8">
+          <ion-item class="route-items" style="background: transparent;">
+            <ion-input type="text" placeholder="Enter Trip Name" class="route-input" formControlName="tripName">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="label-column">
+          Start Time :
+        </ion-col>
+        <ion-col size="8">
+          <ion-item class="route-items" style="background: transparent;">
+            <ion-input type="time" class="route-input " formControlName="tripStarttime"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" class="label-column">
+          End Time :
+        </ion-col>
+        <ion-col size="8">
+          <ion-item class="route-items" style="background: transparent;">
+            <ion-input type="time" class="route-input " formControlName="tripEndtime"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </div>
+    <ion-row>
+      <ion-col style="margin: auto;text-align: center;">
+        <ion-button shape="round" color="primary" class="routeTripbtn" (click)="onSubmit()"
+          [disabled]="!routeTripLogin.valid">submit</ion-button>
+        <ion-button type="reset" fill="outline" shape="round" color="primary" class="routeTripbtn">clear</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</div>
+<!----------routeFormEnd--------->

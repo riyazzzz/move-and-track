@@ -1,0 +1,103 @@
+.startAddress{
+    font-size: 10px;
+    color:black;
+    text-align: center;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}
+.dragDown {
+    transition: 0.5s;
+    bottom: -300px;
+}
+
+.dragUp {
+    transition: 0.5s;
+    bottom: -50px;
+}
+.modal {
+    z-index: 12;
+    background-color: #c3c3d4;
+    border-radius: 12px;
+    position: fixed;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.closeModal {
+    z-index: 12;
+    position: fixed;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.closeUp {
+    transition: 0.5s;
+    top: -280px;
+}
+.closeDown{
+    transition: 0.5s;
+    top: 20px;
+}
+#map{
+    height : 40%;
+}
+.odometerTitle{
+    color: #000000;
+    font-weight: bold;
+}
+#idle{
+    background: #139be9;
+    color: white;
+}
+#running{
+    color: white;
+    background: #1db372;
+}
+.number{
+    color:black;
+    vertical-align: middle;
+    align-self: center;
+}
+#end{
+    color: white;
+    background: #ff0000;
+}
+.image{
+    height: 40px;
+}
+
+.semiCircle {
+    background: #32384b;
+    width: 100%;
+    padding: 2%;
+    border-radius: 0px 0px 20px 18px;
+  }
+  
+  .alertsStyle {
+    color: white;
+    font-size: 16px;
+  }
+  
+  ::-webkit-scrollbar
+{
+  width: 12px;  /* for vertical scrollbars */
+  height: 12px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track
+{
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb
+{
+  background: rgba(0, 0, 0, 0.5);
+}

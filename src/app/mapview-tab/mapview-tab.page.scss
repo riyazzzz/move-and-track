@@ -1,0 +1,98 @@
+.map {
+    height: 100%;
+}
+
+// @media screen and (max-width: 1440px) {
+//     .map {
+//         height: auto;
+//         width: auto;
+//     }
+// }
+// @media screen and (max-width: 768px) {
+//     .map {
+//         height: 100%;
+//         width:100%
+//     }
+// }
+
+.address{
+    font-size: 10px;
+  }
+  
+#popup{
+    opacity: 1;
+    margin-left: 0px;
+    height: 38px;
+    font-size: 85%;
+    background-color: white;
+}
+.overlay {
+    background: rgb(255, 255, 255);
+    color: rgb(73, 72, 72);
+}
+.modal {
+    z-index: 12;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+}
+.modalIos{
+    z-index: 12;
+    position: fixed;
+    bottom: 50px;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+}
+.ion-padding,
+[padding] {
+  padding-left: unset;
+  padding-right: unset;
+  -webkit-padding-start: var(--ion-padding, 16px);
+  padding-inline-start: var(--ion-padding, 0px);
+  -webkit-padding-end: var(--ion-padding, -16px);
+  padding-inline-end: var(--ion-padding, 13px);
+  padding-bottom: 8px;
+}
+
+
+
+#popup{
+    opacity: 1;
+    margin-left: 0px;
+    height: 38px;
+    font-size: 85%;
+    background-color: white;
+}
+.overlay {
+    background: rgb(255, 255, 255);
+    color: rgb(73, 72, 72);
+}
+.modal {
+    z-index: 12;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+}
+.modalIos{
+    z-index: 12;
+    position: fixed;
+    bottom: 50px;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+}
+.ion-padding,
+[padding] {
+  padding-left: unset;
+  padding-right: unset;
+  -webkit-padding-start: var(--ion-padding, 16px);
+  padding-inline-start: var(--ion-padding, 0px);
+  -webkit-padding-end: var(--ion-padding, -16px);
+  padding-inline-end: var(--ion-padding, 13px);
+  padding-bottom: 8px;
+}

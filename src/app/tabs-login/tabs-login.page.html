@@ -1,0 +1,15 @@
+<ion-tabs  #myTab (ionTabsDidChange)="tabChanged()">
+  <ion-tab-bar  *ngIf='myPlatform != "desktop" && appName != "Armoron" && appName != "GE" && appName != "ParentApp"' slot="bottom" class="appTab">
+
+    <ion-tab-button style="max-width: 100%;"  (click)="changeModule('user')"[tab]="loginForUser" [ngClass]="{tabStyle: selectedTab === 'members','selectedTabStyle': selectedTab !== 'members'}">
+      <ion-icon name="people"></ion-icon>
+      <ion-label >I'm a user</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button style="max-width: 100%;"  (click)="changeModule('delar')" [tab]="loginForDealer" [ngClass]="{'tabStyledelar': selectedTab === 'dealarlogin',selectedTabStyle: selectedTab !== 'dealarlogin'}">
+      <ion-icon name="person"></ion-icon>
+      <ion-label >I'm a dealar</ion-label>
+    </ion-tab-button>
+    </ion-tab-bar>
+    
+</ion-tabs>

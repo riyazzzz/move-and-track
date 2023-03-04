@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-title>Billing Plan</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="BillingplanForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Sim Provider:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="provider"
+                placeholder="Select the Sim Provider"
+                [items]="Provider"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Plan Name:</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Enter the Plan Name"
+                formControlName="planname"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Plan Amount:</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Enter the Plan Amount"
+                formControlName="planamount"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col style="margin: 27px 0px 0px; text-align: end">
+              <ion-button
+                *ngIf="!hideSerialNo"
+                class="submitbtn"
+                (click)="SubmitData()"
+                [disabled]="!BillingplanForm.valid"
+                >Add</ion-button
+              >
+              <ion-button
+                *ngIf="hideSerialNo"
+                class="submitbtn"
+                (click)="edit()"
+                [disabled]="!BillingplanForm.valid"
+                >Edit</ion-button
+              >
+              <ion-button
+                class="submitbtn"
+                [disabled]="!BillingplanForm.valid"
+                (click)="clear()"
+                >Clear</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <jqxGrid
+      #myGrid
+      [theme]="'material'"
+      (onRowclick)="myGridOnRowSelect($event)"
+      [width]="'99%'"
+      [autoheight]="true"
+      [source]="dataAdapter"
+      [columns]="columns"
+      [sortable]="true"
+      [filterable]="true"
+      [columnsresize]="true"
+      [enablebrowserselection]="true"
+      [enabletooltips]="true"
+      [pagesizeoptions]="page"
+      [pageable]="true"
+      [showfilterrow]="true"
+      style="
+        font-size: 16px;
+        text-align: center !important;
+        margin: auto;
+        cursor: pointer;
+      "
+    >
+    </jqxGrid>
+  </ion-grid>
+</ion-content>

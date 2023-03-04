@@ -1,0 +1,29 @@
+.label-style{
+    border: 1px solid #e5e5e5;
+background: #e8e8e8;
+ line-height: 18px;
+}
+.content-style{
+    justify-content: center
+}
+.total-data {
+    margin-top: 3%;
+}
+.col-content{
+    text-align: left;
+    align-self: center;
+    font-size: 18px;
+}
+#add-icon{
+    --background:#FFEBCD;
+    --color: white;
+    font-size: 15px;
+    --border-radius: 5px;
+}
+.button{
+    margin-top: 2%;
+    --background: #7c68f8;
+}
+.selectable-input{
+    padding: 6px 11px 0px 6px;
+}

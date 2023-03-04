@@ -1,0 +1,44 @@
+$unSeletedColor: white;
+.selectedTab {
+  background-color: $unSeletedColor;
+  color: black;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.unSelectedTab {
+  background-color: #737b92;
+  border: none;
+  color: $unSeletedColor;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+.margin {
+  border-left: 6px solid red;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.cardContentPad {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+.iconSize {
+  font-size: 30px;
+  padding: 30% 0%;
+  cursor: pointer;
+}
+.setSize{
+  position: relative;
+  right: -5px;
+}
+
+.cardProp {
+  border-left: 6px solid #017afe;
+  margin:0px;
+}
+.padBot {
+  padding-bottom: 9vh;
+}

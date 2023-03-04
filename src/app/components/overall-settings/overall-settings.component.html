@@ -1,0 +1,179 @@
+<ion-row *ngIf='pageType == "Vin"'>
+  <ion-col size=12 class="cardHeader ">
+    Vehicle Settings
+  </ion-col>
+  <ion-col size=12 class="paddingZero">
+    <ion-row style=" align-items: center;">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <svg width="30" height="30" viewBox="0 0 800 800"
+          style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+          <path attr.fill="{{watchStatus==true ? '#002544' : '#FF0000'}}"
+            d="M430 586.53c-38.76,0 -72.57,-8.35 -101.64,-30.26 -23.48,-17.69 -42.12,-38.46 -54.23,-65.66 -25.5,-57.32 -16.5,-119.47 21.29,-169.22 5.71,-7.52 14.31,-14.96 20.32,-20.98 3.66,-3.66 6.82,-5.64 11.1,-8.87 45.82,-34.58 114.25,-42.08 166.23,-15.87 26.01,13.11 22.96,12.83 41.25,28.02 2.68,2.23 3.36,2.15 5.71,4.95 21.61,25.86 34.09,41.43 42.37,77.52 6.04,26.29 6.13,44.87 0.72,71.06 -5.44,26.3 -15.66,47.2 -32.06,67.85 -3.66,4.61 -6.09,6.85 -9.91,11.41 -4.97,5.94 -14.96,13.85 -21.32,18.65 -8.52,6.42 -15.1,9.99 -24.99,14.97 -16.11,8.1 -41.32,16.43 -64.84,16.43zm-99.92 -203.83c6.3,3.33 13.53,5.52 20.45,8.87 6.9,3.34 13.46,5.7 19.95,9.35l38.2 21.74c-7.98,10.9 -69.47,36.48 -78.6,41.3 4.87,20.89 32.99,45.12 56.14,54.44 25.57,10.31 56.37,9.23 80.65,-2.91 50.26,-25.13 71.85,-78.41 50.51,-132.25 -9.01,-22.73 -28.38,-40.94 -49.62,-51.62 -42.27,-21.25 -92.62,-9.51 -123.98,27.48 -3.87,4.57 -12.27,17.49 -13.7,23.6zm-247.79 41.3l14.63 18.67c4.77,6.26 10.17,11.51 15.24,18.07 22.98,29.66 86.65,83.79 113.99,101.83l53.31 30.62c34.19,17.15 88.84,34.64 131.89,34.64 55.33,0 83.37,-4.63 132.85,-24.35 23.09,-9.21 55.22,-26.56 75.53,-40.37l47.71 -36.22c28.49,-25.39 34.46,-31.2 58.63,-57.28l30.51 -36.1c2.23,-2.99 5.13,-7.56 7.8,-9.51 -2.05,-3.07 -4.1,-6.53 -6.46,-9.53 -15.48,-19.68 -54.17,-64.69 -72.14,-78.4l-36.15 -30.46c-6.52,-5.21 -11.83,-9.35 -19,-14.3 -22.47,-15.51 -37.38,-24.8 -62.53,-37.39 -34.95,-17.51 -88.82,-35.08 -132.77,-35.08 -55.33,0 -83.37,4.62 -132.86,24.34 -8.3,3.32 -15.62,6.58 -23.01,10.29 -32.56,16.33 -73.09,42.11 -100.23,66.3 -43.92,39.15 -55.7,51.86 -89.88,93.97 -2.86,3.52 -4.72,6.76 -7.06,10.26z" />
+        </svg>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Watch Mode
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='watchStatus' (click)="toggleWatchmode($event)"
+          checked="{{watchStatus}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+
+  <ion-col *ngIf='this.watchStatus == true' size=12 class="cardHeader ">
+    Watchmode Settings
+  </ion-col>
+  <ion-col *ngIf='this.watchStatus == true' size=12 class="paddingZero">
+    <ion-row style=" align-items: center;">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6.2012mm" height="6.2012mm" version="1.1"
+          style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 220.12 220.12" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path attr.fill="{{watchMode.powerCut==true ? '#002544' : '#FF0000'}}"
+            d="M201.77 178.4c-17.9,-17.79 -26.98,-38.84 -26.98,-62.58l0 -34.54c0.17,-26.34 -17.54,-43.81 -32.76,-50.76 -4.29,-1.96 -8.81,-3.41 -13.42,-4.53l0 -2.35c0,-10.58 -8.61,-19.2 -19.2,-19.2 -10.59,0 -19.2,8.62 -19.2,19.2l0 2.71c-4.15,1.09 -8.22,2.42 -12.09,4.2 -16.82,7.75 -33.85,26.44 -34.01,50.71l0 34.56c0,24.54 -8.66,45.59 -25.75,62.57 -1.02,1.02 -1.39,2.51 -0.96,3.88 0.43,1.37 1.6,2.39 3.01,2.64l36.46 6.29c6.87,1.19 13.12,2.14 18.99,2.91 6.7,13.14 19.86,21.58 34.25,21.58 14.39,0 27.56,-8.45 34.26,-21.59 5.84,-0.78 12.05,-1.72 18.89,-2.9l36.45 -6.3c1.42,-0.24 2.57,-1.26 3.01,-2.63 0.43,-1.37 0.06,-2.86 -0.95,-3.87zm-47.14 -32.56l-82.4 -82.41c-1.86,-1.86 -4.87,-1.86 -6.74,0 -1.86,1.87 -1.86,4.88 0,6.74l82.41 82.4c0.93,0.93 2.15,1.44 3.36,1.44 1.22,0 2.44,-0.51 3.37,-1.44 1.86,-1.86 1.86,-4.87 0,-6.73zm-23.14 -29.02c0.43,0.5 1.07,0.86 1.72,0.71 0.64,0 1.29,-0.28 1.72,-0.71l11.53 -11.9c0.65,-0.72 0.86,-1.65 0.5,-2.58 -0.35,-0.86 -1.21,-1.43 -2.22,-1.43l-17.27 0 20 -34.68c0.43,-0.72 0.43,-1.51 0,-2.22 -0.43,-0.72 -1.22,-1.08 -2.08,-1.08l-45 0c-1.07,0 -2.01,0.5 -2.29,1.51l-3.66 12.18c-0.21,0.86 0,1.72 0.58,2.29l36.47 37.91zm-41.85 -16.13c-0.57,-0.57 -1.43,-0.78 -2.22,-0.64 -0.79,0.14 -1.43,0.72 -1.72,1.5l-7.31 20c-0.28,0.71 -0.07,1.57 0.36,2.22 0.43,0.64 1.36,1.14 2.08,1.14l0 0 0 0.43 21.06 0 -9.74 29.88c-0.36,1.08 0.07,2.08 1.07,2.65 0.36,0.22 0.79,0.22 1.22,0.22 0.65,0 1.29,-0.29 1.79,-0.79l22.43 -24.58c0.86,-0.93 0.86,-2.43 -0.07,-3.29l-28.95 -28.74zm8.24 -77.05c0,-6.35 5.17,-11.52 11.53,-11.52 6.35,0 11.52,5.17 11.52,11.52l0 0.75c-7.66,-1.09 -15.46,-1.03 -23.05,0.19l0 -0.94zm36.9 171.6c-5.84,7.92 -14.93,12.76 -24.67,12.76 -9.73,0 -18.83,-4.83 -24.66,-12.75l0 0c1.52,0.16 3,0.28 4.47,0.41 0.71,0.06 1.43,0.13 2.12,0.19 0.54,0.04 1.06,0.07 1.59,0.11 11.16,0.81 21.44,0.81 32.6,0.02 0.64,-0.05 1.26,-0.08 1.91,-0.13 0.84,-0.07 1.71,-0.16 2.56,-0.23 1.3,-0.11 2.59,-0.22 3.93,-0.36 0.05,-0.01 0.1,-0.01 0.15,-0.02z" />
+        </svg>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Powercut
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='watchMode.powerCut'
+          (click)="watchModeNeed('powerCut' ,watchMode.powerCut, $event, {'powerCut':!watchMode.powerCut, 'enginStatus': watchMode.enginStatus, 'sos': watchMode.sos})"
+          checked="{{watchMode.powerCut}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style=" align-items: center;">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6.6932mm" height="5.6932mm" version="1.1"
+          style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 169.32 169.32" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path attr.fill="{{watchMode.enginStatus==true ? '#002544' : '#FF0000'}}"
+            d="M128.81 65.34l11.03 0 0 24.83 11.04 0 0 -16.55 11.04 0 2.76 8.28 0 33.12 -2.76 8.27 -11.04 0 0 -16.56 -11.04 0 0 24.84 -11.03 0 -22.08 0 0 11.05 -38.62 0 0 -11.05 -8.29 0 -16.55 -11.04 -16.57 0 0 -11.03 -11.02 0 0 22.07 -11.04 0 0 -68.98 11.04 0 0 24.83 11.02 0 0 -11.05 13.81 0c0,-1.51 1.24,-2.75 2.76,-2.75 0.96,0 1.8,0.48 2.3,1.23l14.25 -9.51 0 -16.55 22.08 0 0 -11.04 -38.63 0 0 -11.05 88.3 0 0 11.05 -38.62 0 0 11.04 22.06 0 0 13.8c1.53,0 2.77,1.23 2.77,2.75l11.03 0zm-21.73 16.87c-2.31,-3.96 -5.45,-7.11 -9.42,-9.42 -3.97,-2.32 -8.3,-3.48 -13,-3.48 -4.7,0 -9.03,1.16 -13,3.48 -3.97,2.31 -7.11,5.46 -9.42,9.42 -2.32,3.98 -3.49,8.3 -3.49,13 0,4.71 1.17,9.03 3.49,13.01 2.31,3.96 5.45,7.11 9.42,9.42 3.97,2.32 8.3,3.47 13,3.47 4.7,0 9.03,-1.15 13,-3.47 3.97,-2.31 7.1,-5.46 9.42,-9.42 2.32,-3.98 3.47,-8.3 3.47,-13.01 0,-4.7 -1.15,-9.02 -3.47,-13zm-6.43 3.79l-2.9 -2.9c-0.41,-0.41 -0.88,-0.61 -1.47,-0.61 -0.56,0 -1.05,0.2 -1.45,0.61l-14.04 14.06 -6.3 -6.31c-0.41,-0.41 -0.89,-0.61 -1.47,-0.61 -0.57,0 -1.04,0.2 -1.45,0.61l-2.92 2.91c-0.39,0.4 -0.59,0.89 -0.59,1.45 0,0.57 0.2,1.06 0.59,1.46l7.77 7.76 2.9 2.9c0.41,0.41 0.88,0.61 1.47,0.61 0.56,0 1.05,-0.2 1.45,-0.61l2.91 -2.9 15.5 -15.51c0.41,-0.41 0.61,-0.89 0.61,-1.46 0,-0.58 -0.2,-1.05 -0.61,-1.46z" />
+        </svg>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Engine Turned On
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='watchMode.enginStatus'
+          (click)="watchModeNeed('engineStatus', watchMode.enginStatus, $event,  {'powerCut':watchMode.powerCut, 'enginStatus': !watchMode.enginStatus, 'sos': watchMode.sos})"
+          checked="{{watchMode.enginStatus}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+
+    <ion-row style=" align-items: center;">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6.2012mm" height="6.2012mm" version="1.1"
+          style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+          viewBox="0 0 220.12 220.12" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <path attr.fill="{{watchMode.powerCut==true ? '#002544' : '#FF0000'}}"
+            d="M201.77 178.4c-17.9,-17.79 -26.98,-38.84 -26.98,-62.58l0 -34.54c0.17,-26.34 -17.54,-43.81 -32.76,-50.76 -4.29,-1.96 -8.81,-3.41 -13.42,-4.53l0 -2.35c0,-10.58 -8.61,-19.2 -19.2,-19.2 -10.59,0 -19.2,8.62 -19.2,19.2l0 2.71c-4.15,1.09 -8.22,2.42 -12.09,4.2 -16.82,7.75 -33.85,26.44 -34.01,50.71l0 34.56c0,24.54 -8.66,45.59 -25.75,62.57 -1.02,1.02 -1.39,2.51 -0.96,3.88 0.43,1.37 1.6,2.39 3.01,2.64l36.46 6.29c6.87,1.19 13.12,2.14 18.99,2.91 6.7,13.14 19.86,21.58 34.25,21.58 14.39,0 27.56,-8.45 34.26,-21.59 5.84,-0.78 12.05,-1.72 18.89,-2.9l36.45 -6.3c1.42,-0.24 2.57,-1.26 3.01,-2.63 0.43,-1.37 0.06,-2.86 -0.95,-3.87zm-47.14 -32.56l-82.4 -82.41c-1.86,-1.86 -4.87,-1.86 -6.74,0 -1.86,1.87 -1.86,4.88 0,6.74l82.41 82.4c0.93,0.93 2.15,1.44 3.36,1.44 1.22,0 2.44,-0.51 3.37,-1.44 1.86,-1.86 1.86,-4.87 0,-6.73zm-23.14 -29.02c0.43,0.5 1.07,0.86 1.72,0.71 0.64,0 1.29,-0.28 1.72,-0.71l11.53 -11.9c0.65,-0.72 0.86,-1.65 0.5,-2.58 -0.35,-0.86 -1.21,-1.43 -2.22,-1.43l-17.27 0 20 -34.68c0.43,-0.72 0.43,-1.51 0,-2.22 -0.43,-0.72 -1.22,-1.08 -2.08,-1.08l-45 0c-1.07,0 -2.01,0.5 -2.29,1.51l-3.66 12.18c-0.21,0.86 0,1.72 0.58,2.29l36.47 37.91zm-41.85 -16.13c-0.57,-0.57 -1.43,-0.78 -2.22,-0.64 -0.79,0.14 -1.43,0.72 -1.72,1.5l-7.31 20c-0.28,0.71 -0.07,1.57 0.36,2.22 0.43,0.64 1.36,1.14 2.08,1.14l0 0 0 0.43 21.06 0 -9.74 29.88c-0.36,1.08 0.07,2.08 1.07,2.65 0.36,0.22 0.79,0.22 1.22,0.22 0.65,0 1.29,-0.29 1.79,-0.79l22.43 -24.58c0.86,-0.93 0.86,-2.43 -0.07,-3.29l-28.95 -28.74zm8.24 -77.05c0,-6.35 5.17,-11.52 11.53,-11.52 6.35,0 11.52,5.17 11.52,11.52l0 0.75c-7.66,-1.09 -15.46,-1.03 -23.05,0.19l0 -0.94zm36.9 171.6c-5.84,7.92 -14.93,12.76 -24.67,12.76 -9.73,0 -18.83,-4.83 -24.66,-12.75l0 0c1.52,0.16 3,0.28 4.47,0.41 0.71,0.06 1.43,0.13 2.12,0.19 0.54,0.04 1.06,0.07 1.59,0.11 11.16,0.81 21.44,0.81 32.6,0.02 0.64,-0.05 1.26,-0.08 1.91,-0.13 0.84,-0.07 1.71,-0.16 2.56,-0.23 1.3,-0.11 2.59,-0.22 3.93,-0.36 0.05,-0.01 0.1,-0.01 0.15,-0.02z" />
+        </svg>
+        <ion-icon [ngClass]='{"red": watchMode.sos === false, "green":watchMode.sos === true}'
+          style="font-size: 6.6932mm;" name="ios-alert"></ion-icon>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Sos
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='watchMode.sos'
+          (click)="watchModeNeed('sos' ,watchMode.sos, $event,  {'powerCut':watchMode.powerCut, 'enginStatus': watchMode.enginStatus, 'sos': !watchMode.sos})"
+          checked="{{watchMode.sos}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf='pageType != "Vin" && appName !="Armoron"'>
+  <ion-col size=12 class="cardHeader " *ngIf="myPlatform != 'desktop' || googleMapEnable">
+    Application Settings
+  </ion-col>
+  <ion-col *ngIf="myPlatform != 'desktop'" size=12 class="paddingZero">
+    <ion-row style=" align-items: center; ">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <ion-icon class="iconSize" name="notifications"></ion-icon>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Notification
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='notification' (click)='notificationSetting(notification)'
+          checked="{{notification}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col size=12 class="paddingZero" *ngIf='googleMapEnable'>
+    <ion-row style=" align-items: center; ">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <ion-icon class="iconSize" name="map"></ion-icon>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Google Map
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='googleMap' (click)='changeMap()' checked="{{googleMap}}">
+        </ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row *ngIf='pageType != "Vin" && appName !="Armoron"'>
+  <ion-col size=12 class="cardHeader ">
+    Loading Page Settings
+  </ion-col>
+  <ion-col size=12 class="paddingZero">
+    <ion-row style=" align-items: center; ">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <ion-icon class="iconSize" name="home"></ion-icon>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Dashboard
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='inItLoading.dashboard' (click)='inItLoader("dashboard")'
+          checked="{{inItLoading.dashboard}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+    <ion-row style=" align-items: center; ">
+      <ion-col style='text-align: center;' size=2 class="paddingZero">
+        <ion-icon class="iconSize" name="md-browsers"></ion-icon>
+      </ion-col>
+      <ion-col size=8 class="paddingZero">
+        Grid View
+      </ion-col>
+      <ion-col size=2 class="paddingZero">
+        <ion-toggle class="toogleBtn" [(ngModel)]='inItLoading.gridView' (click)='inItLoader("gridView")'
+          checked="{{inItLoading.gridView}}"></ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size=12 class="cardHeader">
+    Alert Configuration
+  </ion-col>
+  <ion-col size=12>
+    <app-alert-settings [vin]="gridLiveChange" [paraVin]="pageType"></app-alert-settings>
+  </ion-col>
+</ion-row>
+
+
+<ion-row *ngIf='pageType == "Vin" && appName !="Armoron"'>
+  <ion-col size=12 class="cardHeader ">
+    One Wire Configuration
+  </ion-col>
+  <ion-col size=12>
+    <app-temperature-settings [vin]="gridLiveChange" [paraVin]="pageType"></app-temperature-settings>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngIf='pageType == "Vin" && appName !="Armoron"'>
+  <ion-col size=12 class="cardHeader ">
+    Sensor Configuration
+  </ion-col>
+  <ion-col size=12>
+    <app-sensor-configuration [vin]="gridLiveChange" [paraVin] = "pageType"></app-sensor-configuration>
+  </ion-col>
+</ion-row>

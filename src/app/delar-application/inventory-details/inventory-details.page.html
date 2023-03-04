@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-title>Inventory Details</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="padding: 10px">
+    <ion-col size="12">
+      <!-- <ion-row>
+        <ion-col size='12' size-lg="12"  size-md="12" style="margin: 10px 0px 0px;text-align: end;">  
+<ion-button class="submitbtn" (click)="openModel($event)"[disabled]="showButton"><ion-icon name="add-circle" style="line-height:32px;font-size:15px;margin:auto;padding:0px 5px"></ion-icon>Slot</ion-button>
+<ion-button class="submitbtn"(click)="openModel($event)"[disabled]="showButton" ><ion-icon name="add-circle" style="line-height:32px;font-size:15px;margin:auto;padding:0px 5px"></ion-icon>Esim Provider</ion-button>
+<ion-button class="submitbtn"(click)="openModel($event)" [disabled]="showButton"><ion-icon name="add-circle" style="line-height:32px;font-size:15px;margin:auto;padding:0px 5px"></ion-icon>Expiry Date</ion-button>
+        </ion-col>
+      </ion-row> -->
+      <ion-row>
+        <ion-col size="12">
+          <jqxGrid
+            #myGrid
+            [theme]="'material'"
+            [width]="'99.5%'"
+            [autoheight]="true"
+            [source]="dataAdapter"
+            [pagesizeoptions]="page"
+            [enablebrowserselection]="true"
+            [sortable]="true"
+            [filterable]="true"
+            [columns]="columns"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="true"
+            [showfilterrow]="true"
+            style="
+              font-size: 16px;
+              text-align: center !important;
+              margin: auto;
+              cursor: pointer;
+            "
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+<!-- [selectionmode]="'checkbox'" 
+          (onRowselect)="myGridOnRowSelect($event)"
+          (onRowunselect)="myGridOnRowSelect($event)" -->

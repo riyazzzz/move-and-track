@@ -1,0 +1,60 @@
+<ion-row style="font-weight: bold;
+color: black;">
+  Door Open
+</ion-row>
+<ion-row >
+  <ion-col style='padding:8px; padding-top: 6px;'size=6 *ngFor='let i  of [0,1]'>
+    <ion-grid *ngIf="doorOpenRes[i] != undefined" style="border: 1px solid #b9b6c7;border-radius: 12px; padding: 0px;">
+      <ion-row class="font"
+        style="padding: 0px; border-top-left-radius: 9px; border-top-right-radius: 9px;background:  #b9b6c7;font-size: 10px; color: white;">
+        {{doorOpenRes[i].date}}
+      </ion-row>
+      <ion-row>
+        <img width="28px" height="28px" src="assets/icon/FridgeOpen.svg">
+      </ion-row>
+      <ion-row class="font fontLarge">
+        {{doorOpenRes[i].value}}
+      </ion-row>
+
+    </ion-grid>
+  </ion-col>
+</ion-row>
+
+<ion-row style="font-weight: bold;
+color: black;">
+  Power Fail
+</ion-row>
+<ion-row >
+  <ion-col style='padding:8px; padding-top: 6px;'size=6 *ngFor='let i  of [0,1]'>
+    <ion-grid *ngIf="powerFailRes[i] != undefined" style="border: 1px solid #b9b6c7;border-radius: 12px; padding: 0px;">
+      <ion-row class="font"
+        style="padding: 0px; border-top-left-radius: 9px; border-top-right-radius: 9px;background:  #b9b6c7;font-size: 10px; color: white;">
+        {{powerFailRes[i].date}}
+      </ion-row>
+      <ion-row>
+        <img width="28px" height="28px" src="assets/icon/PowerFail.svg">
+      </ion-row>
+      <ion-row class="font fontLarge">
+        {{powerFailRes[i].value}}
+      </ion-row>
+
+    </ion-grid>
+  </ion-col>
+</ion-row>
+
+<!-- <ion-row>
+  <ion-col style='padding:8px; '>
+    <ion-grid *ngIf="powerFailRes[i] != undefined" style="border: 1px solid #b9b6c7;border-radius: 12px; padding: 0px;">
+      <ion-row class="font"
+        style="padding: 0px; border-top-left-radius: 9px; border-top-right-radius: 9px;background:  #b9b6c7;font-size: 10px; color: white;">
+        {{powerFailRes[i].date}}
+      </ion-row>
+      <ion-row>
+        <img width="28px" height="28px" src="assets/icon/odometer.svg">
+      </ion-row>
+      <ion-row class="font fontLarge">
+        {{powerFailRes[i].value}}
+      </ion-row>
+    </ion-grid>
+  </ion-col>
+</ion-row> -->

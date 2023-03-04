@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar mode="md" class="appHeader">
+    <ion-grid class="appHeaderTitle ion-padding" style="padding-bottom:8px;">
+      <ion-row *ngIf='myPlatform !="desktop"' >
+        <ion-col  size="2">
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+        <ion-col style="align-self: center;">
+          <ion-searchbar *ngIf='search' size="10"  showCancelButton="never" [(ngModel)]="plateNo"  (ionChange) ="searchVehicle(plateNo)" placeholder="Search">
+          </ion-searchbar>
+        </ion-col>
+        <!-- <ion-col size=1 style="   font-size: 20px; align-self: center;">
+          <ion-icon (click) ="showOrHideSearch()"  [name]="iconHeader"></ion-icon>
+        </ion-col> -->
+      </ion-row>
+      <ion-row *ngIf='myPlatform =="desktop"' >
+        <ion-col size='2'>
+          <ion-menu-button></ion-menu-button>
+      </ion-col>
+      <ion-col size='8.5' style='align-self: center;'>
+          <ion-row>
+              <ion-label class="headercolour"> Map view </ion-label>
+          </ion-row>
+      </ion-col>
+      <!-- <ion-col size='1.5'>
+              <ion-row><ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon></ion-row>
+          </ion-col> -->
+      <ion-col size='1.5' style="padding: 0px;">
+          <ion-row >
+              <ion-col size='3' style="align-self: center;"> 
+                 
+              </ion-col>
+             <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+              <ion-img [src]="app.logo"></ion-img>
+             </ion-col>
+          </ion-row>
+      </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-col *ngIf='myPlatform =="desktop"' size='3' style="position: absolute;
+  z-index: 12; top:7%">
+    <ion-searchbar *ngIf='search' showCancelButton="never" [(ngModel)]="plateNo"  (ionChange) ="searchVehicle(plateNo)" placeholder="Search"></ion-searchbar>
+  </ion-col>
+  <div class="map" #mapElement></div>
+ 
+  <div id="popup">
+    <div id="popup1"></div>
+    <div id="popup2"></div>
+  </div>
+
+   <ion-fab *ngIf='fabButton' (click)="switchMap()" style="top: 2%;right: 2%;" horizontal="end" vertical="top" slot="fixed" edge>
+    <ion-fab-button size ='medium' color='light' style="font-size: 16px;">
+        <ion-icon  center name='map'></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+  <div id="modal" class="modal">
+
+    <ion-grid style='padding:0px'>
+      <div *ngIf="markerInfo.show">
+        <ion-card style="background:white">
+          <ion-card-content style="padding:0px; justify-content: flex-end; background:white">
+            <ion-row class="ion-align-items-right ion-justify-content-right" style="justify-content: flex-end;"
+              (click)="closeInfo()">
+              <ion-icon name="backspace"></ion-icon>
+            </ion-row>
+          </ion-card-content>
+          <ion-card-content *ngIf ='myPlatform !="desktop"' style="padding:0px;">
+          <app-gridview-card [commonData]='clickMarker'></app-gridview-card>
+          <ion-row (click)='showLocation(clickMarker)' class="address">
+            <ion-col size=12 style="padding-top: 0px; padding-bottom: 0px;">
+                <ion-row *ngIf="clickMarker.location">
+                    {{clickMarker.location}}
+                </ion-row>
+                <ion-row *ngIf="!clickMarker.location">
+                    <!-- <ion-spinner name="dots"></ion-spinner> -->
+                    Click for location 
+                </ion-row>
+                </ion-col>
+                </ion-row>
+    </ion-card-content>
+          <app-grid-card-website *ngIf ='myPlatform =="desktop"' [commonData] = 'clickMarker' ></app-grid-card-website>
+
+        </ion-card>
+       
+      </div>
+    </ion-grid>
+  </div>
+</ion-content>

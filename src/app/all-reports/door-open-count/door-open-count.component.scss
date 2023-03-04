@@ -1,0 +1,25 @@
+.center{
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+
+}
+.colcenter{
+justify-content: center;
+}
+.timestamp{
+    font-size: 20px;
+    font-weight: bold;
+    justify-content: center;
+    color: black;
+}
+.size{
+    // font-weight: bold;
+    font-size: 10px;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}

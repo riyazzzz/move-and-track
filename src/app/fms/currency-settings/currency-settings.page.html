@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar mode="md" [ngClass]="{'companyHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-grid >
+      <ion-row>
+        <ion-col>
+          <ion-row *ngIf="myPlatform != 'desktop'">
+            <ion-col size="2">
+                <ion-menu-button></ion-menu-button>
+            </ion-col>
+           <ion-col size="8">
+            <ion-label>Currency Settings </ion-label>
+           </ion-col>  
+        </ion-row>
+          <ion-row *ngIf="myPlatform == 'desktop'">
+            <ion-col size='2'>
+              <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size="9">
+              <ion-label class="headercolour">Currency Settings</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-img [src]="app.logo"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>  
+</ion-header>
+<ion-content>
+<ion-row class="wrapper-container">
+  <ion-col>
+    <form [formGroup]="currencylist">
+      <ion-row>
+        <ion-col *ngIf="currencys">
+          <ionic-selectable class="input selectable-input" formControlName="currency" placeholder="Select the Currency"
+          [items]="currency"  [canSearch]="true" [hasVirtualScroll]="true" [disabledItems]="data"></ionic-selectable>
+        </ion-col>
+        <ion-col *ngIf="hideSerialNo">
+          <ion-input type="text" formControlName="currency" [disabled]='hideSerialNo' value={{currencyvalue}} class="input selectable-input"></ion-input>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col style="text-align: center !important;padding: 20px;">
+        <ion-button *ngIf="currencys" class="submitbtn" (click)="submitBtn()"[disabled]="!currencylist.valid">Submit</ion-button>
+        <ion-button *ngIf="hideSerialNo" class="submitbtn" (click)="submitBtn()"disabled>Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+</ion-content>

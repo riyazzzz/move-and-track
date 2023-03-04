@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>CA Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col size="12">
+      <form [formGroup]="CaRequestForm">
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">CA Request Number:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="CA Request Number"
+              formControlName="carequestNo"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">SR Number:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="SR Number"
+              formControlName="SrNo"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">SR Date:</ion-label>
+            <ion-input
+              type="date"
+              placeholder="SR Date"
+              [max]="maxDate"
+              formControlName="SrDate"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">SR Status:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="SR Status"
+              formControlName="Srstatus"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col
+          size="12"
+          size-lg="12"
+          size-md="12"
+          style="margin: 10px 0px 0px; text-align: center"
+        >
+          <ion-button class="submitbtn" (click)="submit()">Submit</ion-button>
+          <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 10px" *ngIf="show">
+        <ion-col size="12">
+          <jqxGrid
+            #myGrid
+            [theme]="'material'"
+            (onRowselect)="myGridOnRowSelect($event)"
+            [width]="'99.5%'"
+            [autoheight]="true"
+            [source]="dataAdapter"
+            [columns]="columns"
+            [sortable]="true"
+            [filterable]="true"
+            [columns]="columns"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="true"
+            [showfilterrow]="true"
+            style="
+              font-size: 16px;
+              text-align: center !important;
+              margin: auto;
+              cursor: pointer;
+            "
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="padding: 10px" *ngIf="showsubmit">
+        <ion-col size="12">
+          <jqxGrid
+            #myGrid
+            [theme]="'material'"
+            (onRowselect)="myGridOnRowSelect($event)"
+            [width]="'99.5%'"
+            [autoheight]="true"
+            [source]="dataAdapter"
+            [columns]="columns"
+            [sortable]="true"
+            [filterable]="true"
+            [columns]="columns"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="true"
+            [showfilterrow]="true"
+            style="
+              font-size: 16px;
+              text-align: center !important;
+              margin: auto;
+              cursor: pointer;
+            "
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

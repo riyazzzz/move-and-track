@@ -1,0 +1,319 @@
+<ion-header *ngIf="myPlatform != 'desktop'">
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Production Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="myPlatform != 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-md="10"
+        offset-md="1"
+        size-lg="12"
+        offset-lg="0"
+      >
+        <form [formGroup]="productionForm">
+          <div class="wrapper-form">
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Box Number :</ion-label>
+                <ion-input
+                  class="diable-style"
+                  type="text"
+                  disabled
+                  formControlName="SerialNo"
+                  value="{{ serial }}"
+                  placeholder="Enter the SerialNo"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Device Model :</ion-label>
+                <ionic-selectable
+                  class="input selectable-input"
+                  formControlName="devicemodel"
+                  placeholder="Select the Device Model"
+                  [items]="devicemodellist"
+                  [canSearch]="true"
+                  (onChange)="getdevicemodellist($event)"
+                  [hasVirtualScroll]="true"
+                  [disabledItems]="data"
+                >
+                </ionic-selectable>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Iccid Number :</ion-label>
+                <ion-input
+                  class="label-style"
+                  formControlName="iccidno"
+                  placeholder="Enter the Iccid Number"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="10">
+                <ion-label class="col-content">Imei Number :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="imeiNo"
+                  placeholder="Enter the Imei Number"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="1" style="margin-top: 20px">
+                <ion-button (click)="click($event)">+</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">File Upload:</ion-label>
+                <input
+                  type="file"
+                  class="documents"
+                  (change)="onFileChange($event)"
+                  formControlName="fileupload"
+                  ng2FileSelect
+                  [uploader]="uploader"
+                />
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Quantity :</ion-label>
+                <ion-input
+                  class="diable-style"
+                  type="number"
+                  disabled
+                  [(ngModel)]="Qty"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Quantity"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </div>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col>
+            <jqxGrid
+              *ngIf="isshow"
+              #myGrid
+              [theme]="'material'"
+              [width]="'99%'"
+              [autoheight]="true"
+              [showfilterrow]="false"
+              [rowsheight]="30"
+              [source]="dataAdapter"
+              [columns]="columns"
+              [showstatusbar]="true"
+              [statusbarheight]="30"
+              [showaggregates]="true"
+              [sortable]="false"
+              [filterable]="false"
+              [columns]="columns"
+              [columnsresize]="true"
+              [enabletooltips]="true"
+              [pageable]="false"
+              [selectionmode]="'singlerow'"
+              style="font-size: 10px; text-align: center !important"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 0px">
+            <ion-button
+              *ngIf="enableSubmit"
+              class="button"
+              type="submit"
+              [disabled]="!productionForm.valid || button"
+              (click)="submitBtn()"
+              >Submit</ion-button
+            >
+
+            <ion-button
+              *ngIf="enableFileSubmit"
+              class="button"
+              type="submit"
+              (click)="submitWithExcel()"
+              >Upload</ion-button
+            >
+            <ion-button class="button" type="cancel" (click)="cancelBtn()"
+              >Cancel</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="myPlatform == 'desktop'" class="content-style label-style">
+  <ion-row class="form-field">
+    <ion-col>
+      <form [formGroup]="productionForm">
+        <ion-row class="total-data">
+          <ion-col>
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Box Number :</ion-col>
+              <ion-col size="7">
+                <ion-input
+                  class="diable-style"
+                  type="text"
+                  disabled
+                  formControlName="SerialNo"
+                  value="{{ serial }}"
+                  placeholder="Enter the SerialNo"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Device Model :</ion-col>
+              <ion-col size="7">
+                <ionic-selectable
+                  class="input selectable-input"
+                  formControlName="devicemodel"
+                  placeholder="Select the Device Model"
+                  [items]="devicemodellist"
+                  [canSearch]="true"
+                  (onChange)="getdevicemodellist($event)"
+                  [hasVirtualScroll]="true"
+                  [disabledItems]="data"
+                >
+                </ionic-selectable>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Iccid Number :</ion-col>
+              <ion-col size="7">
+                <ion-input
+                  class="label-style"
+                  formControlName="iccidno"
+                  placeholder="Enter the Iccid Number"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Imei Number : </ion-col>
+              <ion-col size="6">
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="imeiNo"
+                  placeholder="Enter the Imei Number"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="1">
+                <ion-button (click)="click($event)">+</ion-button>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">File Upload:</ion-col>
+              <ion-col size="7">
+                <input
+                  type="file"
+                  class="documents"
+                  (change)="onFileChange($event)"
+                  formControlName="fileupload"
+                  ng2FileSelect
+                  [uploader]="uploader"
+                />
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Quantity :</ion-col>
+              <ion-col size="7">
+                <ion-input
+                  class="diable-style"
+                  type="number"
+                  disabled
+                  [(ngModel)]="Qty"
+                  [ngModelOptions]="{ standalone: true }"
+                  placeholder="Quantity"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <ion-row class="content-style">
+        <ion-col>
+          <jqxGrid
+            *ngIf="isshow"
+            #myGrid
+            [theme]="'material'"
+            [width]="'99%'"
+            [autoheight]="true"
+            [showfilterrow]="false"
+            [rowsheight]="30"
+            [source]="dataAdapter"
+            [columns]="columns"
+            [showstatusbar]="true"
+            [statusbarheight]="30"
+            [showaggregates]="true"
+            [sortable]="false"
+            [filterable]="false"
+            [columns]="columns"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="false"
+            [selectionmode]="'singlerow'"
+            style="font-size: 10px; text-align: center !important"
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="content-style">
+        <ion-col style="text-align: center !important; padding: 0px">
+          <ion-button
+            *ngIf="enableSubmit"
+            class="button"
+            type="submit"
+            [disabled]="!productionForm.valid"
+            (click)="submitBtn()"
+            >Submit</ion-button
+          >
+
+          <ion-button
+            *ngIf="enableFileSubmit"
+            class="button"
+            type="submit"
+            [disabled]="button"
+            (click)="submitWithExcel()"
+            >Upload</ion-button
+          >
+          <ion-button class="button" type="cancel" (click)="cancelBtn()"
+            >Cancel</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

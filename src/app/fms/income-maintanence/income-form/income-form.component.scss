@@ -1,0 +1,116 @@
+*{
+    margin: 0px;
+   
+    padding-bottom: 1px;
+}
+.input-label{
+    font-size:14px;
+}
+.input-item{
+    --padding-start:15px;
+    height: 36px;
+    font-size:14px;
+    background-color: lightgrey;
+    margin-top: 5px;    
+}
+.input-cost{
+    --padding-start: 12px;
+    height: 36px;
+    font-size: 15px;
+    background-color: lightgrey;
+    color: #000000;
+    margin: 5px 0px 0px 0px;
+    font-weight: bolder;
+}
+input{
+    border: none;
+    background-color: lightgrey;
+}
+ion-icon{
+    padding-right: 10px;
+    font-size:30px;
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .wrapper-form{
+         padding: 0px 10px;
+    }
+    *{
+        font-size:12px;
+    }
+   
+    
+}
+.select-input{
+    padding: 10px 11px 4px 15px;
+    margin-top: 5px;
+}
+.selectable-input{
+    padding: 8px 11px 4px 8px;
+    margin-top: 5px;
+}
+.input-label{
+    padding: 16px 0px;
+   
+}
+.select-icon {
+    height: 33px !important;
+}
+.pro-text{
+    font-size:10;
+    margin: 10px auto;
+    border-radius:2px;
+    color:rgb(3, 247, 206);
+    background:black;
+    opacity:0.6;
+    text-align:center;
+}
+.login-status{
+    font-size:10px;
+    text-align:center;
+    background-color:black;
+    color:white;
+    border-radius: 2px;
+    width:70%;
+    margin:auto;
+    padding:10px;
+}
+.progress-wrapper{
+    width:50%;
+    background: whitesmoke;
+    border-radius: 3px;
+    position: absolute;
+    top: 40%;
+    left: 27%;
+    z-index: 999;
+}
+.arrow-back{
+    font-size: 22px;
+}
+.label
+{
+    font-size: 16px;
+    font-family: Arial, Helvetica;
+}
+.incomehead
+{
+   font-size: 16px;
+   color: #9c27b0;
+   font-weight: bold;
+    
+}
+.submitBtn
+{
+    --background: rebeccapurple;
+    margin-left: 10px;
+}
+#add-icon
+{
+    --background: rebeccapurple;
+    --color: white;
+    font-size: 15px;
+    font-weight: bold;
+    --border-radius: 5px;
+
+}

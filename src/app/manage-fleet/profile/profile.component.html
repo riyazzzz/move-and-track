@@ -1,0 +1,76 @@
+<ion-content>
+  <ion-row>
+    <ion-col size="12" size-sm="12" size-lg="12" size-md="10" style="margin:auto ;">
+      <form [formGroup]="profileForm">
+        <ion-label [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}">Credentials</ion-label>
+         <ion-row>    
+          <ion-col size="12" size-sm="12" size-lg="4" class="input-item">   
+            <ion-input type="text" formControlName="userName" [disabled]='hide'  placeholder="User name" > </ion-input>
+           </ion-col>
+           <ion-col *ngIf="!showImageRow && appName != 'Armoron'" size="12" size-sm="12" size-lg="4"  class="input-item " >  
+             <ion-input type="text" formControlName="compId" [disabled]='hide'  placeholder="Company id" ></ion-input>
+           </ion-col>
+         <ion-col  *ngIf="appName != 'Armoron'" class="input-item" size="12" size-sm="12" size-lg="4" > 
+           <ion-input type="text" formControlName="password"   placeholder="password" ></ion-input>
+         </ion-col>
+       </ion-row>
+       <ion-label [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}">Users</ion-label>
+       <ion-row>
+         <ion-col  class="input-item " size="12" size-sm="12" size-lg="6" > 
+           <ion-input type="text" formControlName="firstName"   placeholder="First name" ></ion-input>
+         </ion-col>
+         <ion-col  class="input-item " size="12" size-sm="12" size-lg="6" >   
+           <ion-input type="text" formControlName="lastName"  placeholder="Last name" ></ion-input>
+         </ion-col> 
+         </ion-row>
+           <ion-row > 
+          <ion-col  class="input-item" size="12" size-sm="12" size-lg="6" >   
+            <ion-input type="number" formControlName="contactNo" maxlength="10" placeholder="Contact number" ></ion-input>
+           </ion-col>
+         <ion-col  class="input-item"  size="12" size-sm="12" size-lg="6" >    
+           <ion-input type="text" formControlName="email"   placeholder="Email id" ></ion-input>
+         </ion-col>
+       </ion-row>
+       
+         <ion-label [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}">Location</ion-label>
+       
+       <ion-row > 
+       <ion-col  class="input-item" size="12" size-sm="12" size-lg="6" > 
+         <ion-input type="text" formControlName="addressLine1" placeholder="Address line1" ></ion-input>
+       </ion-col>
+          <ion-col  class="input-item" size="12" size-sm="12" size-lg="6" >    
+            <ion-input type="text" formControlName="addressLine2" placeholder="Address line2" ></ion-input>
+           </ion-col>
+         </ion-row>
+           <ion-row >
+            <ion-col  class="input-item" size="12" size-sm="12" size-lg="6" >  
+              <ion-input type="text" formControlName="city"   placeholder="city" ></ion-input>
+             </ion-col>
+           <ion-col  class="input-item" size="12" size-sm="12" size-lg="6" >   
+             <ion-select  formControlName="country"   placeholder="{{editCountry}}">
+         <ion-select-option  *ngFor="let fleetManager of countries" [value]="fleetManager">{{fleetManager}}</ion-select-option>
+       </ion-select>
+       </ion-col>
+       </ion-row>
+       </form>
+       <ion-row *ngIf="showImageRow" style="padding: 0px;">
+       <ion-row><ion-col size="12" style="text-align: left;font-size: 17px;padding: 0px;"><span  class="heading">Company image</span></ion-col></ion-row>
+       <ion-col class="second" class="ion-text-center">
+       <div class="file-input-container" style="margin-left: -32px;">
+         <label>
+          <input type="file" class="documents" ng2FileSelect [uploader]="uploader" >
+           </label>
+          </div>
+        </ion-col>
+       </ion-row>
+       
+       <ion-row >
+        <ion-col size="12" style="text-align: -webkit-center;">
+          <!-- <ion-button shape="round" class="commonButton" (click)="submit()" [disabled]="!profileForm.valid">submit</ion-button> -->
+          <ion-button style="width: 50%;" (click)="submit()" [ngClass]="{'commonButton' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}" shape="full" expand="block">Submit</ion-button>
+         </ion-col>
+       </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
+

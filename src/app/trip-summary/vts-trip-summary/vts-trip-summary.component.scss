@@ -1,0 +1,38 @@
+$unSeletedColor: white;
+.selectedTab {
+  background-color: $unSeletedColor;
+  color: black;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.unSelectedTab {
+  background-color: #737b92;
+  border: none;
+  color: $unSeletedColor;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+.padBot {
+  padding-bottom: 9vh;
+  padding-top: 7vh;
+}
+#fab-btn {
+  position: fixed;
+  bottom: 4em;
+  right: 46px;
+}
+.fab-color{
+  --background:#6c2a84;
+}
+.fab-color:hover{
+  --background-hover:#804596;
+}
+#grid-fix{
+  padding: 0px;
+  position: fixed;
+  z-index: 1;
+}

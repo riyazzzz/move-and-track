@@ -1,0 +1,70 @@
+<!-- <ion-row style="padding-bottom: 6px;">
+  <ion-col size=12>
+    <ion-row>
+      <ion-col size=8 class="otherText">
+        {{cardDetail.companyId}}
+      </ion-col>
+      <ion-col size=4 class="otherText statusStyle">
+        {{cardDetail.warrantyExpiryDate}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12 class="mainText">
+        {{cardDetail.imei}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=4 class="otherText">
+        {{cardDetail.simcardNo}}
+      </ion-col>
+      <ion-col size=4 class="otherText textCenter">
+        {{cardDetail.plateNo}}
+      </ion-col>
+
+      <ion-col size=4 class="otherText">
+        {{cardDetail.currentAgency}}
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row class="timestampRow">
+  <ion-col size=12 class="otherText timestampCol">
+    {{cardDetail.serverTimeStamp}}
+  </ion-col>
+</ion-row> -->
+<!-- <ion-row style="padding-bottom: 6px;" (click)="deleteVehicle()"> -->
+  <ion-row style="padding-bottom: 6px;">
+  <ion-col size=12>
+    <ion-row>
+      <ion-col size=8 class="otherText">
+        {{cardDetail.plateNo}}
+      </ion-col>
+      <ion-col size=4>
+        <ion-row style="font-size: 11px;margin: 0px 0px 5px 0px;justify-content: center;font-weight: 600;">Warranty Expiry</ion-row>
+        <ion-row class="otherText statusStyle">
+          {{cardDetail.warrantyExpiryDate}}
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12 class="mainText">
+        {{cardDetail.imei}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12 class="otherText">
+        <ion-icon class="iconColor" name="call"></ion-icon> {{cardDetail.simcardNo}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12 class="otherText">
+        <ion-icon class="iconColor" name="business"></ion-icon> {{cardDetail.companyId}} ({{cardDetail.currentAgency}})
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row class="timestampRow">
+  <ion-col size=12 class="otherText timestampCol">
+    <ion-label style="font-size: 11px;margin: 0px 0px 5px 0px;justify-content: center;font-weight: 600;text-transform:initial">Date of Purchase:</ion-label> {{cardDetail.dop}}
+  </ion-col>
+</ion-row>

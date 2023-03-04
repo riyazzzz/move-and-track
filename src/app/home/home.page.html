@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      PDF Download
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-input [(ngModel)]="downloadUrl"></ion-input>
+  </ion-item>
+  <ion-button (click)="downloadFile()" [disabled]="downloadUrl == ''" expand="full">
+    <ion-icon name="download" slot="start"></ion-icon> Download from url
+  </ion-button>
+
+  <ion-row>
+    <ion-col size=4>
+      <ion-button (click)="downloadFile(pdfUrl)" expand="full">
+        <ion-icon name="download" slot="start"></ion-icon> pdf
+      </ion-button>
+      <ion-button (click)="downloadFromHtml(pdfUrl)" expand="full">
+        <ion-icon name="download" slot="start"></ion-icon> PDF HTML
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row id="parentdiv">
+    jkdscjd
+  </ion-row>
+</ion-content>

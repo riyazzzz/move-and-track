@@ -1,0 +1,89 @@
+.iconSize{
+  font-size: 140px;
+  }
+  .rowCenter{
+  justify-content: center;
+  }
+  .padding15px{
+      padding: 15px;
+  }
+  .iconSize25px{
+      font-size: 25px;
+      margin: 20px;
+  }
+  
+  .userFontName{
+      font-size: large;
+      font-weight: bolder;
+      font-family: sans-serif;
+      font-style: italic;
+    }
+    .capitial{
+      text-transform: uppercase;
+    }
+  
+    .backgroundGrd{
+      background-color: #7c68f8;
+      color: white;
+      border-bottom-right-radius: 43px;
+    }
+  
+    .card{
+      width: 90%;
+      margin: -49px;
+      background: white;
+      border-radius: 33px;
+      height: 64vh;
+    }
+  
+    .cardContent{
+      margin: 0px;
+      // padding: 0px;
+      // text-align: center;
+      padding-top: 15%;
+    }
+  .iconStyle{
+   background-color: #fdfdff;
+   border-radius: 100%;
+  
+   
+  }
+    .iconPlace{
+      position: absolute;
+      z-index: 13;
+    
+      left: 50%;
+      top:25%;
+      transform: translate(-50%, -50%);
+      
+    }
+  
+    .detailIcon{
+      font-size: 22px;
+      color: black;
+    }
+  
+    .rowPadding{
+      padding: 8px;
+    }
+  
+    .label{
+      font-size: 15px;
+      // text-transform: uppercase;
+      // padding-left: 16px;
+      font-family: sans-serif;
+      color: black;
+      margin-left: 5px;
+    }
+  
+    .buttonWidth{
+      width: 100%;
+      height: 30px;
+      --ion-color-primary: #7c68f8;
+    }
+  
+    .bottomButton{
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+    }

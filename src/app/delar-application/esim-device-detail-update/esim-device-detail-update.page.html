@@ -1,0 +1,535 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row class="toolbar">
+        <ion-title>Device Details Update</ion-title>
+        <ion-col *ngIf="myPlatform == 'desktop'">
+          <ion-row style="margin: 0px; padding: 0; float: right">
+            <ion-col style="margin-top: 0; margin-right: 25px" class="tooltip">
+              <ion-fab-button
+                size="small"
+                class="fab-btn"
+                href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DevicesDetailUpdate.xlsx"
+                download="sample.xlsx"
+              >
+                <div class="excel-wrapper"></div>
+              </ion-fab-button>
+              <span class="tooltiptext">Device ca update</span>
+            </ion-col>
+            <ion-col
+              style="margin-top: 0; margin-right: 25px"
+              class="tooltipRenewal"
+            >
+              <ion-fab-button
+                size="small"
+                class="fab-btn"
+                href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/RenewalDetailUpdate.xlsx"
+                download="sample.xlsx"
+              >
+                <div class="excel-wrapper"></div>
+              </ion-fab-button>
+              <span class="tooltiprenewaltext">Device renewal 1 update</span>
+            </ion-col>
+
+            <ion-col style="margin-top: 0" class="tooltipRenewal">
+              <ion-fab-button
+                size="small"
+                class="fab-btn"
+                href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/RenewalCardStatusUpdate.xlsx"
+                download="sample.xlsx"
+              >
+                <div class="excel-wrapper"></div>
+              </ion-fab-button>
+              <span class="tooltiprenewaltext">Status update</span>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="uploaderContent">
+  <ion-row>
+    <ion-col *ngIf="myPlatform != 'desktop'">
+      <ion-row style="margin: 0px; padding: 0; float: right">
+        <ion-col style="margin-top: 0; margin-right: 25px" class="tooltip">
+          <ion-fab-button
+            size="small"
+            class="fab-btn"
+            href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DevicesDetailUpdate.xlsx"
+            download="sample.xlsx"
+          >
+            <div class="excel-wrapper"></div>
+          </ion-fab-button>
+          <span class="tooltiptext">Device ca update</span>
+        </ion-col>
+        <ion-col
+          style="margin-top: 0; margin-right: 25px"
+          class="tooltipRenewal"
+        >
+          <ion-fab-button
+            size="small"
+            class="fab-btn"
+            href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/RenewalDetailUpdate.xlsx"
+            download="sample.xlsx"
+          >
+            <div class="excel-wrapper"></div>
+          </ion-fab-button>
+          <span class="tooltiprenewaltext">Device renewal 1 update</span>
+        </ion-col>
+
+        <ion-col style="margin-top: 0" class="tooltipRenewal">
+          <ion-fab-button
+            size="small"
+            class="fab-btn"
+            href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/RenewalCardStatusUpdate.xlsx"
+            download="sample.xlsx"
+          >
+            <div class="excel-wrapper"></div>
+          </ion-fab-button>
+          <span class="tooltiprenewaltext">Status update</span>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="uploaderRow">
+    <form [formGroup]="deviceupdateform">
+      <ion-label class="label-head">Device CA Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'device ca update')"
+                formControlName="fileupload"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('ca update')"
+                id="submitbtn"
+                [disabled]="!deviceupdateform.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('ca update')" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="devicerenewalupdateform1">
+      <ion-label class="label-head">Device Renewal 1 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'renewal update')"
+                formControlName="fileuploadrenewal"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('renewal update',1)"
+                id="submitbtn"
+                [disabled]="!devicerenewalupdateform1.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('renewal update',1)" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="devicerenewalupdateform2">
+      <ion-label class="label-head">Device Renewal 2 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'renewal update')"
+                formControlName="fileuploadrenewal"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('renewal update',2)"
+                id="submitbtn"
+                [disabled]="!devicerenewalupdateform2.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('renewal update',2)" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+    <form [formGroup]="devicerenewalupdateform3">
+      <ion-label class="label-head">Device Renewal 3 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'renewal update')"
+                formControlName="fileuploadrenewal"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('renewal update',3)"
+                id="submitbtn"
+                [disabled]="!devicerenewalupdateform3.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('renewal update',3)" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+    <form [formGroup]="devicerenewalupdateform4">
+      <ion-label class="label-head">Device Renewal 4 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'renewal update')"
+                formControlName="fileuploadrenewal"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('renewal update',4)"
+                id="submitbtn"
+                [disabled]="!devicerenewalupdateform4.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('renewal update',4)" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+    <form [formGroup]="devicerenewalupdateform5">
+      <ion-label class="label-head">Device Renewal 5 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'renewal update')"
+                formControlName="fileuploadrenewal"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('renewal update',5)"
+                id="submitbtn"
+                [disabled]="!devicerenewalupdateform5.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear('renewal update',5)" id="submitbtn"
+                >Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="statusupdateone">
+      <ion-label class="label-head">Status 1 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'status update')"
+                formControlName="renewalstatusupdate"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('status update',1)"
+                id="submitbtn"
+                [disabled]="!statusupdateone.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear()" id="submitbtn">Clear </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="statusupdatetwo">
+      <ion-label class="label-head">Status 2 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'status update')"
+                formControlName="renewalstatusupdate"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('status update',2)"
+                id="submitbtn"
+                [disabled]="!statusupdatetwo.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear()" id="submitbtn">Clear </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="statusupdatethree">
+      <ion-label class="label-head">Status 3 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'status update')"
+                formControlName="renewalstatusupdate"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('status update',3)"
+                id="submitbtn"
+                [disabled]="!statusupdatethree.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear()" id="submitbtn">Clear </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="statusupdatefour">
+      <ion-label class="label-head">Status 4 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'status update')"
+                formControlName="renewalstatusupdate"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('status update',4)"
+                id="submitbtn"
+                [disabled]="!statusupdatefour.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear()" id="submitbtn">Clear </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+    <form [formGroup]="statusupdatefive">
+      <ion-label class="label-head">Status 5 Update:</ion-label>
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event,'status update')"
+                formControlName="renewalstatusupdate"
+              />
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <ion-button
+                (click)="sendToServer('status update',5)"
+                id="submitbtn"
+                [disabled]="!statusupdatefive.valid"
+                >Submit
+              </ion-button>
+              <ion-button (click)="clear()" id="submitbtn">Clear </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </ion-row>
+</ion-content>

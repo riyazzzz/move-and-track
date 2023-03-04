@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col size="11">
+        <ion-title>Esim Details</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-row style="margin: 0px; padding: 0; float: right">
+          <ion-col style="margin-top: 0" class="tooltip">
+            <ion-fab-button
+              size="small"
+              class="fab-btn"
+              href="/assets/sensorise/Esimpurchase.xlsx"
+              download="sample.xlsx"
+            >
+              <div class="excel-wrapper"></div>
+            </ion-fab-button>
+            <span class="tooltiptext">Excel-Format</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col size="12">
+      <form [formGroup]="EsimdetailsForm">
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="2.4" size-md="2.4">
+            <ion-label class="label-head">Invoice Number:</ion-label>
+            <ionic-selectable
+              class="input selectable-input"
+              formControlName="orderNo"
+              placeholder="Select the Invoice No"
+              [items]="invoice"
+              [canSearch]="true"
+              [hasVirtualScroll]="true"
+              [disabledItems]="data"
+            >
+            </ionic-selectable>
+          </ion-col>
+          <ion-col size="12" size-lg="2.4" size-md="2.4">
+            <ion-label class="label-head">Quantity:</ion-label>
+            <ion-input
+              type="number"
+              placeholder="Enter the Qty"
+              formControlName="orderqty"
+              class="input"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="2.4" size-md="2.4">
+            <ion-label class="label-heads" style="padding: 0px 0px 0px 25px"
+              >File Upload:</ion-label
+            >
+            <input
+              type="file"
+              (change)="onFileChange($event)"
+              formControlName="fileupload"
+              class="fileinput"
+            />
+          </ion-col>
+          <ion-col
+            size="12"
+            size-lg="2.4"
+            size-md="2.4"
+            style="margin: 25px 0px 0px; text-align: end"
+          >
+            <ion-button
+              class="submitbtn"
+              (click)="SearchData()"
+              [disabled]="!EsimdetailsForm.valid"
+              >Submit</ion-button
+            >
+            <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+
+  <jqxGrid
+    #myGrid
+    (onRowselect)="myGridOnRowSelect($event)"
+    [theme]="'material'"
+    [width]="'99%'"
+    [autoheight]="true"
+    [source]="dataAdapter"
+    [columns]="columns"
+    [sortable]="true"
+    [filterable]="true"
+    [columns]="columns"
+    [columnsresize]="true"
+    [enabletooltips]="true"
+    [pageable]="true"
+    [showfilterrow]="true"
+    style="
+      font-size: 16px;
+      text-align: center !important;
+      margin: auto;
+      cursor: pointer;
+    "
+  >
+  </jqxGrid>
+</ion-content>

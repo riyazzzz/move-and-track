@@ -1,0 +1,20 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+    <ion-toolbar class="appHeader">
+        <ion-buttons slot="start">
+            <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+    <ion-grid class="appHeaderTitle">
+        <ion-row>
+            <ion-col size=10>
+            <ion-title>Movement report</ion-title>
+        </ion-col>
+        <ion-col size="2" style="text-align: -webkit-right;">
+            <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+        </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+<ion-content>
+  <app-grid-movement [commonData]='objValues' *ngIf='show=="grid"'></app-grid-movement>
+</ion-content>

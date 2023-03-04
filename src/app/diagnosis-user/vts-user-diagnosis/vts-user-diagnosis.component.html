@@ -1,0 +1,182 @@
+
+ <ion-content >
+<ion-row>
+  <ion-col class="diagnosis-wrapper">
+   <ion-row>
+      <ion-col size="12" size-lg="5" size-sm="8" class="ion-text-center select">
+       <ion-select class="input-item"  [(ngModel)]="vinPlateNo"   placeholder="Select Plate Number" (ionChange)="diagnosis($event)"  interface="popover">
+         <ion-select-option  *ngFor="let datas of details"  [value]="datas" >{{datas.plateNo}}</ion-select-option>
+         </ion-select>
+       </ion-col>
+     </ion-row>
+     <!----->
+   <ion-row  class="radio_btn">
+    <ion-col size="12"  size-lg="6" size-xl="6" size-sm="6" class="ion-text-center">
+      <ion-radio-group >
+     <ion-item *ngFor="let item of diagnosisNames" class="item-radio" (ionSelect)="radioSelect($event);diagnosis($event)"  >
+      <ion-label>{{item.Name}}</ion-label>
+      <ion-radio slot="start" name="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"
+       [ngClass]="{'armoronradio' : appName == 'Armoron', 'otherradio' : appName != 'Armoron'}" ></ion-radio>
+    </ion-item>
+    </ion-radio-group> 
+    </ion-col>
+  </ion-row>
+     
+     <ion-row>
+      <ion-col size="12" size-sm="12" size-lg="10" size-md="10" class="card-wrapper">
+     <ion-card *ngIf = "resData != '' && resData != undefined" style="margin-top: 34px;"> 
+      <!-------->
+      <ion-row > 
+       <ion-col class="plateno ion-text-center"  [ngClass]="{'armoronplateno' : appName == 'Armoron', 'plateno' : appName != 'Armoron'}" size="12" >
+        <ion-icon name="person"  class="plateNo-icon"  [ngClass]="{'armoronplateNo-icon' : appName == 'Armoron', 'plateNo-icon' : appName != 'Armoron'}"></ion-icon>  {{resData.plateNo}}
+        </ion-col>
+         </ion-row>
+         <!-------->
+         <ion-row class="diagnosis-block">
+          <ion-col size="6" class="heading" >
+            <ion-icon name="locate" class="header-icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+            GPS
+          </ion-col>
+          <ion-col size="5.5"  *ngIf = "resData.gps != 'ok'"  class="values errorvalues"><ion-icon name="close-circle" style="color: red;   font-size: 25px;
+            padding: 0 0 0 5px;
+            margin-left: -4px;"></ion-icon>{{resData.gps}}</ion-col>
+          <ion-col size="5.5" class="values" *ngIf = "resData.gps == 'ok'" > 
+            <ion-icon name="checkmark-circle" class="values-icon" ></ion-icon>
+          </ion-col>
+         </ion-row>
+         <!-------->
+         <ion-row class="diagnosis-block">
+          <ion-col size="6" class="heading" >
+            <ion-icon name="stats" class="header-icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+            GSM
+          </ion-col>
+          <ion-col size="5.5" class="values errorvalues" *ngIf = "resData.gsm != 'ok'"> <ion-icon name="close-circle" style="color: red;   font-size: 25px;
+            padding: 0 0 0 5px;
+            margin-left: -4px;"></ion-icon>{{resData.gsm}}</ion-col>
+          <ion-col size="5.5" class="values" *ngIf = "resData.gsm == 'ok'" > 
+            <ion-icon name="checkmark-circle" class="values-icon" ></ion-icon></ion-col>
+         </ion-row> 
+         <!-------->
+         <ion-row class="diagnosis-block">
+          <ion-col size="6" class="heading">
+            <ion-icon name="flash" class="header-icon"  [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+            POWER SUPPLY
+          </ion-col>
+            <ion-col size="5.5" class="values errorvalues" *ngIf = "resData.powerSupply != 'ok'" > <ion-icon name="close-circle" style="color: red;   font-size: 25px;
+              padding: 0 0 0 5px;
+              margin-left: -4px;"></ion-icon>{{resData.powerSupply}}</ion-col>
+         <ion-col size="5.5" class="values" *ngIf = "resData.powerSupply == 'ok'" > 
+          <ion-icon name="checkmark-circle" class="values-icon" ></ion-icon>
+        </ion-col>
+        </ion-row>
+         <!-------->
+         <ion-row class="diagnosis-block">
+          <ion-col size="6" class="heading" >
+            <ion-icon name="battery-charging" class="header-icon"  [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+            BATTERY VOLTAGE
+          </ion-col>
+          <ion-col size="5.5" class="values errorvalues" *ngIf = "resData.batteryVoltage != 'ok'"> <ion-icon name="close-circle" style="color: red;   font-size: 25px;
+            padding: 0 0 0 5px;
+            margin-left: -4px;"></ion-icon>{{resData.batteryVoltage}}</ion-col>
+          <ion-col size="5.5" class="values"  *ngIf = "resData.batteryVoltage == 'ok'" > 
+            <ion-icon name="checkmark-circle" class="values-icon" ></ion-icon></ion-col>
+         </ion-row>
+         <!-------->
+         <ion-row class="diagnosis-block" >
+          <ion-col size="6" class="heading" >
+            <ion-icon name="calendar" class="header-icon"  [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+            DATE</ion-col>
+          <ion-col size="5.5" class="values"  *ngIf = "resData.eventTimeStamp != 'ok'" > {{resData.eventTimeStamp}}</ion-col>
+         </ion-row>
+         <!-------->
+      </ion-card>
+    
+    </ion-col>
+  </ion-row>
+  <!----AssetDetails------>
+  <ion-row>
+    <ion-col size="12" size-sm="12" size-lg="10" size-md="10" class="card-wrapper">
+<!----alarm Notification---->
+<ion-card *ngIf = "alarmNotifi" >
+  <ion-row > 
+    <ion-col size="12" class="plateno ion-text-center"  [ngClass]="{'armoronplateno' : appName == 'Armoron', 'plateno' : appName != 'Armoron'}">  
+     <ion-icon name="person" class="plateNo-icon" [ngClass]="{'armoronplateNo-icon' : appName == 'Armoron', 'plateNo-icon' : appName != 'Armoron'}"></ion-icon>{{plateNo}}  
+  </ion-col>
+</ion-row>
+<!------------------->
+    <ion-row class="diagnosis-block" *ngIf = "alarm"> 
+      <ion-col size="8" class="heading" >
+        <ion-icon name="alarm" class="alarm-header_icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+        {{alarmRes}}
+      </ion-col>
+      <ion-col size="4" > 
+        <ion-icon name="checkmark-circle" style="color:green;font-size: 6.6932mm;padding: 10px;" ></ion-icon>
+      </ion-col>
+    </ion-row>
+    <!------------->
+    <ion-row class="diagnosis-block" *ngIf = "watchShow">
+      <ion-col size="8" class="heading ">
+        <ion-icon name="eye" class="alarm-header_icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+        {{watchModeStatus}}</ion-col>
+      <ion-col size="4" >
+        <ion-icon [ngClass]='{"green": watchModeStatus == "Your Watch Mode is On", 
+        "red":watchModeStatus === "Your Watch Mode is Off"}' 
+        style="font-size: 6.6932mm;padding: 10px;" name={{wIconName}}></ion-icon>
+   </ion-col>
+</ion-row>
+<!--------------->
+<ion-row class="diagnosis-block" *ngIf = "watchShow">
+  <ion-col size="8" class="heading ">
+    <ion-icon name="flash" class="alarm-header_icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+    {{watchModeMes.powerCut}}
+  </ion-col>
+  <ion-col size="4" >
+    <ion-icon [ngClass]='{"green": watchModeMes.powerCut == "Power Cut is On", "red":watchModeMes.powerCut === "Power Cut is Off"}' 
+    style="font-size: 6.6932mm;padding: 10px;" name={{pIconName}}></ion-icon>
+</ion-col>
+</ion-row>
+
+<!----------------->
+<ion-row class="diagnosis-block" *ngIf = "watchShow">
+  <ion-col size="8" class="heading" >
+    <ion-img src="assets/background_img/engineon.svg" id="alarm_svg" 
+    class="alarm-header_icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-img>
+    {{watchModeMes.enginStatus}}
+  </ion-col>
+  <ion-col size="4" >
+    <ion-icon [ngClass]='{"green": watchModeMes.enginStatus == "Engine Status is On", "red":watchModeMes.enginStatus === "Engine Status is Off"}' style="font-size: 6.6932mm;padding: 10px;"
+     name={{eIconName}}></ion-icon>
+</ion-col>
+</ion-row>
+<!------------------>
+<ion-row class="diagnosis-block" *ngIf = "watchShow">
+  <ion-col size="8" class="heading"  #a>
+    <ion-icon name="help-buoy" class="alarm-header_icon" [ngClass]="{'armoronheader-icon' : appName == 'Armoron', 'header-icon' : appName != 'Armoron'}"></ion-icon>
+    {{watchModeMes.sos}}
+  </ion-col>
+  <ion-col size="4" ><ion-icon [ngClass]='{"green": sIconName == "checkmark-circle", 
+    "red":sIconName == "close-circle"}' style="font-size: 6.6932mm;padding: 10px;" name={{sIconName}}></ion-icon>
+</ion-col>
+</ion-row>
+</ion-card>
+    </ion-col>
+  </ion-row>
+  <p>{{message}}</p>
+     <p *ngIf = "IncomingSMS != '' && resData != IncomingSMS">{{IncomingSMS}}</p>
+     
+     <!-- <ion-row>
+      <ion-col size="12"  size-lg="6" size-xl="6" size-sm="6" class="ion-text-center">
+        <ion-button class="submitBtn" (click)="diagnosis($event)" shape="round">Submit</ion-button>
+      </ion-col>
+     </ion-row> -->
+  </ion-col>
+</ion-row>
+
+
+<!-- <ion-button (click)="sendSmsTest()">
+  Send Sms
+</ion-button> -->
+</ion-content> 
+
+
+

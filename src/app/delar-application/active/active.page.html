@@ -1,0 +1,345 @@
+<ion-header >
+  <ion-toolbar  mode="md" color="primary" >
+    <ion-grid class='background' style='padding: 0px;'>
+      <ion-row style='padding: 0px;' *ngIf = '!searchEnable'>
+        <ion-col size="2" style='padding: 0px;'>
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+        <ion-col size="6" style='padding: 0px;align-self: center;'>
+          <ion-title>Active</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-row >
+  <ion-col size="12" style="text-align: center;margin:auto;padding: 0px;">
+   <ion-segment color="primary" [(ngModel)]="segment" >
+     <ion-segment-button value="onlineDevice" class="separationButton" >Online
+     </ion-segment-button>
+     <ion-segment-button value="offlineDevice"class="separationButton" >Offline
+     </ion-segment-button>
+     <ion-segment-button value="renewalDevice" class="separationButton" >Renewal
+    </ion-segment-button>
+    <ion-segment-button value="expiredDevice" class="separationButton" >Expired
+    </ion-segment-button>
+   </ion-segment>
+  </ion-col>
+</ion-row>
+
+
+
+ <div [ngSwitch]="segment">
+   <ion-row *ngSwitchCase="'onlineDevice'" >
+     <ion-col style="padding-top:0px;">  
+    <ion-card style="padding: 0px 0px; margin-bottom:0px;color: black;" *ngFor = 'let data of online '> 
+      <ion-card-content style="padding: 0px 16px;line-height: 1.2;">
+        <ion-row style="padding: 0px;margin: 0px;">
+          <ion-col style="font-size: 18px; font-family:open-sans; color:
+          rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">{{data.companyId}}
+          </ion-col>
+          <ion-col size="6" style="font-size: 18px; font-family:open-sans; color:
+          rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">
+            {{data.plateNo}}</ion-col>
+        </ion-row>
+        
+        <ion-row style="padding: 0px;margin: 0px;">
+          <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+            <ion-row>
+              <ion-col>
+                {{data.imeiNo}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                IMEI
+              </ion-col>
+            </ion-row>
+            <ion-row style="margin: 0px;padding: 0px;">
+              <ion-col size="12"style="margin-top: 0px;padding-top: 0px;font-size: 11px;">
+                {{data.model}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                Model
+              </ion-col>
+            </ion-row>
+            
+          </ion-col>
+          <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+            <ion-row>
+              <ion-col>{{data.expriyDate}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                Expire On
+              </ion-col>
+            </ion-row>
+            <ion-row style="margin-top: 0px;padding-top: 0px;">
+              <ion-col style="margin-top: 0px;padding-top: 0px;font-size: 11px;padding-left:5px;">
+                {{data.lastTransmisionTime}}
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col class="underline">
+                Last Transmission
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row> 
+      <details >
+        <summary class="more">More </summary>
+         <ion-row >
+          <ion-col size="3" class="underline2" >
+            SIM
+          </ion-col>
+          <ion-col size="9" style="font-size: 12px;margin-top: 0px;padding-top: 0px; padding-left: 0px;">{{data.simNo}}</ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col size="4" class="underline2" >
+            Serial No
+          </ion-col> 
+          <ion-col size="8"  style="font-size: 12px; margin-top:0px; padding:0px 78px 0px 0px; ">{{data.serialNo}} </ion-col>
+        </ion-row> 
+      </details>
+    </ion-card-content>
+    </ion-card>
+  </ion-col>
+   </ion-row>
+  
+   <ion-row *ngSwitchCase="'offlineDevice'">
+     <ion-col style="padding-top:0px;">
+    <ion-card style="padding: 0px 0px; margin-bottom:0px;color: black;" *ngFor = 'let data of offline'> 
+      <ion-card-content style="padding: 0px 16px;line-height: 1.2;">
+        <ion-row style="padding: 0px;margin: 0px;">
+          <ion-col style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">{{data.companyId}}
+          </ion-col>
+          <ion-col size="6" style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">
+            {{data.plateNo}}</ion-col>
+        </ion-row>
+         <ion-row style="padding: 0px;margin: 0px;">
+          <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+            <ion-row>
+              <ion-col>
+                {{data.imeiNo}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                IMEI
+              </ion-col>
+            </ion-row>
+            <ion-row style="margin: 0px;padding: 0px;">
+              <ion-col size="12"style="margin-top: 0px;padding-top: 0px;font-size: 11px;">
+                {{data.model}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                Model
+              </ion-col>
+            </ion-row>
+            
+          </ion-col>
+          <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+            <ion-row>
+              <ion-col>{{data.expriyDate}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="underline">
+                Expire On
+              </ion-col>
+            </ion-row>
+            <ion-row style="margin-top: 0px;padding-top: 0px;">
+              <ion-col style="margin-top: 0px;padding-top: 0px;font-size: 11px;padding-left:5px;">
+                {{data.lastTransmisionTime}}
+              </ion-col>
+            </ion-row>
+            
+            <ion-row>
+              <ion-col class="underline">
+                Last Transmission
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+       
+        <details >
+          <summary class="more">More </summary>
+           <ion-row >
+            <ion-col size="3" class="underline2" >
+              SIM
+            </ion-col>
+            <ion-col size="9" style="font-size: 12px;margin-top: 0px;padding-top: 0px; padding-left: 0px;">{{data.simNo}}</ion-col>
+          </ion-row>
+          <ion-row >
+            <ion-col size="4" class="underline2" >
+              Serial No
+            </ion-col> 
+            <ion-col size="8"  style="font-size: 12px; margin-top:0px; padding:0px 78px 0px 0px; ">{{data.serialNo}} </ion-col>
+          </ion-row> 
+        </details>  
+      </ion-card-content>
+    </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngSwitchCase="'renewalDevice'">
+    <ion-col style="padding-top:0px;">
+      <ion-card style="padding: 0px 0px; margin-bottom:0px;color: black;" *ngFor = 'let data of renewal'> 
+        <ion-card-content style="padding: 0px 16px;line-height: 1.2;">
+          <ion-row style="padding: 0px;margin: 0px;">
+            <ion-col style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">{{data.companyId}}
+            </ion-col>
+            <ion-col size="6" style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">
+              {{data.plateNo}}</ion-col>
+          </ion-row>
+          
+          <ion-row style="padding: 0px;margin: 0px;">
+            <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+              <ion-row>
+                <ion-col>
+                  {{data.imeiNo}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  IMEI
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 0px;padding: 0px;">
+                <ion-col size="12"style="margin-top: 0px;padding-top: 0px;font-size: 11px;">
+                  {{data.model}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  Model
+                </ion-col>
+              </ion-row>
+              
+            </ion-col>
+            <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+              <ion-row>
+                <ion-col>{{data.expriyDate}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  Expire On
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 0px;padding-top: 0px;">
+                <ion-col style="margin-top: 0px;padding-top: 0px;font-size: 11px;padding-left:5px;">
+                  {{data.lastTransmisionTime}}
+                </ion-col>
+              </ion-row> 
+              <ion-row>
+                <ion-col class="underline">
+                  Last Transmission
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <details >
+            <summary class="more">More </summary>
+             <ion-row >
+              <ion-col size="3" class="underline2" >
+                SIM
+              </ion-col>
+              <ion-col size="9" style="font-size: 12px;margin-top: 0px;padding-top: 0px; padding-left: 0px;">{{data.simNo}}</ion-col>
+            </ion-row>
+            <ion-row >
+              <ion-col size="4" class="underline2" >
+                Serial No
+              </ion-col> 
+              <ion-col size="8"  style="font-size: 12px; margin-top:0px; padding:0px 78px 0px 0px; ">{{data.serialNo}} </ion-col>
+            </ion-row> 
+          </details>  
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row *ngSwitchCase="'expiredDevice'">
+    <ion-col style="padding-top:0px;">
+      <ion-card style="padding: 0px 0px; margin-bottom:0px;color: black;" *ngFor = 'let data of expired'> 
+        <ion-card-content style="padding: 0px 16px;line-height: 1.2;">
+          <ion-row style="padding: 0px;margin: 0px;">
+            <ion-col style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">{{data.companyId}}
+            </ion-col>
+            <ion-col size="6" style="font-size: 18px; font-family:open-sans; color:rgb(245, 16, 16);font-weight: bold;padding-bottom: 0px;">
+              {{data.plateNo}}</ion-col>
+          </ion-row>
+          
+          <ion-row style="padding: 0px;margin: 0px;">
+            <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+              <ion-row>
+                <ion-col>
+                  {{data.imeiNo}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  IMEI
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 0px;padding: 0px;">
+                <ion-col size="12"style="margin-top: 0px;padding-top: 0px;font-size: 11px;">
+                  {{data.model}}
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  Model
+                </ion-col>
+              </ion-row>
+              
+            </ion-col>
+            <ion-col size="6" style="margin:0px;padding: 0px;font-size: 12px;">
+              <ion-row>
+                <ion-col>{{data.expriyDate}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="underline">
+                  Expire On
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin-top: 0px;padding-top: 0px;">
+                <ion-col style="margin-top: 0px;padding-top: 0px;font-size: 11px;padding-left:5px;">
+                  {{data.lastTransmisionTime}}
+                </ion-col>
+              </ion-row>
+              
+              <ion-row>
+                <ion-col class="underline">
+                  Last Transmission
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          
+          <details >
+            <summary class="more">More </summary>
+             <ion-row >
+              <ion-col size="3" class="underline2" >
+                SIM
+              </ion-col>
+              <ion-col size="9" style="font-size: 12px;margin-top: 0px;padding-top: 0px; padding-left: 0px;">{{data.simNo}}</ion-col>
+            </ion-row>
+            <ion-row >
+              <ion-col size="4" class="underline2" >
+                Serial No
+              </ion-col> 
+              <ion-col size="8"  style="font-size: 12px; margin-top:0px; padding:0px 78px 0px 0px; ">{{data.serialNo}} </ion-col>
+            </ion-row> 
+          </details>               
+        </ion-card-content>
+      </ion-card>    
+    </ion-col>
+  </ion-row>
+
+ </div>
+</ion-content>

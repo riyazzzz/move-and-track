@@ -1,0 +1,61 @@
+<!-- <ion-header>
+  <ion-toolbar class="appHeaderColor">
+      <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        <ion-title style="text-align: center;">Change Number</ion-title>
+        /
+      </ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-row >
+  <ion-header>
+      <ion-toolbar class="header-background-color">
+          <ion-buttons slot="start">
+              <ion-menu-button></ion-menu-button>
+          </ion-buttons>
+          <ion-title>
+              <ion-title >Change Number</ion-title>
+          </ion-title>
+          <!-- <ion-button slot="secondary" color="dark" size="small" (click)="openModalAddAsset()">+ Add</ion-button> -->
+      </ion-toolbar>
+  </ion-header>
+</ion-row>
+<ion-content padding>
+  <ion-grid>
+  <ion-row style="text-align: center;">
+		<ion-col size="5" style="text-align: center;">
+			<ion-icon style="font-size: 75px; color: #f6b221;" name="phone-portrait"></ion-icon> 
+			</ion-col>
+			<ion-icon style="font-size: 60px;align-self: center; color: #57534d;" name="return-right" ></ion-icon>
+		<ion-col size="4" style="text-align: center;">
+      
+			<ion-icon style="font-size: 75px; color: #f6b221;" name="phone-portrait"></ion-icon>
+      </ion-col>
+	</ion-row>
+	<!-- <p style="margin-left: 5%;">{{'Changing your phone number will migrate your account into new number.' | translate}}</p> -->
+	<!-- <p style="margin-left: 5%;">{{'Before proceeding, please confirm that your new number is active.' | translate}}</p> -->
+	<p style="margin-left: 5%;">Changing your phone number will migrate your account into new number.</p>
+	<p style="margin-left: 5%;">Before proceeding, please confirm that your new number is active.</p>
+
+	<label class="item item-input">
+		<!-- <p>{{'Please enter your old number' | translate}}</p> -->
+    <p>Please enter your old number</p>
+	</label> <label class="item item-input"> 
+		<ion-input type="number"
+		placeholder="Old Number" id="oldCompanyNo"
+		style="border-bottom: 1px solid black;" #oldCompanyNo>
+	</ion-input>
+	</label> <label class="item item-input"> 
+		<!-- <p>{{'Please enter your new number' | translate}}</p> -->
+    <p>Please enter your new number</p>
+	</label> <label class="item item-input"> <ion-input type="number"
+		placeholder="New Number" id="newCompanyNo"
+		style="border-bottom: 1px solid black;" #newCompanyNo>
+	</ion-input></label>
+	<ion-button class="appBackground" shape="full" expand="block"
+    (click)="changeNumber(oldCompanyNo,newCompanyNo)" >Done
+  </ion-button>
+</ion-grid>
+</ion-content>

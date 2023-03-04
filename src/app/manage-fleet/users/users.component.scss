@@ -1,0 +1,76 @@
+
+// ion-button {
+//   width: 100%;
+//   --border-radius: 23px;
+//   height: 22px;
+//   text-transform: capitalize;
+//   font-size: 11px;
+// }
+.btn-item {
+  --background: transparent;
+  color: white;
+}
+
+.btn-color {
+  color: white;
+}
+.submitBtn {
+  --background: #6c2a84;
+}
+ion-label {
+  font-size: 17px;
+}
+
+.toolbar-icons {
+  font-size: small;
+  color: white;
+  margin-left: 3px;
+}
+
+.user-content {
+  background-color: #f3f2f8;
+  color: #2e2c2c;
+  font-weight: 600;
+  font-size: 13px;
+  margin: 0;
+  padding: 0 0 0 4px;
+  line-height: 12px;
+}
+.data {
+  color: #bdbdbd;
+  font-weight: 500;
+  margin: 0;
+  padding: 0;
+  padding-left: 5px;
+}
+.headdata {
+  color: #2e2c2c;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  padding-left: 13px;
+  font-variant: petite-caps;
+}
+.user-card {
+  padding: 0px;
+  background-color: #f3f2f8;
+  border-radius: 8px;
+  border-left: 3px solid#cc2930;
+}
+.user-detail {
+  background-color: white;
+  border-radius: 10px 10px 10px 10px;
+  margin-top: 7px;
+}
+.detailcol {
+  font-family: sans-serif;
+}
+.submitBtn {
+  --background: #6c2a84;
+  margin: 0 10px;
+  --border-radius: 23px;
+  height: 22px;
+  text-transform: capitalize;
+  font-size: 11px;
+}

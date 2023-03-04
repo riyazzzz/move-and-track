@@ -1,0 +1,37 @@
+
+<ion-content style="padding-top: 5px;">
+  <ion-grid style="padding:0px" id="grid-fix" [ngStyle]="myPlatform == 'desktop' ? {'width':'77%'} : {'width':'100%'} ">
+    <ion-row style="padding:0px">
+      <ion-col size="6"  [ngClass]='{"selectedTab": tripType === "active", "unSelectedTab":tripType != "active"}'
+      (click)="getTripData('active')">
+      Active
+    </ion-col>
+    <ion-col size="6" [ngClass]='{"selectedTab": tripType === "inactive", "unSelectedTab":tripType != "inactive"}'
+    (click)=" getTripData('inactive')">
+    Completed
+  </ion-col>
+</ion-row>
+  </ion-grid>
+<ion-fab (click)="custom()"  horizontal="end" vertical="center" slot="fixed" edge>
+  <ion-fab-button size='medium' [ngClass]="myPlatform == 'desktop' ? 'fab-color' : '' " id="fab-btn">
+      <ion-icon  center name='add'></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-row class="padBot">
+    <ion-col *ngIf="tripSummary.length == 0">
+      <app-nodata-image></app-nodata-image>
+    </ion-col>
+    <ion-col size='12'size-sm="12" size-md="6" size-lg="6" *ngFor="let data of tripSummary" > 
+      <app-trip-card (click)='showModal(data)' [tripSummary]='data'  (getDatas)="vehicleFunctionClick($event)">
+
+      </app-trip-card>
+<!-- <ion-virtual-scroll
+[items]="vinGrid"
+[trackBy]="identify" approxItemHeight="320px" [itemHeight]="itemHeightFn" [approxHeaderHeight]="1"
+[approxFooterHeight]="1">
+        <app-trip-card (click)='showModal(data)' *virtualItem="let data;" [commonData]='data'
+           ></app-trip-card>
+</ion-virtual-scroll> -->
+</ion-col>
+</ion-row>
+</ion-content>

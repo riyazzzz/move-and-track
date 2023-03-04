@@ -1,0 +1,99 @@
+*{
+    margin: 0px;
+    padding-bottom: 1px;
+}
+.input-item{ 
+    background-color: lightgrey;
+    --padding-start:15px;
+    height: 36px;
+    font-size:14px;
+    margin-top: 5px;
+}
+.datetime {
+    background-color: #d7d2d2;
+    color: #838383;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0px 8px 14px;
+}
+input{
+    border: none;
+    width: 350px;
+    height: 26px;
+}
+ion-icon{
+    color: #9C27B0;
+    padding-right: 10px;
+    font-size:30px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .wrapper-form{
+         padding: 0px 10px;
+    }
+    *{
+        font-size:12px;
+    }
+   
+    
+}
+.select-input{
+    padding: 9px 11px 6px 15px;
+    --padding-start:15px;
+}
+.arrow-back{
+    font-size: 22px;
+    color:gray;
+}
+.input-label{
+    padding: 16px 0px;
+}
+.select-icon {
+    height: 33px !important;
+}
+.pro-text{
+    font-size:10;
+    margin: 10px auto;
+    border-radius:2px;
+    color:rgb(3, 247, 206);
+    background:black;
+    opacity:0.6;
+    text-align:center;
+}
+.login-status{
+    font-size:10px;
+    text-align:center;
+    background-color:black;
+    color:white;
+    border-radius: 2px;
+    width:70%;
+    margin:auto;
+    padding:10px;
+}
+.progress-wrapper{
+    width:50%;
+    background: whitesmoke;
+    border-radius: 3px;
+    position: absolute;
+    top: 40%;
+    left: 27%;
+    z-index: 999;
+}
+.col{
+    overflow-y: scroll;
+}
+.input-label{
+    font-size:14px;
+}
+.col-content{
+    text-align: left;
+    align-self: center;
+    font-size: 18px;
+    padding-left: 1%;
+}
+.content-style{
+    justify-content: center
+}
+.commonbutton{
+    margin-top: 18%;
+}

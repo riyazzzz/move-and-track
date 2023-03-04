@@ -1,0 +1,29 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+    <ion-toolbar mode="md" class="appHeader">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-icon icon="md-arrow-back" style="color:rgb(0, 0, 0), text-" (click)='getBack()'></ion-icon>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="10">
+                    <ion-title style="padding:0px 12px;">Over all summary</ion-title>
+                </ion-col>
+                <ion-col size="2" style="text-align: -webkit-right;">
+                    <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row>
+        <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+            <canvas id='barChart' #barChart height="200"></canvas>
+        </ion-col>
+        <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+            <app-grid-view [gridData]="reportData" *ngIf="show"></app-grid-view>
+        </ion-col>
+    </ion-row>
+</ion-content>

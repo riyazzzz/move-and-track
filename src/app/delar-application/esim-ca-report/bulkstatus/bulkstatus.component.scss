@@ -1,0 +1,95 @@
+.header {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #7c68f8
+}
+
+.label-style {
+    border: 1px solid #e5e5e5;
+    background: #e8e8e8;
+    line-height: 25px;
+}
+
+.comment {
+    border: 1px solid #e5e5e5;
+    background: #e8e8e8;
+    height: 169px;
+    width: 100%;
+    padding: 15px
+}
+
+.diable-style {
+    background: white;
+    line-height: 18px;
+}
+
+.content-style {
+    justify-content: center
+}
+
+.total-data {
+    margin-top: 2%;
+}
+
+.col-content {
+    text-align: left;
+    align-self: center;
+    font-size: 18px;
+}
+
+#add-icon {
+    --background: #FFEBCD;
+    --color: white;
+    font-size: 15px;
+    --border-radius: 5px;
+}
+
+.button {
+    margin-top: 2%;
+    --background: #7c68f8;
+}
+
+.input {
+    border: 1px solid #e5e5e5;
+    height: 42px;
+    line-height: 18px;
+    --padding-start: 15px;
+    background: #e8e8e8;
+
+}
+
+.selectable-input {
+    padding: 8px 11px 4px 8px;
+    margin-top: 5px;
+}
+
+.file-input-container {
+    input[type="file"] {
+
+        display: none;
+    }
+}
+
+.file {
+    margin-left: 8%;
+    border: 1px solid rgb(61, 108, 236);
+}
+@media only screen and (max-width:767px) {
+    .form-field {
+        zoom: 80%;
+    }
+
+    #submitbtn {
+        width: 80%;
+    }
+}
+
+.form-field {
+    margin: -5px 5px 0px;
+    border-radius: 7px;
+}
+.documents {
+    margin: 10px;
+    text-align: center;
+}

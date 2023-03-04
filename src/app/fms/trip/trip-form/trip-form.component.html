@@ -1,0 +1,161 @@
+<ion-row style="overflow-y: auto;">
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+    <ion-item lines="none"style="--background:transparent;">
+      <ion-icon  (click)="closeModel()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+        <div class="triphead">Trip Details</div>
+      </ion-item>
+  <form [formGroup]="tripForm">
+    <div class="wrapper-form">         
+      <ion-row>
+       <ion-col size="2.5" size-sm="2.5" size-md="2.5" size-lg="2.5" class="form_col">
+       <ion-label class="dropdown_label">Vehicle No</ion-label>
+       </ion-col>
+     <ion-col  *ngIf="!hideSerialNo" size="3.5" size-sm="3.5" size-md="3.5" size-lg="3.5" style="text-align: center;padding: 0px;">
+      <ionic-selectable class="input-item selectable-input" formControlName="plateNo" placeholder="Vehcile Number"
+      [items]="vin"  [canSearch]="true" (onChange)="gettriplist($event)"
+     [hasVirtualScroll]="true" [disabledItems]="data">
+    </ionic-selectable>
+       </ion-col>
+       <ion-col *ngIf="hideSerialNo">
+              <ion-input type="text" formControlName="plateNo" [disabled]='hideSerialNo'  class="veh-input"></ion-input>
+            </ion-col>
+     <ion-col size="2.5" size-sm="2.5" size-md="2.5" size-lg="2.5"  class="form_col">
+      <ion-label class="dropdown_label">Trip Name</ion-label>
+      </ion-col>
+     <ion-col size="3.5" size-sm="3.5" size-md="3.5" size-lg="3.5"  class="form_col" style="text-align:inherit">
+      <ion-input type="text" placeholder="Enter Trip Name" class="veh-input" formControlName="tripname" [disabled]='hideSerialNo'></ion-input>
+         </ion-col>
+      </ion-row>
+     </div>
+<ion-row style="padding: 14px 24px 14px 24px;">
+<ion-col size="6">
+  <ion-row class="head">Start</ion-row>
+  <ion-row class="border-model">
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">Start Location</ion-label>
+    </ion-col>
+    <ion-col size="6">
+      <ion-input type="text" placeholder="Start Location" class="veh-input" formControlName="startlocation"></ion-input>
+     </ion-col>
+     <ion-col size="6" class="start-end-col">
+       <ion-label class="start-end-label">Start Date</ion-label>
+     </ion-col>
+    <ion-col size="6">
+     <ion-input type="date" [max]="maxDate" placeholder="Start Date" class="veh-input" formControlName="startdate"></ion-input>
+    </ion-col>
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">Start Time</ion-label>
+    </ion-col>
+    <ion-col size="6">
+     <ion-input type="time" placeholder="Start Time" class="veh-input" formControlName="starttime"></ion-input>
+     <!-- <ion-datetime displayFormat="hh:mm A" class="veh-input" formControlName="starttime" placeholder="Start Time"></ion-datetime> -->
+    </ion-col>
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">Start Kilometer</ion-label>
+    </ion-col>
+    <ion-col size="6">
+     <ion-input type="number" placeholder="Start Kilometer" class="veh-input" formControlName="startdisttravel"></ion-input>
+    </ion-col>
+ </ion-row>
+</ion-col>
+<ion-col size="6">
+  <ion-row class="head">End</ion-row>
+  <ion-row class="border-model">
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">End Location</ion-label>
+    </ion-col>
+    <ion-col size="6">
+     <ion-input type="text" placeholder="End Location" class="veh-input" formControlName="endlocation"></ion-input>
+    </ion-col>
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">End Date</ion-label>
+    </ion-col>
+   <ion-col size="6">
+    <ion-input type="date" [max]="maxDate" placeholder="End Date" class="veh-input" formControlName="enddate"></ion-input>
+    <!-- <ion-input type="date" *ngIf="!ismax" [min]="minDate" placeholder="End Date" class="veh-input" formControlName="enddate"></ion-input> -->
+   </ion-col>
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">End Time</ion-label>
+    </ion-col>
+    <ion-col size="6">
+     <ion-input type="time" [max]="maxtime"  placeholder="End Time" class="veh-input" formControlName="endtime"></ion-input>
+     <!-- <ion-datetime displayFormat="hh:mm A" class="veh-input" formControlName="endtime" placeholder="End Time"></ion-datetime> -->
+    </ion-col>
+    <ion-col size="6" class="start-end-col">
+      <ion-label class="start-end-label">End Kilometer</ion-label>
+    </ion-col>
+    <ion-col size="6">
+     <ion-input type="number" placeholder="End Kilometer" class="veh-input" formControlName="enddisttravel"></ion-input>
+    </ion-col>
+  </ion-row>
+</ion-col>
+</ion-row>
+</form>
+<ion-row>
+  <ion-col size="12" style="text-align: center !important;">
+    <ion-button  class="submitBtn" shape="round" (click)="submit()"[disabled]="!tripForm.valid">submit</ion-button>
+    <ion-button  class="submitBtn" shape="round" (click)="clear()">Clear</ion-button>
+  </ion-col>
+</ion-row>
+<ion-row *ngFor="let carddata of carddetails">
+  <ion-col size="6" class="card-col">
+    <ion-card class="card_style">
+    <ion-row>
+      <ion-col size="12" class="Hour-KM_col">
+        <ion-label class="Hour-KM">{{carddata.distance}}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="Hour-KM-label">Total Distance</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  </ion-col>
+  <ion-col size="6" class="card-col">
+  <ion-card class="card_style">
+    <ion-row>
+      <ion-col size="12" class="Hour-KM_col">
+        <ion-label class="Hour-KM">{{carddata.duration}}</ion-label>
+      </ion-col>
+      <ion-col size="12">
+        <ion-label class="Hour-KM-label">Total Duration</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  </ion-col>
+</ion-row>
+
+<ion-row *ngFor="let expensedata of expensedetails">
+  <ion-col size="6" size-sm="12" size-md="6" size-lg="6">
+    <ion-card class="expense-border-model"> 
+      <ion-row class="table-head">Income</ion-row>
+      <ion-row>
+        <ion-col size=12>
+         <ion-row  *ngFor = "let data of expensedata.Income" style="place-content: center;">
+            <ion-row class="income-expense-label">{{data.Incomelist}}:{{data.Incomevalue}}</ion-row>
+         </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-row class="income-expense-total-col">
+      <ion-label class="income-expense-label">Total:{{expensedata.Total.TotalIncome}}</ion-label>
+     </ion-row>
+  </ion-col>
+  <ion-col size="6" size-sm="12" size-md="6" size-lg="6" >
+    <ion-card class="expense-border-model"> 
+      <ion-row class="table-head">Expense</ion-row>
+      <ion-row>
+        <ion-col size=12>
+         <ion-row *ngFor = "let data of expensedata.Expense" style="place-content: center;">
+            <ion-row class="income-expense-label">{{data.Expenselist}}:{{data.Expensevalue}}</ion-row>
+         </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-row class="income-expense-total-col">
+      <ion-label class="income-expense-label">Total:{{expensedata.Total.TotalExpense}}</ion-label>
+     </ion-row>
+  </ion-col>
+  <ion-col size="12" class="income-expense-col"><ion-label class="expense-cost-label">Amount Remained : {{expensedata.Total.Cost}}</ion-label></ion-col>
+ </ion-row>
+</ion-col>
+</ion-row>

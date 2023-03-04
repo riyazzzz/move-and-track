@@ -1,0 +1,134 @@
+<ion-header >
+  <ion-toolbar  *ngIf="myPlatform =='desktop'" >
+    <div class="route-wrapper">
+      <ion-row  class="header-section" *ngIf="myPlatform =='desktop'">
+        <!--------New*********--below-------->
+        <ion-col size="2" size-sm="2" size-md="2" size-lg="0" 
+         *ngIf="page == 'Route n Trip'"> 
+          <ion-menu-button></ion-menu-button>
+        </ion-col>  
+          <ion-col size="1" *ngIf="page == 'Student details'">
+            <ion-icon name="arrow-back" id ="arrow-icon"  (click)="getBack()"></ion-icon>
+         </ion-col>
+        <ion-col  size-sm="10" size-md="10" size-lg="10" id="btn-wrapper" 
+        *ngIf="page == 'Student details'" class="header-row">
+          Route & Trip
+        </ion-col>
+        <ion-col  size-sm="10" size-md="10" size-lg="12" id="btn-wrapper" 
+        *ngIf="page == 'Route n Trip'" >
+          Route & Trip
+        </ion-col>
+          <!--------New*********-above--------->
+      </ion-row>    
+       <ion-row style="border: 1px solid #cac2c2;" *ngIf="myPlatform =='desktop'" >
+         <ion-col>
+           <ion-button color='primary' class="route-btn" (click)='openRouteModel()'>Add</ion-button>
+           <ion-button color='primary' class="route-btn" (click)='editRouteModel()'>Edit</ion-button>
+           <ion-button color='primary' class="route-btn"(click)='deletebtn()' >Delete</ion-button>
+         </ion-col>
+        </ion-row> 
+      </div>
+      
+      <div id="export-wrapper" >
+          <ion-img src="assets/student_Details/pdf.svg" class="toolbar-row"(click)="createPdf()"></ion-img>
+            <ion-img src="assets/student_Details/excel.svg" class="toolbar-row" (click)="exportToExcel()"></ion-img>
+        </div> 
+      </ion-toolbar>
+    <ion-toolbar *ngIf="myPlatform !=='desktop'" color="primary">
+      <div >
+        <ion-row   >
+          <ion-col size="2" size-sm="2" size-md="2" size-lg="0"> 
+            <ion-menu-button></ion-menu-button>
+          </ion-col>  
+          <ion-col size="10" size-sm="10" size-md="10" size-lg="12" >
+            Route & Trip
+          </ion-col>
+        </ion-row>  
+      </div>
+    </ion-toolbar>
+    
+   </ion-header>
+    <ion-content  *ngIf="myPlatform =='desktop'" style="height: 70vh;"> 
+  <div class="grid_Container">
+  <jqxGrid
+  (onRowselect)="myGridOnRowSelect($event)"
+  [pageable]="true"
+  [selectionmode]="'singlerow'"
+  [showfilterrow]="true"
+  [filterable]="true"
+  [sortable]="true"
+  [width]="'100%'"
+  [source]="dataAdapter" 
+  [columns]="columns" 
+  [autoheight]="true"
+  [theme]="'material'"
+  #myGrid 
+  style="font-size:16px;text-align: center !important;">
+  </jqxGrid>
+</div>
+</ion-content>
+
+<ion-content *ngIf="myPlatform !=='desktop'" style="height: 92vh;">
+<!----------**************************MobileView********************************----->
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="4" *ngFor="let items of obj">
+    <ion-card style="background: #e6e6e6;" >
+      <ion-card-content class="route-card-container">
+        <ion-row>
+          <ion-col size="1.5">
+            <ion-fab-button class="fab-col-btn" (click)="openBusStopModel()">
+              <ion-icon name="map" style="font-size: 14px;"></ion-icon>
+            </ion-fab-button>
+          </ion-col>
+          <ion-col size="1.5">
+            <ion-fab-button class="fab-col-btn" >
+              <ion-icon name="trash" style="font-size: 13px;"></ion-icon>
+            </ion-fab-button>
+          </ion-col>
+          <ion-col size="1.5">
+            <ion-fab-button class="fab-col-btn" (click)="editRouteModel(items)">
+              <ion-icon name="create" style="font-size: 15px;"></ion-icon> 
+             </ion-fab-button>   
+          </ion-col>
+        </ion-row>
+
+        <ion-card  id="inner-route-card">
+          <ion-row style="background-color: #e6e6e6;border-radius: 5px;">
+            <ion-col size="6" style="color: #3880ff;" class="tripName">
+              {{items.tripName}} {{items.type}}
+               </ion-col>
+            <ion-col size="6" class="tripName">
+              {{items.tripId}}
+            </ion-col>
+           </ion-row>
+         <ion-row>
+            <ion-col class="time-header">
+               <ion-icon name="clock" class="clock-icon"></ion-icon>Start Time
+             </ion-col>
+            <ion-col class="time-header">
+             <ion-icon name="clock" class="clock-icon"></ion-icon>End Time
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-row>
+                <ion-col class="time">
+                 {{items.tripStartTime}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col class="time">
+               {{items.tripEndTime}}
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+<ion-fab-button id="add-fab-btn" (click)="openRouteModel()">
+  <ion-icon name="add" ></ion-icon>
+</ion-fab-button>
+</ion-content>
+
+

@@ -1,0 +1,228 @@
+*{
+    margin: 0px;
+    padding: 1px;
+    
+}
+
+.dataBlock{
+    display: block !important;
+}
+.imgBlock{
+    display: none !important;
+}
+
+.main-wrapper{
+    background:url("../../../assets/tickets_img/light_bg.png")repeat center center / cover;
+    overflow-y: scroll;
+}
+.to-wrapper{
+    background: url("../../../assets/tickets_img/leftSide_bg.jpg")no-repeat center center / cover;
+    height:auto;
+    max-width:242px;
+    padding: 5px;
+    border-radius: 5px;
+    float: left;
+    margin: 0;
+    text-align: left;
+}
+.from-wrapper{
+    background: url("../../../assets/tickets_img/rightSide_bg.jpg")no-repeat center center / cover;
+    height:auto;
+    max-width:242px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 0px ;
+    float: right;
+    text-align: right;
+  }
+  .wrapper-container{
+    font-size: 12px;
+    padding: 0px 5px;
+  }
+  .date_label{
+    float: right;
+    font-size: 10px;
+    text-align: right;
+    font-weight: bold;
+  }
+  .date_block{
+    color: #595959;
+  }
+
+
+.ticket-title{
+    font-size: 18px;
+}
+.display-wrapper{
+    display: none;
+}
+.ticket-id{
+    border: 1px solid #e9e8e8;
+    border-radius: 0px 0px 5px 5px;
+    //background: #d9ecf2;nov30asma
+    background: #9C27B0;
+    font-size: 15px;
+    height:25px;
+    padding: 2px 8px;
+    position: -webkit-sticky;
+    position: sticky;
+    z-index: 1;
+    // top: -5px;
+    // margin:-5px auto 0;
+    //color: #696868;nov30asma
+    color: white;
+}
+.tickets-item{
+    height: 40px;
+    border:1px solid rgb(226, 224, 224);
+    border-radius: 20px; 
+    position: fixed;
+    bottom: 6px;
+    
+}
+
+.send-col{
+    width:15%;
+    position: fixed;
+    bottom: 0px;
+    right: 0;
+}
+.send-icon{
+    font-size: 20px;
+    color: white;
+    background: #0ba08c;
+    border-radius: 16px;
+    padding: 7px;
+}
+
+  
+
+  
+  
+@media only screen and (min-width:320px)and(max-width:767px){
+    .second-col{
+     display: block;
+    }
+    .tickets-item{ 
+        width:80%;
+        left: 11px; 
+    }
+    //neww
+    .ticket-id{
+        margin:0px auto 0;
+    }
+    .container{
+        height:89vh;
+        overflow-y: hidden;
+    }
+    
+    .ticket-id{
+        top: -5px;
+    }
+    .main-wrapper{
+        height: 82vh;
+    }
+    .main-wrapper::-webkit-scrollbar {
+        width:1px;
+      }
+    
+}
+
+   @media only screen and (min-width:767px){
+    .main-wrapper::-webkit-scrollbar {
+        width:10px;
+      }
+      .main-wrapper::-webkit-scrollbar-track {
+        background:  #f6f6f6;
+      }
+     
+      .main-wrapper::-webkit-scrollbar-thumb {
+        background:  #afadad;
+      }
+      
+      .main-wrapper::-webkit-scrollbar-thumb:hover {
+        background: rgb(182, 181, 181);
+      }
+      
+    
+   }
+@media only screen and (min-width:768px)and (max-width:1022px){
+    .tickets-item{ 
+    width: 350px;
+    position: fixed;
+    bottom: 7px;
+    right: 8%;
+    }
+    .main-wrapper{
+        position: absolute;
+        top:-20px;
+        right:0px;
+        height: 85.5vh;
+       
+    }
+    //Neww
+    .ticket-id{
+        margin:19px auto 0;
+    }
+  
+}
+@media only screen and (min-width:1023px){
+    .tickets-item{ 
+    width: 500px;
+    position: fixed;
+    bottom: 6px;
+    right: 9%;
+    }
+    //NEww remove
+    // .ticket-id{
+    //     top: 18px;
+    // }
+    .main-wrapper{
+        position: absolute;
+        top:-20px;
+        right:0px;
+        height: 85.5vh;
+    }
+    //neww
+    .ticket-id{
+        margin:19px auto 0;
+    }
+}
+@media only screen and (min-width:1350px){
+    .tickets-item{ 
+     right: 15%;
+    }
+    .container{
+        height:91vh;
+        overflow-y: hidden;
+    }
+    
+    .send-icon {
+        position: relative;
+        right: 68%;
+        bottom: 5px;
+    }
+}
+.thum_nail{
+    float: right;
+    zoom:10%;
+    border: 20px solid #d7fb9f;
+    cursor: pointer;
+}
+
+.img_wrapper{
+    margin: 24px 0px 0px 0px;
+}
+  
+#yourBtn {
+    position: relative;
+    font-size: 30px;
+    bottom: 5px;
+    padding: 0px 10px;
+    -ms-transform: rotate(20deg); 
+    transform: rotate(20deg);  
+    cursor: pointer;
+  }
+
+
+ 

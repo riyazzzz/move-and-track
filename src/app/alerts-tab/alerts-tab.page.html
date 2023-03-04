@@ -1,0 +1,115 @@
+<!-- <ion-header>
+  <ion-grid class="appHeaderTitle ion-padding"  style="padding-bottom:8px">
+    <ion-row [@inOutAnimation] *ngIf="!showSearch">
+      <ion-col size="2">
+        <ion-menu-button></ion-menu-button>
+      </ion-col>
+      <ion-col size="8">
+        <ion-searchbar [(ngModel)]="searchInput" debounce="500" placeholder="Search" animated class="noPad">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size="2" style="align-self: center;" class="ion-align-self-end"  class="ion-text-center">
+        <ion-badge color="danger">{{totalAlert}}</ion-badge>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header> -->
+<ion-header class='header'>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row *ngIf="!showSearch && myPlatform !='desktop'"  style="align-items: center;">
+              <ion-col size='2'>
+                  <ion-menu-button></ion-menu-button>
+              </ion-col>
+              <ion-col size='7.5' style='align-self: center;'>
+                  <ion-row>
+                      <ion-label style="font-size: 20px;font-weight: bold;"> Alerts </ion-label>
+                  </ion-row>
+              </ion-col>
+              <ion-col (click)="clickShowSearch()" style="text-align: right;padding: 4px;
+              padding-top: 9px;" size='1'>
+                <ion-icon style="font-size: 27px;" name="search"></ion-icon>
+              </ion-col>
+              <!-- <ion-col size="2.5">
+                <select style="padding: 0px 0px 0px 8px;border-radius: 10px;"  class="input-item input-new">
+                  <option value="">Select Alert type </option>
+                  <option *ngFor="let alert of alertTypes" [value]="alert">{{alert}}</option>
+                </select>
+              </ion-col> -->
+              <ion-col size='1' style="padding: 0px;">
+                  <ion-row (click)="bellRouter()">
+                      <ion-col size='3' style="align-self: center;"> 
+                          <ion-img src="assets/dashboard_background/bell.png" style="width:22px; height:22px"></ion-img>
+                          <ion-badge color="danger" style="    position: absolute;font-size: 7px;
+                              font-size: 9px;
+                              top: 6px;
+                              left: 17px;
+                              padding: 2px;
+                              color: white;
+                              font-weight: bold;">
+                              {{totalAlert}}
+                          </ion-badge>
+                      </ion-col>
+                      
+                     <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+                      <ion-img [src]="app.logo"></ion-img>
+                     </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+          
+          <ion-row *ngIf="!showSearch && myPlatform =='desktop'"  style="align-items: center;">
+            <ion-col size='2'>
+                <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size='7.5' style='align-self: center;'>
+                <ion-row>
+                    <ion-label class="headercolour"> Alerts </ion-label>
+                </ion-row>
+            </ion-col>
+            <ion-col (click)="clickShowSearch()" style="text-align: right;padding: 4px;
+            padding-top: 9px;" size='1'>
+              <ion-icon style="font-size: 27px;" name="search"></ion-icon>
+            </ion-col>
+            <!-- <ion-col size="2.5">
+              <select style="padding: 0px 0px 0px 8px;border-radius: 10px;"  class="input-item input-new">
+                <option value="">Select Alert type </option>
+                <option *ngFor="let alert of alertTypes" [value]="alert">{{alert}}</option>
+              </select>
+            </ion-col> -->
+            <ion-col size='1' style="padding: 0px;">
+                <ion-row (click)="bellRouter()">
+                    <ion-col size='3' style="align-self: center;"> 
+                        <ion-img src="assets/dashboard_background/bell.png" style="width:22px; height:22px"></ion-img>
+                        <ion-badge color="danger" style="    position: absolute;font-size: 7px;
+                            font-size: 9px;
+                            top: 6px;
+                            left: 17px;
+                            padding: 2px;
+                            color: white;
+                            font-weight: bold;">
+                            {{totalAlert}}
+                        </ion-badge>
+                    </ion-col>
+                    
+                   <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+                    <ion-img style="padding-left: 9px;" [src]="app.logo"></ion-img>
+                   </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+          <ion-row  *ngIf='showSearch' [@inOutAnimation]> 
+            <ion-col size=11>
+              <ion-searchbar [(ngModel)]="searchInput" debounce="500" placeholder="Search" animated class="noPad">  </ion-searchbar>
+            </ion-col>
+            <ion-col (click)="clickShowSearch()" size=1>
+              <ion-icon *ngIf='showSearch' style="font-size: 28px;" name="close"></ion-icon>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content (ionScroll)="scroll($event)" [scrollEvents]="true">
+  <app-alerts [searchInput]="searchInput" mode="all" (total)="totalAlerts($event)"></app-alerts>
+</ion-content> 

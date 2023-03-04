@@ -1,0 +1,408 @@
+<ion-row style="overflow-x: scroll;">
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+    <ion-item lines="none"style="--background:transparent;">
+    <ion-icon  (click)="closeModel()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+      <div class="maintanencehead">Add event</div>
+        <!-- <ion-icon *ngIf='value != undefined && isDeleteShow == true && myPlatform != desktop'  name='trash' (click)="deleteModel()" slot='end'></ion-icon> -->
+    </ion-item> 
+        <form  [formGroup]="maintanenceForm">
+          <div class="wrapper-form">
+          <!-- <ion-row>
+            <ion-col  class="popup-wrapper">
+               <ion-row class="header-item">
+                <ion-col size="1">
+                  <ion-icon name="arrow-back" style="font-size: 20px;"
+                   (click)="closeModel()"></ion-icon>
+                   </ion-col>
+                   </ion-row>
+                   <legend>Add event</legend>
+                   </ion-col>
+                   </ion-row> -->
+                   <ion-row>
+                     <ion-col>
+                      <ion-select class="select-box" formControlName="plateNo"  placeholder="Plate number">
+                        <ion-select-option *ngFor="let plateNo of vin" [value]="plateNo" >
+                            {{plateNo}}
+                          </ion-select-option>
+                          </ion-select>
+                     </ion-col>
+                   </ion-row>
+                   <ion-row>
+                     <ion-col>
+                      <ion-select class="select-box" (ionChange)="changeAlertType($event)" formControlName="alertType" placeholder="Alert type">
+                        <ion-select-option *ngFor="let alertType of alertType" value={{alertType}} >{{alertType}}</ion-select-option>
+                    </ion-select>
+                     </ion-col>
+                   </ion-row>
+                      <!-----Details-------->
+                <ion-row *ngIf="commonAlerts">
+                  <ion-col>
+                    <ion-input class="details"  formControlName="idNumber" type="text" placeholder="Id number"></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row *ngIf="provider">
+                  <ion-col>
+                    <ion-input class="details"  type="text" formControlName="provider" placeholder="Provider"></ion-input>
+                   </ion-col>
+                </ion-row>
+                 <!-----Details2-------->
+                 <ion-row  *ngIf="commonAlerts">
+                  <ion-col>
+                    <ion-datetime class="datetime" formControlName="validFrom" displayFormat="DD/MM/YYYY"
+                    placeholder="From Date"></ion-datetime>  
+                    <!-- <ion-input class="details" formControlName="validFrom" (click)="type = 'date'"  [type]="type" placeholder="From Date"></ion-input>     -->
+                   </ion-col>
+                </ion-row>
+                <ion-row  *ngIf="commonAlerts">
+                  <ion-col>
+                    <!-- <ion-input class="details" formControlName="validTill" (click)="type1 = 'date'" [type]="type1" placeholder="To Date"></ion-input> -->
+                    <ion-datetime class="datetime" formControlName="validTill" displayFormat="DD/MM/YYYY"
+                    placeholder="To Date"></ion-datetime>
+                  </ion-col>
+                </ion-row>
+            <!---------National Permit------------->
+            <div *ngIf="nationalPermit">
+                <ion-row>
+                  <legend class="alertby">Alert by</legend>
+                <ion-col size="12" style="padding: 0 6px;margin:0">
+              <ion-row class="common-checkBox">
+               <ion-col size="6" style="padding: 0;margin:0">
+                <ion-item lines="none" class="check-boxItem">
+                 <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                   <ion-label class="check-boxLabel">Kilometers</ion-label>
+                  </ion-item>
+                </ion-col>
+              <!-- </ion-row>
+                 <ion-row> -->
+                  <ion-col size="6" style="padding: 0;margin:0">
+                    <ion-item lines="none" class="check-boxItem">
+                     <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                       <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                         </ion-item>
+                        </ion-col>
+                       </ion-row>
+                     </ion-col>
+                 </ion-row>
+                 <ion-row>
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Date"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="afterKms">
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="provider"  type="text" placeholder="Due after(kms)"></ion-input>
+                  </ion-col>
+                 </ion-row>
+               <ion-row *ngIf="month">
+              <ion-col size="12" >
+                <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Due after(months)"></ion-input>
+               </ion-col>
+              </ion-row>
+            </div>
+            <!-----Tyre Change------->
+            <div *ngIf="tyreChange">
+              <ion-row>
+                <legend class="alertby">Alert by</legend>
+              <ion-col size="12" style="padding: 0 6px;margin:0">
+            <ion-row class="common-checkBox">
+             <ion-col size="6" style="padding: 0;margin:0">
+              <ion-item lines="none" class="check-boxItem">
+               <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                 <ion-label class="check-boxLabel">Kilometers</ion-label>
+                </ion-item>
+              </ion-col>
+            <!-- </ion-row>
+               <ion-row> -->
+                <ion-col size="6" style="padding: 0;margin:0">
+                  <ion-item lines="none" class="check-boxItem">
+                   <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                     <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                       </ion-item>
+                      </ion-col>
+                     </ion-row>
+                   </ion-col>
+               </ion-row>
+               <ion-row>
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Tyre change date"></ion-input>
+                </ion-col>
+               </ion-row>
+               <ion-row *ngIf="afterKms">
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="provider"  type="text" placeholder="Tyre change due after(kms)"></ion-input>
+                </ion-col>
+               </ion-row>
+             <ion-row *ngIf="month">
+            <ion-col size="12" >
+              <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Tyre change due after(months)"></ion-input>
+             </ion-col>
+            </ion-row>
+            </div>
+            <!-----Tyre Change end------->
+
+            <!-----General Service ------->
+            <div *ngIf="odometer">
+              <ion-row>
+                <legend class="alertby">Alert by</legend>
+              <ion-col size="12" style="padding: 0 6px;margin:0">
+            <ion-row class="common-checkBox">
+             <ion-col size="6" style="padding: 0;margin:0">
+              <ion-item lines="none" class="check-boxItem">
+               <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                 <ion-label class="check-boxLabel">Kilometers</ion-label>
+                </ion-item>
+              </ion-col>
+            <!-- </ion-row>
+               <ion-row> -->
+                <ion-col size="6" style="padding: 0;margin:0">
+                  <ion-item lines="none" class="check-boxItem">
+                   <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                     <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                       </ion-item>
+                      </ion-col>
+                     </ion-row>
+                   </ion-col>
+               </ion-row>
+               <ion-row>
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Odometer date"></ion-input>
+                </ion-col>
+               </ion-row>
+               <ion-row *ngIf="afterKms">
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="provider"  type="text" placeholder="Odometer due after(kms)"></ion-input>
+                </ion-col>
+               </ion-row>
+             <ion-row *ngIf="month">
+            <ion-col size="12" >
+              <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Odometer due after(months)"></ion-input>
+             </ion-col>
+            </ion-row>
+            </div>
+            <!-----Odometer end------->
+            <!-----Air Filter ------->
+            <div *ngIf="airFilter">
+              <ion-row>
+                <legend class="alertby">Alert by</legend>
+              <ion-col size="12" style="padding: 0 6px;margin:0">
+            <ion-row class="common-checkBox">
+             <ion-col size="6" style="padding: 0;margin:0">
+              <ion-item lines="none" class="check-boxItem">
+               <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                 <ion-label class="check-boxLabel">Kilometers</ion-label>
+                </ion-item>
+              </ion-col>
+            <!-- </ion-row>
+               <ion-row> -->
+                <ion-col size="6" style="padding: 0;margin:0">
+                  <ion-item lines="none" class="check-boxItem">
+                   <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                     <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                       </ion-item>
+                      </ion-col>
+                     </ion-row>
+                   </ion-col>
+               </ion-row>
+               <ion-row>
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Air filter date"></ion-input>
+                </ion-col>
+               </ion-row>
+               <ion-row *ngIf="afterKms">
+                <ion-col size="12">
+                  <ion-input class="details" formControlName="provider"  type="text" placeholder="Air filter due after(kms)"></ion-input>
+                </ion-col>
+               </ion-row>
+               
+             <ion-row *ngIf="month">
+            <ion-col size="12" >
+              <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Air filter due after(months)"></ion-input>
+             </ion-col>
+            </ion-row>
+               </div>
+            <!-----Air Filter End ------->
+               <!-----Brake Fluid  ------->
+               <div *ngIf="brakeFluid">
+                <ion-row>
+                  <legend class="alertby">Alert by</legend>
+                <ion-col size="12" style="padding: 0 6px;margin:0">
+              <ion-row class="common-checkBox">
+               <ion-col size="6" style="padding: 0;margin:0">
+                <ion-item lines="none" class="check-boxItem">
+                 <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                   <ion-label class="check-boxLabel">Kilometers</ion-label>
+                  </ion-item>
+                </ion-col>
+              <!-- </ion-row>
+                 <ion-row> -->
+                  <ion-col size="6" style="padding: 0;margin:0">
+                    <ion-item lines="none" class="check-boxItem">
+                     <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                       <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                         </ion-item>
+                        </ion-col>
+                       </ion-row>
+                     </ion-col>
+                 </ion-row>
+                 <ion-row>
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Brake fluid  date"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="afterKms">
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="provider"  type="text" placeholder="Brake fluid due after(kms)"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="month">
+              <ion-col size="12" >
+                <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Brake fluid due after(months)"></ion-input>
+               </ion-col>
+              </ion-row>
+                 </div>
+                  <!-----Brake Fluid end ------->
+                  <!-----Fuel Filter  ------->
+              <div *ngIf="fuelFilter">
+                <ion-row>
+                  <legend class="alertby">Alert by</legend>
+                <ion-col size="12" style="padding: 0 6px;margin:0">
+              <ion-row class="common-checkBox">
+               <ion-col  size="6" style="padding: 0;margin:0">
+                <ion-item lines="none" class="check-boxItem">
+                 <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                   <ion-label class="check-boxLabel">Kilometers</ion-label>
+                  </ion-item>
+                </ion-col>
+              <!-- </ion-row>
+                 <ion-row> -->
+                  <ion-col size="6" style="padding: 0;margin:0">
+                    <ion-item lines="none" class="check-boxItem">
+                     <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                       <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                         </ion-item>
+                        </ion-col>
+                       </ion-row>
+                     </ion-col>
+                 </ion-row>
+                 <ion-row>
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="validFrom"  type="date" placeholder="Fuel filter date"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="afterKms">
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="provider"  type="text" placeholder="Fuel filter due after(kms)"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="month">
+              <ion-col size="12" >
+                <ion-input class="details" formControlName="idNumber"  type="text" placeholder="Fuel filter due after(months)"></ion-input>
+               </ion-col>
+              </ion-row>
+              </div>
+              <!-----Fuel Filter-end----->
+
+               <!-----General Service ------->
+               <div *ngIf="generalService">
+                <ion-row>
+                  <legend class="alertby">Alert by</legend>
+                <ion-col size="12" style="padding: 0 6px;margin:0">
+              <ion-row class="common-checkBox">
+               <ion-col size="6" style="padding: 0;margin:0">
+                <ion-item lines="none" class="check-boxItem">
+                 <ion-checkbox class="notify-box"   (click)="alertKms($event)" checked></ion-checkbox>
+                   <ion-label class="check-boxLabel">Kilometers</ion-label>
+                  </ion-item>
+                </ion-col>
+              <!-- </ion-row>
+                 <ion-row> -->
+                  <ion-col  size="6" style="padding: 0;margin:0">
+                    <ion-item lines="none" class="check-boxItem">
+                     <ion-checkbox class="notify-box"  (click)="alertMonth($event)" checked></ion-checkbox>
+                       <ion-label  class="check-boxLabel" >Month period</ion-label> 
+                         </ion-item>
+                        </ion-col>
+                       </ion-row>
+                     </ion-col>
+                 </ion-row>
+                 <ion-row>
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="validFrom"  type="date" placeholder="General service date"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="afterKms">
+                  <ion-col size="12">
+                    <ion-input class="details" formControlName="provider"  type="text" placeholder="General service due after(kms)"></ion-input>
+                  </ion-col>
+                 </ion-row>
+                 <ion-row *ngIf="month">
+              <ion-col size="12" >
+                <ion-input class="details" formControlName="idNumber"  type="text" placeholder="General service due after(months)"></ion-input>
+               </ion-col>
+              </ion-row>
+              </div>
+              <!-----General Service-end----->
+              <!-----Description------->
+                  <ion-row>
+                   <ion-col size="12" >
+                     <ion-textarea class="description" rows="1" formControlName="description"  maxlength="50" placeholder="Description"></ion-textarea>
+                       </ion-col>
+                     </ion-row>
+                <!---Description-end---->
+              <!----Notification----->
+              <ion-row>
+                <ion-col size="12">
+                  <ion-select class="select-box" formControlName="notifiyBefore" placeholder="Notify before">
+                   <ion-select-option *ngFor="let notification of notification" [value]="notification">{{notification}}</ion-select-option>
+                      </ion-select>
+                  </ion-col>
+              </ion-row>
+              <legend>Notification mode</legend>  
+              <ion-row style="margin-top: 5px;">
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="1">
+                      <ion-checkbox  class="notify-box" checked  disabled></ion-checkbox>
+                      </ion-col>
+                       <ion-col size="2" class="notify-col">
+                        <ion-label class="notification-label">Push</ion-label>  
+                      </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="6">
+                  <ion-row>
+                    <ion-col size="1">
+                      <ion-checkbox class="notify-box" (click)="getEmail($event)" checked={{mail}}></ion-checkbox>
+                       </ion-col>
+                        <ion-col class="notify-col">
+                         <ion-label class="notification-label">E-mail</ion-label> 
+                       </ion-col>
+                  </ion-row>
+                </ion-col>
+                </ion-row>
+                  <!-- <ion-row>
+                    
+                    </ion-row> -->
+                  
+                    <ion-row *ngIf="email">
+                      
+                <ion-col size="12">
+               <ion-input class="details" s type="email" formControlName="email1"   placeholder="Primary e-mail id"></ion-input>
+             </ion-col>
+          
+           <ion-col size="12">
+            <ion-input class="details" type="email" formControlName="email2"    placeholder="Secondary e-mail id"></ion-input>   
+               </ion-col>
+             </ion-row> 
+                 
+              <!----Notification-end---->
+               <ion-row>
+                <ion-col style="padding:0;text-align: center;">
+                 <ion-button shape="round" class="btn-size commonButton" [disabled]="!maintanenceForm.valid" (click)='submit()'>Save</ion-button>
+                  <ion-button shape="round" class="btn-size btn-cancel"  (click)="cancelBtn()">Cancel</ion-button>
+                   </ion-col>
+                 </ion-row>
+                </div>
+              </form>
+  </ion-col>
+</ion-row>

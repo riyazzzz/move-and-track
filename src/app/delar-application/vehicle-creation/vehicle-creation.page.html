@@ -1,0 +1,248 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Vehicle Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="wrapper-container">
+        <form [formGroup]="vehicleCreation">
+          <ion-row>
+            <ion-col size="12" class="label-text">Company info</ion-col>
+          </ion-row>
+          <ion-row class="form-field">
+            <ion-col size="7" size-lg="5" size-md="5">
+              <input
+                class="input col"
+                type="search"
+                list="cars"
+                (keypress)="omit_special_char($event)"
+                (focusout)="checkCompany(event)"
+                formControlName="companyName"
+                placeholder="Company name"
+              />
+              <datalist id="cars">
+                <option *ngFor="let names of companyId">{{names}}</option>
+              </datalist>
+            </ion-col>
+            <ion-col size="3" size-lg="3" size-md="3" style="text-align: end">
+              <ion-button class="submitbtn" (click)="addcompany()"
+                >+ Add Company</ion-button
+              >
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="12" class="label-text">Location</ion-col>
+          </ion-row>
+
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="text"
+                formControlName="ContactNumber"
+                disabled
+                placeholder="Contact Number"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="email"
+                formControlName="email"
+                disabled="true"
+                placeholder="E-mail"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="text"
+                formControlName="address1"
+                disabled="true"
+                placeholder="Address line 1"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="text"
+                formControlName="address2"
+                disabled="true"
+                placeholder="Address line 2"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="text"
+                formControlName="city"
+                disabled="true"
+                placeholder="City"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-select
+                class="input"
+                formControlName="country"
+                placeholder="Country"
+                value="India"
+                disabled="true"
+              >
+                <ion-select-option
+                  *ngFor="let countries of country"
+                  [value]="countries"
+                  >{{countries}}</ion-select-option
+                >
+              </ion-select>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12" class="label-text">Assets</ion-col>
+          </ion-row>
+
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="4" size-md="4">
+              <input
+                class="input col"
+                type="search"
+                list="num"
+                (change)="checkImei()"
+                formControlName="imeiNo"
+                placeholder="Imei number"
+              />
+              <datalist id="num">
+                <option *ngFor="let numbers of imeiNo">{{numbers}}</option>
+              </datalist>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-input
+                type="text"
+                formControlName="simNo"
+                placeholder="Sim number/serial number"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-input
+                type="text"
+                formControlName="simNo2"
+                placeholder="Sim number 2"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="text"
+                formControlName="plateNo"
+                placeholder="Plate number"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-select
+                class="input"
+                formControlName="assetCategory"
+                placeholder="Asset category"
+              >
+                <ion-select-option
+                  *ngFor="let Category of assertCategories"
+                  [value]="Category"
+                  >{{Category}}</ion-select-option
+                >
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-input
+                type="number"
+                formControlName="odometer"
+                placeholder="Odometer"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-select
+                class="input"
+                formControlName="manufacture"
+                (ionChange)="getModelData($event,manufacture)"
+                placeHolder="Manufacture"
+                interface="popover"
+              >
+                <ion-select-option
+                  *ngFor="let manufacture of manufacture"
+                  [value]="manufacture.type"
+                >
+                  {{manufacture.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-select
+                [disabled]="formDisplay"
+                class="input"
+                [disabled]="!manufacture"
+                formControlName="model"
+                placeHolder="Model"
+                interface="popover"
+              >
+                <ion-select-option
+                  *ngFor="let model of model"
+                  [value]="model.type"
+                >
+                  {{model.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-select
+                class="input"
+                formControlName="provider"
+                placeHolder="Provider"
+                interface="popover"
+              >
+                <ion-select-option
+                  *ngFor="let provider of provider"
+                  [value]="provider.sim"
+                >
+                  {{provider.sim}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-lg="4" size-md="4" *ngIf="show">
+              <ion-select
+                class="input"
+                formControlName="provider2"
+                placeHolder="Provider 2"
+                interface="popover"
+              >
+                <ion-select-option
+                  *ngFor="let provider of provider"
+                  [value]="provider.sim"
+                >
+                  {{provider.sim}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row>
+          <ion-col class="ion-text-center"
+            ><ion-button
+              [disabled]="!vehicleCreation.valid"
+              (click)="newSubmit()"
+              id="submitbtn"
+              >submit</ion-button
+            ></ion-col
+          >
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

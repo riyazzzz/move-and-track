@@ -1,0 +1,89 @@
+
+.border-pending{
+    border-left:3px solid orange;
+    
+}
+.border-closed{
+    border-left:3px solid rgb(0, 128, 96);
+    
+}
+.border-open{
+    border-left:3px solid rgb(255, 53, 53);
+  
+}
+
+.wrapper-container{
+    font-size: 12px;
+    padding: 0px 25px;
+}
+.contact-panal{
+    background-color: #f8f8fb;
+    height: 90vh;
+    overflow-y: scroll;
+}
+.contact-panal::-webkit-scrollbar-track {
+   background:  #f6f6f6;
+}
+
+.contact-panal::-webkit-scrollbar-thumb {
+   background:  rgb(182, 181, 181);
+}
+  
+@media only screen and (min-width:320px)and(max-width:767px){
+    .second-col{
+     display: block;
+    }
+    
+    
+    .container{
+        height:89vh;
+        overflow-y: hidden;
+    }
+    // ion-card{
+    //     margin:5px 10px;
+    //     padding-left: 7px;
+    // }
+    .contact-panal::-webkit-scrollbar {
+        width:1px;
+      }
+}
+@media only screen and (min-width:767px){
+    .contact-panal::-webkit-scrollbar {
+        width:4px;
+      }
+    
+}
+@media only screen and (min-width:767px)and (max-width:1022px){
+    
+    // ion-card{
+    //     margin:5px;
+    //     padding-left: 7px;
+    // }
+}
+@media only screen and (min-width:1023px){
+    
+    // ion-card{
+    //     margin:5px 0px;
+    //     padding-left: 7px;
+    // }
+}
+@media only screen and (min-width:1350px){
+    
+    .container{
+        height:91vh;
+        overflow-y: hidden;
+    }
+    // ion-card{
+    //     margin:5px 10px;
+    //     padding-left: 7px;
+    // }
+    
+}
+
+
+
+  
+
+
+
+ 

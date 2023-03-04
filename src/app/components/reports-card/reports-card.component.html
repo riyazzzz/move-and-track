@@ -1,0 +1,459 @@
+<!-- <ion-row>
+<ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of displayData" style="padding:0px"> 
+  <ion-card class="cardMargin" >
+    <ion-card-content style="padding:0px">
+      <div class="ion-activatable">
+        <ion-ripple-effect type="bounded"></ion-ripple-effect>
+        <ion-grid style="padding:0px">
+          <ion-row>
+            <ion-col style="padding:0px" size='3'>
+              <ion-row style="padding:0px">
+                <ion-col style="padding:0px">
+                  <ion-img class='image' src="assets/icon/odometer.svg"></ion-img>
+                  <ion-row *ngIf='data.odometer' style="padding:0px"
+                    class="odometerTime ion-align-items-center ion-justify-content-center">
+                    {{data.odometer}}
+                  </ion-row>
+                  <ion-row *ngIf='data.Odometer' style="padding:0px"
+                    class="odometerTime ion-align-items-center ion-justify-content-center">
+                    {{data.Odometer}}
+                  </ion-row>
+                  <ion-row style="padding:0px" class="ion-align-items-center ion-justify-content-center odometerTitle">
+                    Odometer</ion-row>
+
+                </ion-col>
+              </ion-row>
+            </ion-col>
+
+            <ion-col *ngIf='reportName == "StatusSummary"' size='4' id='border' style="padding:0px">
+              <ion-row style="padding: 3px;">
+                <ion-col size='2' style="font-size: x-small;
+                padding: 0px;">
+                  <ion-icon name="md-time"></ion-icon>
+                </ion-col>
+                <ion-col size='10' style="font-size: x-small;
+              padding: 0px;">
+                  Start Time
+                </ion-col>
+              </ion-row>
+              <ion-row style="font-size: x-small; padding: 3px;">
+                {{data.Begin}}
+              </ion-row>
+              <ion-row style="padding: 3px;">
+                <ion-col size='2' style="font-size: x-small; padding: 0px;">
+                  <ion-icon name="md-time"></ion-icon>
+                </ion-col>
+                <ion-col size='10' style="font-size: x-small;
+          padding: 0px;">
+                  End Time
+                </ion-col>
+              </ion-row>
+              <ion-row style="font-size: x-small;padding: 3px;">
+                {{data.End}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col *ngIf='reportName == "TripSummary"' size='4' id='border' style="padding:0px">
+              <ion-row style="padding: 3px;">
+                <ion-col size='2' style="font-size: x-small;
+        padding: 0px;">
+                  <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                </ion-col>
+                <ion-col size='10' style="font-size: x-small;
+      padding: 0px;">
+                  Engine ON
+                </ion-col>
+              </ion-row>
+              <ion-row style="font-size: x-small; padding: 3px;">
+                {{data.startTime}}
+              </ion-row>
+              <ion-row style="padding: 3px;">
+                <ion-col size='2' style="font-size: x-small;
+    padding: 0px;">
+                  <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                </ion-col>
+                <ion-col size='10' style="font-size: x-small;
+  padding: 0px;">
+                  Engine OFF
+                </ion-col>
+              </ion-row>
+              <ion-row style="font-size: x-small;padding: 3px;">
+                {{data.endTime}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col class='end' id='end' *ngIf='reportName == "StatusSummary" && data.Stop != "---"' size='3'
+              style="padding: 0px;">
+              <ion-row class="statusStyle1">
+                STOP
+              </ion-row>
+              <ion-row class="rectangleBox">
+                {{data.Stop}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col class='running' id='running' *ngIf='reportName == "StatusSummary" && data.Running != "---"'
+              size='3' style="padding: 0px;">
+              <ion-row class="statusStyle1">
+                RUNNING
+              </ion-row>
+              <ion-row class="rectangleBox">
+                {{data.Running}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col class='idle' id='idle' *ngIf='reportName == "StatusSummary" && data.Idle != "---"' size='3'
+              style="padding: 0px;">
+              <ion-row class="statusStyle1">
+                IDLE
+              </ion-row>
+              <ion-row class="rectangleBox">
+                {{data.Idle}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col class="towed" id='towed' *ngIf='reportName == "StatusSummary" && data.Towed != "---"' size='3'
+              style="padding: 0px;">
+              <ion-row class="statusStyle1">
+                TOWED
+              </ion-row>
+              <ion-row class="rectangleBox">
+                {{data.Towed}}
+              </ion-row>
+            </ion-col>
+
+            <ion-col *ngIf='reportName == "TripSummary"' size='3' style="padding: 0px;">
+              <ion-row>
+                <ion-col size='12' style="background-color:#1f5baa; color: #ffffff; border-radius: 0px 5px 0px 0px;">
+                  <ion-row style="font-size: small; font-weight: bold;">Idle</ion-row>
+                  <ion-row style="font-size: x-small;">{{data.idleDuration}}</ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size='12' style="background-color:#1eb15d; color: #ffffff; border-radius: 0px 0px 5px 0px;">
+                  <ion-row style="font-size: small; font-weight: bold;">Running</ion-row>
+                  <ion-row style="font-size: x-small;">{{data.runningDuration}}</ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size='2' style="padding: 0px;" (click)="toggleMapView(data)">
+              <ion-img style="width: 88px; padding: 0px; position: absolute;" src="assets/vtsLiveTrack/default.png">
+              </ion-img>
+              <ion-row style="padding: 0px; position: absolute;  font-weight: bold; text-align: center; top: 20px; color: black;"> Map View </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-col>
+</ion-row>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+
+<div  class="modal" [ngClass]="{'dragDown' : mapView === false,'dragUp' : mapView === true}" swipeAll>
+  <ion-grid style="padding:0px">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col style="padding:0px" size="8" class="ion-text-center">
+        <div class="semiCircle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-label class="alertsStyle">Map View
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="md-close" (click)='closeMap()'> </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div #mapElement id='map'></div>
+</div> -->
+
+<ion-row *ngIf='reportName == "StatusSummary"'>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of displayData" style="padding:0px">
+    <ion-card class="cardMargin">
+      <ion-card-content style="padding:0px">
+        <div class="ion-activatable">
+          <ion-ripple-effect type="bounded"></ion-ripple-effect>
+          <ion-grid style="padding:0px">
+            <ion-row>
+              <ion-col style="padding:0px" size='3'>
+                <ion-row style="padding:0px">
+                  <ion-col style="padding:0px">
+                    <ion-img style="height: 40px;" src="assets/icon/odometer.svg"></ion-img>
+                    <ion-row *ngIf='data.odometer' style="padding:0px"
+                      class="odometerTime ion-align-items-center ion-justify-content-center">
+                      {{data.odometer}}
+                    </ion-row>
+                    <ion-row *ngIf='data.Odometer' style="padding:0px"
+                      class="odometerTime ion-align-items-center ion-justify-content-center">
+                      {{data.Odometer}}
+                    </ion-row>
+                    <ion-row style="padding:0px"
+                      class="ion-align-items-center ion-justify-content-center odometerTitle">
+                      Odometer</ion-row>
+
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+
+              <ion-col *ngIf='reportName == "StatusSummary"' size='4' id='border' style="padding:0px">
+                <ion-row style="padding: 3px;">
+                  <ion-col size='2' style="font-size: x-small;
+                  padding: 0px;">
+                    <ion-icon name="md-time"></ion-icon>
+                  </ion-col>
+                  <ion-col size='10' style="font-size: x-small;
+                padding: 0px;">
+                    Start Time
+                  </ion-col>
+                </ion-row>
+                <ion-row style="font-size: x-small; padding: 3px;">
+                  {{data.Begin}}
+                </ion-row>
+                <ion-row style="padding: 3px;">
+                  <ion-col size='2' style="font-size: x-small; padding: 0px;">
+                    <ion-icon name="md-time"></ion-icon>
+                  </ion-col>
+                  <ion-col size='10' style="font-size: x-small;
+            padding: 0px;">
+                    End Time
+                  </ion-col>
+                </ion-row>
+                <ion-row style="font-size: x-small;padding: 3px;">
+                  {{data.End}}
+                </ion-row>
+              </ion-col>
+
+              <!-- <ion-col *ngIf='reportName == "TripSummary"' size='4' id='border' style="padding:0px">
+                <ion-row style="padding: 3px;">
+                  <ion-col size='2' style="font-size: x-small;
+          padding: 0px;">
+                    <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-col>
+                  <ion-col size='10' style="font-size: x-small;
+        padding: 0px;">
+                    Engine ON
+                  </ion-col>
+                </ion-row>
+                <ion-row style="font-size: x-small; padding: 3px;">
+                  {{data.startTime}}
+                </ion-row>
+                <ion-row style="padding: 3px;">
+                  <ion-col size='2' style="font-size: x-small;
+      padding: 0px;">
+                    <ion-icon ios="ios-calendar" md="md-calendar"></ion-icon>
+                  </ion-col>
+                  <ion-col size='10' style="font-size: x-small;
+    padding: 0px;">
+                    Engine OFF
+                  </ion-col>
+                </ion-row>
+                <ion-row style="font-size: x-small;padding: 3px;">
+                  {{data.endTime}}
+                </ion-row>
+              </ion-col> -->
+
+              <ion-col class='end' id='end' *ngIf='reportName == "StatusSummary" && data.Stop != "---"' size='3'
+                style="padding: 0px;">
+                <ion-row class="statusStyle1">
+                  STOP
+                </ion-row>
+                <ion-row class="rectangleBox">
+                  {{data.Stop}}
+                </ion-row>
+              </ion-col>
+
+              <ion-col class='running' id='running' *ngIf='reportName == "StatusSummary" && data.Running != "---"'
+                size='3' style="padding: 0px;">
+                <ion-row class="statusStyle1">
+                  RUNNING
+                </ion-row>
+                <ion-row class="rectangleBox">
+                  {{data.Running}}
+                </ion-row>
+              </ion-col>
+
+              <ion-col class='idle' id='idle' *ngIf='reportName == "StatusSummary" && data.Idle != "---"' size='3'
+                style="padding: 0px;">
+                <ion-row class="statusStyle1">
+                  IDLE
+                </ion-row>
+                <ion-row class="rectangleBox">
+                  {{data.Idle}}
+                </ion-row>
+              </ion-col>
+
+              <ion-col class="towed" id='towed' *ngIf='reportName == "StatusSummary" && data.Towed != "---"' size='3'
+                style="padding: 0px;">
+                <ion-row class="statusStyle1">
+                  TOWED
+                </ion-row>
+                <ion-row class="rectangleBox">
+                  {{data.Towed}}
+                </ion-row>
+              </ion-col>
+
+              <!-- <ion-col *ngIf='reportName == "TripSummary"' size='3' style="padding: 0px;">
+                <ion-row>
+                  <ion-col size='12' style="background-color:#1f5baa; color: #ffffff; border-radius: 0px 5px 0px 0px;">
+                    <ion-row style="font-size: small; font-weight: bold;">Idle</ion-row>
+                    <ion-row style="font-size: x-small;">{{data.idleDuration}}</ion-row>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size='12' style="background-color:#1eb15d; color: #ffffff; border-radius: 0px 0px 5px 0px;">
+                    <ion-row style="font-size: small; font-weight: bold;">Running</ion-row>
+                    <ion-row style="font-size: x-small;">{{data.runningDuration}}</ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-col> -->
+              <ion-col size='2' style="padding: 0px;" (click)="toggleMapView(data)">
+                <ion-img style="width: 88px; padding: 0px; position: absolute;" src="assets/vtsLiveTrack/default.png">
+                </ion-img>
+                <ion-row
+                  style="padding: 0px; position: absolute;  font-weight: bold; text-align: center; top: 30px;left:5px; color: black;">
+                  Map View </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+
+
+
+<ion-row *ngIf='reportName == "TripSummary"'>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of displayData" style="padding:0px">
+    <ion-card class="cardMargin tripCard">
+      <ion-card-content style="padding:0px">
+        <ion-row class="header">
+          <ion-col style="padding-left: 10px;">
+            <ion-row>
+              <ion-img class='image' src="assets/icon/odometer.svg"></ion-img>
+              <span>
+                <ion-row style="padding:0px;color: black;
+                  font-weight: bold;padding: 10px;">
+                  Odometer
+                </ion-row>
+              </span>
+            </ion-row>
+            <ion-row *ngIf='data.odometer' style="padding-left: 5px;" class="odometerTime">
+              {{data.odometer}}
+            </ion-row>
+            <ion-row *ngIf='data.Odometer' style="padding-left: 5px;" class="odometerTime">
+              {{data.Odometer}}
+            </ion-row>
+
+          </ion-col>
+          <ion-col>
+            <ion-row>
+              <ion-col class="running-row">
+                <ion-label>
+                  Idle
+                </ion-label>
+                <ion-row>
+                  {{data.idleDuration}}
+                </ion-row>
+              </ion-col>
+              <ion-col class="idle-row">
+                <ion-label>
+                  Running
+                </ion-label>
+                <ion-row>
+                  {{data.runningDuration}}
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <!-- <ion-row  >
+               
+              </ion-row> -->
+          </ion-col>
+          <!-- <ion-col>
+              <ion-fab-button size="small">
+                <ion-icon name="map"></ion-icon>
+              </ion-fab-button>
+            </ion-col> -->
+        </ion-row>
+        <ion-row>
+          <ion-col size=6>
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <ion-icon name="calendar" class="engine"></ion-icon>
+                  <ion-label>Engine on</ion-label>
+                </ion-row>
+                <ion-row class="time">{{data.startTime}}</ion-row>
+                <ion-row>
+                  <ion-col class="location">
+                    <fieldset>
+                      <legend style="color:#139be9">Start location</legend>
+                      {{data.startAddress}}
+                    </fieldset>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size=6>
+            <ion-row>
+              <ion-col class="location">
+                <ion-row>
+                  <ion-icon name="calendar" class="engine"></ion-icon>
+                  <ion-label>Engine off</ion-label>
+                </ion-row>
+                <ion-row class="time">{{data.endTime}}</ion-row>
+                <span>
+                  <ion-fab-button size="small" class="fab-btn" (click)="toggleMapView(data)">
+                    <ion-icon name="map"></ion-icon>
+                  </ion-fab-button>
+                </span>
+                <ion-row>
+                  <ion-col>
+                    <fieldset>
+                      <legend style="color:#1db372">End location</legend>
+                      {{data.stopAddress}}
+                    </fieldset>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+
+
+<div class="modal" [ngClass]="{'dragDown' : mapView === false,'dragUp' : mapView === true}" swipeAll>
+  <ion-grid style="padding:0px">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col style="padding:0px" size="8" class="ion-text-center">
+        <div class="semiCircle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-label class="alertsStyle">Map View
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="md-close" (click)='closeMap()'> </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class='map showspeed' [ngClass]="{'hidespeed' : mapView === false,'showspeed' : mapView === true}" #mapElement></div>
+</div>

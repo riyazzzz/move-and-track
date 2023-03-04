@@ -1,0 +1,38 @@
+.plateno{
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+.background{
+    background: #f7f7f7;
+    border-radius: 8px;
+}
+.innerHeading{
+    font-size: 8px;
+}
+.centerCount{
+    font-size: 43px;
+    font-weight: bold;
+    color: black;
+
+}
+.centerRow{
+    justify-content: center;
+}
+.bottomText{
+    font-size: 12px;
+    font-weight: 500;
+    color: black;
+}
+.border-red{
+    border-left: 3px solid red;
+}
+.border-orange{
+    border-left: 3px solid green;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}

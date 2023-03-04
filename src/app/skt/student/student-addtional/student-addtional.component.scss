@@ -1,0 +1,205 @@
+.wrapper-container {
+    border-radius: 5px;
+    margin       : 10px;
+}
+
+.wrapper-container-settings {
+    display: none;
+}
+
+.student-container {
+    padding: 5px;
+    margin : auto;
+}
+.deatils-header {
+    text-align    : center;
+    color         : #3880ff;
+    font-size     : 24px;
+    margin        : 0px 0px 9px;
+    letter-spacing: 1px;
+}
+.stu-items {
+    margin          : 10px 6px 0px;
+    padding         : 0px;
+    border          : 1px solid #cfe8ec;
+    border-radius   : 7px;
+    height          : 48px;
+    background-color: #fcfcfc;
+}
+.stu-input {
+    --placeholder-color: rgb(117, 118, 119);
+}
+
+.textcolor {
+    font-size: 10px;
+    color    : rgb(117, 118, 119)
+}
+
+.stu-icon,
+.stu-svg {
+    font-size    : 32px;
+    border-right : 1px solid #efedeb;
+    padding-right: 10px;
+    margin       : 0px 15px 5px 0px;
+    color        : #3880ff;
+}
+
+.stu-svg {
+    padding: 0px 10px 0px 0px;
+    height : 30px;
+    width  : 42px;
+    margin : 5px 15px 7px 8px;
+}
+
+.stu-select-box,
+.select-box2 {
+    border       : 1px solid #cfe8ec;
+    height       : 48px;
+    border-radius: 7px;
+    background   : white;
+
+}
+
+.text-select-box {
+    height    : 48px;
+    text-align: left;
+    margin    : 10px;
+}
+
+.stu-select-box-col {
+    margin : 16px 0px 0px 5px;
+    padding: 0px;
+}
+
+.student-toggleBtn {
+    float          : right;
+    --border-radius: 50%;
+    padding        : 0px;
+    margin         : 5px 0px;
+}
+
+.box-column,
+.box-column3 {
+    border       : 1px solid rgb(216, 222, 222);
+    border-radius: 5px;
+    padding      : 1px;
+    background   : #f2f2f2;
+}
+
+.box-column3 {
+    background: white;
+}
+
+.stu-col1-img {
+    padding     : 0px 15px 0px 0px;
+    height      : 30px;
+    width       : 42px;
+    margin      : 5px 15px 7px 0px;
+    border-right: 1px solid #efedeb;
+}
+
+.box-column:hover {
+    box-shadow: 8px 7px 5px #dbddde;
+}
+
+.main-container-btn {
+    height : 50px;
+    width  : 200px;
+    margin : 10px auto 0px;
+    padding: 0px 15px 0px 0px;
+}
+.radioBtn {
+    margin: 0px auto;
+}
+.genderImg {
+    width: 32px;
+}
+.alert-checkbox {
+    height: 20px;
+    width : 20px;
+}
+.alert-info {
+    height    : 148px;
+    overflow-y: scroll;
+    margin-top: 10px;
+    font-size : 13px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.drop-selection {
+    margin-bottom: 8px;
+}
+select.stu-input {
+    outline: none;
+    background: none;
+}
+.select-input,.select-routeinfo{
+    border: 0;
+    margin:15px;
+    width :90%;
+    color :rgb(85, 87, 87);
+}
+.select-routeinfo{
+    width:100%
+}
+select.option-body:hover{
+    outline: none;
+}
+.option-head{
+    background-color: darkgray;
+}
+.route-info{
+    margin:10px;
+}
+option:focus{
+    outline: none;
+}
+.geozone-info{
+    border: 1px solid rgb(247, 247, 247);
+    height:273px !important;
+    width :100%;
+}
+.popup-head {
+    color      : #3880ff;
+    margin-left: 30px;
+    font-size  : 28px !important;
+    font-weight: 600;
+    margin     : 10px auto 10px;
+}
+
+.shapes-item{
+    color: #928d8b;
+    z-index: 12;
+    margin: auto;
+    position: absolute;
+    bottom: 45%;
+    right: 10px;
+    font-size: 31px;
+    border: 1px solid #cfe8ec;
+    outline: none;
+}
+
+#toolbar-fix{
+   zoom:75%
+}
+#content-fix{
+    zoom:80% 
+}

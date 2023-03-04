@@ -1,0 +1,147 @@
+
+ion-input{
+    background: rgb(232, 232, 232);
+    text-align: initial;
+  }
+  ion-icon{
+    color: #fafcff;
+    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    padding: 1px 3px;
+    background-color: #6252ec; 
+    vertical-align: bottom;
+  }
+  .sub{
+    margin-left: 27%;
+  }
+  .pro{
+    text-align: center;
+    margin-left: 50px;
+    font-size: 15px;
+    background-color:rgb(61, 108, 236); 
+    border-radius: 4px;
+  }
+  .lab{
+  //  margin-left:20px;
+  font-family: sans-serif;
+  }
+  .cam{
+    border: 1px solid rgb(61, 108, 236);
+    margin-left: 38%;
+  }
+  .text{
+  text-align: center;
+  }
+  .icon{
+  margin-left: 38%;
+  }
+  // multipart file
+  .drop-zone { 
+    background-color: #f6f6f6;
+    border: dotted 3px #dedddd; 
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  .file-input-container {
+    input[type="file"] {
+     
+        display: none;
+    }
+  
+    //  label {
+    //     border: 1px solid #ccc;
+        //  font-size: 15px;
+    //     background-color:rgb(61, 108, 236); 
+    //     cursor: pointer;
+    //     font-weight: bold;
+    //     border-radius: 4px;
+    //  }
+  }
+  .first{
+    margin-left: 38%;
+    padding: 5px;
+  }
+  .nv-file-over { 
+    border: dotted 3px red; 
+  }
+  
+  .heading{
+   text-align: center;
+    border-radius:4px;
+    color:#6252ee;
+    font-weight: 500;
+    font-size: 20px;
+   
+  }
+  
+  ion-progress-bar{
+    border-radius: 50px;
+    height: 7px;
+  }
+  
+  .file{
+    margin-left: 8%;
+    border: 1px solid rgb(61, 108, 236);
+  }
+  .down{
+    text-align: center;
+  }
+  .arrow{
+   
+    position: absolute;
+    right: 0;
+  }
+  .wrapper-container{
+     text-align: center;
+   
+    //margin: 30px auto;
+  }
+  ion-item{
+    --padding-end:0;
+     border: 1px solid #e5e5e5;
+     height: 42px;
+     line-height: 18px;
+     
+     background: #e8e8e8;
+     --background: #e8e8e8;
+     color: #7a7b7b;
+     align-items: baseline;
+  }
+  .form_col{
+     line-height: 18px;
+     font-size: 16px;  
+  
+  }
+  
+  
+  @media only screen and(min-width:320px)and(max-width:767px){
+    .wrapper-container{
+        zoom:80%;
+    }
+   #btn{
+    width:40%;
+   }
+    }
+  @media only screen and(min-width:768px){
+    .wrapper-container{
+        zoom:90%;
+        padding: 20px;
+    }
+    #btn{
+        width:20%;
+       }
+    }
+  #btn{
+    --background:#6252ee;
+  
+  }
+  .head{
+   text-align: initial;
+  }
+  ion-input{
+   --padding-start:17px;
+   height: 42px;
+  }
+

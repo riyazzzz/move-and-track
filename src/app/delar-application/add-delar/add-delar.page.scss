@@ -1,0 +1,29 @@
+.header-label{
+    color: #6252ee;
+    font-weight: 500;
+    font-size: 17px;
+    padding: 8px 0px;
+}
+ion-input,ion-select{
+    border: 1px solid #e5e5e5;
+    height: 42px;
+    line-height: 18px;
+    --padding-start: 15px;
+    background: #e8e8e8;
+}
+@media only screen and (min-width:768px){
+      #submitbtn{
+        width:20%;
+    }
+}
+@media only screen and (max-width:767px){
+    .form-field{
+    zoom:80%;
+    }
+    #submitbtn{
+     width:40%;
+    }
+}
+#submitbtn{
+    --background: #6252ee;
+}

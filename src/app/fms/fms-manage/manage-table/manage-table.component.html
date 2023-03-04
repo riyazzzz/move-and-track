@@ -1,0 +1,196 @@
+<ion-row>
+  <ion-col *ngIf="myPlatform != 'desktop'" size=12 style="padding: 0px;">
+    <ion-row>
+      <ion-col size=11>
+        <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size="1" style="text-align: -webkit-right;" >
+        <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+      </ion-col>
+    </ion-row>
+
+      <ion-virtual-scroll [items]="detail | searchmanage: searchInput"  [trackBy]="identify" >
+        <ion-card *virtualItem="let items;"  class="manage-card ion-activatable" (click)="editMode(items)">  <ion-row>
+            <ion-col size="12" class="plateNo">
+              {{items.plateNo | uppercase }}
+            </ion-col>
+          </ion-row>
+          <ion-card class="inner-card ion-activatable">
+            <ion-card-content>
+              <ion-row>
+                <ion-col>
+                  <ion-row>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col size="12">
+                          Vehicle type
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="data">
+                          {{items.iconUrl}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col size="12">
+                          Odometer
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="data">
+                          {{items.odometer}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col size="12">
+                          Model
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="data">
+                          {{items.model}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row style="margin-top: 5px;">
+                    <ion-col size="4">
+                      <ion-row>
+                        <ion-col size="12">
+                          Make
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="data">
+                          {{items.make}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size="8">
+                      <ion-row>
+                        <ion-col size="12">
+                          IMEI
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="data">
+                          {{items.imeiNo}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+            <ion-ripple-effect></ion-ripple-effect>
+          </ion-card>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+        <!-- <ion-card class="card-content" (click)="editMode(items)">
+          <ion-card-content>
+            <ion-row class="content-wraper">
+              <ion-col>
+                <ion-row class="plateNum">
+                  <label title="Plate No">{{items.plateNo}}</label>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-row>{{items.icon}}</ion-row>
+                    <ion-row>
+                      <ion-icon ios="ios-car" md="md-car" class="icon-size"></ion-icon>
+                      <label class="manage-title">Vehicle Type</label>
+                    </ion-row>
+                    <ion-row>{{items.make}}</ion-row>
+                    <ion-row>
+                      <ion-icon name="build" class="icon-size"></ion-icon>
+                      <label class="manage-title">Make</label>
+                    </ion-row>
+                    <ion-row>{{items.imeiNo}}</ion-row>
+                    <ion-row>
+                      <ion-img src="assets/simcard.svg" class="svg-size"></ion-img>
+                      <label class="manage-title"> IMEI</label>
+                    </ion-row>
+                  </ion-col>
+                  <ion-col>
+                    <ion-row>{{items.odometer}}</ion-row>
+                    <ion-row>
+                      <ion-icon name="speedometer" class="icon-size"></ion-icon>
+                      <label class="manage-title">Odometer</label>
+                    </ion-row>
+                    <ion-row style="z-index: 3;">{{items.model}}</ion-row>
+                    <ion-row>
+                      <ion-icon name="cog" class="icon-size"></ion-icon>
+                      <label class="manage-title">Model</label>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <div class="wrapper-container"></div>
+          </ion-card-content>
+        </ion-card> -->
+     </ion-virtual-scroll>
+     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+    <ion-fab class="botmRow" (click)="openModel()">
+      <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+        <ion-icon name="add" class="add-icon"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-col>
+
+
+  <ion-col *ngIf="myPlatform == 'desktop'" size=12 style="padding: 0px;">
+    <ion-row style="border: 1px solid #dad9d9; width: 99.2%">
+      <ion-col style="padding: 0px;">
+        <ion-row style="float:left; margin: 0">
+          <ion-col size=4 class="toolbar-buttons">
+            <ion-button (click)="openModel()" class="submitBtn" shape="round" size="small">
+              Add
+              <ion-icon name="add-circle" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size=4 class="toolbar-buttons">
+            <ion-button shape="round" (click)="editMode()" class="submitBtn" size="small">
+              Edit
+              <ion-icon name="create" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size=4 class="toolbar-buttons">
+            <ion-button *ngIf='isDeleteShow' shape="round" (click)="deleteMode()" class="submitBtn" size="small">
+              Delete
+              <ion-icon name="trash" style="font-size: 25px;" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col *ngIf="myPlatform == 'desktop'">
+        <ion-row style="margin:0px ;padding:0;float:right">
+          <ion-col class="ion-activatable download-buttons" (click)="createPdf()">
+            <div class="pdf-wrapper"></div>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-col>
+          <ion-col class="ion-activatable download-buttons" (click)="exportToExcel()">
+            <div class="excel-wrapper"></div>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+        </ion-row>
+      
+
+
+    <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" [theme]="'material'" [width]="'99%'" [autoheight]="true"
+      [source]="dataAdapter" [columns]="columns" [sortable]="true" [showfilterrow]="true" [filterable]="true"
+      [columns]="columns" [columnsresize]="true" [enabletooltips]="true" [pageable]="true" [selectionmode]="'singlerow'"
+      style="font-size: 10px !important;text-align: center;">
+    </jqxGrid>
+  </ion-col>
+</ion-row>

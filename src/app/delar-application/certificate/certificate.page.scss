@@ -1,0 +1,103 @@
+.buttonWidth {
+    width: 33%;
+    height: 30px;
+    --ion-color-primary: #7c68f8;
+  }
+  .paddingBottom10px {
+    padding-bottom: 4px;
+  }
+  .addbutton
+{
+  margin: 0px 14px 0px 0px;
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+    --color-hover: white;
+}
+  .padding25px {
+    padding: 20px;
+  }
+  .imeibox {
+    background-color: #e8e8e8;
+    color: black;
+    width: 100%;
+  }
+  .savebutton {
+    width: 15%;
+    height: 30px;
+    --ion-color-primary: #7c68f8;
+  }
+  .pdf-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 23px;
+  height: 24px;
+  float: right;
+}
+.addbutton
+{
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+    --color-hover: white;
+}
+
+#edit-icon {
+  color:green;
+  font-size: 20px;
+}
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  height: 30px;
+  width: 30px;
+}
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -8px;
+  margin-left: -6px;
+  position: absolute;
+  z-index: 1;
+  font-size: 10px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+.download-buttons {
+  margin: 0px 3px;
+  padding: 4px 6px;
+  background: #915a9a;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.download-buttons:hover {
+  background-color: #efe2f1;
+}
+.toolbar{
+   display: flex;
+   justify-content:space-evenly;
+   align-items: center;
+  }
+.iconSize25px {
+  font-size: 25px;
+  }
+  

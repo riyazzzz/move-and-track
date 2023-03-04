@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>View Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col size="12">
+      <!-- <form [formGroup]="detailForm">
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="4" size-md="4">
+            <ion-label class="label-head">Service Provider:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Service Provider"
+              formControlName="serviceprovider"
+              class="input"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col size="12" size-lg="4" size-md="4">
+            <ion-label class="label-head">Invoice Number:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Invoice No"
+              formControlName="invoiceno"
+              class="input"
+            ></ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="4" size-md="4">
+            <ion-label class="label-head">Invoice Amount:</ion-label>
+            <ion-input
+              type="number"
+              placeholder="Invoice Amount"
+              formControlName="invoiceamount"
+              class="input"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row> -->
+
+      <jqxGrid
+        #myGrid
+        [theme]="'material'"
+        [width]="'99%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [pagesizeoptions]="page"
+        [enablebrowserselection]="true"
+        [columns]="columns"
+        [sortable]="true"
+        [filterable]="true"
+        [columns]="columns"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true"
+        style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

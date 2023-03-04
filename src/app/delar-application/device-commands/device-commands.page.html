@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-row>
+      <ion-icon class="iconSize25px" (click)="getBack()" name="arrow-back"></ion-icon>
+      <ion-title>Device command</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class='background' >
+  <!-- <div *ngIf = 'vehicleShow === "apm"'> -->
+    <form class='formPadding' [formGroup]="deviceCommand">
+      <ion-item class="appLightBackground labelSpacing">
+        <ion-label class='textcolor'>Company Name</ion-label>
+        <!-- <ion-select formControlName="companyId" (ionChange)="getVehiclelist(companyList)" placeHolder = 'Company list'>
+          <ion-select-option  *ngFor="let companyList of companyList" [value]="companyList.companyName">
+            {{companyList.companyName}}
+          </ion-select-option>
+        </ion-select> -->
+        <ionic-selectable  class="maxWidth border-item select"  formControlName="companyId"
+        [items]="companyList" itemTextField="companyName" [canSearch]="true" (onChange)="getVehiclelist($event)"
+                      [hasVirtualScroll]="true" 
+                      placeholder="Company List" closeButtonSlot="end">
+                      <ng-template ionicSelectableCloseButtonTemplate>
+                        <ion-icon name="close-circle"></ion-icon>
+                      </ng-template>
+                    </ionic-selectable>
+      </ion-item> 
+      
+      <ion-item  class="appLightBackground labelSpacing">
+        <ion-label class='textcolor'>Vehicle list</ion-label>
+        <ion-select  [disabled] = "!getCompany" (ionChange)="getCommands($event)" formControlName="vehicle" placeHolder =  'Vehicle list'>
+          <ion-select-option *ngFor="let companyVehicle of companyVehicle"  [value]="companyVehicle">
+            {{companyVehicle.imei}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item> 
+      
+      <ion-item  class="appLightBackground labelSpacing" >
+        <ion-label class='textcolor'>Select command</ion-label>
+        
+        <ion-select  [disabled] = "!getCompany" (ionChange)="validateCommand()"  formControlName="commandsType" placeHolder = 'select command' interface="popover">
+          <ion-select-option *ngFor="let commands of commands" [value]="commands.type">
+            {{commands.name}}
+          </ion-select-option>
+        </ion-select>
+    
+        <!-- <select  [disabled] = "!getCompany" (ionChange)="validateCommand()" class="input-item input-new" formControlName="commandsType" placeHolder = 'select command'>
+          <option value="">Vehicle type </option>
+          <option *ngFor="let Vehicle of vehicleTypes" [value]="Vehicle">{{Vehicle}}</option>
+        </select> -->
+      </ion-item> 
+
+      <ion-item class="appLightBackground labelSpacing" *ngIf='showTextbox'>
+        <ion-textarea   formControlName="commandBox" placeholder="Enter command here"></ion-textarea>
+      </ion-item>  
+    </form>
+    <!-- <ion-row>
+      <ion-col size='6' >
+        <ion-row>
+          <ion-col size='3'></ion-col>
+          <ion-col size='2'>
+            <button style="padding-left: 25%;" class=" dealerHeader button"  (click)="clearMsgBox()">
+              <ion-icon  name="calendar-clear" class="iconsize dealerHeader"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+      
+      <ion-col size='6' >
+        <ion-row>
+          <ion-col size='4'></ion-col>
+          <ion-col size='2'>
+            <button class=" appHeader button"(click)="sendCommand()">
+             <ion-icon name="arrow-forward"  class="iconsize dealerHeader" ></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row> -->
+  <!-- </div> -->
+  <ion-row >
+    <ion-col size="12" class="ion-text-center"> <ion-button id="btn"  (click)="sendCommand()"   [disabled]="!deviceCommand.valid"  
+     >Submit</ion-button></ion-col></ion-row>
+</ion-content>

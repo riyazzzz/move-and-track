@@ -1,0 +1,58 @@
+ion-badge {
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  border-radius: 20px;
+}
+
+.ion-padding,
+[padding] {
+  padding-left: unset;
+  padding-right: unset;
+  -webkit-padding-start: var(--ion-padding, 16px);
+  padding-inline-start: var(--ion-padding, 0px);
+  -webkit-padding-end: var(--ion-padding, -16px);
+  padding-inline-end: var(--ion-padding, 13px);
+}
+.botPad{
+  padding-bottom: 4px;
+}
+.noPad {
+  padding: 0;
+}
+
+.botNoPad {
+  padding-bottom: 0;
+}
+
+.iconSize {
+  width: 22px;
+  height: 22px;
+}
+
+.fontLabel {
+  font-size: 12px;
+}
+
+.search{
+  position: fixed;
+    z-index: 13;
+    width: 40%;
+    left: 30%;
+    padding: 4px;
+    background: white;
+    /* top: 0px; */
+    /* height: 7px; */
+    margin: 0px;
+}
+.input-item{
+  height: 36px;
+  background-color: lightgray;
+  --padding-start:10px;
+}
+.input-new{
+  width:100%;
+  border:none;
+  outline:none;
+}

@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dealer Vehicle Assign</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col>
+      <form [formGroup]="assignForm">
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="5" size-md="5">
+            <ion-label class="label-head">Company:</ion-label>
+            <ion-input
+              type="text"
+              formControlName="company"
+              class="input"
+              disabled
+              ><span style="padding: 10px; opacity: 0.5"
+                >{{tableData?.company}}</span
+              ></ion-input
+            >
+          </ion-col>
+
+          <ion-col
+            size="12"
+            size-lg="3"
+            size-md="3"
+            style="margin: 25px 0px 0px; text-align: end"
+          >
+            <ion-button
+              class="submitbtn"
+              (click)="saveModel()"
+              [disabled]="button"
+              >Assign</ion-button
+            >
+            <ion-button
+              class="submitbtn"
+              (click)="removeModel()"
+              [disabled]="button"
+              >Remove</ion-button
+            >
+            <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col style="margin: 10px 0px 0px">
+          <ion-label>
+            <span class="dealer-label">Total Selected Row :</span>
+            <span class="dealer-data">{{selectedRow?.length}}</span>
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+
+  <jqxGrid
+    #myGrid
+    [selectionmode]="'checkbox'"
+    (onRowclick)="myGridOnRowclick($event)"
+    (onRowselect)="myGridOnRowSelect($event)"
+    (onRowunselect)="myGridOnRowSelect($event)"
+    [theme]="'material'"
+    [width]="'99%'"
+    [autoheight]="true"
+    [source]="dataAdapter"
+    [columns]="columns"
+    [sortable]="true"
+    [filterable]="true"
+    [columnsresize]="true"
+    [enablebrowserselection]="true"
+    [enabletooltips]="true"
+    [pageable]="true"
+    [showfilterrow]="true"
+    style="
+      font-size: 16px;
+      text-align: center !important;
+      margin: auto;
+      cursor: pointer;
+    "
+  >
+  </jqxGrid>
+</ion-content>

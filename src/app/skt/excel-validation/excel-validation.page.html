@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar class="header_border" style="    text-align: center;">
+    <ion-title>Validation Of Excel Sheet</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  
+
+<ion-row >
+<ion-col size="12"  size-xxl="10"  size-xl="10.5" class="ion-text-center">
+  <input type="file" (change)="onFileChange($event)" /></ion-col>
+</ion-row>
+    
+<ion-row >
+<ion-col size="12" size-xxl="10"  size-xl="11" class="ion-text-center" >
+  <ion-button (click)="sendToServer()" class="btn" [disabled]="valid">Submit </ion-button></ion-col>
+</ion-row>
+    
+  </ion-content>

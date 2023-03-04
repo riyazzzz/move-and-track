@@ -1,0 +1,170 @@
+<ion-row>
+  <ion-col *ngIf="myPlatform != 'desktop'" size=12 style="padding: 0px;">
+    <ion-row>
+      <ion-col size=11>
+        <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+        </ion-searchbar>
+      </ion-col>
+      <ion-col size="1" style="text-align: -webkit-right;">
+        <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row style="padding:0px;margin: 0px 0px 0px 0px;">
+      <ion-card *ngFor="let items of detail | searchmanage: searchInput : count" style="padding:0px;margin: 10px 3px 0px 2px;width: -webkit-fill-available;" class="maintanence-card ion-activatable"
+        [ngClass]="items.state == 'Close' ? 'status_docorclose' :'status_docoropen'" (click)="editMode(items)">
+    <!-- <ion-virtual-scroll [items]="detail | searchmanage: searchInput : count"  [trackBy]="identify" >
+      <ion-card *virtualItem="let items;" class="maintanence-card ion-activatable"
+        [ngClass]="items.state == 'Close' ? 'status_docorclose' :'status_docoropen'" (click)="editMode(items)"> -->
+        <ion-row>
+            <ion-col size="9">
+              <ion-row>
+                <ion-col size="12" id="plateNo">
+                  {{items.plateNo}}
+                </ion-col>
+              </ion-row>
+
+              <ion-row style="font-size: 11px;">
+                <ion-col size="4" class="status-row">
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-row>
+                        <ion-col size="12">
+                          <ion-icon name="stats"></ion-icon>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12">
+                          Status
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="common-status">
+                          {{items.state}}
+                        </ion-col>
+                      </ion-row>
+
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size="4" class="status-row">
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-row>
+                        <ion-col size="12">
+                          <ion-icon name="calendar"></ion-icon>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12">
+                          Valid till
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="common-status">
+                          {{items.toDate}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+                <ion-col size="4" class="status-row" style="border-right: 0;">
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-row>
+                        <ion-col size="12">
+                          <ion-icon name="mail"></ion-icon>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12">
+                          Email
+                        </ion-col>
+                      </ion-row>
+                      <ion-row>
+                        <ion-col size="12" class="common-status">
+                          {{items.emailId}}
+                        </ion-col>
+                      </ion-row>
+
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="3" class="alert-col">
+              <ion-row>
+                <ion-col size="12">
+                  <ion-icon name="warning" style="font-size: 40px;border-radius: 10px;color:white"></ion-icon>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" style="font-weight: 500;"> {{items.type}}</ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  Alert type
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-ripple-effect></ion-ripple-effect>
+        </ion-card>
+    <!-- </ion-virtual-scroll> -->
+      </ion-row>
+    <ion-fab class="botmRow" (click)="openModel()">
+      <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+        <ion-icon name="add" class="add-icon"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </ion-col>
+
+
+  <ion-col *ngIf="myPlatform == 'desktop'" size=12 style="padding: 0px;">
+    <ion-row style="border: 1px solid #dad9d9; width: 99.2%">
+      <ion-col style="padding: 0;">
+        <ion-row style="float:left; margin: 0">
+          <ion-col size="4" class="toolbar-buttons">
+            <ion-button (click)="openModel()" class="submitBtn" shape="round" size="small">
+              Add
+              <ion-icon name="add-circle" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="toolbar-buttons">
+            <ion-button shape="round" (click)="editMode()" class="submitBtn" size="small">
+              Edit
+              <ion-icon name="create" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4" class="toolbar-buttons">
+            <ion-button *ngIf="isDeleteShow" shape="round" (click)="deleteMode()" class="submitBtn" size="small">
+              Delete
+              <ion-icon name="trash" style="font-size: 25px;" class="toolbar-icon"></ion-icon>
+            </ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-col>
+      <!-----NewEffects maintanence -table------>
+      <ion-col *ngIf="myPlatform == 'desktop'">
+        <ion-row style="margin:0px ;padding:0;float:right">
+          <ion-col class="ion-activatable download-buttons" (click)="createPdf()">
+            <div class="pdf-wrapper"></div>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-col>
+          <ion-col class="ion-activatable download-buttons" (click)="exportToExcel()">
+            <div class="excel-wrapper"></div>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" [theme]="'material'" [width]="'99%'"
+      [showfilterrow]="true" [autoheight]="true" [source]="dataAdapter" [columns]="columns" [sortable]="true"
+      [filterable]="true" [columns]="columns" [columnsresize]="true" [enabletooltips]="true" [pageable]="true"
+      [selectionmode]="'singlerow'" style="font-size: 10px !important">
+    </jqxGrid>
+
+  </ion-col>
+</ion-row>

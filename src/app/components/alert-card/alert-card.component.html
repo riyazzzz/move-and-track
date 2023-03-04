@@ -1,0 +1,236 @@
+<ion-card-content  class="ion-text-center" style="padding: 4px 10px 4px;font-family:sans-serif;">
+  <ion-row>
+    <ion-col size="2">
+      <ion-icon name="car" style="background-color: blue;color:white;float: right;zoom:1.5;"></ion-icon>
+    </ion-col>
+    <ion-col size="4" class="ion-text-start pNumDname">
+      {{data.plateNo}}
+    </ion-col>
+    <!-- <ion-col size="2" *ngIf="data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2' && data.alertTypes != 'TEMPRATURESENSOR3' && data.alertTypes != 'TEMPRATURESENSOR4'">
+      <ion-icon name="person" style="background-color: rgb(255, 0, 34);color:white;float: right;zoom:1.5;">
+      </ion-icon>
+    </ion-col> -->
+      <!-- <ion-col size="2" *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+        <ion-icon name="thermometer " style="background-color: rgb(255, 0, 34);color:white;float: right;zoom:1.5;">
+        </ion-icon>
+    </ion-col>
+    <ion-col *ngIf="data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2' && data.alertTypes != 'TEMPRATURESENSOR3' && data.alertTypes != 'TEMPRATURESENSOR4'" size="4" class="ion-text-start pNumDname">
+      {{data.operatorName}}
+    </ion-col> -->
+    <ion-col style="align-self: center;
+    font-size: 10px;" *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'" size=4 class="ion-text-start pNumDname">
+        {{data.alertTypes  }}
+    </ion-col>
+  </ion-row>
+
+  <div class="display-container" [ngClass]=" getBgColor(data) ">
+    <div class="details">
+      <ion-row>
+        <ion-col size="12">
+          <ion-row>
+            <ion-col size="6" class="cardTitle">Date</ion-col>
+            <ion-col size="6" class="cardTitle">Time</ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="6" class="detailsText">{{data.timeStamp.split(" ")[0]}}</ion-col>
+            <ion-col size="6" class="detailsText">{{data.timeStamp.split(" ")[1].split(".")[0]}}</ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      
+    </div>
+    <div class="stop">
+      <p *ngIf="data.alertTypes== 'ENGINESTATUS'"  style="color: white;font-size:smaller;font-weight: bold;line-height: 14px;">
+        {{data.additionalInfo}} 
+      </p>
+      <p *ngIf="data.alertTypes == 'PreventiveMaintenance'" style="color: white;font-size:smaller;font-weight: bold;line-height: 14px;">
+          Preventive Maintenance
+        </p>
+      <p *ngIf="data.alertTypes != 'ENGINESTATUS' && data.alertTypes != 'PreventiveMaintenance' && (data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2' && data.alertTypes != 'TEMPRATURESENSOR3' && data.alertTypes != 'TEMPRATURESENSOR4')" style="color: white;font-size:smaller;font-weight: bold;line-height: 14px;">
+        {{data.alertTypes}}
+      </p>
+      <p *ngIf="data.alertTypes== 'OVERSPEED'"  style="color:white;font-size: 11px;font-weight:bold;line-height: 12px;">{{data.additionalInfo.split("-")[0]}}</p>
+      <p *ngIf="data.alertTypes== 'OVERSPEED'" style="color:white;font-size:10px;opacity:0.9;line-height: 12px; margin-bottom: 0;">
+        {{data.additionalInfo.split("-")[1]}}</p>
+        <p *ngIf="data.alertTypes == 'STOP' || data.alertTypes == 'IDLE' && (data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2'&& data.alertTypes != 'TEMPRATURESENSOR3'&& data.alertTypes != 'TEMPRATURESENSOR4')" style="color:white;font-size:10px;opacity:0.9;line-height: 12px; margin-bottom: 0;">
+          {{data.additionalInfo}}
+        </p>
+        <p *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'" style="color: white;font-size:smaller;font-weight: bold;line-height: 14px;">
+            {{data.additionalInfo.split("-")[0]}}
+        </p>
+        <p *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'" style="color: white;font-size:smaller;font-weight: bold;line-height: 14px;">
+            {{data.additionalInfo.split("-")[1]}}
+        </p>
+        <p *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'"  style="color:white;font-size:10px;opacity:0.9;line-height: 12px; margin-bottom: 0;">
+            {{data.additionalInfo.split("-")[2]}}-{{data.additionalInfo.split("-")[3]}}
+          </p>
+    </div>
+  </div>
+  <ion-row *ngIf="data.alertTypes == 'ONLEAVE' ||data.alertTypes == 'ONENTER'">
+         <ion-row class="address">
+        <ion-col size=12 style="padding-top: 2px; padding-bottom: 2px;">
+            <ion-row *ngIf="data.zoneName">
+              <span style="font-size: 10px;color: black;font-weight: 600;">zone:</span><span style="font-size: 11px;color:#a7a7a7;font-weight: 500;">{{data.zoneName}}</span>
+            </ion-row>
+        </ion-col>
+    </ion-row>
+</ion-row>
+</ion-card-content>
+
+<!-- <ion-card-content class="alert-card ion-activatable" [ngClass]=" getBgColor(data) ">
+<ion-row>
+  <ion-col  size="12" class="alertType">
+    <ion-row
+      *ngIf="data.alertTypes != 'ENGINESTATUS' && data.alertTypes != 'PreventiveMaintenance' && (data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2' && data.alertTypes != 'TEMPRATURESENSOR3' && data.alertTypes != 'TEMPRATURESENSOR4')">
+      <ion-col size="4">
+        {{data.alertTypes}}
+      </ion-col>
+      <ion-col *ngIf="data.additionalInfo !== '---'" size="8" class="data">
+        <ion-row *ngIf="data.alertTypes== 'ENGINESTATUS'">
+          <ion-col class="padding">
+            {{data.additionalInfo}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="data.alertTypes== 'OVERSPEED'">
+          <ion-col class="padding">
+            {{data.additionalInfo.split("-")[0]}}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="data.alertTypes== 'OVERSPEED'">
+          <ion-col class="padding">
+            {{data.additionalInfo.split("-")[1]}}
+          </ion-col>
+        </ion-row>
+        <ion-row
+          *ngIf="data.alertTypes == 'STOP' || data.alertTypes == 'IDLE' && (data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2'&& data.alertTypes != 'TEMPRATURESENSOR3'&& data.alertTypes != 'TEMPRATURESENSOR4')">
+          <ion-col class="padding">
+            {{data.additionalInfo}}
+          </ion-col>
+        </ion-row>
+        <ion-row
+          *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+          <ion-col class="padding">
+            {{data.additionalInfo.split("-")[0]}}
+          </ion-col>
+        </ion-row>
+        <ion-row
+          *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+          <ion-col class="padding">{{data.additionalInfo.split("-")[1]}}</ion-col>
+        </ion-row>
+        <ion-row
+          *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+          <ion-col class="padding">{{data.additionalInfo.split("-")[2]}}-{{data.additionalInfo.split("-")[3]}}</ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="data.alertTypes == 'PreventiveMaintenance'">
+      <ion-col >
+        Preventive Maintenance
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-card class="inner-card ion-activatable">
+  <ion-card-content>
+    <ion-row>
+      <ion-col>
+        <ion-row>
+          <ion-col size="12" class="data" style="text-align: center;font-size: 14px;
+            font-weight: 700;border-bottom: 1px solid #f3f3f3;color:black;">
+            {{data.plateNo | uppercase }}
+          </ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 6px;
+          margin-left: 19px;">
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">
+                Operator
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12" class="data">
+                {{data.operatorName}}
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">
+                Date
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12" class="data">
+                {{data.timeStamp|date}}
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="4">
+            <ion-row>
+              <ion-col size="12">
+                Time
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col size="12" class="data">
+                {{data.timeStamp|date:'shortTime'}}
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <!-- <ion-row style="margin-top: 5px;" *ngIf="data.additionalInfo !== '---'">
+            <ion-col size="12">
+              <ion-row>
+                <ion-col size="12">
+                  Description
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12" class="data">
+                  <ion-row *ngIf="data.alertTypes== 'ENGINESTATUS'">
+                    <ion-col>
+                      {{data.additionalInfo}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="data.alertTypes== 'OVERSPEED'">
+                    <ion-col>
+                      {{data.additionalInfo.split("-")[0]}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf="data.alertTypes== 'OVERSPEED'">
+                    <ion-col>
+                      {{data.additionalInfo.split("-")[1]}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="data.alertTypes == 'STOP' || data.alertTypes == 'IDLE' && (data.alertTypes != 'TEMPRATURESENSOR1'&& data.alertTypes != 'TEMPRATURESENSOR2'&& data.alertTypes != 'TEMPRATURESENSOR3'&& data.alertTypes != 'TEMPRATURESENSOR4')">
+                    <ion-col>
+                      {{data.additionalInfo}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+                    <ion-col>
+                      {{data.additionalInfo.split("-")[0]}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+                    <ion-col>{{data.additionalInfo.split("-")[1]}}</ion-col>
+                  </ion-row>
+                  <ion-row
+                    *ngIf="data.alertTypes == 'TEMPRATURESENSOR1'|| data.alertTypes == 'TEMPRATURESENSOR2' || data.alertTypes == 'TEMPRATURESENSOR3' || data.alertTypes == 'TEMPRATURESENSOR4'">
+                    <ion-col>{{data.additionalInfo.split("-")[2]}}-{{data.additionalInfo.split("-")[3]}}</ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row> --
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+  <ion-ripple-effect></ion-ripple-effect>
+</ion-card>
+<ion-ripple-effect></ion-ripple-effect>
+</ion-card-content> -->

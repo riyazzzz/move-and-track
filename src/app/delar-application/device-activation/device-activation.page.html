@@ -1,0 +1,212 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Device Activation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="wrapper-container">
+        <form [formGroup]="device">
+          <ion-progress-bar [value]="count"></ion-progress-bar>
+          <ion-row>
+            <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+              <label class="heading">General details</label>
+            </ion-col>
+          </ion-row>
+          <div>
+            <ion-row>
+              <ion-col
+                size="12"
+                size-sm="12"
+                size-md="6"
+                size-lg="6"
+                class="form_col"
+              >
+                <ion-input
+                  type="text"
+                  (ionChange)="progressbar()"
+                  placeholder="Name-in-rc-book"
+                  formControlName="customerName"
+                ></ion-input>
+              </ion-col>
+              <ion-col
+                size="12"
+                size-sm="12"
+                size-md="6"
+                size-lg="6"
+                class="form_col"
+              >
+                <ion-input
+                  type="text"
+                  placeholder="Address-in-rc_book"
+                  (ionChange)="progressbar()"
+                  formControlName="address"
+                ></ion-input>
+              </ion-col>
+              <ion-col
+                size="12"
+                size-sm="12"
+                size-md="6"
+                size-lg="6"
+                class="form_col"
+              >
+                <ion-input
+                  type="text"
+                  (ionChange)="progressbar()"
+                  placeholder="Mobile number"
+                  formControlName="mobile"
+                ></ion-input>
+              </ion-col>
+              <ion-col
+                size="12"
+                size-sm="12"
+                size-md="6"
+                size-lg="6"
+                class="form_col"
+              >
+                <ion-input
+                  type="text"
+                  (ionChange)="progressbar()"
+                  placeholder="Email id"
+                  formControlName="mail"
+                >
+                </ion-input>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-row>
+            <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+              <label class="heading" (click)="assestDetails()"
+                >Assets details</label
+              >
+            </ion-col>
+          </ion-row>
+          <div>
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-input
+                  type="text"
+                  placeholder="Imei number"
+                  (ionChange)="progressbar()"
+                  formControlName="imeiNO"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-input
+                  type="text"
+                  placeholder="Engine number"
+                  (ionChange)="progressbar()"
+                  formControlName="EngineNo"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-input
+                  type="text"
+                  placeholder="Chassis number"
+                  (ionChange)="progressbar()"
+                  formControlName="ChassisNo"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-input
+                  type="text"
+                  placeholder="Vehicle number"
+                  (ionChange)="progressbar()"
+                  formControlName="vehNo"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-row>
+            <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+              <label class="heading">Documentation</label>
+            </ion-col>
+          </ion-row>
+          <div>
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-item>
+                  <ion-label class="lab">Select</ion-label>
+                  <ion-select
+                    ok-text="okay"
+                    cancel-text="cancel"
+                    formControlName="proof"
+                  >
+                    <ion-select-option *ngFor="let list of data"
+                      >{{list}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                <ion-input
+                  type="text"
+                  (ionChange)="progressbar()"
+                  placeholder="Enter your proof number"
+                  formControlName="proofNumber"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </div>
+          <ion-row>
+            <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+              <label class="heading">Add document</label>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin: 6px">
+            <input
+              type="file"
+              class="documents"
+              ng2FileSelect
+              [uploader]="uploader"
+              multiple
+            />
+            <div class="down">
+              <div
+                *ngFor="let item of uploader.queue; let id = index"
+                style="margin: 10px"
+              >
+                <ion-icon
+                  name="trash"
+                  class="deleteIcon"
+                  (click)="delete(id)"
+                  (click)="deletes()"
+                ></ion-icon>
+                {{ item?.file?.name }}
+              </div>
+              <ion-row
+                col-3
+                *ngFor="let photo of photos; let id = index"
+                class="first"
+              >
+                <ion-icon
+                  name="trash"
+                  class="deleteIcon"
+                  (click)="deletePhoto(id)"
+                  (click)="deletes()"
+                ></ion-icon>
+                <img [src]="photo" *ngIf="photo" />
+              </ion-row>
+            </div>
+          </ion-row>
+        </form>
+        <ion-row style="padding: 0px">
+          <ion-col size="12" class="ion-text-center">
+            <ion-button
+              id="btn"
+              (click)="submit()"
+              [disabled]="!device.valid"
+              autocapitalize="characters"
+              >Submit</ion-button
+            ></ion-col
+          ></ion-row
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

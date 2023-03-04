@@ -1,0 +1,64 @@
+<ion-header class='header'>
+  <ion-toolbar class="parentAppcolor">
+    <ion-row style="align-items: center;">
+      <ion-icon (click)="locationBack()" class="icon-size" name="arrow-back"></ion-icon>
+      <ion-label> Attendence Report </ion-label>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-row style="margin-top: 8px;">
+    <ion-col size="7.8" style="margin: auto;">
+      <ion-input type="month" class="date-input" [(ngModel)]="currentDate"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <form [formGroup]='dateForm'>
+    <ion-row>
+      <ion-col style="text-align: center;margin: 0;
+      padding: 0;">
+        <ion-button (click)="submit()" style="padding: 0px 10px;"class="parentAppcolor" shape="round" size="small">SUBMIT</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin-top: 10px;display:none">
+      <ion-col size="6">
+        <label class="top-label parentAppBackcolor">Present From</label>
+        <ion-input class="date-input" name='presentFrom' formControlName='presentFrom'></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <label class="top-label parentAppBackcolor">Absent From</label>
+        <ion-input class="date-input" name='dateFrom' formControlName='dateFrom'></ion-input>
+      </ion-col>
+      <ion-col size="6">
+        <label class="top-label parentAppBackcolor">Holiday From</label>
+        <ion-input class="date-input" name='holidayFrom' formControlName='holidayFrom'></ion-input>
+      </ion-col>
+    </ion-row>
+ </form>
+
+  <div class='flex-container flex-center'>
+    <div id='calendar-container' class='flex-container flex-column'>
+      <div style="height: 10px;"></div>
+      <div class=' flex-container flex-center-horz '>
+        <div class='fa fa-chevron-left ' (click)='previousMonth()'></div>
+         <div class='width-5'></div>
+          <div *ngIf="!next"> {{currentDate | date:'longDate'}}</div>
+           <div *ngIf="next">{{date.format('YYYY ')}}{{date.format('MMMM ')}} </div>
+          <div class='width-5'></div>
+        <div class='fa fa-chevron-right ' (click)='nextMonth()'></div>
+      </div>
+      <div class='height-20px '></div>
+      <div class='flex-container '>
+        <div class='calendar-day flex-container flex-center ' *ngFor="let items of days">{{items}}</div>
+      </div>
+      <div class='flex-container flex-wrap '>
+        <div *ngFor="let day of daysArr">
+          <div class='calendar-days flex-container flex-center '
+            [ngClass]="{'inactive ': !day,  'present':isPresent(day),'absent': isAbsent(day) ,'holiday':isHoliday(day)}">
+            {{day?.date()}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

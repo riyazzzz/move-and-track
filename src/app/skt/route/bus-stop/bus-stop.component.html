@@ -1,0 +1,73 @@
+<!------Bus-stop-details Start-------->
+
+<ion-header style="zoom: 75%;">
+  <ion-toolbar>
+        <ion-row  id="toolbar-header">
+          <ion-col size="1"><ion-icon name="arrow-back" style="border-radius: 50%;
+            float: right;color: gray;font-size: 38px;margin: 0px auto; background: white;
+            background-color: white;line-height: 32px;
+            margin-top: 11px;" (click)="getBack()"></ion-icon></ion-col>
+          <ion-col size="10">
+            <ion-title style="text-align: center;">
+            <h1 style="color: #3880ff;font-size: 30px;font-weight: 600;margin: 10px auto ;" >
+              Bus Stop Details</h1> 
+            </ion-title>
+          </ion-col>
+        </ion-row>    
+  </ion-toolbar>
+  
+</ion-header>
+  <ion-content>
+    <div class="bus-container">
+        <ion-row>
+           <ion-col size="12" size-sm="12" size-md="12" size-lg="7.9"  id="set-map-col">
+            <ion-row>
+              <ion-col size="12"><ion-title  class="popup-head">Stop History</ion-title></ion-col>
+             </ion-row>
+             <ion-col *ngIf='myPlatform =="desktop"' size='3' style="position: absolute;
+             z-index: 12; top:7%;right:1%;">
+               <ion-searchbar *ngIf='search' showCancelButton="never" [(ngModel)]="plateNo"  (ionChange) ="searchVehicle(plateNo)" placeholder="Search"></ion-searchbar>
+             </ion-col>
+             <div class="map bus-stop" style="height: 70vh !important;" #mapElement></div>
+             
+           
+
+         
+            </ion-col>
+           <ion-col size="12" size-sm="12" size-md="12" size-lg="4" style="background: #eef7f9;">
+             <ion-row>
+              <ion-col>
+                <ion-title  class="popup-head">Stop</ion-title>
+              </ion-col>
+             </ion-row>
+             <ion-row style="border: 1px solid #dedede;" *ngIf="myPlatform =='desktop'" >
+              
+              <ion-col>
+                <ion-button color='primary' size="small" class="table-btn" (click)='add()'>Add</ion-button>
+                 <ion-button color='primary' size="small" class="table-btn" (click)='editMode()'>Edit</ion-button>
+                <ion-button color='primary' size="small" class="table-btn"(click)='deleteMode()' >Delete</ion-button>
+              </ion-col>
+             </ion-row> 
+            <div class="grid_Container">
+              <jqxGrid
+              (onRowselect)="myGridOnRowSelect($event)"
+              [pageable]="true"
+              [selectionmode]="'singlerow'"
+              [filterable]="true"
+              [showfilterrow]="true"
+              [sortable]="true"
+              [width]="'100%'"
+              [source]="dataAdapter" 
+              [columns]="columns" 
+              [autoheight]="true"
+              [theme]="'material'"
+              #myGrid 
+              style="font-size:16px;text-align: center !important;">
+              </jqxGrid>
+            </div>
+           </ion-col>
+       </ion-row>
+    </div>
+  </ion-content>
+ 
+<!----------Bus-stop-details End------------>

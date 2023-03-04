@@ -1,0 +1,21 @@
+input{
+  margin-top:11px;
+  margin-left: 18%;
+}
+#myGrid{
+  border: 1px solid;
+} 
+#submitbtn{
+  --background:#6252ee !important;
+}
+.cardCenter{
+  width: 70vw;
+  display: grid;
+  height: 20%;
+  place-content: center;
+}
+.uploaderRow{
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+}

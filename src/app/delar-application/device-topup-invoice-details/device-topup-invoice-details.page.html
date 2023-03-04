@@ -1,0 +1,244 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-row>
+      <ion-title *ngIf="myPlatform != 'desktop'"
+        >Topup Invoice Details</ion-title
+      >
+      <ion-title *ngIf="myPlatform == 'desktop'"
+        >Device Invoice Details</ion-title
+      >
+      <ion-col
+        *ngIf="myPlatform == 'desktop'"
+        size="8"
+        style="text-align: right"
+      >
+        <ion-button class="submitBtn" size="small" (click)="newfunc()"
+          >Export</ion-button
+        >
+        <ion-row style="margin: 0px; padding: 0; float: right">
+          <ion-col style="margin-top: 0" class="tooltip">
+            <ion-fab-button
+              size="small"
+              class="fab-btn"
+              href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DeviceTopupInvoice.xlsx"
+              download="sample.xlsx"
+            >
+              <div class="excel-wrapper"></div>
+            </ion-fab-button>
+            <span class="tooltiptext">Excel-Format</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="myPlatform != 'desktop'" style="text-align: right">
+        <ion-row style="margin: 0px; padding: 0; float: right">
+          <ion-col style="margin-top: 0" class="tooltip">
+            <ion-fab-button
+              size="small"
+              class="fab-btn"
+              href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DeviceTopupInvoice.xlsx"
+              download="sample.xlsx"
+            >
+              <div class="excel-wrapper"></div>
+            </ion-fab-button>
+            <span class="tooltiptext">Excel-Format</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-purchase-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Esim Purchase Invoice</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-sales-invoice-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Sales Invoice</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/device-renewal-invoice-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Renewal Invoice</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-topup-invoice-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Topup Invoice</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-extend-oneyear-invoice-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Extend 1 Yr Invoice</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-certificate-invoice-details"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Certificate Invoice</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="topupinvoiceForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Dealer:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="dealerid"
+                placeholder="Select the Dealer"
+                [items]="Dealer"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Invoice Number:</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Enter the Invoice No"
+                formControlName="invoiceno"
+                class="input"
+              >
+              </ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Invoice Date:</ion-label>
+              <ion-input
+                type="date"
+                formControlName="invoicedate"
+                [max]="maxDate"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Invoice Amount:</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter the Invoice Amount"
+                formControlName="invoiceamount"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">No of Units:</ion-label>
+              <ion-input
+                type="number"
+                placeholder="Enter the Units"
+                formControlName="noofunits"
+                class="input"
+              >
+              </ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">File Upload:</ion-label>
+              <input
+                type="file"
+                (change)="onFileChange($event)"
+                formControlName="fileupload"
+                class="documents"
+              />
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Invoice Document:</ion-label>
+              <input
+                type="file"
+                class="documents"
+                formControlName="invoicedocument"
+                ng2FileSelect
+                [uploader]="uploader"
+              />
+            </ion-col>
+
+            <ion-col style="margin: 27px 0px 0px; text-align: end">
+              <ion-button
+                *ngIf="!hideSerialNo"
+                class="submitbtn"
+                (click)="add()"
+                [disabled]="!topupinvoiceForm.valid || button"
+                >Add</ion-button
+              >
+              <ion-button
+                *ngIf="hideSerialNo"
+                class="submitbtn"
+                (click)="edit()"
+                [disabled]="!topupinvoiceForm.valid || button"
+                >Edit</ion-button
+              >
+              <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <jqxGrid
+      #myGrid
+      [theme]="'material'"
+      (onRowclick)="myGridOnRowSelect($event)"
+      [width]="'99%'"
+      [autoheight]="true"
+      [source]="dataAdapter"
+      [enablebrowserselection]="true"
+      [sortable]="true"
+      [filterable]="true"
+      [columns]="columns"
+      [columnsresize]="true"
+      [enabletooltips]="true"
+      [pageable]="true"
+      [showfilterrow]="true"
+      style="
+        font-size: 16px;
+        text-align: center !important;
+        margin: auto;
+        cursor: pointer;
+      "
+    >
+    </jqxGrid>
+  </ion-grid>
+</ion-content>

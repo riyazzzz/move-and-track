@@ -1,0 +1,92 @@
+<!-- <ion-header>
+  <ion-toolbar>
+   
+      <ion-row>
+        <ion-col size-sm="2" size-md="2" size-lg="2">
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+         <ion-col size-sm="8" size-md="8" size-lg="8" class="subscription-title">Subscription</ion-col>
+        <ion-col size-sm="2" size-md="2"size-lg="2" style="padding:0;margin: auto;">
+          <ion-avatar title="PDF" class="image-size" (click)="createPdf()">
+              <ion-img src="assets/company/pdf.svg" class="download-wrapper">
+              </ion-img>
+          </ion-avatar>
+          <ion-avatar title="Excel" class="image-size" (click)="exportToExcel()">
+            <ion-img src="assets/company/excelNew.svg" class="download-wrapper">
+            </ion-img>
+        </ion-avatar>
+         </ion-col>
+    </ion-row> 
+</ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-menu-button slot="start"></ion-menu-button>
+
+    <ion-title>Subscription</ion-title>
+  </ion-toolbar>
+  <ion-row
+    style="margin: 0px; padding: 0; float: right"
+    *ngIf="myPlatform == 'desktop'"
+  >
+    <ion-col style="margin: 0px; padding: 0">
+      <div class="pdf-wrapper" (click)="createPdf()"></div>
+    </ion-col>
+    <ion-col style="margin: 0px; padding: 0">
+      <div class="excel-wrapper" (click)="exportToExcel()"></div>
+    </ion-col>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <div class="padding25px">
+    <ion-row>
+      <ion-col size="6">
+        <ion-row class="reportInfo paddingBottom10px"> From Date </ion-row>
+        <ion-row class="paddingBottom10px">
+          <ion-datetime
+            class="datetime"
+            [(ngModel)]="subscription.fromDate"
+            displayFormat="D MMM YYYY"
+            placeholder="From date"
+          ></ion-datetime>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6">
+        <ion-row class="reportInfo paddingBottom10px"> To Date </ion-row>
+        <ion-row class="paddingBottom10px">
+          <ion-datetime
+            class="datetime"
+            [(ngModel)]="subscription.toDate"
+            displayFormat="D MMM YYYY"
+            placeholder="To date"
+          ></ion-datetime>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row style="margin: 3px">
+      <ion-button class="buttonWidth" (click)="submit()">Submit</ion-button>
+    </ion-row>
+    <ion-radio-group
+      (ionChange)="subscriptionData($event)"
+      allow-empty-selection="false"
+      name="radio-group"
+    >
+      <ion-row>
+        <ion-col *ngFor="let items of subscriptionDays">
+          <div class="radioGroup">
+            <ion-radio id="{{items.days}}" value="{{items.days}}"></ion-radio>
+            <ion-label class="lable"> {{items.days}} Days</ion-label>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-radio-group>
+  </div>
+
+  <ion-row *ngIf="reportData" style="width: 100%; height: 100%">
+    <app-subscription-report
+      style="width: 100%"
+      [reportData]="reportData"
+    ></app-subscription-report>
+  </ion-row>
+</ion-content>

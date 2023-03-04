@@ -1,0 +1,72 @@
+<!-- <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" [theme]="'material'" [width]="'99%'"
+[showfilterrow]="true" [autoheight]="true" [source]="dataAdapter" [columns]="columns" [sortable]="true"
+[filterable]="true" [columns]="columns" [columnsresize]="true" [enabletooltips]="true" [pageable]="true"
+[selectionmode]="'singlerow'" style="font-size: 10px !important">
+</jqxGrid> -->
+
+<ion-header>
+    <ion-toolbar>
+      <ion-title>Renewal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <ion-row>
+    <!-- <ion-col col-size-lg="6" offset-lg=6><ion-input type="number" placeholder='Enter the Imei'> </ion-input></ion-col> -->
+    <ion-col size-md="6" offset-md="3"><ion-input type="number" placeholder='Enter the ICCID'> </ion-input></ion-col>
+  </ion-row>
+  <ion-col col-size="12" class='ion-text-left'>Device Details</ion-col>
+  <ion-row>
+  
+    <ion-col size-md="4" offset-md='1'><ion-input type="number" placeholder='Imei No*'> </ion-input></ion-col>
+    <ion-col size-md="4" offset-md='1'><ion-input type="number" placeholder='Sr No*'> </ion-input></ion-col>
+    <!-- <ion-col col-size="4"><ion-input type="number" placeholder='Enter the Imei'> </ion-input></ion-col> -->
+  </ion-row>
+  <ion-row>  <ion-col col-size="12" class='ion-text-left'>Vehicle Details</ion-col></ion-row>
+  <ion-row>
+  
+    <ion-col col-size="4"><ion-input type="number" placeholder='Engine No*'> </ion-input></ion-col>
+    <ion-col col-size="4"><ion-input type="number" placeholder='Chassis No*'> </ion-input></ion-col>
+    <ion-col col-size="4"><ion-input type="number" placeholder='ReG No*'> </ion-input></ion-col>
+  </ion-row>
+  <ion-row>  <ion-col col-size="12" class='ion-text-left'>Customer Details</ion-col></ion-row>
+  <ion-row>
+  
+    <ion-col col-size="4"><ion-input type="number" placeholder='Name on Proof'> </ion-input></ion-col>
+    <ion-col col-size="4"><ion-input type="number" placeholder='RED Mobile Number'> </ion-input></ion-col>
+    <ion-col col-size="4"><ion-input type="number" placeholder='Address'> </ion-input></ion-col>
+  </ion-row>
+  <ion-row>  <ion-col col-size="12" class='ion-text-left'>Proof of Address</ion-col></ion-row>
+  <ion-row>
+    <ion-col size-md="4" offset-md=1>
+         <ion-select  placeholder='Name on Proof' style="background-color: #e8e8e8;">
+              <ion-select-option  *ngFor="let comp_name of proofName" [value]="comp_name">
+                {{comp_name}}
+              </ion-select-option>
+            </ion-select>
+</ion-col>
+    <ion-col size="4" offset-md=1><ion-input type="number" placeholder='Document No*'> </ion-input></ion-col>
+
+  </ion-row>
+  <ion-row>  <ion-col col-size="12" class='ion-text-left'>Proof of Identity</ion-col></ion-row>
+  <ion-row>
+    <ion-col size-md="4" offset-md=1>
+         <ion-select  placeholder='Name on Proof' style="background-color: #e8e8e8;">
+              <ion-select-option  *ngFor="let comp_name of proofName" [value]="comp_name">
+                {{comp_name}}
+              </ion-select-option>
+            </ion-select>
+</ion-col>
+    <ion-col size="4" offset-md=1><ion-input type="number" placeholder='Document No*'> </ion-input></ion-col>
+
+  </ion-row>
+  <ion-row><ion-col class='ion-text-center'><ion-button (click)="submit()">Submit</ion-button></ion-col></ion-row>
+  <ion-row>
+  <!-- <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)"  
+  [showfilterrow]="true" [autoheight]="true" [source]="dataAdapter" [columns]="columns" [sortable]="true"
+  [filterable]="true" [columns]="columns" [columnsresize]="true" [enabletooltips]="true" [pageable]="true"
+  [selectionmode]="'singlerow'" style="font-size: 10px !important"> -->
+  <!-- </jqxGrid> -->
+  </ion-row>
+  </ion-content>
+  

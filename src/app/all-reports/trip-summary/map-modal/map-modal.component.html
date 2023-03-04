@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-grid class="appHeaderTitle">
+    <ion-row class="appHeaderTitle">
+      <ion-col>
+        <ion-icon icon="md-arrow-back" (click)='getBack()'></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="appHeaderTitle">
+      <ion-col>
+        <ion-title style="padding:0px 12px;">{{plateNo}}</ion-title>
+      </ion-col>
+      <ion-col size="4" class="ion-text-center">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <div #mapElement class="map"></div>
+  
+<div class="modal1 dragUp"  >
+    <ion-row>
+        <ion-col class="addressStyling" size="8" offset="2">
+        </ion-col>
+    </ion-row>  
+    <ion-grid class="grid" padding>
+        <ion-row class="fromStyle">
+            <ion-col class="ion-align-items-center ion-justify-content-center fromHeader">
+                <ion-row class="ion-align-items-center ion-justify-content-center">
+                    From Address
+                </ion-row>
+            </ion-col>
+            <ion-col class="ion-align-items-center ion-justify-content-center">
+                <ion-row class="ion-align-items-center ion-justify-content-center value">
+                    {{fromAddress}}
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-grid class="grid" padding>
+    <ion-row class="toStyle">
+        <ion-col class="ion-align-items-center ion-justify-content-center toHeader">
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+                To Address
+            </ion-row>
+        </ion-col>
+        <ion-col class="ion-align-items-center ion-justify-content-center">
+            <ion-row class="ion-align-items-center ion-justify-content-center value">
+                {{toAddress}}
+            </ion-row>
+        </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>

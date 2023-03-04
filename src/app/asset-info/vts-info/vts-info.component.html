@@ -1,0 +1,139 @@
+<div *ngIf="myPlatform != 'desktop'">
+<div class="details" *ngIf="liveData">
+  <ion-grid >
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Plate no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.plateNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Imei no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.imeiNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Sim no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.simNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Make</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData?.manufacture}}</ion-col>
+    </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Next subscription</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.warrantyExpiry}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Model</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.model}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Date of purchase</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.dop}}</ion-col>
+      </ion-row>  
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Driver name</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.driverName}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Contact no</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.driverNo}}</ion-col>
+      </ion-row>
+      </ion-grid>
+ </div> 
+</div>
+
+<div *ngIf="myPlatform == 'desktop'"> 
+  <div class="details" *ngIf="liveData">
+    <ion-grid >
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Plate no</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData.plateNo}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Imei no</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData.imeiNo}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Sim no</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData.simNo}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Make</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.manufacture}}</ion-col>
+      </ion-row>
+        <ion-row class="rowMargin">
+          <ion-col class="keyColor" size="5">Next subscription</ion-col>
+          <ion-col class="valueColor" size="7">{{liveData?.warrantyExpiry}}</ion-col>
+        </ion-row>
+        <ion-row class="rowMargin">
+          <ion-col class="keyColor" size="5">Model</ion-col>
+          <ion-col class="valueColor" size="7">{{liveData?.model}}</ion-col>
+        </ion-row>
+        <ion-row class="rowMargin">
+          <ion-col class="keyColor" size="5">Date of purchase</ion-col>
+          <ion-col class="valueColor" size="7">{{liveData?.dop}}</ion-col>
+        </ion-row>  
+        <ion-row class="rowMargin">
+          <ion-col class="keyColor" size="5">Driver name</ion-col>
+          <ion-col class="valueColor" size="7">{{liveData?.driverName}}</ion-col>
+        </ion-row>
+        <ion-row class="rowMargin">
+          <ion-col class="keyColor" size="5">Contact no</ion-col>
+          <ion-col class="valueColor" size="7">{{liveData?.driverNo}}</ion-col>
+        </ion-row>
+      </ion-grid>
+   </div> 
+  </div>
+
+
+<!-- <div *ngIf="myPlatform == 'desktop' && entryPoint == 'VTS'">  -->
+<!-- <div class="details" *ngIf="liveData">
+  <ion-grid>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Plate no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.plateNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Imei no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.imeiNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Sim no</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData.simNo}}</ion-col>
+    </ion-row>
+    <ion-row class="rowMargin">
+      <ion-col class="keyColor" size="5">Make</ion-col>
+      <ion-col class="valueColor" size="7">{{liveData?.manufacture}}</ion-col>
+    </ion-row> -->
+
+    
+    <!-- <div *ngIf="!moreData" (click)="toggleData()"> -->
+      <!-- <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Next subscription</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.warrantyExpiry}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Model</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.model}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Date of purchase</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.dop}}</ion-col>
+      </ion-row>  
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Driver name</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.driverName}}</ion-col>
+      </ion-row>
+      <ion-row class="rowMargin">
+        <ion-col class="keyColor" size="5">Contact no</ion-col>
+        <ion-col class="valueColor" size="7">{{liveData?.driverNo}}</ion-col>
+      </ion-row> -->
+      <!-- <h6  class="detail"> Show Less </h6>
+      <ion-icon name="arrow-round-up" style="margin-left: 5px;" class="arrow"></ion-icon> -->
+    <!-- </div> -->
+    <!-- <div *ngIf="moreData" (click)="toggleData()" lines="none"  >
+      <h6  class="detail"> Show More </h6>
+      <ion-icon name="arrow-down"  class="arrow"></ion-icon>
+    </div> -->
+  <!-- </ion-grid> -->
+ <!-- </div> -->
+<!-- </div> -->

@@ -1,0 +1,16 @@
+.tabStyle{
+    --background: var(--ion-color-themeLight) !important;
+   // --color:var(--ion-color-light);
+   color: black;
+}
+.selectedTabStyle{
+    --background: var(--ion-color-themeLight) !important;
+    --color:  var(--ion-color-danger);
+}
+
+.displayDesktop{
+    display: none;
+}
+.displayOthers{
+    display: block;
+}

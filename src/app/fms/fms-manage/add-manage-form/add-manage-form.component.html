@@ -1,0 +1,297 @@
+<ion-content>
+<ion-row *ngIf="displayBar" class="progress-wrapper">
+  <ion-col size="12">
+    <div style="font-size:12px; text-align: center;color: #07a4ff;"> {{progressText}} </div>
+    <ion-progress-bar [value]="valuePro" buffer="0.25" style="height:15px" class="pro-text"></ion-progress-bar>
+    <ion-row>
+      <ion-col size="12" style="font-size:10px;text-align:center;color:red;">
+        Please don't close the application until the process is completely done. Otherwise some unexpected error may
+        occur
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row class="scroll" >
+  <ion-col style="padding: 0px;" size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12" offset-lg="0" >
+    <!-- <ion-toolbar class="toolbar-color"  [ngClass]="{'toolbar-color' : appName == 'Armoron'}">
+      <ion-buttons slot="start">
+        <ion-icon (click)="closeModal()" name="arrow-back" slot="start" style="margin-left: 10px;"></ion-icon>
+      </ion-buttons>
+  </ion-toolbar> -->
+  <ion-item lines="none"style="--background:transparent;" class="toolbar-color" [ngClass]="{'toolbar-color' : appName == 'Armoron'}">
+    <ion-icon  (click)="closeModal()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+      <div [ngClass]="{'armoron' : appName == 'Armoron', 'normal' : appName != 'Armoron'}">Asset details</div>
+        <!-- <ion-icon *ngIf='value != undefined && isDeleteShow == true && myPlatform != desktop'  name='trash' (click)="deleteModel()" slot='end'></ion-icon> -->
+    </ion-item>
+    <!-- <ion-item [ngClass]="{'header-background-color' : appName == 'Armoron'  }" lines="none" *ngIf='!hideSerialNo'>
+      <ion-icon *ngIf='value != undefined && isDeleteShow == true'  name='trash' (click)="deleteSelectedOperator()" slot='end'></ion-icon>
+      <ion-icon (click)="closeModal()" name="arrow-back" slot="start"></ion-icon>
+    </ion-item> -->
+    <!-- <ion-label [ngClass]="{'armoron' : appName == 'Armoron', 'normal' : appName != 'Armoron'}">Asset details</ion-label> -->
+    <form [formGroup]="fleetLogin" *ngIf='appName != "Armoron"'>
+      <ion-row>
+        <ion-col>
+          <ion-label class="input-label">Vehicle Number :</ion-label>
+          <ion-input type="text" formControlName="plateNo" class="input-item" placeholder="Vehicle Number">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf='datashow'>
+        <ion-col>
+          <ion-label class="input-label">Fleet Manager :</ion-label>
+          <ion-select class="input-item select-input" formControlName="fleetManager" placeholder="{{editfleet}}"
+            multiple="true" value ="fms">
+            <ion-select-option *ngFor="let fleetManager of fleet" [value]="fleetManager">{{fleetManager}}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+        
+      </ion-row>
+      <ion-row *ngIf='datashow'>
+        <ion-col>
+          <!-- <input style="    width: 100%;
+          border: white; outline: none;" (keyup)='availableImei()' class="input-item" type="number" list="cars" [disabled]="formDisplay"
+            formControlName="imei" placeholder="Imei number"> -->
+            <ion-label class="input-label">IMEI No :</ion-label>
+            <input style="width: 100%;
+            border: white; outline: none;padding: 0px 0px 0px 10px;" (keyup)='availableImei()' class="input-item" type="text" value ="fms"list="cars" [disabled]="formDisplay"
+              formControlName="imei" placeholder="Imei number">
+          <datalist id="cars" style="border:none;outline:none;background:transparent;">
+            <option *ngFor="let imei of imei">{{imei}}</option>
+          </datalist>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row *ngIf='hideSerialNo'>
+        <ion-col>
+          <ion-input type="text" class="input-item" formControlName="serialNo" placeholder="Serial number"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf='hideSerialNo'>
+        <ion-col>
+          <ion-select class="input-item" formControlName="manufacture" (ionChange)="getModelData($event,manufacture)"
+            placeHolder='Manufacture' [disabled]="formDisplay">
+            <ion-select-option *ngFor="let manufacture of manufacture" [value]="manufacture.type">
+              {{manufacture.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf='hideSerialNo'>
+        <ion-col>
+          <ion-select [disabled]="formDisplay" class="input-item" [disabled]="!manufacture" formControlName="model"
+            placeHolder='Model'>
+            <ion-select-option *ngFor="let model of model" [value]="model.type">
+              {{model.name}}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf='hideSerialNo'>
+        <ion-col>
+          <ion-select class="input-item" formControlName="provider" placeholder='Provider' [disabled]="formDisplay">
+            <ion-select-option *ngFor="let provider of provider" [value]="provider.sim" [disabled]="formDisplay">
+              {{provider.sim}}
+            </ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType !== 'REFRIGERATOR'">
+        <ion-col>
+          <ion-label class="input-label">Travelled KM :</ion-label>
+          <ion-input type="number" class="input-item" formControlName="travelledKm" placeholder="Travelled km">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col>
+          <ion-label class="input-label">Vehicle Type :</ion-label>
+          <select style="padding: 0px 0px 0px 8px;"  class="input-item input-new" formControlName="vehicleType">
+            <option value="">Vehicle type </option>
+            <option *ngFor="let Vehicle of vehicleTypes" [value]="Vehicle">{{Vehicle}}</option>
+          </select>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType == 'REFRIGERATOR'">
+        <ion-col>
+          <ion-row style="align-items: center;
+          background-color: lightgrey;">
+            <ion-input formControlName="assertLocation" class="input-item" placeholder="Asset location"></ion-input>
+            <ion-icon style="font-size: 24px;" name="map" (click)="mapLocation()"></ion-icon>
+
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType == 'REFRIGERATOR'">
+        <ion-col>
+          Address 
+          <ion-input formControlName="assertAddress" class="input-item" placeholder="Asset address"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType !== 'REFRIGERATOR'">
+        <ion-col>
+          <ion-label class="input-label">Kilometer Coverage :</ion-label>
+          <ion-input type="number" formControlName="km" class="input-item" placeholder="Kilometer coverage per litre">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType !== 'REFRIGERATOR'">
+        <ion-col>
+          <ion-label class="input-label">Fuel Type :</ion-label>
+          <ion-select formControlName="fuelType" placeholder="{{editfuelType}}" class="input-item select-input">
+            <ion-select-option *ngFor="let fuel of fuelTypes" [value]="fuel">{{fuel}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType !== 'REFRIGERATOR'">
+        <ion-col>
+          <ion-label class="input-label">Cost :</ion-label>
+          <ion-input type="number" class="input-item" formControlName="cost" placeholder="Cost of fuel"></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row><ion-label style="font-size: 14px; padding: 0px 0px 0px 6px;" >Operator Name :</ion-label></ion-row>
+      <ion-row *ngIf="fleetLogin.value.vehicleType !== 'REFRIGERATOR'">
+        <ion-col>
+          <!-- <ion-row style="    align-items: center;
+          background: lightgrey;">
+            <ion-col size=10>
+              <ion-select class="input-item select-input" formControlName="operator"
+                placeholder="{{operatorName}}">
+                <ion-select-option *ngFor="let operator of operators" [value]="operator.operatorID">{{operator.name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size=2>
+              <ion-icon style="padding: 7px;" (click)="addOperator()" name="add"></ion-icon>
+            </ion-col>
+          </ion-row> -->
+          <!-- <ion-row class="input-item" style="align-items: center;">
+            <ion-col size=10.5>
+              <select class="input-new" style="background: none;" formControlName="operator">
+                <option value="" disabled>select operator name</option>
+                <option *ngFor="let operator of operators" [value]="operator.operatorID">{{operator.name}}</option>
+              </select>
+            </ion-col>
+            <ion-col size=1.5>
+              <ion-icon style="padding:0 7px; font-size: medium;" (click)="addOperator()" name="add"></ion-icon>
+            </ion-col>
+          </ion-row> -->
+          <ion-row class="input-item" style="align-items: center;">
+            <ion-col size=10>
+              <select class="input-new" style="background: none;padding: 0px 0px 0px 4px;" formControlName="operator">
+                <option value="" disabled>select operator name</option>
+                <option *ngFor="let operator of operators" [value]="operator.operatorID">{{operator.name}}</option>
+              </select>
+            </ion-col>
+            <ion-col size=2 style="text-align: end;">
+              <ion-icon style="font-size: medium;" (click)="addOperator()" name="add"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="loader && fleetLogin.value.vehicleType == 'LOADER'">
+        <ion-col>
+          <ion-row class="input-item">
+            <ion-label class="hours-label">Today Engine hours :</ion-label>
+            <ion-col  size-lg="2">
+              <select   class="input-item-hours" formControlName="hours">
+                <option disabled >HH</option>
+                <option *ngFor="let items of hours" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+            <span class="colon-hours">:︁</span>
+            <ion-col  size-lg="2">
+              <select  class="input-item-hours"  formControlName="minutes">
+                <option disabled >MM</option>
+                <option *ngFor="let items of minandSec" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+            <span  class="colon-hours">:︁</span>
+            <ion-col  size-lg="2">
+              <select   class="input-item-hours" formControlName="seconds">
+                <option disabled >SS</option>
+                <option *ngFor="let items of minandSec" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+        </ion-row>
+     
+          <ion-row class="input-item" style="margin-top: 10px;">
+            <ion-label class="hours-label" >Total Engine hours  :</ion-label>
+            <ion-col  size-lg="2" style="margin-left: 5px;">
+              <select   class="input-item-hours" placeholder="Days" formControlName="days">
+                <option disabled >DD</option>
+                <option *ngFor="let items of daysArray" [value]="items">{{ items }}</option>
+              </select>
+            </ion-col>
+            <span  class="colon-hours">:︁</span>
+            <ion-col size-lg="2">
+              <select   class="input-item-hours"  formControlName="totalhours">
+                <option disabled >HH</option>
+                <option *ngFor="let items of hours" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+            <span  class="colon-hours">:︁</span>
+            <ion-col size-lg="2">
+              <select   class="input-item-hours" formControlName="totalMinutes">
+                <option disabled >MM</option>
+                <option *ngFor="let items of minandSec" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+            <span  class="colon-hours">:︁</span>
+            <ion-col size-lg="2">
+              <select   class="input-item-hours"  formControlName="totalSeconds">
+                <option disabled >SS</option>
+                <option *ngFor="let items of minandSec" [value]="items">{{items}}</option>
+              </select>
+            </ion-col>
+         </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        
+        <ion-col size="12" size-sm="4" size-lg="6" size-xl="6" size-md="4" style="text-align:center;margin:auto">
+          <ion-button [ngClass]="{'header-background-color' : appName == 'Armoron'}" shape="round" class="commonButton" (click)="fleetSubmition()">
+            Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <form [formGroup]="fleetLogin" *ngIf='appName == "Armoron"'>
+      <ion-row >
+        <ion-col>
+          <ion-input type="text" formControlName="plateNo" class="input-item" placeholder="Vehicle plate number"> </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row >  
+        <ion-col>
+          <ion-input type="number" class="input-item" (ionChange)='availableImei()' formControlName="imei" placeholder="Imei number">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row > 
+        <ion-col>
+          <ion-input type="number" class="input-item" formControlName="travelledKm" placeholder="Travelled km">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-select formControlName="vehicleType" placeholder="{{editVehType}}" class="input-item select-input">
+            <ion-select-option *ngFor="let Vehicle of vehicleTypes" [value]="Vehicle">{{Vehicle}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" size-sm="4" size-lg="6" size-xl="6" size-md="4" style="text-align:center;margin:auto">
+          <ion-button [ngClass]="{'header-background-color' : appName == 'Armoron'}" shape="round" class="commonButton" (click)="fleetSubmition()" [disabled]="!fleetLogin.valid">
+            Submit</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-col>
+</ion-row>
+
+
+<div class="login-status" *ngIf="statusBar">
+  {{loginStatus}}
+</div>
+</ion-content>

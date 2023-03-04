@@ -1,0 +1,54 @@
+<ion-content class="content-style label-style">
+  <ion-row>
+  <ion-col>
+  <form [formGroup]="InventoryForm">
+  <ion-row class="total-data">
+  <ion-col>
+  <ion-row class="content-style"  *ngIf="slotNumber">
+  <ion-col size="4" class="col-content">
+  Slot Number :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="diable-style" type="number"  formControlName="SlotNumber"  placeholder="Enter the Slot Number"></ion-input>
+  </ion-col>
+  </ion-row>
+  
+  <ion-row class="content-style" *ngIf="EsimProvider">
+    <ion-col size="4" class="col-content">
+    Esim Provider :
+    </ion-col>
+    <ion-col size="7">
+      <ion-input class="diable-style" type="text"  formControlName="EsimProvider"  placeholder="Enter the EsimProvider"></ion-input>
+    </ion-col>
+    </ion-row>
+
+  <ion-row class="content-style" *ngIf="ExpiryDate">
+  <ion-col size="4" class="col-content">
+  Expiry Date :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="label-style" type="date" formControlName="Expirydate"></ion-input>
+  </ion-col>
+  </ion-row>
+  <ion-row class="content-style" *ngIf="Comments">
+  <ion-col size="4" class="col-content">
+  Comments :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="diable-style" type="number" formControlName="Comments"  placeholder="Enter the Comments"></ion-input>
+  </ion-col>
+  </ion-row>
+  </ion-col>
+  </ion-row>
+  </form>
+  <ion-row class="content-style">
+  <ion-col style="text-align: center !important;padding: 20px;">
+  <ion-button class="button" type="submit" [disabled]="!InventoryForm.valid"(click)="submitBtn()">Submit</ion-button>
+  <ion-button class="button" type="cancel" (click)="cancelBtn()">Cancel</ion-button>
+  </ion-col>
+  </ion-row>
+  
+  </ion-col>
+  </ion-row>
+  </ion-content>
+  

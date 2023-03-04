@@ -1,0 +1,50 @@
+<ion-header>
+    <ion-toolbar mode="md" class="appHeader">
+        <ion-grid>
+            <ion-row>
+                <ion-col>
+                    <ion-row>
+                        <ion-icon icon="md-arrow-back" style="color:black" (click)='getBack()'></ion-icon>
+                        <ion-title style="padding:0px 12px">Geo Fence</ion-title>
+                    </ion-row>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center" >
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-col size='6' style="position: absolute; z-index: 12; top:5%">
+      <ion-searchbar  showCancelButton="never" [(ngModel)]="address"  (ionChange) ="getAddressLatlng(address)" placeholder="Search"></ion-searchbar>
+    </ion-col>
+    <div id="geoFence" style="height: 70%;" #mapElement></div>
+    <div style="height:20%">
+        <ion-grid>
+            <ion-row>
+                <ion-col size="8">
+                    <ion-range min="50" style="padding: 0px;" max="10000" color="secondary" [(ngModel)]="range" (ionChange)="setRange(range)">
+                        <ion-icon size="small" slot="start" name="remove-circle-outline"></ion-icon>
+                    </ion-range>
+                </ion-col>
+                <ion-col size="1"></ion-col>
+                <p style="text-align:center;">{{range}} m </p>
+            </ion-row>
+            <ion-item>
+                <ion-label>Type</ion-label>
+                <ion-select placeHolder = 'Prefered' name="measureSetSelect" [(ngModel)]="selectValue">
+                    <ion-select-option *ngFor="let typeSelector of typeSelector" [value]="typeSelector.id">
+                        {{typeSelector.name}}
+                    </ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-row>
+                <ion-col size="8">
+                    <ion-input placeholder="Enter Name" [(ngModel)]="zone.zoneName"></ion-input>
+                </ion-col>
+                <ion-button class="appBackground" expand="block" (click)="saveGeoFence()">Save</ion-button>
+            </ion-row>
+        </ion-grid>
+    </div>
+</ion-content>

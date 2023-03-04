@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+    <div class="student-wrapper">
+   
+     <ion-row  class="header-section">
+      <ion-col size="2" size-sm="2" size-md="2" size-lg="0"> 
+        <ion-menu-button></ion-menu-button>
+      </ion-col>  
+      <ion-col size="10" size-sm="10" size-md="10" size-lg="12" id="btn-wrapper">
+        Student Details
+      </ion-col>
+    </ion-row>
+   <ion-row>
+    <ion-col>
+      <ion-button color='primary' class="student-btn" (click)='OpenModel()'>Add</ion-button>
+      <ion-button color='primary' class="student-btn" (click)='EditModel()'>Edit</ion-button>
+      <ion-button color='primary' class="student-btn"(click)='DeleteModel()'>Delete</ion-button>
+    </ion-col>
+    </ion-row> 
+  </div> 
+  <div id="export-wrapper">
+    <!-- <ion-img src="assets/student_Details/print.svg"  class="toolbar-row" (click)="btnOnClick()"></ion-img> -->
+    <ion-img src="assets/student_Details/pdf.svg" class="toolbar-row" (click)="createPdf()"></ion-img>
+    <ion-img src="assets/student_Details/excel.svg" class="toolbar-row"  (click)="exportToExcel()"> </ion-img>
+     <!-- <ion-img src="assets/student_Details/refresher.svg" class="toolbar-row" (click)="getDatas()"></ion-img> -->
+    </div> 
+   </ion-toolbar>
+</ion-header>
+<ion-content>
+   
+  <div class="grid_Container">
+  <jqxGrid
+  [source]="dataAdapter"
+  [autoheight]="true" 
+  [sortable]="true" 
+  [columns]="columns" 
+  [pageable]="true" 
+  [showfilterrow]="true" 
+  [filterable]="true" 
+  [width]="'100%'"
+  [theme]="'material'"
+  #myGrid 
+  (onRowselect)="myGridOnRowSelect($event)" 
+
+  [selectionmode]="'singlerow'"
+   style="font-size:16px;text-align: center !important;margin:auto;cursor:pointer;">
+</jqxGrid>
+</div>
+</ion-content>
+
+

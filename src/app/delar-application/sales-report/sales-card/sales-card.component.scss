@@ -1,0 +1,147 @@
+.valid{
+    color: red;
+    
+ }
+ .inValid{
+    color: orange;
+   
+ }
+ .inValidBorder{
+    border-left:3px solid #7c68f8;
+ }
+ .validBorder{
+    border-left:3px solid#7c68f8;
+ }
+ .buttonWidth{
+  width: 33%;
+  margin: 10px auto;
+  height: 30px;
+  --ion-color-primary: #7c68f8;
+}
+ *{ 
+    margin: 0;
+    padding: 0.9px;
+ }
+ 
+ .card-wrapper{
+   font-size: 11px;
+   font-weight: initial;
+   margin:5px 10px;
+   padding: 1px 0px 1px 4px;
+ 
+   // color: #7c68f8;
+ }
+ .item-native {
+   padding:0px;
+ }
+ .svg-size1{
+   width:25px !important;
+ }
+ .svg-size2,.svg-size1{
+   width: 21px;
+   border: 1px solid #f1f1f1;
+   padding: 2px;
+ }
+ .companyName{
+   background-color: #09d8c5;
+   // color: white;
+   text-align: center;
+   padding: 5px;
+ }
+ ion-toolbar{
+   background-color:#7c68f8; 
+ }
+ .common-icon{
+   // font-size: 16px;
+   color: #7c68f8;
+   // border:1px solid #f1f1f1;
+   // padding: 2px;
+   font-weight: bold;
+ }
+ .icon_col{
+   margin:2px 0px;
+   display: grid;
+   place-content: center;
+   
+ }
+ 
+ 
+ .status{
+   // padding: 4px 0px 4px 30px;
+   // font-size: 12px;
+   // margin: 5px 0;
+   // background-color:  #b3b3b3;
+   // border-radius: 11px;
+   
+   // float: right;
+   // width: 98%;
+   // border: 1px solid #b3b3b3;
+   padding: 3px 0px 3px 0px;
+    font-size: 12px;
+    margin: 5px 0;
+    background-color: #e2dddd;
+    border-radius: 11px;
+    float: right;
+    width: 65%;
+   //  color: black;
+    text-align: center;
+ }
+ .header-company{
+   //border-bottom: 1px solid #f6f6f6;
+   font-weight: bold;
+   padding: 8px 0px 8px 3px;
+   font-size: 13px;
+   color: black;
+ }
+ .align-dataCol{
+   padding-left: 5px;
+   font-family: sans-serif;
+    color: #848484;
+    font-size: 12px;
+ 
+ }
+ .underline {
+   font-size: 11px;
+   color: #656565;
+   position: relative;
+   font-weight: bold;
+ }   
+ 
+ .underline:before {
+   margin: auto;
+   position: absolute;
+   content: "";
+   height: 2px;
+   bottom: 13px;
+   width: 13px;
+   // background:#ffd31a;
+   left: 2px;
+ }
+ .image-size {
+   height: 35px;
+   width: 35px;
+   
+   cursor: pointer;
+   display: inline-block;
+   margin: 5px;
+ }
+ .download-wrapper {
+   padding: 6px;
+   background: #eaeaea;
+ }
+ .download-wrapper:hover{
+  background-color: #f6f6f6;
+ }
+ .subscription-title{
+   font-size: 20px;
+ }
+ .pdf-wrapper,.excel-wrapper{
+   background:url("../../../../assets/pdf.svg")no-repeat;
+   width:30px;
+   height: 30px;
+ 
+ }
+ .excel-wrapper{
+   background:url("../../../../assets/excelNew.svg")no-repeat;
+ }
+ 

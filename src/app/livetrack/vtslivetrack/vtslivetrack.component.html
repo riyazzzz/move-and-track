@@ -1,0 +1,113 @@
+<div class="map" id="map" #mapElement></div>
+
+<ion-fab
+  *ngIf="fabButton"
+  (click)="switchMap()"
+  style="top: 8%; right: 2%"
+  horizontal="end"
+  vertical="top"
+  slot="fixed"
+  edge
+>
+  <ion-fab-button size="medium" color="light">
+    <ion-icon *ngIf="!layerModel" center name="map"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-fab
+  (click)="enableTripDetails()"
+  *ngIf="tripData?.TripId != undefined"
+  style="top: 17%; left: 1%"
+  horizontal="start"
+  vertical="top"
+  slot="fixed"
+  edge
+>
+  <ion-fab-button size="small" color="light">
+    <ion-icon
+      center
+      name="{{ fabButtonTrip == false ? 'car' : 'close' }}"
+    ></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-fab
+  *ngIf="fabButtonTrip"
+  style="top: 25%"
+  horizontal="start"
+  vertical="top"
+  slot="fixed"
+  edge
+>
+  <app-vts-trip-details> </app-vts-trip-details>
+</ion-fab>
+
+<div class="modal2" *ngIf="myPlatform != 'desktop' && appName != 'ParentApp'">
+  <ion-fab
+    *ngIf="!showSwipeModal"
+    vertical="bottom"
+    horizontal="end"
+    slot="fixed"
+  >
+    <ion-fab-button
+      color="light"
+      style="height: 34px; width: 34px"
+      (click)="toggleView()"
+    >
+      <ion-icon name="information"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-col
+    *ngIf="showSwipeModal"
+    size="12"
+    size-sm="12"
+    size-md="6"
+    size-lg="4"
+    style="padding: 0px"
+  >
+    <ion-card style="background-color: white">
+      <ion-card-content
+        style="padding: 0px; justify-content: flex-end; background: white"
+      >
+        <ion-row
+          class="ion-align-items-right ion-justify-content-right"
+          style="justify-content: flex-end"
+          (click)="toggleView()"
+        >
+          <ion-icon name="backspace"></ion-icon>
+        </ion-row>
+      </ion-card-content>
+      <ion-card-content style="padding: 0px">
+        <app-gridview-card [commonData]="traveVinData"></app-gridview-card>
+        <ion-row (click)="showLocation(traveVinData)" class="address">
+          <ion-col size="12" style="padding-top: 0px; padding-bottom: 0px">
+            <ion-row *ngIf="traveVinData.location">
+              {{ traveVinData.location }}
+            </ion-row>
+            <ion-row *ngIf="!traveVinData.location">
+              <!-- <ion-spinner name="dots"></ion-spinner> -->
+              Click for location
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</div>
+
+<div class="modal2web" *ngIf="myPlatform == 'desktop'">
+  <ion-row>
+    <ion-col
+      size="10"
+      size-sm="12"
+      size-md="10"
+      size-lg="10"
+      style="padding: 0px"
+    >
+      <ion-card style="width: 92%">
+        <app-grid-card-website
+          [commonData]="traveVinData"
+        ></app-grid-card-website>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</div>

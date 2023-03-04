@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-row>
+    <ion-col size="1">
+      <ion-icon name="arrow-back" style="font-size: xx-large;" (click)="closeModal()"></ion-icon>
+    </ion-col>
+    <ion-col class="deatils-header">Student Info</ion-col>
+  </ion-row>
+</ion-header> 
+<ion-row class="container">
+  <ion-col size="12">
+     <div class="wrapper-container ">
+        <form  [formGroup]="studentDetails" id="student-info">
+            <div class="box-column">
+              <ion-row>
+                  <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-img src="assets/student_Details/demo.svg" class="stu-col1-img"></ion-img>
+                      <ion-input type="text" placeholder="Enter Student Name" class="stu-input" formControlName="firstname"></ion-input>
+                    </ion-item>
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-img src="assets/student_Details/rollnumber.svg" class="stu-col1-img"></ion-img>
+                      <ion-input type="text" placeholder="Enter Roll Number" class="stu-input" formControlName="rollno"></ion-input>
+                    </ion-item>
+                    
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-icon name="calendar" class="stu-icon"></ion-icon>
+                      <ion-input [type]="type" placeholder="Enter Date of Birth" class="stu-input" (click)="type = 'date'" formControlName="dob"></ion-input>
+                    </ion-item>
+                    
+                      <!-----Select Parent--------->
+                      <ion-row style="margin-top:0;" class="parent">
+                        <ion-col size="11.6" class="stu-items stu-select-box option-body">
+                          <select  class="stu-input select-input" formControlName="parentName" >
+                            <option value=""  selected    class="option-head">Select Parent Phone Number</option>
+                            <option  *ngFor="let parentDetailsList of parentDetailsList" [value]="parentDetailsList" >{{parentDetailsList}}</option>
+                          </select>
+                        </ion-col>
+                      </ion-row>
+                     <!------Select Tag Id------------>
+                     <ion-row style="margin-top:0;" class="tag" *ngIf="!editTextbox">
+                      <ion-col size="11.6" class="stu-items stu-select-box option-body" >
+                        <select class="stu-input select-input" formControlName="tagId" >
+                          <option  value=""  selected  class="option-head" >Select Tag Id</option>
+                          <option    *ngFor="let selecttagid of selecttagid" [value]="selecttagid" >{{selecttagid}}</option>
+                        </select> 
+                      </ion-col>
+                    </ion-row>
+                        <ion-item class="stu-items" style="background: transparent;" *ngIf="editTextbox">
+                          <ion-img src="assets/student_Details/demo2.svg" class="stu-col1-img"></ion-img>
+                          <ion-input [disabled]="editTextbox" type="text" placeholder="{{editTagId}}" class="stu-input"  formControlName="tagId"></ion-input>
+                       </ion-item>
+              <ion-row style="margin-top:0;" class="classid">
+                <ion-col size="11.6" class="stu-items stu-select-box">
+                  <ion-icon name="contacts" slot="start" class="stu-icon"></ion-icon>              
+                  <select  class="stu-input select-input" formControlName="classId" (change)="getsectionId($event)">
+                    <option value="" disabled selected hidden  class="option-head">Select Class Id</option>
+                    <option  [disabled]="controlEnabled" *ngFor="let classid of classid" value={{classid}}>{{classid}}</option>
+                  </select>
+                </ion-col>
+              </ion-row>
+                  </ion-col>  
+                  <ion-col  size-sm="12" size-md="6" size-lg="6">
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" value="Male"  formControlName="gender"  (ionChange)=" genderSelection($event)" >
+                      <ion-item  class="stu-items" style="--padding-bottom:10px;margin-bottom: 10px;height: 40px;" >
+                        <ion-img src="assets/student_Details/gender.svg" class="stu-col1-img"></ion-img>
+                       <ion-radio class="radioBtn" value="Male" checked></ion-radio>
+                       <ion-label  class="radio-text">Male</ion-label>
+                       <ion-radio class="radioBtn" value="Female"></ion-radio>
+                       <ion-label  class="radio-text" >Female</ion-label>                       
+                      </ion-item>
+                   </ion-radio-group>
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-icon name="paper" slot="start" class="stu-icon"></ion-icon>
+                      <ion-input type="text" placeholder="Enter Your Street/Area" class="stu-input" formControlName="address"></ion-input>
+                    </ion-item>
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-img src="assets/student_Details/enterstate.svg"  slot="start" class="stu-col1-img"></ion-img>
+                      <ion-input type="text" placeholder="Enter Your District" class="stu-input" formControlName="district"></ion-input>
+                    </ion-item>
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-icon name="map" slot="start" class="stu-icon"></ion-icon>
+                      <ion-input type="text" placeholder="Enter Your State" class="stu-input" formControlName="state"></ion-input>
+                    </ion-item>
+                    <ion-item class="stu-items" style="background: transparent;">
+                      <ion-icon name="pin" slot="start" class="stu-icon"></ion-icon>
+                      <ion-input type="number"   placeholder="Enter Your Pincode" class="stu-input" formControlName="pincode"></ion-input>
+                    </ion-item>
+                    <ion-row style="margin-top:0px;" class="sectionId">
+                      <ion-col  size="11.6" class="stu-items stu-select-box"  >
+                        <select  class="stu-input select-input" formControlName="sectionId">
+                        <option value="" disabled selected hidden class="option-head" >Select section Id</option>
+                        <option  [disabled]="controlEnabled" *ngFor="let sectionIds of sectionIds" [value]="sectionIds">{{sectionIds}}</option>
+                      </select>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                 </ion-row>
+            </div>
+      </form>
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-button style="text-align: center;" shape="round" (click)="submit()" [disabled]="!studentDetails.valid" >Submit</ion-button>
+    </ion-col>
+  </ion-row>
+    
+</div>
+</ion-col>
+</ion-row>
+
+<!-- </ion-content> -->
+

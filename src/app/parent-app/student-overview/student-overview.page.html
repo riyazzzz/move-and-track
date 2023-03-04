@@ -1,0 +1,97 @@
+<ion-header class='header'>
+  <ion-toolbar class="parentAppcolor">
+    <ion-row style="align-items: center;">
+      <ion-icon (click)="locationBack()" class="icon-size" name="arrow-back"></ion-icon>
+      <ion-label> Overview </ion-label>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <calendar [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate">
+  </calendar> -->
+  <!-- <ion-calendar disable="false" [options]="options" [format]="'YYYY-MM-DD'">
+  </ion-calendar> -->
+  <ion-card>
+    <ion-card-content class="padding8px">
+      <div id="container" [routerLink]="['/attendence-report']"
+        style="text-align: -webkit-center;position: relative; overflow: hidden; border-bottom: 2px solid #e5e5e5;">
+      </div>
+      <ion-row>
+        <ion-col class="colRightBorder">
+          <ion-row class="attendence">
+            {{atteData.week}}
+          </ion-row>
+          <ion-row class="attendenceSub">
+            Week
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="attendence">
+            {{atteData.month}}
+          </ion-row>
+          <ion-row class="attendenceSub">
+            Month
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="map parentAppBorder" #mapElement></div>
+      <ion-row class="routMap">
+      {{  trackdata[0].routeName}}
+      </ion-row>
+      <ion-row class="scrollRow">
+        <ion-col size=12 *ngFor="let trackdata of trackdata[0].routesDatas">
+          <ion-row class="trackSideBorder">
+            <ion-col size=2 class="mapCardModel">
+              {{trackdata.count}}
+            </ion-col>
+            <ion-col size=9>
+              <ion-row *ngIf="trackdata.started" class=" startedEndLabel parentAppBackcolor locationTrack">
+                {{trackdata.started}}
+              </ion-row>
+              <ion-row class="locationName">
+                {{trackdata.place}}
+              </ion-row>
+              <ion-row class="locationTrack">
+                {{trackdata.location}}
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-row style="height: 50vh;
+      overflow: auto;">
+        <ion-card size=12 *ngFor="let alert of alert">
+          <ion-row [ngStyle]="{'border-left':'6px solid '+ alert.color}">
+            <ion-col size=2 class="colCenter">
+              <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="8mm" height="8mm"
+                version="1.1"
+                style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                viewBox="0 0 304.78 304.78" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <path [attr.fill]="alert.color" [attr.d]="alert.icon" />
+              </svg>
+            </ion-col>
+            <ion-col size=10>
+              <ion-row class="alertCardTitle">
+                {{alert.title}}
+              </ion-row>
+              <ion-row style="font-size: 11px;">
+                {{alert.text}}
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

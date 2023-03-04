@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+    </ion-buttons>
+    <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+    </ion-searchbar>
+  </ion-toolbar>
+  <ion-grid class="appHeaderTitle" *ngIf="myPlatform !='desktop'">
+    <ion-row>
+      <ion-col size=10>
+        <ion-title> Driver behaviour report </ion-title>
+      </ion-col>
+      <ion-col size="2" style="text-align: -webkit-right;">
+        <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content>
+  <app-grid-view-drv [commonData]="gridValues" [search]="searchInput" *ngIf="view=='grid'"></app-grid-view-drv>
+  <app-table-view-drv [tableData]="tableValues" *ngIf="view=='table'"></app-table-view-drv>
+</ion-content>

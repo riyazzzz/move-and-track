@@ -1,0 +1,107 @@
+
+
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="4" >
+    <ion-card class="trip-wrapper" [ngStyle]="tripSummary
+.status == 'active' ? {'border-left':'3px solid green'}:{'border-left':'3px solid red'}">
+      <ion-card-content class='trip-content'>
+        <ion-row style="margin-bottom: 7px !important;">
+          <ion-col>
+            <ion-row>
+              <ion-col class="header" style="color: black;">
+                <ion-icon id="odo-icon" name="speedometer"></ion-icon>{{tripSummary
+.odometer}}
+              </ion-col>
+            </ion-row>
+            
+          </ion-col>
+          <ion-col style="margin: 7px auto;">
+            <ion-row>
+              <ion-col class="header" style="color: black;text-align: center;">
+                <ion-icon name="radio-button-off" id="ind-icon" [ngStyle]="tripSummary
+.status == 'active' ? {'color':'green'}:{'color':'red',background:'red'}">
+                </ion-icon>
+                {{tripSummary
+.status}}
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="1.5" style="margin-top:0;" class="tooltip"
+          >
+            <ion-fab-button size="small" class="fab-btn" (click)="submit('delete')" >
+              <ion-icon name="ios-trash" id="delete-icon"></ion-icon>
+            </ion-fab-button>
+          
+            <span  class="tooltiptext">Delete</span>
+
+          </ion-col>
+          <ion-col size="1.5" style="margin-top:0;"  class="tooltip" *ngIf='tripSummary.status != "completed"'>    
+            <ion-fab-button size="small" class="fab-btn" (click)="submit('edit')"  >
+              <ion-icon name="ios-create" id="edit-icon"></ion-icon>
+            </ion-fab-button>
+            <span  class="tooltiptext">Edit</span>
+          </ion-col>
+
+        </ion-row>
+        <ion-card class="inner-card">
+          <ion-row>
+            <ion-col>
+              <ion-row>
+                <ion-col class="header">
+                  <ion-icon name="pin"></ion-icon>Trip start
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{tripSummary
+.tripStarttime}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col>
+              <ion-row>
+                <ion-col class="header">
+                  <ion-icon name="pin"></ion-icon>Trip End
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{tripSummary
+.tripEndtime}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+          <ion-row style="margin-top: 4px;">
+            <ion-col size="4" class="sub-status">
+              <ion-row>
+                <ion-col class="header">
+                  Idle
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{tripSummary
+.idle}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size="4" class="sub-status">
+              <ion-row>
+                <ion-col class="header">
+                  Running
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{tripSummary
+.running}}
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+  
+

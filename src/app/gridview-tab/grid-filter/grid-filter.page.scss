@@ -1,0 +1,224 @@
+$stop: red;
+$running: #1eb15d;
+$idle: #1f5baa;
+$overspeed: #f28918;
+$noTransmission: #000000;
+
+// .address {
+  //   font-size: 11px;
+  //   line-height: initial;
+  //   margin-top: 3px;
+  // }
+  
+  // .date {
+    //   font-size: 12px;
+    //   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    // }
+    
+    // .vehicleName {
+      //   font-size: small;
+      //   font-weight: bold;
+      // }
+      
+      // .speed {
+        //   font-size: 30px;
+        //   text-align: center;
+        // }
+        
+        // .speedUnit {
+          //   font-size: 15px;
+          // }
+          
+          // .filterName {
+            //   font-size: 9px;
+            //   color: white;
+            // }
+            
+            // .filterValue {
+              //   color: black;
+              // }
+              
+              .statusLabel {
+                font-size: 11px;
+                text-align: center;
+              }
+              
+              .filterPad {
+                padding: 5px 1px;
+              }
+              
+              .filterPad .ion-activatable .grayBackground {
+                background-color: #cacaca;
+              }
+              
+              .filter {
+                position: fixed;
+                width: 100%;
+                z-index: 12;
+              }
+              
+              .searchBackground {
+                background: #32384b;
+              }
+              
+              .card {
+                top: 10vh;
+              }
+              
+              .modal {
+                background-color: white;
+                color: rgb(32, 32, 32);
+                z-index: 12;
+                position: fixed;
+                right: 0px;
+                width: 100%;
+                //border-bottom: 1px solid;
+                transition: 0.5s;
+                border-top-left-radius: 40px;
+                border-top-right-radius: 40px;
+              }
+              
+              .dragDown {
+                transition: 0.5s;
+                bottom: -280px;
+              }
+              
+              .dragUp {
+                transition: 0.5s;
+                bottom: 0px;
+              }
+              .dragUpIos{
+                transition: 0.5s;
+                bottom: 50px;
+              }
+              .displayType {
+                display: grid;
+              }
+              
+              .semiCircle {
+                background: black;
+                width: 100%;
+                padding: 2%;
+                border-radius: 0px 0px 20px 18px;
+              }
+              
+              .alertsStyle {
+                color: white;
+                font-size: 16px;
+                font-weight: 700;
+              }
+              
+              .borderRight {
+                border-right: 1px solid #dedede;
+              }
+              
+              .imgSize {
+                height: 30px;
+              }
+              
+              .cardContentPad {
+                padding-top: 6px;
+                padding-bottom: 0px;
+              }
+              
+              .cardMargin {
+                // border-left: 6px solid $stop;
+                margin-top: 6px;
+                margin-bottom: 6px;
+                border-radius: 10px;
+              }
+              
+              .running{
+                background-color: #1eb15d;
+              }
+              .idle{
+                background-color: #1f5baa;
+              }
+              .stop{
+                background-color: #FF0000;
+              }
+              .overspeed{
+                background-color: #f28918;
+              }
+              .notransmission{
+                background-color: #000000;
+              }
+              .all{
+                background-color: #989aa2;
+              }
+              /*******New Design ****/
+              /*******Side Border****/
+              .runningCardBorder{
+                border-left: 6px solid $running;
+              }
+              .idleCardBorder{
+                border-left: 6px solid $idle;
+              }
+              .noTransCardBorder{
+                border-left: 6px solid $noTransmission;
+              }
+              .overspeedCardBorder{
+                border-left: 6px solid $overspeed;
+              }
+              .stopCardBorder{
+                border-left: 6px solid $stop;
+              }
+              
+              /*******driver bg****/
+              .runningDriverBg{
+                background-color: $running;
+              }
+              .idleDriverBg{
+                background-color: $idle;
+              }
+              .noTransDriverBg{
+                background-color: $noTransmission;
+              }
+              .overspeedDriverBg{
+                background-color: $overspeed;
+              }
+              .stopDriverBg{
+                background-color: $stop;
+              }
+              
+              
+              /*******Address broder****/
+              .runningAddressBorder{
+                border: 2px solid $running;
+              }
+              .idleAddressBorder{
+                border: 2px solid $idle;
+              }
+              .noTransAddressBorder{
+                border: 2px solid $noTransmission;
+              }
+              .overspeedAddressBorder{
+                border: 2px solid $overspeed;
+              }
+              .stopAddressBorder{
+                border: 2px solid $stop;
+              }
+              
+              /*******text cooor****/
+              .runningText{
+                color: $running;
+              }
+              .idleText{
+                color: $idle;
+              }
+              .noTransText{
+                color: $noTransmission;
+              }
+              .overspeedText{
+                color: $overspeed;
+              }
+              .stopText{
+                color: $stop;
+              }
+              .selecedFabIcon{
+                color : #1d93ed
+              }
+              .notSelecedFabIcon{
+                color : #000000
+              }
+              

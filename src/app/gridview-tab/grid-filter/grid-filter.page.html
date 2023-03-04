@@ -1,0 +1,28 @@
+<ion-header class='header'>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row>
+                <ion-col style="    text-align: center;" size='2'>
+                    <ion-icon style="font-size: 22px;" ios="ios-arrow-back" md="md-arrow-back" (click)="getBack('close')"></ion-icon>
+                </ion-col>
+                <ion-col size='10' style='align-self: center;'>
+                    <ion-row>
+                        <ion-label> GRID VIEW | SORT&FILTER </ion-label>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-gridfilter></app-gridfilter>
+    <app-grid-sort></app-grid-sort>
+
+    <ion-row>
+        <ion-col style="margin: auto;text-align: center;">
+            <ion-button shape="round" color="medium" class="clearBtn" (click)="getBack('close')">Close</ion-button>
+            <ion-button shape="round" class="applyBtn" (click)="getBack('apply')">Apply</ion-button>
+        </ion-col>
+    </ion-row>
+</ion-content>

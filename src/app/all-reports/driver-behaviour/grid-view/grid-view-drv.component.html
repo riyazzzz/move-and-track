@@ -1,0 +1,139 @@
+
+<ion-grid style="padding:0px;" >
+  <ion-row style="padding:0px;">
+     <!-- <ion-virtual-scroll [items]="gridData | searchReport:search" approxItemHeight="320px"> -->
+    <ion-col size="12" size-sm="6" size-md="6" size-lg="6" size-xl="6" *ngFor="let x of displayData | searchReport:search;">
+        <ion-card class="cardMargin" > 
+          <ion-card-content style="padding:0px;">
+            <ion-grid style="padding:0px;">
+              <ion-row style="padding:0px;">
+                <ion-col size="9">
+                  <ion-row style="padding: 7px 0px 5px 0px;">
+                    <ion-col size="2" class="legendFlex textCenter noPadding">
+                      <img style="width:15px" src="assets/executive_summary_icon/operator.svg">
+                    </ion-col>
+                    <ion-col size="3" style="padding:0px; font-size: smaller;font-weight: bolder;align-self: center;">
+                      {{x.driverName}}
+                    </ion-col>
+                    <ion-col size="2" class="legendFlex textCenter noPadding">
+                      <img style="width:15px" src="assets/executive_summary_icon/vehicle.svg">
+                    </ion-col>
+                    <ion-col size="5" style="padding:0px; font-size: smaller;font-weight: bolder;align-self: center;">
+                      {{x.plateNo}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="headDetail">
+                    <ion-row style="width:100%">
+                      <ion-col size="4">
+                        <ion-row class="textCenter" style="font-size: xx-small; font-weight: bold;">
+                          Top Speed
+                        </ion-row>
+                        <ion-row style="align-items: center; justify-content: center;">
+                          <div class="circle"></div>{{x.topSpeed}}
+                        </ion-row>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-row class="textCenter" style="font-size: xx-small; font-weight: bold;">
+                          Average Speed
+                        </ion-row>
+                        <ion-row style="align-items: center; justify-content: center;">
+                          <div class="circleGreen"></div>{{x.avgSpeed}}
+                        </ion-row>
+                      </ion-col>
+                      <ion-col size="4">
+                        <ion-row class="textCenter" style="font-size: xx-small; font-weight: bold;">
+                          Odometer
+                        </ion-row>
+                        <ion-row style="align-items: center; text-align: center; justify-content: center;">
+                          <ion-col size='4' style="padding: 0px;">
+                            <img width="20px" height="20px" src="assets/icon/odometer.svg">
+                          </ion-col>
+                          <ion-col size='8' style="padding: 0px; text-align: center;">
+                            {{x.distanceTravelled}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+                    </ion-row>
+                  </ion-row>
+                </ion-col>
+                <ion-col class="scoreBg noPadding"
+                  [ngClass]="{'greenBg': x.overAllScore>69,'yellowBg':x.overAllScore<70&&x.overAllScore>39,'redBg':x.overAllScore<40}"
+                  size="3">
+                  <ion-row class="textCenter" style="font-size: 10px; font-weight: bold; padding-top:2px">
+                    OVER ALL <br>SCORE
+                  </ion-row>
+                  <ion-row class="fontXLarge">{{x.overAllScore}}<sup style="font-size: small; position: static;
+                line-height: normal;">%</sup></ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row class="fontSmall" style="padding: 0px;">
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert blueAlertBg">Harsh Braking</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff4500;border-radius: 0px 0px 5px 5px;  border-top-width: 0px;">
+                    {{x.HARSHBRAKING}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert blueAlertBg">Harsh Acceleration</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff4500; border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.HARSHACCELERATION}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert blueAlertBg">Drifting</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff4500;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.DRIFT}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert blueAlertBg">Tilt</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff4500;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.TILT}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert blueAlertBg">Avg Fuel Consumed(L)</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff4500;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.fuelConsumption}}</ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row class="fontSmall" style="padding: 0px;">
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert purpleAlertBg">Excessive Idling(Hrs)</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff6170;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.excessiveIdling}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert purpleAlertBg">Distance Travelled(Km)</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff6170;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.distanceTravelled}}</ion-row>
+                </ion-col>
+                <ion-col size="2.4">
+                  <ion-row class="textCenter bgAlert purpleAlertBg">Engine ON Dr(Hrs)</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff6170;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.engineOnDuration}}</ion-row>
+                </ion-col>
+                <ion-col size="4.8">
+                  <ion-row class="textCenter bgAlert purpleAlertBg">Running Duration</ion-row>
+                  <ion-row class="textCenter"
+                    style=" padding: 0px; border: 1px solid #ff6170;border-radius: 0px 0px 5px 5px; border-top-width: 0px;">
+                    {{x.runningDuration}}</ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card> 
+    </ion-col>
+  <!-- </ion-virtual-scroll> -->
+  </ion-row>
+</ion-grid>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data..." position="top">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+ 

@@ -1,0 +1,25 @@
+.nodata-wrapper{
+    background: url('../../../assets/background_img/NoData.svg') no-repeat center center;
+    height: 100vh;
+}
+ @media only screen and(min-width:300px)and(max-width:650px){
+    .nodata-wrapper{
+     width:auto;
+     margin-top: 23%;
+     zoom: 33%;
+      } 
+  }
+  @media only screen and(min-width:651px)and (max-width:1023px){
+    .nodata-wrapper{
+     width: 49%;
+     margin:8% auto;
+     zoom: 40%;
+      } 
+  }
+  @media only screen and(min-width:1024px){
+    .nodata-wrapper{
+     width: 49%;
+     margin:6% auto;
+     zoom: 50%;
+      } 
+  }

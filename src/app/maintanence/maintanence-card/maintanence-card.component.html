@@ -1,0 +1,87 @@
+
+<ion-row>
+  <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+  </ion-searchbar>
+</ion-row>
+
+<ion-grid>
+  <ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="4" *ngFor="let items of detail  | searchmanage: searchInput">
+   <ion-card class="wrapper-container" [ngClass]="items.state == 'Close' ? 'status_docorclose' :'status_docoropen'" (click)="editMode(items)">
+    <ion-card-content>
+     <ion-row>
+      <ion-col size="12">
+      <!--------------->
+       <!--------------->
+       <ion-row>
+          <ion-col size="7" class="col_left">
+           <ion-row>
+           <ion-col class="plateno">
+             {{items.plateNo}}
+           </ion-col>
+           </ion-row>
+          </ion-col>
+          <!--------------->
+          <ion-col size="5" class="alert-contanier">
+              <ion-row>
+                  <ion-col>
+                      <ion-icon name="warning"  class="alert_icon"></ion-icon>
+                  </ion-col>
+              </ion-row>
+             
+            <ion-row>
+              <ion-col class="alert-type">{{items.type}}</ion-col>
+                </ion-row>
+                 <ion-row>
+                 <ion-col class="maintanence-title" style="color:orange">Alert Type</ion-col>
+              </ion-row>
+          </ion-col>
+       </ion-row>
+       <!--------------->
+        <!--------------->
+       <ion-row >
+        <ion-col size="4"class="status-container">
+          <ion-icon name="cog" class="bottom_icons"></ion-icon>
+             <ion-row>
+              <ion-col [ngClass]="items.state == 'Close' ? 'status_close' :'status_open'">{{items.state}}</ion-col>
+             </ion-row>
+            <ion-row>
+           <ion-col class="maintanence-title">Status</ion-col>
+          </ion-row>
+        </ion-col>
+        <!--------------->
+         <ion-col size="4" class="status-container">
+          <ion-icon name="calendar" class="bottom_icons"></ion-icon>
+            <ion-row>
+              <ion-col >{{items.toDate}}</ion-col>
+             </ion-row>
+            <ion-row>
+           <ion-col class="maintanence-title" >Valid Till</ion-col>
+          </ion-row>
+         </ion-col>
+         <!--------------->
+          <ion-col size="4" class="status-container">
+              <ion-icon name="mail" class="bottom_icons "></ion-icon>
+            <ion-row>
+              <ion-col >{{items.emailId}}</ion-col>
+                </ion-row>
+               <ion-row>
+              <ion-col class="maintanence-title" >Email Id</ion-col>
+           </ion-row>
+          </ion-col>
+          <!--------------->
+          
+       </ion-row>
+      </ion-col>
+     </ion-row>
+     
+     </ion-card-content>
+      </ion-card>
+   </ion-col>
+  </ion-row>
+  </ion-grid>
+  <ion-fab class="botmRow" (click)="openModel()">
+      <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+        <ion-icon name="add" class="add-icon" ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>

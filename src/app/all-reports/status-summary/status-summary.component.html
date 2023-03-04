@@ -1,0 +1,27 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+  <ion-toolbar mode="md" class="appHeader">
+    <ion-grid style="padding:0px">
+      <ion-row>
+        <ion-col><ion-icon icon="md-arrow-back" style="color:rgb(0, 0, 0), text-" (click) = 'getBack()'></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="10" >
+          <ion-title style="padding:0px 12px;">Status summary report</ion-title>
+        </ion-col>
+      <ion-col size="2" style="text-align: -webkit-right;">
+          <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+      </ion-col>
+      </ion-row>
+      <!-- <ion-row class="viewTypeRow">
+        <ion-col size="6" [ngClass]="{'active': view=='grid'}" (click)="typeOfView('grid')">Grid View</ion-col>
+        <ion-col size="6" [ngClass]="{'active': view=='table'}" (click)="typeOfView('table')">Table View</ion-col>
+      </ion-row> -->
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-grid-status [statusReportData]='statusCard'  *ngIf="view=='grid'"></app-grid-status>
+  <app-table-status *ngIf="view=='table'"></app-table-status>
+</ion-content>

@@ -1,0 +1,57 @@
+.tag-container {
+    width           : 95%;
+    height          : 80%;
+    margin          : 0px auto 80px;
+    padding         : 0px auto;
+    background-color: #f3f3f3;
+}
+
+.tag-items{
+    margin: 5px 6px 0px;
+    padding: 0px;
+    border: 1px solid #cfe8ec;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #fcfcfc;
+}
+.tag-input{
+    font-size: 13px;
+    --placeholder-color: rgb(117, 118, 119);
+    --padding-bottom:24px;
+}
+
+
+
+.tag-icon{
+    font-size: 25px;
+    border-right:1px solid #efedeb;
+    padding-right: 10px;
+    margin: 0px 5px 17px;
+    color:#3880ff;
+}
+.tag-btn{
+    height: 30px;
+    font-size: small;
+    margin: auto;
+    padding:2px;
+    text-align: center;
+}
+
+
+.option-head{
+    background-color: darkgray;
+}
+.box{
+    outline: none;
+    margin-top: -15px;
+    width: 100%;
+    border: 1px solid white;
+    color: #555757;
+    font-size: 13px;
+}
+.popup-head {
+    color: #3880ff;
+    margin-left: -15px;
+    text-align: -webkit-center;
+    padding-left: 0px;
+}

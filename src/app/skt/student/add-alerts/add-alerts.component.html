@@ -1,0 +1,46 @@
+<ion-row style="overflow: auto;">
+  <ion-col>
+    <ion-row>
+      <ion-col size="1">
+        <ion-icon name="arrow-back" (click)="getBack()"></ion-icon>
+      </ion-col>
+      <ion-col  class="deatils-header">Alert Info</ion-col>
+    </ion-row>
+    <form  [formGroup]="studentDetails">
+    <div class="box-column3">
+      <ion-row>
+        <ion-col size=12 class="stu-name">
+         {{alertinfo?.studentinfo.studentName1}}
+        </ion-col>
+      </ion-row>
+      <div class="alert-option">
+        <ion-radio-group allow-empty-selection="false" name="radio-group" value="none" formControlName="alertoption">
+        <span  class="forward-text"><ion-label> ALERT OPTION :</ion-label></span>
+        <span  class="forward-text" *ngFor="let items of alertOption">
+          <ion-radio class="alert-forward"  value="{{items.type}}" [checked]="items.name == 'none'? true :false"></ion-radio>
+          <ion-label>{{items.name}}</ion-label>
+      </span>
+    </ion-radio-group>
+</div>
+      <div class="alert-info">
+        <ion-row *ngFor="let alert of alerts" class="alert-row">
+          <ion-col size="1">
+            <ion-checkbox class="alert-checkbox" [(ngModel)]="alert.ischecked" [ngModelOptions]="{standalone: true}" (click)="selectData(alerts,alert)"  >
+            </ion-checkbox>
+          </ion-col>
+          <ion-col size="11" class="ion-text-justify">
+           {{alert.value}}
+          </ion-col>
+        </ion-row>
+      </div>
+    </div>
+    </form>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-button shape="round"  (click)="submit()" style="font-size: 11px;height: 32px;">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+    </ion-col>
+  </ion-row>
+  
+  

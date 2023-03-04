@@ -1,0 +1,123 @@
+ @media(min-width:320px)and(max-width:1023px){
+  *{
+    font-size: 11px;
+    margin: 0;
+    padding: 1px 0px 1px 1px;
+   
+    
+  }
+ }
+ 
+ 
+// ion-button {
+//   width: 100%;
+//   --border-radius: 23px;
+//   height: 22px;
+//   text-transform: capitalize;
+//   font-size: 11px;
+// }
+.btn-item {
+  --background: transparent;
+  color: white;
+}
+.btn-color {
+  color: white;
+}
+.toolbar-icon {
+  font-size: small;
+  color: white;
+  margin-left: 3px !important;
+}
+.download-buttons {
+  margin: 0px 3px;
+  padding: 4px 6px;
+  background: #915a9a;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.download-buttons:hover {
+  background-color: rgb(196, 195, 197);
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 28px;
+  height: 29px;
+}
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+}
+.submitBtn {
+  --background: #6c2a84;
+}
+ion-label {
+  font-size: 17px;
+}
+.header-md:after {
+  left: 0;
+  bottom: -5px;
+  background-position: left 0 top -2px;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-image: none;
+  background-repeat: repeat-x;
+  content: "";
+}
+
+ion-icon {
+  color: #b1b0b0;
+  font-size: 16px;
+}
+
+.operatorName_col ion-icon {
+  font-size: 25px;
+  border: 2px solid #0862a9;
+  color: #0862a9;
+  border-radius: 20px;
+  margin: auto;
+  padding: 2px;
+}
+.operator-card {
+  margin: 10px;
+  padding: 10px;
+  background: #f6f6f6;
+  border-radius: 10px;
+  border-left: 3px solid #cc2930;
+}
+.inner-card {
+  padding: 0px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: none !important;
+  color: rgb(46, 44, 44);
+}
+.plateNo {
+  padding: 5px 0px 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(46, 44, 44);
+}
+.data {
+  color: #bdbdbd;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.add-icon {
+  font-size: 32px;
+  color: white;
+}
+#address-col {
+  border-top: 1px dotted #dadada;
+  text-align: center;
+  margin-top: 5px;
+  padding-top: 4px;
+}
+.submitBtn {
+  --background: #6c2a84;
+  margin: 0 10px;
+  --border-radius: 23px;
+  height: 22px;
+  text-transform: capitalize;
+  font-size: 11px;
+}

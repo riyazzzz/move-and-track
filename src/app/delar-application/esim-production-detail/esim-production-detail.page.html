@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-grid>
+      <ion-row class="toolbar">
+        <ion-title>Device Production</ion-title>
+        <ion-col
+          *ngIf="myPlatform == 'desktop'"
+          size="8"
+          style="text-align: right"
+        >
+          <ion-row style="margin: 0px; padding: 0; float: right">
+            <ion-col style="margin-top: 8px" class="tooltip">
+              <ion-fab-button
+                size="small"
+                class="fab-btn"
+                href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DeviceProduction.xlsx"
+                download="sample.xlsx"
+              >
+                <div class="excel-wrapper"></div>
+              </ion-fab-button>
+              <span class="tooltiptext">Excel-Format</span>
+            </ion-col>
+            <ion-col>
+              <ion-button (click)="openModel()" class="submitBtn" size="small"
+                >ADD</ion-button
+              >
+            </ion-col>
+            <ion-col>
+              <ion-button class="submitBtn" size="small" (click)="newfunc()"
+                >Export</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngIf="myPlatform != 'desktop'">
+    <ion-col style="text-align: right">
+      <ion-row style="margin: 0px; padding: 0; float: right">
+        <ion-col style="margin-top: 8px" class="tooltip">
+          <ion-fab-button
+            size="small"
+            class="fab-btn"
+            href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/DeviceProduction.xlsx"
+            download="sample.xlsx"
+          >
+            <div class="excel-wrapper"></div>
+          </ion-fab-button>
+          <span class="tooltiptext">Excel-Format</span>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="openModel()" class="submitBtn" size="small"
+            >ADD</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin: 15px 0px 0px 0px">
+    <ion-col size="12">
+      <jqxGrid
+        #myGrid
+        [theme]="'material'"
+        (onRowclick)="myGridOnRowSelect($event)"
+        [width]="'99%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [columns]="columns"
+        [sortable]="true"
+        [filterable]="true"
+        [enablebrowserselection]="true"
+        [pagesizeoptions]="page"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true"
+        style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,108 @@
+ion-card-header {
+    background-color: #c1c1d2;
+    padding: 12px 0px;
+    
+    font-size: 15px;
+
+}
+
+ion-card-title {
+    color: white;
+    font-size: 100%;
+    font-weight: 700;
+}
+
+ion-title {
+    padding: 0px 5%;
+}
+
+.vehStates::first-letter {
+    text-transform: capitalize;
+}
+
+ion-card {
+    border-radius: 10px;
+    margin: 10px 16px;
+}
+
+ion-card-content {
+    padding: 0px 16px;
+}
+
+.semiCircle {
+    background: #32384b;
+    width: 100%;
+    height: 50px;
+    border-radius: 50% / 100%;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.alertsStyle {
+    color: white;
+    font-size: 20px;
+    display: grid;
+}
+
+.header-md:after{
+    left: 0;
+    bottom: -5px;
+    background-position: left 0 top -2px;
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background-image: none;
+    background-repeat: repeat-x;
+    content: "";
+}
+
+.statusBar{
+    padding: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+    justify-content: center;
+    font-size: 15px; color: white;
+    padding-top: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.vehicleStatusHeading{
+    background-color: #e51e43;
+    color: white;
+    width: 60%;
+    text-align: center;
+    padding: 2px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 100px;
+  } 
+  .circle {
+    background-color: #FFF;
+    border: 3px solid;
+    border-radius: 18px;
+    box-shadow: 0 0 2px #888;
+    height: 15px;
+    width: 15px;
+  }
+.card{
+    margin: 0px;
+    padding: 0px;
+}
+  .displayDesktop{
+
+    display: block;
+}
+.displayOthers{
+    display: none;
+}
+
+.displayLine{
+    border-top: 0.5px solid rgba(128, 128, 128, 0.5);
+     padding:0px;align-self: center;
+}
+
+.checkboxIos{
+   background-color: #e4e4e4;
+}

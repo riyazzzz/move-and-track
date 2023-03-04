@@ -1,0 +1,71 @@
+<ion-content class="content-style label-style">
+  <ion-row>
+  <ion-col>
+  <form [formGroup]="productionForm">
+  <ion-row class="total-data">
+  <ion-col>
+  <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Serial Number :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="diable-style" type="text" disabled formControlName="SerialNo" value={{serial}} placeholder="Enter the SerialNo"></ion-input>
+  </ion-col>
+  </ion-row>
+  
+  <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+    Device Model :
+    </ion-col>
+    <ion-col size="7">
+      <ionic-selectable class="input selectable-input" formControlName="devicemodel" placeholder="Select the Device Model"
+      [items]="devicemodellist"  [canSearch]="true" (onChange)="getdevicemodellist($event)"
+     [hasVirtualScroll]="true" [disabledItems]="data">
+    </ionic-selectable>
+    </ion-col>
+    </ion-row>
+
+  <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Imei Number :
+  </ion-col>
+  <ion-col size="6">
+  <ion-input class="label-style" type="number" formControlName="imeiNo" placeholder="Enter Imei Number"></ion-input>
+  </ion-col>
+  <ion-col size="1">
+    <ion-button (click)="click($event)">+</ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Quantity :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="diable-style" type="number" disabled [(ngModel)]="Qty"  [ngModelOptions]="{standalone: true}" placeholder="Quantity"></ion-input>
+  </ion-col>
+  </ion-row>
+  </ion-col>
+  </ion-row>
+  </form>
+  
+  <ion-row class="content-style">
+  <ion-col>
+        <jqxGrid *ngIf="isshow" #myGrid [theme]="'material'" [width]="'99%'" [autoheight]="true"
+     [showfilterrow]="false" [rowsheight]="30" [source]="dataAdapter" [columns]="columns" [showstatusbar]="true"
+     [statusbarheight]="30" [showaggregates]="true" [sortable]="false" [filterable]="false" [columns]="columns" [columnsresize]="true" [enabletooltips]="true"
+      [pageable]="false" [selectionmode]="'singlerow'" style="font-size: 10px;text-align: center !important">
+    </jqxGrid>
+  </ion-col>
+  </ion-row>
+  
+  <ion-row class="content-style">
+  <ion-col style="text-align: center !important;padding: 20px;">
+  <ion-button class="button" type="submit" [disabled]="!productionForm.valid"(click)="submitBtn()">Submit</ion-button>
+  <ion-button class="button" type="cancel" (click)="cancelBtn()">Cancel</ion-button>
+  </ion-col>
+  </ion-row>
+  
+  </ion-col>
+  </ion-row>
+  </ion-content>
+  

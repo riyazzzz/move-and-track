@@ -1,0 +1,58 @@
+.header {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #7c68f8
+}
+
+@media only screen and (max-width:767px) {
+    .form-field {
+        zoom: 80%;
+    }
+
+    #submitbtn {
+        width: 80%;
+    }
+}
+
+.form-field {
+    margin: -5px 5px 0px;
+    border-radius: 7px;
+}
+
+.label-style {
+    border: 1px solid #e5e5e5;
+    background: #e8e8e8;
+    line-height: 18px;
+}
+
+.diable-style {
+    background: white;
+    line-height: 18px;
+}
+
+.content-style {
+    justify-content: right
+}
+
+.total-data {
+    margin-top: 1%;
+}
+
+.col-content {
+    text-align: right;
+    align-self: center;
+    font-size: 18px;
+}
+.input {
+    border: 1px solid #e5e5e5;
+    height: 42px;
+    line-height: 18px;
+    --padding-start: 15px;
+    background: #e8e8e8;
+}
+.label-head {
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0px 0px 0px 5px;
+}

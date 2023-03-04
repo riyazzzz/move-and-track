@@ -1,0 +1,105 @@
+.buttonWidth {
+  width: 33%;
+  height: 30px;
+  --ion-color-primary: #7c68f8;
+}
+
+.paddingBottom10px {
+  padding-bottom: 4px;
+}
+
+.padding25px {
+  padding: 20px;
+}
+.imeibox {
+  background-color: #e8e8e8;
+  color: black;
+  width: 100%;
+}
+.savebutton {
+  width: 15%;
+  height: 30px;
+  --ion-color-primary: #7c68f8;
+}
+.pdf-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 23px;
+  height: 24px;
+  float: right;
+}
+.edit-wrapper {
+  width: 23px;
+  height: 24px;
+  float: right;
+}
+.addbutton {
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+  --color-hover: white;
+  margin: 13px 5px 0px 0px;
+}
+.notification {
+  background-color: #7c68f8;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  border-radius: 100%;
+  padding: 4px;
+}
+
+.unnotification {
+  background-color: #a8a8a8;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  border-radius: 50%;
+  padding: 4px;
+}
+.label-heading {
+  color: #000000;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 5px;
+}
+.download-buttons {
+  margin: 0px 3px;
+  padding: 4px 6px;
+  background: #915a9a;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.download-buttons:hover {
+  background-color: #efe2f1;
+}
+
+.manage-card {
+  background: #f6f6f6;
+  border-radius: 10px;
+  border-left: 3px solid #6c2a84;
+}
+.inner-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: none !important;
+  color: rgb(46, 44, 44);
+  font-weight: 500;
+}
+.plateNo {
+  font-size: 14px;
+  font-weight: bold;
+  color: rgb(46, 44, 44);
+}
+.data {
+  color: #bdbdbd;
+  font-weight: 500;
+  font-family: sans-serif;
+  font-size: 11px;
+}
+.add-icon {
+  font-size: 32px;
+  color: white;
+}

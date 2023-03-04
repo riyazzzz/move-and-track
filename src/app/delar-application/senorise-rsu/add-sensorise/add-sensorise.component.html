@@ -1,0 +1,75 @@
+<ion-content>
+  <form [formGroup]="sensoriseForm">
+    <ion-row class="total-data">
+    <ion-col>
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      Customer ID :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style" formControlName="Customerid" placeholder="Enter the Customerid"></ion-input>
+    </ion-col>
+    </ion-row>
+    
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      Crypotologic :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style"  formControlName="Crypotologic" placeholder="Enter the Crypotologic"></ion-input>
+    </ion-col>
+    </ion-row>
+    
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      Token Validity :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style" formControlName="Tokenvalidity" placeholder="Enter the Tokenvalidity"></ion-input>
+    </ion-col>
+    </ion-row>
+    
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      Token Transaction :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style" formControlName="Tokentransaction" placeholder="Enter the Token Transaction"></ion-input>
+    </ion-col>
+    </ion-row>
+    
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      Action :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style" formControlName="Action" placeholder="Enter Action"></ion-input>
+    </ion-col>
+    </ion-row>
+    
+    <ion-row class="content-style">
+    <ion-col size="4" class="col-content">
+      UTR No :
+    </ion-col>
+    <ion-col size="7">
+    <ion-input class="label-style"  formControlName="Utrno" placeholder="Enter UTR No"></ion-input>
+    </ion-col>
+    </ion-row>
+    <ion-row style="padding: 0px;">
+      <ion-col size="12" class="file">
+      <input type="file"  (change)="onFileChange($event)" />
+      </ion-col> 
+      </ion-row> 
+    </ion-col>
+    </ion-row>
+    </form>
+
+    <ion-row class="content-style">
+      <ion-col style="text-align: center !important;padding: 20px;">
+      <ion-button class="button" type="submit" (click)="submitBtn()">Submit</ion-button>
+      <ion-button class="button" type="cancel" (click)="cancelBtn()">Cancel</ion-button>
+      </ion-col>
+      </ion-row>
+  </ion-content>
+  
+  

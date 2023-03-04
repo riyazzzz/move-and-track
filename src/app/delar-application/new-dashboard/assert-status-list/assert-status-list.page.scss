@@ -1,0 +1,28 @@
+ion-segment-button {
+    --color-checked: #7d67f8;
+  }
+
+  .iconSize25px{
+    font-size: 25px;
+}
+.notification{
+  background-color: #7c68f8;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  border-radius: 100%;
+  padding: 4px;
+
+}
+
+.unnotification{
+  background-color: #a8a8a8;
+  font-size: 10px;
+  font-family: sans-serif;
+  margin-bottom: -4px;
+  margin-left: 4px;
+  border-radius: 50%;
+  padding: 4px;
+
+}

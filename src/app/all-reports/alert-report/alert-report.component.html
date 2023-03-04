@@ -1,0 +1,31 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+  <ion-toolbar mode="md" class="appHeader">
+    <ion-toolbar class="appHeader">
+      <ion-buttons slot="start">
+        <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+      </ion-buttons>
+      <ion-searchbar [(ngModel)]="searchInput" debounce="500" placeholder="Search" animated class="noPad">
+      </ion-searchbar>
+    </ion-toolbar>
+    <ion-grid style="padding:0px">
+
+      <ion-row>
+        <ion-col size="10">
+          <ion-title style="padding:0px 12px;">Alerts Report</ion-title>
+        </ion-col>
+        <ion-col size="2" style="text-align: -webkit-right;">
+          <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row class="viewTypeRow">
+        <ion-col size="6" [ngClass]="{'active': view=='grid'}" (click)="typeOfView('grid')">Grid View</ion-col>
+        <ion-col size="6" [ngClass]="{'active': view=='table'}" (click)="typeOfView('table')">Table View</ion-col>
+      </ion-row> -->
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-grid-alert [alertReport]='alert' [search]='searchInput' *ngIf="view=='grid'"></app-grid-alert>
+  <app-table-alert *ngIf="view=='table' && myPlatform !='desktop'"></app-table-alert>
+</ion-content>

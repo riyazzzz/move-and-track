@@ -1,0 +1,64 @@
+.route-items {
+    margin          : 5px 6px 0px;
+    padding         : 0px;
+    border          : 1px solid #cfe8ec;
+    border-radius   : 18px;
+    height          : 35px;
+    background-color: #fcfcfc;
+}
+
+.route-container {
+    width           : 95%;
+    height          : 80%;
+    margin          : -20px auto 32px;
+    padding         : 0px auto;
+    background-color: #f3f3f3;
+
+}
+
+.route-input {
+    font-size          : 13px;
+    --placeholder-color: rgb(117, 118, 119);
+    --padding-bottom   : 25px;
+}
+
+
+.route-icon {
+    padding: 0px 10px 0px 0px;
+    width: 34px;
+    margin: 5px 15px 23px 8px;
+    border-right: 1px solid lightgrey;
+}
+
+.route-btn {
+    height    : 30px;
+    font-size : small;
+    width     : 100px;
+    margin    : auto;
+    padding   : 2px;
+    text-align: center;
+}
+
+.popup-head {
+    color      : #3880ff;
+    margin-left: 30px;
+
+}
+.option-head{
+    background-color: darkgray;
+}
+.box{
+    outline: none;
+    margin-top: -15px;
+    width: 100%;
+    border: 1px solid white;
+    color: #555757;
+    font-size: 15px;
+}
+#map-icon{
+    font-size: 21px;
+    position: absolute;
+    right: 21px;
+    bottom: 12px;
+    color: #3880ff;
+}

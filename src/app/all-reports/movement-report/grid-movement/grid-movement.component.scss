@@ -1,0 +1,21 @@
+$stop: red;
+$running: #1eb15d;
+$idle: #1f5baa;
+$overspeed: #f28918;
+$noTransmission: #000000;
+.runningCardBorder{
+    border-left: 6px solid $running;
+  }
+  .idleCardBorder{
+    border-left: 6px solid $idle;
+  }
+  .noTransCardBorder{
+    border-left: 6px solid $noTransmission;
+  }
+  .overspeedCardBorder{
+    border-left: 6px solid $overspeed;
+  }
+  .stopCardBorder{
+    border-left: 6px solid $stop;
+  }
+  

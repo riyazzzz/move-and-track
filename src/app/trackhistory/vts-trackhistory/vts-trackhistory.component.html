@@ -1,0 +1,269 @@
+<!-- <ion-grid class="ion-no-padding">
+    <ion-row class="appHeader playBackBackground" *ngIf="playbackUpdater.status == true ">
+        <ion-col size="6">
+            {{playbackUpdater.timeStamp}}
+        </ion-col>
+        <ion-col size="3">
+            {{playbackUpdater.speed}} km/hr
+        </ion-col>
+        <ion-col size="3">
+            {{playbackUpdater.odometer}} km
+        </ion-col>
+    </ion-row>
+</ion-grid> -->
+
+<!-- <div style="transform: rotateZ(-90deg);"> -->
+<ion-range *ngIf="playbackUpdater.status == true && myPlatform !='desktop' " class="range-slider" min='62' max='1000' style="padding: 0px;"
+    color="secondary" [(ngModel)]="range" (ionChange)="playbackSpeedTrigger(range)">
+</ion-range>
+
+<ion-range *ngIf="playbackUpdater.status == true && myPlatform =='desktop' " class="range-sliderweb" min='62' max='1000' style="padding: 0px 11px 0px 11px;"
+            color="secondary" [(ngModel)]="range" (ionChange)="playbackSpeedTrigger(range)">
+        </ion-range>
+<!-- </div> -->
+
+<div *ngIf='myPlatform !="desktop"' class='map' id="map" #mapElement></div>
+<div *ngIf='myPlatform =="desktop"' id="map" #mapElement></div>
+
+<div *ngIf='popupView' id="popup" class="ol-popup">
+    <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+    <div id="popup-content"></div>
+  </div>
+<ion-fab (click)="moveVehicleInMap(display,'default');" style="top: 15%;" horizontal="end" vertical="top" slot="fixed"
+    edge>
+    <ion-fab-button size='small' color='light'>
+        <ion-icon center [name]='display'></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<ion-fab (click)="moveVehicleInMap('stop','');"  vertical="top" style="top: 24%;" horizontal="end" slot="fixed" edge>
+    <ion-fab-button size='small' color='light'>
+        <ion-icon name="square"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+<ion-fab  (click)="kml()" style="top: 6%;"  vertical="top" horizontal="end"  slot="fixed" edge>
+    <ion-fab-button size ='small' color='light'>
+     KML
+    </ion-fab-button>
+  </ion-fab>
+<ion-fab  *ngIf="myPlatform =='desktop' && !showSwipeModal" vertical="top" style="top: 33%;" horizontal="end" slot="fixed" edge>
+    <ion-fab-button size='small'  *ngIf="!showSwipeModal" (click)="toggleView()"  class="btn-fab">
+        <ion-icon *ngIf="!showSwipeModal" name="add" (swipedown)="toggleView()" (swipeup)="toggleView()"></ion-icon>
+        <ion-icon *ngIf="showSwipeModal" name="close" (swipedown)="toggleView()" (swipeup)="toggleView()"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
+<div class="modal2" *ngIf="myPlatform !='desktop'">
+    <ion-card style="background-color: white;">
+    <ion-card-content style="padding: 0px;">
+        <app-gridview-card [commonData]='traveVinData' [pageName]="trackHistory"></app-gridview-card>
+        <ion-row (click)='showLocation(traveVinData)' class="address">
+            <ion-col size=12 style="padding-top: 0px; padding-bottom: 0px;">
+                <ion-row *ngIf="traveVinData.location">
+                    {{traveVinData.location}}
+                </ion-row>
+                <ion-row *ngIf="!traveVinData.location">
+                    <!-- <ion-spinner name="dots"></ion-spinner> -->
+                    Click for location 
+                </ion-row>
+                </ion-col>
+                </ion-row>
+    </ion-card-content>
+    </ion-card>
+</div>
+
+<div  class="modal2web" *ngIf="myPlatform =='desktop'" style="margin-bottom: 0px;margin-left: -8px;">
+    <ion-col size="12" size-sm="12" size-md="10" size-lg="10"  style="padding:0px"> 
+        <ion-card style="background-color: white;width: 78%;" >
+    <app-grid-card-website [commonData] = 'traveVinData' ></app-grid-card-website>
+</ion-card>
+</ion-col>
+</div>
+
+        <div id="myDiv" *ngIf='show == true && myPlatform!="desktop"' class="modal" style="background-color: white; border-radius: 35px 35px 0px 0px;">
+
+            <div>
+                <ion-row style="margin:5px 0px 0px 0px; text-align: center;" (click)="toggleView()">
+                    <ion-col (swipedown)="toggleView()" (swipeup)="toggleView()" size="8" offset="2">
+                        <span class="platestyle">{{selectedVin.plateNo}}</span>
+                    </ion-col>
+
+                </ion-row>
+            </div>
+
+            <div *ngIf="showSwipeModal">
+                <div>
+                    <ion-row style="line-height: 15px;margin:10px 20px;text-align: center;">
+                        <ion-col size="4" class="lineDesign hoursnum" (click)="trackModal(4)">
+                            <ion-label value="4"
+                                [ngClass]='{"active": selectedValue === 4, "hoursnum":selectedValue != 4}'>4hrs
+                            </ion-label>
+                        </ion-col>
+                        <ion-col size="4" class="lineDesign hoursnum" (click)="trackModal(8)">
+                            <ion-label value="8"
+                                [ngClass]='{"active": selectedValue === 8, "hoursnum":selectedValue != 8}'>8hrs
+                            </ion-label>
+
+                        </ion-col>
+                        <ion-col size="4" class="hoursnum" (click)="trackModal(12)">
+                            <ion-label value="12"
+                                [ngClass]='{"active": selectedValue === 12, "hoursnum":selectedValue != 12}'>12hrs
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row style="border:2px solid black;margin:10px 40px ;text-align: center;border-radius: 5px;">
+                        <ion-col size="6" class="borderbtn lineDesign"
+                            [ngClass]='{"activeLetters": selectedValue === "today", "borderbtn":selectedValue != "today"}'
+                            (click)="trackModal('today')">
+                            <ion-label value="today">Today</ion-label>
+                        </ion-col>
+                        <ion-col size="6" class="borderbtn"
+                            [ngClass]='{"activeLetters": selectedValue === "yesterday", "borderbtn":selectedValue != "yesterday"}'
+                            (click)="trackModal('yesterday')">
+                            <ion-label value="yesterday">Yesterday</ion-label>
+                            <ion-radio class="radidisplay"></ion-radio>
+                        </ion-col>
+                    </ion-row>
+                </div>
+
+                <div>
+
+                    <ion-row class="timerow"
+                        style="margin:10px 15px;padding-bottom:2px; text-align:center; border-radius:10px;">
+
+                        <ion-col size="3">
+                            <ion-icon name="calendar" style="font-size:24px; float:right;"></ion-icon>
+                        </ion-col>
+                        <ion-col size="9" style="font-size:20px;float:left;margin-left:-17px;">
+                            DATE RANGE
+                        </ion-col>
+                        <ion-col size="5.5" class=" calendinput">
+                            <ion-datetime class="dateFormat" (click)="trackModal('from')" [(ngModel)]='user.fromDate'
+                                displayFormat="D MMM YY h:mm a" placeholder="From Date">
+                            </ion-datetime>
+                        </ion-col>
+                        <ion-col size="5.5" class=" calendinput">
+                            <ion-datetime class="dateFormat" (click)="trackModal('from')" [(ngModel)]='user.toDate'
+                                displayFormat="h:mm a" placeholder="To Date">
+                            </ion-datetime>
+                        </ion-col>
+                    </ion-row>
+
+                </div>
+
+                <div>
+                    <ion-row style="justify-content: center;">
+                        <!-- <ion-col size="12" style="background-color: #4255b6;border-radius: 5px;color:white; font-size: 16px;padding: 3px 5px 3px 5px;" (click)="moveVehicleInMap(display,'default'); " >PLAY</ion-col> -->
+                        <ion-button size="12" color='danger' shape="round" (click)="getHistory()" color="danger">
+                            Show History
+                        </ion-button>
+                    </ion-row>
+                </div>
+            </div>
+            </div>
+
+            
+            <div id="myDiv" *ngIf='show == true && myPlatform=="desktop"' class="modalWebim" style="background-color: white; border-radius: 5px ">
+                
+                <div *ngIf="showSwipeModal" style=" border-radius: 5px;border: 2px solid black; ">
+                    <div style="float: right;
+                    padding: 4px;">
+                        <ion-icon style="background: #bbc2c3;
+                        border-radius: 8px;" name="close" (click)="toggleView()"></ion-icon>
+                    </div>
+                        <div>
+                            <ion-row style="margin:5px 0px 0px 0px; text-align: center;" >
+                                <ion-col >
+                                    <span class="platestyle">{{selectedVin.plateNo}}</span>
+                                 </ion-col>
+                            </ion-row>
+                        </div>
+                        <div>
+                            <ion-row style="line-height: 15px;margin:10px 20px;text-align: center;">
+                                <ion-col size="4" class="lineDesign hoursnum" (click)="trackModal(4)">
+                                    <ion-label value="4"
+                                        [ngClass]='{"active": selectedValue === 4, "hoursnum":selectedValue != 4}'>4hrs
+                                    </ion-label>
+                                </ion-col>
+                                <ion-col size="4" class="lineDesign hoursnum" (click)="trackModal(8)">
+                                    <ion-label value="8"
+                                        [ngClass]='{"active": selectedValue === 8, "hoursnum":selectedValue != 8}'>8hrs
+                                    </ion-label>
+        
+                                </ion-col>
+                                <ion-col size="4" class="hoursnum" (click)="trackModal(12)">
+                                    <ion-label value="12"
+                                        [ngClass]='{"active": selectedValue === 12, "hoursnum":selectedValue != 12}'>12hrs
+                                    </ion-label>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row style="border:2px solid black;margin:10px 20px ;text-align: center;border-radius: 5px;">
+                                <ion-col size="6" class="borderbtn lineDesign"
+                                    [ngClass]='{"activeLetters": selectedValue === "today", "borderbtn":selectedValue != "today"}'
+                                    (click)="trackModal('today')">
+                                    <ion-label value="today">Today</ion-label>
+                                </ion-col>
+                                <ion-col size="6" class="borderbtn"
+                                    [ngClass]='{"activeLetters": selectedValue === "yesterday", "borderbtn":selectedValue != "yesterday"}'
+                                    (click)="trackModal('yesterday')">
+                                    <ion-label value="yesterday">Yesterday</ion-label>
+                                    <ion-radio class="radidisplay"></ion-radio>
+                                </ion-col>
+                            </ion-row>
+                        </div>
+          
+                        <div>
+          
+                            <ion-row class="timerow"
+                                style="margin:10px 20px;padding-bottom:2px; text-align:center; border-radius:10px;">
+          
+                                <ion-col size="3">
+                                    <ion-icon name="calendar" style="font-size:24px; float:right;"></ion-icon>
+                                </ion-col>
+                                <ion-col size="9" style="float:left;margin-left:-17px;">
+                                    DATE RANGE
+                                </ion-col>
+                                <ion-col size="5.5" class=" calendinput">
+                                    <ion-datetime class="dateFormat" (click)="trackModal('from')" [(ngModel)]='user.fromDate'
+                                        displayFormat="D MMM YY h:mm a" placeholder="From Date">
+                                    </ion-datetime>
+                                </ion-col>
+                                <ion-col size="5.5" class=" calendinput">
+                                    <ion-datetime class="dateFormat" (click)="trackModal('to')" [(ngModel)]='user.toDate'
+                                        displayFormat="D MMM YY h:mm a" placeholder="To Date">
+                                    </ion-datetime>
+                                </ion-col>
+                             
+                            </ion-row>
+                            
+                        </div>
+          
+                        <div>
+                            <ion-row style="justify-content: center;">
+                                
+                                <ion-button size="12"  shape="round" (click) = "getInBetweenDate()" class="sub-btn">
+                                    Show History
+                                </ion-button>
+                            </ion-row>
+                        </div>
+                        <ion-row style=  "background-color: rgb(117, 117, 115)">
+                          <ion-col class="ion-text-center" (click)="track('stop')" [ngClass]='{"selectedTab": showdataMarker.stop == true, "unSelectedTab":stopValue == false}'>Stop</ion-col>
+                          <ion-col class="ion-text-center" (click)="track('idle')"  [ngClass]='{"selectedTab": showdataMarker.idle == true, "unSelectedTab":showdataMarker.idle == false}'>Idle</ion-col>
+                          <ion-col class="ion-text-center" (click)="track('running')"  [ngClass]='{"selectedTab": showdataMarker.running == true, "unSelectedTab":showdataMarker.running == false}'>Running</ion-col>
+                          <ion-col class="ion-text-center" (click)="track('overspeed')"  [ngClass]='{"selectedTab": showdataMarker.overSpeed == true, "unSelectedTab":showdataMarker.overSpeed == false}'>Overspeed</ion-col>
+                         </ion-row>
+                         <ion-row>
+                            <!-- <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" [theme]="'material'" [width]="'290'" 
+                            gridHeight="60" [height]="30"[rowsheight]="30" [source]="dataAdapter" [columns]="columns" [scrollbarsize] = 2
+                       
+                            [pageable]="false" [selectionmode]="'singlerow'" style="font-size: 10px !important; height: 300px;">
+                          </jqxGrid> -->
+                          <jqxGrid [source]='dataAdapter'  (onRowselect)="myGridOnRowSelect($event)"  [width]="'270'"
+    [pageable]='false' 
+    [filterable]='false' [showfilterrow]='false' 
+    [sortable]='false' [columns]='columns' theme="material" [rowsheight]="25" #myGrid [selectionmode]="singlerow"
+    [height]="92" [enabletooltips]="true" [scrollbarsize]='5' [sorttogglestates]="1">  
+</jqxGrid>  
+                         </ion-row>
+                    </div> 
+                    
+                </div>

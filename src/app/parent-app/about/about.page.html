@@ -1,0 +1,70 @@
+
+<ion-header class='header'>
+  <ion-toolbar class="parentAppcolor">
+    <ion-row style="align-items: center;">
+      <ion-icon (click)="locationBack()" class="icon-size" name="arrow-back"></ion-icon>
+      <ion-label> About  </ion-label>
+   </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <!-- <ion-row class="iconPlace">
+    <ion-icon class="iconStyle" style="font-size: 120px;" name= "contact"> </ion-icon>
+    <ion-img style="width:70%;" src="assets/vtstrackhisIcon/seatBelt.svg"></ion-img>
+  </ion-row> -->
+  <ion-row>
+    <ion-col size="8" offset="2" class="ion-align-items-center ion-justify-content-center">
+        <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-img style="width:70%;
+            border: 2px solid lightgrey;
+            border-radius: 78px;" src="assets/vtstrackhisIcon/seatBelt.svg"></ion-img>
+        </ion-row>
+    </ion-col>
+</ion-row>
+<ion-row><ion-col size=12 class="ion-text-center">{{data.schoolName}}
+</ion-col></ion-row>
+<!-- <ion-row><ion-col size=8 offset="2" class="ion-text-center" off-set=4><ion-card>
+<ion-row><ion-col size=12 class="ion-text-center">Description</ion-col></ion-row>
+<ion-row>NO 1 school in chennai</ion-row>
+</ion-card></ion-col></ion-row> -->
+  <!-- description
+  Mail Id
+  Address
+  Phone Number -->
+  <ion-row class="rowPadding">
+    <ion-col size="2" style="text-align: right;">
+      <ion-icon class="detailIcon" name="phone-portrait"></ion-icon> 
+    </ion-col>
+    <ion-col size="10">
+    <label>{{data.contactNo}}</label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="rowPadding">
+    <ion-col size="2" style="text-align: right;">
+      <ion-icon class="detailIcon" name="mail"></ion-icon> 
+    </ion-col>
+    <ion-col size="10">
+    <label>{{data.mailId}}</label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="rowPadding">
+    <ion-col size="2" style="text-align: right;align-self: center;">
+      <ion-icon  name="compass"></ion-icon> 
+    </ion-col>  
+    <ion-col size="10">
+    <label>{{data.address}}</label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="rowPadding">
+    <ion-col size="2" style="text-align: right;align-self: center;">
+      <ion-icon  name="business"></ion-icon> 
+    </ion-col>
+    <ion-col size="10">
+    <label>{{data.describe}}</label>
+    </ion-col>
+  </ion-row>
+  <!-- <ion-row><ion-col size=12 class="ion-text-center" ><ion-card>
+    <ion-row><ion-col size=12 class="ion-text-center">Description</ion-col></ion-row>
+    <ion-row><ion-col size=12 class="ion-text-left">No:3 Ramanujam garden street, perambur, chennai-600012</ion-col></ion-row>
+    </ion-card></ion-col></ion-row> -->
+</ion-content>

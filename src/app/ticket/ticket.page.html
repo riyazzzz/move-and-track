@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar mode="md" class="appHeader">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-row *ngIf="myPlatform != 'desktop'" >
+              <ion-col size="2">
+                <!-- <ion-icon name="arrow-back"  (click)="getBack()"></ion-icon> -->
+                <ion-menu-button></ion-menu-button>
+              </ion-col>
+             <ion-col size="8">
+              <ion-title style="font-size: 20px;font-weight: bold;">Tickets </ion-title>
+             </ion-col>
+             <ion-col size="2">
+               <!-- <ion-icon name="add-circle" class="add-icon" (click)="openModel()"></ion-icon> -->
+             </ion-col>
+          </ion-row>
+         
+         
+          <ion-row *ngIf="myPlatform == 'desktop'">
+            <ion-col size='2'>
+              <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size="9">
+              <ion-label class="headercolour"> Tickets </ion-label>
+            </ion-col>
+          
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content>
+<app-ticket-card ></app-ticket-card>
+</ion-content>

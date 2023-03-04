@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dealer IMEI Check</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="imeicheckForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="6" size-md="6">
+              <ion-label class="label-head">Select Dealer :</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="dealer"
+                placeholder="Select the Dealer"
+                [items]="dealerlist"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col
+              size="12"
+              size-lg="3"
+              size-md="3"
+              style="margin: 25px 0px 0px; text-align: center"
+            >
+              <ion-button
+                class="submitbtn"
+                (click)="SearchData()"
+                [disabled]="!imeicheckForm.valid"
+                >Search</ion-button
+              >
+              <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row style="padding: 10px" *ngIf="show">
+          <ion-col size="12">
+            <jqxGrid
+              #myGrid
+              [theme]="'material'"
+              [enablebrowserselection]="true"
+              [pagesizeoptions]="page"
+              [width]="'99.5%'"
+              [autoheight]="true"
+              [source]="dataAdapter"
+              [columns]="columns"
+              [filterable]="true"
+              [sortable]="true"
+              [columnsresize]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="
+                font-size: 16px;
+                text-align: center !important;
+                margin: auto;
+                cursor: pointer;
+              "
+              [columns]="columns"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

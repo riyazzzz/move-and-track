@@ -1,0 +1,279 @@
+/*
+* App Global CSS
+* ----------------------------------------------------------------------------
+* Put style rules here that you want to apply globally. These styles are for
+* the entire app and not just one component. Additionally, this file can be
+* used as an entry point to import other CSS/Sass files to be included in the
+* output CSS.
+* For more information on global stylesheets, visit the documentation:
+* https://ionicframework.com/docs/layout/global-stylesheets
+*/
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-angular-navigations/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-inputs/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+.ion-color-appColor {
+  --ion-color-base: var(--ion-color-appColor) !important;
+}
+
+.ion-color-themeLight {
+  --ion-color-themeLight: var(--ion-color-themeLight) !important;
+}
+
+.ion-color-themeDark {
+  --ion-color-themeDark: var(--ion-color-themeDark) !important;
+}
+
+.ion-color-running {
+  --ion-color-running: var(--ion-color-running) !important;
+}
+
+.ion-color-idle {
+  --ion-color-idle: var(--ion-color-idle) !important;
+}
+
+.ion-color-stop {
+  --ion-color-stop: var(--ion-color-stop) !important;
+}
+
+.ion-color-overspeed {
+  --ion-color-overspeed: var(--ion-color-overspeed) !important;
+}
+
+.ion-color-nodata {
+  --ion-color-nodata: var(--ion-color-nodata) !important;
+}
+
+.ion-color-towed {
+  --ion-color-towed: var(--ion-color-towed) !important;
+}
+
+ion-searchbar {
+  .searchbar-input-container {
+    .searchbar-input {
+      border-radius: 25px !important;
+    }
+    .searchbar-search-icon {
+      top: 5px;
+    }
+    .sc-ion-searchbar-md {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.headerMainTitle {
+  padding: 0px 5%;
+}
+
+.ol-touch .ol-control button {
+  font-size: 1em;
+}
+
+.ol-control button {
+  margin: 3px;
+}
+
+.headerMainTitle {
+  padding: 0px 5%;
+}
+
+.ol-zoom-in {
+  background-color: #dadada;
+  padding: 7px;
+}
+.ol-zoom-out {
+  background-color: #dadada;
+  padding: 7px;
+}
+.ol-touch .ol-control button {
+  font-size: 1em;
+}
+
+.ol-control button {
+  margin: 3px;
+}
+.ol-zoom.ol-unselectable.ol-control {
+  top: 12%;
+  position: fixed;
+}
+@media screen and (max-width: 768px) {
+  .ol-control button {
+    display: none;
+  }
+}
+
+.manage-fleet .modal-wrapper.sc-ion-modal-md {
+  -webkit-transform: translate3d(0, 40px, 0);
+  transform: translate3d(0, 40px, 0);
+  opacity: 0.01;
+  height: 85%;
+  width: 35%;
+}
+
+.dealerfont {
+  font-family: sans-serif;
+}
+.dealerHeader {
+  --background: #7c68f8;
+  --color: white;
+}
+.companyHeader {
+  --background: white;
+  --color: #6c2a84;
+}
+.headercolour {
+  font-size: 20px;
+  font-weight: bold;
+  color: #6c2a84;
+}
+
+@media (min-width: 1023px) {
+  .commonButton {
+    --background: #6c2a84;
+  }
+}
+jqxGrid[id^="myGrid"] {
+  color: transparent !important;
+}
+span[id^="myGrid"] {
+  color: transparent !important;
+}
+
+.bus-stop .ol-zoom.ol-unselectable.ol-control {
+  top: 27% !important;
+  position: fixed !important;
+  background: white !important;
+}
+.bus-stop .ol-zoom-in {
+  background-color: #494949;
+  color: white;
+  padding: 7px;
+}
+.bus-stop .ol-zoom-out {
+  background-color: #dadada;
+  padding: 7px;
+}
+.studentPage .ol-zoom.ol-unselectable.ol-control {
+  top: 82% !important;
+  position: fixed !important;
+  background: white !important;
+}
+.studentPage .ol-zoom.ol-unselectable.ol-control.ol-compass.ol-rotate-reset {
+  display: none !important;
+}
+.studentPage .ol-viewport {
+  height: 94% !important;
+}
+.studentPage .ol-zoom-in {
+  background-color: #494949;
+  color: white;
+  padding: 7px;
+}
+.studentPage .ol-zoom-out {
+  background-color: #dadada;
+  padding: 7px;
+}
+//skt--end
+.ionic-selectable-icon {
+  position: relative;
+  width: 20px;
+  top: -10px;
+}
+.parentAppcolor {
+  --background: #ff9025;
+  --color: white;
+}
+.parentAppBackcolor {
+  color: #ff9025;
+}
+.trackSideBorder {
+  border-left: 6px solid #ff9025;
+}
+.currentCircle {
+  background-color: #ff9025;
+}
+.parentAppBorder {
+  border: 2px solid #ff9025;
+}
+
+// asma
+
+.search-bar ion-searchbar {
+  .searchbar-input-container {
+    .searchbar-input {
+      box-shadow: none;
+      border-radius: 5px !important;
+      background: #eaeaea;
+      height: 27px;
+      font-size: 14px;
+    }
+
+    .searchbar-search-icon.sc-ion-searchbar-md {
+      left: 16px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+//yasir
+.studentroute .ol-zoom.ol-unselectable.ol-control {
+  top: 70% !important;
+  position: fixed !important;
+  background: white !important;
+}
+.studentroute .ol-zoom-in {
+  background-color: #494949;
+  color: white;
+  padding: 7px;
+}
+.studentroute .ol-zoom-out {
+  background-color: #dadada;
+  padding: 7px;
+}
+
+// reportmap//
+.showspeed .ol-zoom.ol-unselectable.ol-control {
+  top: 60% !important;
+  position: fixed !important;
+  background: white !important;
+}
+.showspeed .ol-zoom-in {
+  background-color: #494949;
+  color: white;
+  padding: 7px;
+}
+.showspeed .ol-zoom-out {
+  background-color: #dadada;
+  padding: 7px;
+}
+.hidespeed .ol-zoom.ol-unselectable.ol-control {
+  display: none;
+}

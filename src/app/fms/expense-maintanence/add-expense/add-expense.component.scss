@@ -1,0 +1,35 @@
+@media only screen and (min-width: 1024px) {
+    .wrapper-form{
+         padding: 0px 10px;
+    }
+   
+    
+}
+.addexpensehead
+{
+    font-size: 16px;
+    color: #9c27b0;
+    font-weight: bold;
+}
+.input-item{
+    --padding-start:15px;
+    height: 36px;
+    font-size:14px;
+    background-color: lightgrey;
+    margin-top: 5px;
+    
+}
+.label
+{
+    font-size: 16px;
+    font-family: Arial, Helvetica;
+}
+.select-input{
+    padding: 10px 11px 4px 15px;
+    margin-top: 5px;
+}
+.submitBtn
+{
+    --background: rebeccapurple;
+    margin-left: 10px;
+}

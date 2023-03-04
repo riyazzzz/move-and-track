@@ -1,0 +1,171 @@
+<ion-content
+  style="background-color: #fffdfd"
+  [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+>
+  <div
+    *ngIf='myPlatform != "desktop"'
+    class="moveAndTrackSpacing"
+    style="background-color: #fffdfd"
+  >
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="8"
+          offset="2"
+          class="ion-align-items-center ion-justify-content-center"
+        >
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-img style="width: 70%" [src]="logo"></ion-img>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <form [formGroup]="login">
+      <ion-item
+        [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+        class="labelSpacing"
+      >
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input
+          formControlName="userName"
+          placeholder="Username"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+        class="labelSpacing"
+      >
+        <ion-icon slot="start" name="key"></ion-icon>
+        <ion-input
+          formControlName="password"
+          placeholder="Password"
+          (keyup.enter)="submitLogin()"
+          [type]="password_type"
+        >
+        </ion-input>
+        <ion-icon
+          slot="end"
+          [name]="eye_icon"
+          (click)="showHidePass()"
+        ></ion-icon>
+      </ion-item>
+    </form>
+
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-button
+          color="primary"
+          (click)="submitLogin()"
+          shape="round"
+          expand="block"
+          [disabled]="!login.valid"
+        >
+          <ion-icon name="log-in" class="iconSize"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div
+    style="padding-top: 7%"
+    *ngIf='myPlatform == "desktop"'
+    class="container-wrapper"
+  >
+    <div
+      style="
+        position: absolute;
+        z-index: 14;
+        bottom: 0px;
+        right: 0px;
+        background: transparent;
+        padding: 11px;
+      "
+      class="forgot"
+    >
+      <span style="color: red" (click)="changeModule('user')">
+        I'm a User
+      </span>
+      | <span (click)="changeModule('dealer')"> I'm a Dealer </span>
+    </div>
+    <div
+      class="moveAndTrackSpacing ion-align-items-center ion-justify-content-center"
+      size-md="6 "
+      size-lg="6"
+      size-xs="12"
+    >
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            size="8"
+            offset="2"
+            class="ion-align-items-center ion-justify-content-center"
+          >
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+              <ion-img style="width: 70%" [src]="logo"></ion-img>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <form [formGroup]="login">
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing label-shape"
+        >
+          <ion-img
+            src="assets/company.svg"
+            slot="end"
+            class="svg_img"
+          ></ion-img>
+          <ion-input
+            formControlName="userName"
+            placeholder="User Name"
+            class="web-input"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing label-shape"
+        >
+          <ion-input
+            formControlName="password"
+            placeholder="Password"
+            (keyup.enter)="submitLogin()"
+            [type]="password_type"
+            class="web-input"
+          >
+          </ion-input>
+          <ion-icon
+            slot="end"
+            [name]="eye_icon"
+            (click)="showHidePass()"
+          ></ion-icon>
+        </ion-item>
+      </form>
+      <ion-row style="padding: 0px 0 0 20px">
+        <ion-col style="padding: 0">
+          <ion-button
+            [class]="appName"
+            (click)="submitLogin()"
+            [disabled]="!login.valid"
+            style="font-size: 13px; height: 31px"
+          >
+            Login
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none" id="remember-item">
+            <ion-checkbox
+              [(ngModel)]="isChecked"
+              slot="start"
+              style="margin: 21px 5px"
+            ></ion-checkbox>
+            <ion-label>Remember Me</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col (click)="openFpassModal()" class="forgotNew"
+          >Forgot Password?</ion-col
+        >
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

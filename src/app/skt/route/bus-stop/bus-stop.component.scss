@@ -1,0 +1,77 @@
+
+.bus-container {
+    margin: 5px 14px;
+}
+
+.bus-stop-input {
+    font-size          : 13px;
+    --placeholder-color: rgb(117, 118, 119);
+    --padding-bottom   : 25px;
+}
+
+.bus-stop-btn {
+    height    : 30px;
+    font-size : small;
+    width     : 100px;
+    margin    : auto;
+    padding   : 2px;
+    text-align: center;
+}
+
+.popup-head {
+    color      : black;
+    margin-left: 30px;
+}
+.bus-form{
+    font-size: 14px;
+    font-weight: 500;
+    color: #676666;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+.bus-stop-label{
+    padding: 8px;
+}
+.bus-input{
+    border:1px solid #d2d1d1;
+    outline: none;
+}
+.bus-btn{
+    width: 80px;
+    height: 30px;
+    padding-right: 5px;
+}
+ #set-map-col{
+  background: #eef7f9;
+}
+ @media(min-width:1024px){
+    #set-map-col{
+     margin-right: 7px;
+  }
+ }
+ #toolbar-header{
+    background: #f2f2f2;
+    border: 1px solid #f1f3f5;
+ }
+ @media(min-width:319px)and(max-width:767px){
+    #toolbar-header{
+        margin: 10px 3.2% 1px;
+        }
+ }
+ @media(min-width:768px){
+    #toolbar-header{
+        margin: 10px 1.2% 6px;
+    }
+ }
+ .table-btn{
+    width: 60px;
+    font-size: 11px;
+    
+ }
+ #map {
+    height: 100%;
+  }
+  
+  

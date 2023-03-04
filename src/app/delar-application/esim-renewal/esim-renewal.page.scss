@@ -1,0 +1,237 @@
+.input {
+  border: 1px solid #e5e5e5;
+  height: 42px;
+  line-height: 18px;
+  --padding-start: 15px;
+  background: #e8e8e8;
+  margin: 7px;
+}
+
+.selectable-input {
+  padding: 8px 11px 4px 8px;
+  margin-top: 5px;
+}
+.dealer-label {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+}
+.submitBtn {
+  margin: 0px 14px 0px 0px;
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+  --color-hover: white;
+}
+
+.submitbtn {
+  --background: #6252ee;
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    margin-top: 12px;
+  }
+
+  #submitbtn {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-field {
+    zoom: 80%;
+  }
+
+  #submitbtn {
+    width: 80%;
+  }
+}
+
+.form-field {
+  margin: 0px 5px 0px;
+  border-radius: 7px;
+}
+
+@media only screen and(min-width:320px) and(max-width:1023px) {
+  .wrapper-container {
+    border: none;
+    margin: 8px 0 0;
+    padding: 0;
+  }
+}
+
+@media only screen and(min-width:1024px) {
+  .wrapper-container {
+    margin: 8px 1px;
+    padding-right: 20px;
+  }
+}
+
+.label-head {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px 0px 0px 5px;
+}
+
+.dealer-label {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.dealer-data {
+  font-size: 14px;
+}
+
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+  width: 18px;
+  height: 20px;
+}
+
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -11px;
+  right: -2px;
+  height: 30px;
+  width: 30px;
+}
+
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.owl {
+  background-color: yellow;
+  --color: #14241d;
+  padding: 10px;
+  align-items: center;
+}
+
+.oml {
+  background-color: blue;
+  --color: white;
+  padding: 10px;
+  align-items: center;
+}
+
+.exp {
+  background-color: red;
+  --color: white;
+  padding: 10px;
+  align-items: center;
+}
+
+.days {
+  background-color: orange;
+  --color: #14241d;
+  padding: 10px;
+  align-items: center;
+}
+
+.upperCol {
+  text-align: center;
+  border-radius: 8px;
+  margin: 2px;
+  color: black;
+  font-family: sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+// Mobile
+.upperRows {
+  background: #ebebeb;
+  padding: 1px;
+  border-bottom: 2px solid #7d67f8;
+}
+.selectedUpperCols {
+  background: #ebebeb;
+  color: black;
+  font-family: sans-serif;
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-right: 1px solid #b5b5b5;
+}
+.select {
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-top: 2px solid #7d67f8;
+  border-left: 2px solid #7d67f8;
+  border-right: 2px solid #7d67f8;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0px -4px 7px #c0b5ff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  top: 3px;
+}
+
+.upperRow {
+  background: #eeeeee;
+  padding: 1px;
+  border-bottom: 2px solid #7d67f8;
+}
+
+.selectedUpperCol {
+  background: #ebebeb;
+  text-align: center;
+  margin-right: 2px;
+  color: black;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 10px;
+  text-transform: uppercase;
+  border-right: 1px solid #b5b5b5;
+  align-self: center;
+  padding-top: 8px;
+  margin-top: 15px;
+}
+
+.selected {
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  border-top: 2px solid #7d67f8;
+  border-left: 2px solid #7d67f8;
+  border-right: 2px solid #7d67f8;
+  // border-bottom: 2px solid #7d67f8;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 10px;
+  box-shadow: 0px -4px 7px #c0b5ff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  top: 3px;
+}

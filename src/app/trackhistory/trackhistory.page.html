@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <!-- <ion-grid class="appHeaderTitle">
+    <ion-row>
+      <ion-title>{{headerText}}</ion-title>
+    </ion-row>
+  </ion-grid> -->
+</ion-header>
+
+<ion-content>
+  <app-vts-trackhistory></app-vts-trackhistory>
+</ion-content>

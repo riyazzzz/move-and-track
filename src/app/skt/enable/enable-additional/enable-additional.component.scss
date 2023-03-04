@@ -1,0 +1,60 @@
+.enable-items {
+    margin          : 5px 6px 0px;
+    padding         : 0px;
+    border          : 1px solid #cfe8ec;
+    border-radius   : 18px;
+    height          : 35px;
+    background-color: #fcfcfc;
+}
+.enable-container {
+    width           : 96%;
+    height          : 100%;
+    margin          : -20px auto 32px;
+    padding         : 0px auto;
+    background-color: #f3f3f3;
+    font-size       : 14px;
+}
+.enable-btn {
+    height    : 30px;
+    font-size : small;
+    width     : 100px;
+    margin    : auto;
+    padding   : 2px;
+    text-align: center;
+}
+
+.popup-head {
+    color: #3880ff;
+    margin-left: -15px;
+    text-align: -webkit-center;
+    padding-left: 0px;
+}
+.enable-input{
+    padding: 6.5px 7px;
+    vertical-align: text-top;
+    font-size: 13px;
+    text-transform: uppercase;
+    outline: none;
+    border: none;
+    width: 100%;
+  }
+  .radio-label{
+      padding: 10px;
+      vertical-align: top;
+  }
+  .date-input{
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 5px 0 5px 10px;
+  }
+  .toolbar-style
+  {
+    padding: 0 10px;
+    color: #3880ff;
+
+  }
+  .align-self
+  {
+      align-self:center;
+  }

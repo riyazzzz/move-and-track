@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="header-background-color">
+      <ion-buttons slot="start">
+          <ion-icon name="arrow-back" (click)="closeModel()"></ion-icon>
+      </ion-buttons>
+      <ion-title style="text-align:center">Odometer History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card class="welcome-card">
+    <ion-card-header>
+      <ion-card-subtitle>Odometer in kilometer with previous seven day reports</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas id='barChart' #barChart height="500"></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

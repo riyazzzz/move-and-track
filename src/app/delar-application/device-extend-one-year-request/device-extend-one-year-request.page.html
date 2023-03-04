@@ -1,0 +1,160 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-row>
+      <ion-title *ngIf="myPlatform != 'desktop'"
+        >Device Extend 1 Yr Request</ion-title
+      >
+      <ion-title *ngIf="myPlatform == 'desktop'"
+        >Device Request Details</ion-title
+      >
+      <ion-col
+        *ngIf="myPlatform == 'desktop'"
+        size="4"
+        style="text-align: right"
+      >
+        <ion-button class="submitBtn" size="small" (click)="newfunc()"
+          >Export</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-ca-request"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Ca Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/esim-device-renewal-request"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Renewal Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-topup-request"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Topup Request</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true'}"
+        routerLink="/tabs-login/device-extend-one-year-request"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Device Extend 1 Yr Request</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="extendForm">
+          <ion-row class="form-field">
+            <ion-col size="6" size-sm="6" size-lg="6" size-md="">
+              <ion-label class="label-head">Extend Request Number:</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Enter the Extend Number"
+                formControlName="extendrequestNo"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="6"
+              size-sm="6"
+              size-lg="6"
+              size-md="6"
+              style="text-align: center; margin-top: 25px"
+            >
+              <ion-button
+                class="submitbtn"
+                (click)="submit()"
+                [disabled]="!extendForm.valid"
+                >Submit</ion-button
+              >
+              <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row style="padding: 10px" *ngIf="show">
+          <ion-col size="12">
+            <jqxGrid
+              #myGrid
+              [theme]="'material'"
+              (onRowclick)="myGridOnRowSelect($event)"
+              [width]="'99.5%'"
+              [autoheight]="true"
+              [source]="dataAdapter"
+              [enablebrowserselection]="true"
+              [sortable]="true"
+              [filterable]="true"
+              [columns]="columns"
+              [columnsresize]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="
+                font-size: 16px;
+                text-align: center !important;
+                margin: auto;
+                cursor: pointer;
+              "
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+
+        <ion-row style="padding: 10px" *ngIf="showsubmit">
+          <ion-col size="12">
+            <jqxGrid
+              #myGrid
+              [theme]="'material'"
+              (onRowclick)="myGridOnRowSelect($event)"
+              [width]="'99.5%'"
+              [autoheight]="true"
+              [source]="dataAdapter"
+              [enablebrowserselection]="true"
+              [sortable]="true"
+              [columns]="columns"
+              [columns]="columns"
+              [filterable]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="
+                font-size: 16px;
+                text-align: center !important;
+                margin: auto;
+                cursor: pointer;
+              "
+              [columnsresize]="true"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

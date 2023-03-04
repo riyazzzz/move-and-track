@@ -1,0 +1,50 @@
+<ion-header class='header'>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row></ion-row>
+          <ion-row>
+              <ion-col size='2'>
+                <ion-menu-button></ion-menu-button>
+              </ion-col>
+              <ion-col size='8.5' style='align-self: center;'>
+                  <ion-row>
+                      <ion-label> DEVICE </ion-label>
+                  </ion-row>
+              </ion-col>
+              <!-- <ion-col size='1.5'>
+                      <ion-row><ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon></ion-row>
+                  </ion-col> -->
+              <ion-col size='1.5' style="padding: 0px; align-self: center;">
+                <ion-icon (click) = "doRefresh()" name="refresh"></ion-icon>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-fab (click) = "addDevice()" vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="light"> 
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <!-- <ion-fab-list side="top">
+      <ion-fab-button (click) = "addDevice()">  <ion-icon name="list"></ion-icon></ion-fab-button>
+      <ion-fab-button (click) = "addDevThroughWifi()"><ion-icon name="wifi"></ion-icon></ion-fab-button>
+    </ion-fab-list> -->
+  </ion-fab>
+  <div style="padding-bottom: 20%">
+  <ion-item *ngFor="let list of deviceList">
+        <ion-avatar slot="start">
+          <ion-icon style="font-size: xx-large;" name="camera"></ion-icon>
+        </ion-avatar>
+        <ion-label (click)="videoSteam(list)">
+          <h2>{{list.devId}}</h2>
+          <p>Status: <span *ngIf="list.devStatus==0"> Offline </span> 
+            <span *ngIf="list.devStatus==1"> Online</span></p>
+        </ion-label>
+            <ion-icon name="create"></ion-icon>
+            <ion-icon name="information-circle"></ion-icon>
+
+  </ion-item>
+</div>
+</ion-content>

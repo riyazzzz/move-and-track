@@ -1,0 +1,163 @@
+.input {
+  border: 1px solid #e5e5e5;
+  height: 42px;
+  line-height: 18px;
+  --padding-start: 15px;
+  background: #e8e8e8;
+  margin: 7px;
+}
+
+.submitBtn {
+  margin: 0px 14px 0px 0px;
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+  --color-hover: white;
+}
+
+.submitbtn {
+  --background: #6252ee;
+}
+
+@media only screen and (min-width: 768px) {
+  .input {
+    margin-top: 12px;
+  }
+
+  #submitbtn {
+    width: 20%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .form-field {
+    zoom: 80%;
+  }
+
+  #submitbtn {
+    width: 80%;
+  }
+}
+
+.form-field {
+  margin: 0px 5px 0px;
+  border-radius: 7px;
+}
+
+@media only screen and(min-width:320px) and(max-width:1023px) {
+  .wrapper-container {
+    border: none;
+    margin: 8px 0 0;
+    padding: 0;
+  }
+}
+
+@media only screen and(min-width:1024px) {
+  .wrapper-container {
+    margin: 8px 1px;
+    padding-right: 20px;
+  }
+}
+
+.label-head {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px 0px 0px 5px;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+  width: 18px;
+  height: 20px;
+}
+
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -11px;
+  right: -2px;
+  height: 30px;
+  width: 30px;
+}
+
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.upperCol {
+  text-align: center;
+  border-radius: 8px;
+  margin: 2px;
+  color: black;
+  font-family: sans-serif;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+.upperRow {
+  background: #eeeeee;
+  padding: 1px;
+  border-bottom: 2px solid #7d67f8;
+  height: 56px;
+}
+
+// .selectedUpperCol {//   background: #ffffff;//   text-align: center;//   border-radius: 8px;//   margin: 10px;//   color: black;//   font-family: sans-serif;//   cursor: pointer;//   font-size: 13px;//   text-transform: uppercase;//   align-self: center;// }
+// .selectedUpperCol:hover {//   color: rgb(0, 0, 0);//   background-color: #a095e7;// }
+// .selected {//   color: white;//   background-color: #3b1dff;// }
+.selectedUpperCol {
+  background: #ebebeb;
+  text-align: center;
+  margin-right: 2px;
+  color: black;
+  font-family: sans-serif;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-right: 1px solid #b5b5b5;
+  align-self: center;
+  padding-top: 8px;
+  margin-top: 15px;
+}
+
+// .selectedUpperCol:hover {//   color: rgb(0, 0, 0);//   background-color: #ffffff;//   font-size: 12px;//   font-weight: bold;//   transition: 0.3s;//   padding-top: 8px;//   box-shadow: 0px 2px 5px;//   margin-top: 20px;// }
+.selected {
+  margin-top: 20px;
+  color: black;
+  background-color: #ffffff;
+  border-bottom: none;
+  border-top: 2px solid #7d67f8;
+  border-left: 2px solid #7d67f8;
+  border-right: 2px solid #7d67f8;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 11px;
+  box-shadow: 0px -4px 7px #c0b5ff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
+}

@@ -1,0 +1,583 @@
+<ion-header>
+  <!-- <ion-grid class="appHeaderTitle"> -->
+  <ion-row *ngIf="myPlatform !='desktop'" class="appHeaderTitle">
+    <ion-col>
+      <ion-icon icon="md-arrow-back" (click)='getBack()'></ion-icon>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="myPlatform !='desktop'" style="padding:0px 20px" class="appHeaderTitle">
+    <ion-col>
+      {{reportsTitle}}
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="myPlatform =='desktop'" class="reports-title">
+    <ion-col size="8" style="padding: 10px 25px;">
+      {{reportsTitle}}
+    </ion-col>
+
+    <ion-col>
+      <ion-row style="margin:0px;padding:0 10px;float:right">
+        <ion-col style="margin:0px 10px;padding:0;">
+          <ion-avatar title="PDF" class="ion-activatable image-size" (click)="createPdf()">
+            <ion-img src="assets/pdf.svg" class="download-wrapper">
+            </ion-img>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-avatar>
+        </ion-col>
+        <ion-col style="margin:0px 2px;padding:0;">
+          <ion-avatar title="Excel" class="ion-activatable image-size" (click)="exportToExcel()">
+            <ion-img src="assets/excelNew.svg" class="download-wrapper">
+            </ion-img>
+            <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
+  <!-- </ion-grid> -->
+</ion-header>
+
+<ion-content>
+  <!-- //******************Mobile View********// -->
+  <!-- <div *ngIf="myPlatform !='desktop'">
+    <form [formGroup]="reports">
+      <ion-grid> -->
+        <!-- <ion-row *ngIf="reportsContent.plateNo">
+          <ion-grid>
+            <ion-row class="reportInfo">
+              <ion-label>Plate Number</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-item *ngIf="plateNo == 'null'" class="maxWidth">
+                <ionic-selectable class="maxWidth" formControlName="plateNo" [items]="dashboarData"
+                  itemTextField="plateNo" [canSearch]="true" (onChange)="portChange($event)" [hasVirtualScroll]="true"
+                  [disabledItems]="data" placeholder="Select plate number">
+                </ionic-selectable>
+              </ion-item>
+              <ion-item *ngIf="plateNo !== 'null'" class="maxWidth">
+                <ion-label>{{this.plateNo}}</ion-label>
+              </ion-item>
+            </ion-row>
+          </ion-grid>
+        </ion-row> -->
+        <!-- <ion-row *ngIf="reportsContent.fromDate">
+          <ion-grid>
+            <ion-row class="reportInfo">
+              <ion-label>From Date</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-col size="7">
+                <ion-item>
+                  <ion-datetime formControlName="fromDate" class="dateFormat" displayFormat="MMM DD, YYYY"
+                    pickerFormat="MMM DD, YYYY" placeholder="DD MM YYYY" [max]="maxDate">
+                  </ion-datetime>
+                  <ion-icon slot="end" name="calendar"></ion-icon>
+                </ion-item>
+              </ion-col>
+              <ion-col size="5" *ngIf="reportsContent.fromTime">
+                <ion-item>
+                  <ion-datetime formControlName="fromTime" class="dateFormat" displayFormat="HH:mm" pickerFormat="HH:mm"
+                    placeholder="HH mm">
+                  </ion-datetime>
+                  <ion-icon slot="end" name="clock"></ion-icon>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-row>
+        <ion-row *ngIf="reportsContent.toDate">
+          <ion-grid>
+            <ion-row class="reportInfo">
+              <ion-label>To Date</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-col size="7">
+                <ion-item>
+                  <ion-datetime formControlName="toDate" class="dateFormat" displayFormat="MMM DD, YYYY"
+                    pickerFormat="MMM DD, YYYY" placeholder="DD MM YYYY" [max]="maxDate">
+                  </ion-datetime>
+                  <ion-icon slot="end" name="calendar"></ion-icon>
+                </ion-item>
+              </ion-col>
+              <ion-col size="5" *ngIf="reportsContent.toTime">
+                <ion-item>
+                  <ion-datetime formControlName="toTime" class="dateFormat" displayFormat="HH:mm" pickerFormat="HH:mm"
+                    placeholder="HH mm">
+                  </ion-datetime>
+                  <ion-icon slot="end" name="clock"></ion-icon>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-row>
+
+        <ion-row *ngIf="reportsContent.sensor">
+          <ion-col size=12>
+            <ion-row class="reportInfo">
+              <ion-label>Sensor</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-col size=12>
+                <ion-item>
+                  <ion-label>Sensor</ion-label>
+                  <ion-select interface="popover" placeholder='Select One' formControlName="sensorType">
+                    <ion-select-option value="TEMP1"> Tempraure Sensor 1</ion-select-option>
+                    <ion-select-option value="TEMP2"> Tempraure Sensor 2</ion-select-option>
+                    <ion-select-option value="TEMP3"> Tempraure Sensor 3</ion-select-option>
+                    <ion-select-option value="TEMP4"> Tempraure Sensor 4</ion-select-option>
+                    <ion-select-option value="TEMP1,TEMP2,TEMP3,TEMP4"> All Tempraure Sensor</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="reportsContent.speed">
+          <ion-col size=6>
+            <ion-row class="reportInfo">
+              <ion-label>Speed</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-item class="maxWidth">
+                <ion-input type="number" formControlName="speed" placeholder="Speed in number"></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-col>
+          <ion-col size=6>
+            <ion-row class="reportInfo">
+              <ion-label>Condition</ion-label>
+            </ion-row>
+            <ion-select interface="popover" placeholder='Select One' formControlName="condition">
+              <ion-select-option value=">"> > (Higher than)</ion-select-option>
+              <ion-select-option value="<">
+                < (Lesser than)</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row> -->
+
+        <!-- <ion-row *ngIf="reportsContent.sensor">
+          <ion-col size=6>
+            <ion-row class="reportInfo">
+              <ion-label>Limit</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-item class="maxWidth">
+                <ion-input type="number" formControlName="limit" placeholder="Temprature in C"></ion-input>
+              </ion-item>
+            </ion-row>
+          </ion-col>
+          <ion-col size=6>
+            <ion-row class="reportInfo">
+              <ion-label>Condition</ion-label>
+            </ion-row>
+            <ion-select interface="popover" placeholder='Select One' formControlName="condition">
+              <ion-select-option value=">"> > (Higher than)</ion-select-option>
+              <ion-select-option value="<">
+                < (Lesser than)</ion-select-option>
+                  <ion-select-option value=">="> > (Higher than & Equal To)</ion-select-option>
+                  <ion-select-option value="<=">
+                    < (Lesser than & Equal To)</ion-select-option>
+            </ion-select>
+          </ion-col>
+        </ion-row> -->
+
+        <!-- <ion-row *ngIf="reportsContent.timeExceed">
+          <ion-col size=12>
+            <ion-row class="reportInfo">
+              <ion-label>Time Exceeds</ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col size=12>
+            <ion-item>
+              <ion-label>Time Exceeds</ion-label>
+              <ion-select interface="popover" placeholder='Time in minutes' formControlName="timeExceed">
+                <ion-select-option value="300"> 5 min </ion-select-option>
+                <ion-select-option value="600"> 10 min</ion-select-option>
+                <ion-select-option value="900"> 15 min</ion-select-option>
+                <ion-select-option value="1200"> 20 min</ion-select-option>
+                <ion-select-option value="1500"> 25 min</ion-select-option>
+                <ion-select-option value="1800"> 30 min</ion-select-option>
+                <ion-select-option value="2100"> 35 min</ion-select-option>
+                <ion-select-option value="2400"> 40 min</ion-select-option>
+                <ion-select-option value="2700"> 45 min</ion-select-option>
+                <ion-select-option value="3000"> 50 min</ion-select-option>
+                <ion-select-option value="3300"> 55 min</ion-select-option>
+                <ion-select-option value="3600"> 60 min</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="reportsContent.odometerWeek">
+          <ion-col size=12>
+            <ion-row class="reportInfo">
+              <ion-label>Odometer in Kilometer with previous seven day report</ion-label>
+            </ion-row>
+          </ion-col>
+          <ion-col size=12>
+            <ion-item>
+              <ion-label>Odometer in Kilometer</ion-label>
+              <ion-select value="7" interface="popover" placeholder='Days' formControlName="odometerWeek">
+                <ion-select-option value="7"> 7 days</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-button (click)="onsubmit()" color="appColor" shape="round" expand="block" [disabled]="!reports.valid">
+            SUBMIT
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </form> -->
+  <!-- </div> -->
+
+  <!------------------****desktop*****------------------->
+  <div *ngIf="myPlatform =='desktop'" [ngClass]="[page == 'Reports' ? 'report-container' : 'report-grid']">
+    <ion-row>
+      <ion-col class="margin-set" size="12" style="margin: 0 auto;">
+        <!-----NewForm------>
+        <ion-row class="margin-set ionic-selectable-icon" class="form-content"
+          [ngClass]="[page == 'Grid view' ? 'form-grid' :'form-content']">
+          <ion-col class="margin-set" size="12">
+            <form [formGroup]="reports">
+              <ion-row style="padding:0px 0px;">
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="2" *ngIf="reportsContent.plateNo"
+                  class="column-size">
+                  <div class="selectdiv" *ngIf="plateNo == 'null'">
+                    <ionic-selectable class="maxWidth border-item select" formControlName="plateNo"
+                      [items]="dashboarData" *ngIf="plateNo == 'null'" itemTextField="plateNo" [canSearch]="true"
+                      (onChange)="portChange($event)" [hasVirtualScroll]="true" [disabledItems]="data"
+                      placeholder="Plate Number">
+                    </ionic-selectable>
+                  </div>
+                  <div *ngIf="plateNo !== 'null'" class="maxWidth border-grid" style="height: 26px;line-height: 27px;
+             padding: 0 0 0 6px;color:#989898;">
+                    <ion-label>{{this.plateNo}}</ion-label>
+                  </div>
+                </ion-col>
+                <ion-label class="date-lables" *ngIf="reportsContent.vin">Vehicle Number</ion-label> 
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="2" *ngIf="reportsContent.vin"
+                   class="column-size">
+                   <div class="selectdiv" >
+                    <ionic-selectable class="maxWidth border-item select" formControlName="vin"
+                      [items]="vehicleName"  [canSearch]="true" (onChange)="portChange($event)"
+                     [hasVirtualScroll]="true" [disabledItems]="data" placeholder="Vehicle Number">
+                    </ionic-selectable>
+                  </div>
+                 </ion-col>
+                 <ion-label class="date-lables" *ngIf="reportsContent.tripname">Trip Name</ion-label>
+                 <ion-col size="12" size-sm="12" size-md="2" size-lg="2" *ngIf="reportsContent.tripname"
+                   class="column-size">
+                   <div class="selectdiv">
+                     <ionic-selectable class="maxWidth border-item select" formControlName="tripname" 
+                     [items]="tripName" [canSearch]="true"  (onChange)="porttrip($event)"
+                     [hasVirtualScroll]="true" [disabledItems]="data" placeholder="Trip Name">
+                     </ionic-selectable>
+                   </div>
+                 </ion-col>
+                <!-- From Date-->
+                <ion-label title="From Date" class="date-lables" *ngIf="reportsContent.fromDate">From</ion-label>
+                <ion-col title="From Date" size="12" size-sm="12" size-md="2" size-lg="2.1"
+                  *ngIf="reportsContent.fromDate" class="column-size">
+                  <div class="selectdiv2">
+                    <input type="date" formControlName="fromDate" class="maxWidth  select" placeholder="From Date"
+                      [max]="maxDate" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" />
+                  </div>
+                </ion-col>
+                <!--From Time-->
+                <ion-label title="From Time" class="date-lables" *ngIf="reportsContent.fromTime">Time</ion-label>
+                <ion-col title="From Time" size="12" size-sm="12" size-md="1.8" size-lg="2"
+                  *ngIf="reportsContent.fromTime" class="column-size">
+                  <div class="selectdiv3">
+                    <input type="time" class="maxWidth  select" formControlName="fromTime" displayFormat="HH:mm"
+                      pickerFormat="HH:mm" placeholder="FromTime"
+                      [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" />
+                  </div>
+                </ion-col>
+                <!--ToDate-->
+                <ion-label title="To Date" class="date-lables" *ngIf="reportsContent.toDate">To</ion-label>
+                <ion-col title="To Date" size="12" size-sm="12" size-md="2" size-lg="2.1" *ngIf="reportsContent.toDate"
+                  class="column-size">
+                  <div class="selectdiv2">
+                    <input type="date" class="maxWidth  select" formControlName="toDate" displayFormat="MMM DD, YYYY"
+                      pickerFormat="MMM DD, YYYY" placeholder="ToDate" [max]="maxDate"
+                      [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" />
+                  </div>
+                </ion-col>
+                <!--To Time-->
+                <ion-label title="To Time" class="date-lables" *ngIf="reportsContent.toTime">Time</ion-label>
+                <ion-col title="To Time" size="12" size-sm="12" size-md="1.9" size-lg="2.1"
+                  *ngIf="reportsContent.toTime" class="column-size">
+                  <div class="selectdiv3">
+                    <input type="time" class="maxWidth  select" formControlName="toTime" displayFormat="HH:mm"
+                      pickerFormat="HH:mm" placeholder="ToTime"
+                      [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" />
+                  </div>
+                </ion-col>
+                <ion-label class="date-lables" *ngIf="reportsContent.speed">Speed</ion-label>
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="1.5" *ngIf="reportsContent.speed"
+                  class="column-size">
+                  <ion-row>
+                    <div class="maxWidth" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']">
+                      <input type="number" formControlName="speed" />
+                    </div>
+                  </ion-row>
+                </ion-col>
+                <ion-label class="date-lables" *ngIf="reportsContent.speed">Condition</ion-label>
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="2" *ngIf="reportsContent.speed" class="column-size"
+                  style="margin: -4px 0px;">
+                  <div class="selectdiv4">
+                    <select class="maxWidth  select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']"
+                      interface="popover" placeholder='Select One' formControlName="condition">
+                      <option value=">"> > (Higher than)</option>
+                      <option value="<">
+                        < (Lesser than)</option>
+                    </select>
+                  </div>
+                </ion-col>
+                <ion-label class="date-lables" *ngIf="reportsContent.timeExceed">Time Exceeds</ion-label>
+                <ion-col size="12" size-sm="12" size-md="1.5" size-lg="1.5" *ngIf="reportsContent.timeExceed"
+                  class="column-size" style="margin: -4px 0px;">
+                  <div class="selectdiv4">
+                    <select class="maxWidth  select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']"
+                      placeholder='Time in minutes' interface="popover" formControlName="timeExceed">
+                      <option value="300"> 5 min </option>
+                      <option value="600"> 10 min</option>
+                      <option value="900"> 15 min</option>
+                      <option value="1200"> 20 min</option>
+                      <option value="1500"> 25 min</option>
+                      <option value="1800"> 30 min</option>
+                      <option value="2100"> 35 min</option>
+                      <option value="2400"> 40 min</option>
+                      <option value="2700"> 45 min</option>
+                      <option value="3000"> 50 min</option>
+                      <option value="3300"> 55 min</option>
+                      <option value="3600"> 60 min</option>
+                    </select>
+                  </div>
+                </ion-col>
+                <ion-label class="date-lables" *ngIf="reportsContent.sensor">Sensor</ion-label>
+                <ion-col size="12" size-sm="12" size-md="2.5" size-lg="2.2" *ngIf="reportsContent.sensor"
+                  class="column-size" style="margin-top: -4px;">
+                  <div class="selectdiv4">
+                    <select class="maxWidth select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']"
+                      interface="popover" placeholder='Select One' formControlName="sensorType">
+                      <option value="TEMP1"> Temperature Sensor 1</option>
+                      <option value="TEMP2"> Temperature Sensor 2</option>
+                      <option value="TEMP3"> Temperature Sensor 3</option>
+                      <option value="TEMP4"> Temperature Sensor 4</option>
+                      <option value="TEMP1,TEMP2,TEMP3,TEMP4"> All Temperature Sensor</option>
+                    </select>
+                  </div>
+                </ion-col>
+
+                <ion-label class="date-lables" *ngIf="reportsContent.addressCheckbox">Address view</ion-label>
+                <ion-col size="12" size-sm="12" size-md="2.5" size-lg="2.2" *ngIf="reportsContent.addressCheckbox"
+                  class="column-size" style="margin-top: -4px;">
+                  <div class="selectdiv4">
+                    <select class="maxWidth select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']"
+                      interface="popover" placeholder='Select One' formControlName="addressCheckbox">
+                      <option value="false">False</option>
+                      <option value="true"> True</option>
+                    </select>
+                  </div>
+                </ion-col>
+
+                <ion-label class="date-lables" *ngIf="reportsContent.routetype">RouteType</ion-label>
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="2" *ngIf="reportsContent.routetype"
+                  class="column-size" style="margin: -4px 0px;">
+                  <div class="selectdiv4">
+                    <select class="maxWidth  select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']"
+                      interface="popover" placeholder='Select One' formControlName="routetype">
+                      <option *ngFor="let routetype of routetype" value={{routetype}}>{{routetype}}</option>
+                    </select>
+                  </div>
+                </ion-col>
+                <!--Date-->
+                <ion-label title="date" class="date-lables" *ngIf="reportsContent.date">Date</ion-label>
+                <ion-col title="date" size="12" size-sm="12" size-md="2" size-lg="2.1" *ngIf="reportsContent.date"
+                  class="column-size">
+                  <div class="selectdiv2">
+                    <input type="date" class="maxWidth  select" formControlName="date" displayFormat="MMM DD, YYYY"
+                      pickerFormat="MMM DD, YYYY" placeholder="date" [max]="maxDate"
+                      [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" />
+                  </div>
+                </ion-col>
+                <!-- <ion-label class="date-lables" *ngIf="reportsContent.sensor" > Temperature in C</ion-label>
+         <ion-col size="12" size-sm="12" size-md="1" size-lg="1" *ngIf="reportsContent.sensor" class="column-size">
+              <ion-input class="maxWidth" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item']" type="number" formControlName="limit" placeholder="Temprature in C"></ion-input>
+        </ion-col> 
+        <ion-label class="date-lables" *ngIf="reportsContent.sensor">Condition</ion-label> <ion-col size="12" size-sm="12" size-md="2.5" size-lg="2.5" *ngIf="reportsContent.sensor" class="column-size" style="margin-top: -4px;">  
+            <div class="selectdiv4">
+            <select placeholder='Select One' class="maxWidth select" [ngClass]="[page == 'Grid view' ? 'border-grid' :'border-item ']" 
+            formControlName="condition">
+              <option value=">"> > (Higher than)</option>
+              <option value="<">< (Lesser than)</option> 
+              <option value=">="> > (Higher than & Equal To)</option>
+              <option value="<=">< (Lesser than & Equal To)</option> 
+            </select>
+        </div>
+          </ion-col>  -->
+              </ion-row>
+              <ion-row>
+                <!----Submitbutton---->
+                <ion-col size="12" size-sm="12" size-md="2" size-lg="2" class="column-size" style="margin-bottom: 8px;">
+                  <ion-button (click)="onsubmit()" shape="round" expand="block" [disabled]="!reports.valid"
+                    class="submitBtn">
+                    SUBMIT
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" style="text-align: center;margin: auto;">
+            <ion-segment color="primary" [(ngModel)]="segment" *ngIf="reportsTitle != 'Income and Expense Report'&& reportsTitle != 'Fms Trip Report' &&reportsTitle != 'Income and Expense Group Report'">
+              <ion-segment-button value="cardView" class="view-btn">CardView
+              </ion-segment-button>
+              <ion-segment-button [disabled]="showReport? false:true" value="tableView" class="view-btn">TableView
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+        </ion-row>
+        <ion-col *ngIf="!showReport">
+          <app-nodata-image></app-nodata-image>
+        </ion-col>
+        <ion-col *ngIf="showReport =='income&expensereport'">
+          <app-incomeandexpense-report *ngIf="showReport =='income&expensereport'" ></app-incomeandexpense-report>
+          </ion-col>
+          
+          <ion-col *ngIf="showReport =='fmstripReport'">
+          <app-table [reportTitle]="showReport"></app-table>
+          </ion-col>          
+        <div [ngSwitch]="segment" class="margin-set">
+          <ion-row *ngSwitchCase="'cardView'" class="margin-set">
+            <ion-col size="12" class="margin-set">
+              <ion-row *ngIf="showReport =='overallSummaryReport'" class="margin-set">
+                <ion-col size="12" class="set-size">
+                  <app-overall-summary style="width:100%" *ngIf="showReport =='overallSummaryReport'">
+                  </app-overall-summary>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='tripSummaryReport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-trip' :'trip']">
+                  <app-trip-summary *ngIf="showReport =='tripSummaryReport'"></app-trip-summary>
+                </ion-col>
+              </ion-row>
+              <!-- <ion-row *ngIf="showReport =='tripSummaryReport'" class="margin-set common-margin">
+                <ion-col size="12" >
+                  <app-new-trip-summary *ngIf="showReport =='tripSummaryReport'"></app-new-trip-summary>
+                </ion-col>
+              </ion-row> -->
+              <ion-row *ngIf="showReport =='executiveSummaryReport'" class="margin-set common-margin">
+                <ion-col size="12" style="height:70vh;padding-bottom:5em">
+                  <app-executive-summary *ngIf="showReport =='executiveSummaryReport'"></app-executive-summary>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='driverBehavior'" class="margin-set common-margin2">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-driver' :'driver']">
+                  <app-driver-behaviour [commonData]="objValues" *ngIf="showReport =='driverBehavior'">
+                  </app-driver-behaviour>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='statusSummary'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-status' :'commom-type']">
+                  <app-status-summary *ngIf="showReport =='statusSummary'"></app-status-summary>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='alertReport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'alert']">
+                  <app-alert-report *ngIf="showReport =='alertReport'"></app-alert-report>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='overspeedReport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-overspeed' :'overspeed']">
+                  <app-overspeed *ngIf="showReport =='overspeedReport'"></app-overspeed>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='speedReport'" class="margin-set common-margin2">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-speed' :'speed']">
+                  <app-speed-report *ngIf="showReport =='speedReport'"></app-speed-report>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='movementReport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-movement-report  *ngIf="showReport =='movementReport'"></app-movement-report>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='temprature'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-temprature *ngIf="showReport =='temprature'"></app-temprature>
+                </ion-col>
+              </ion-row>
+              <ion-row style="overflow: scroll;" *ngIf="showReport =='doorOpenReport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-door-open-report *ngIf="showReport =='doorOpenReport'"></app-door-open-report>
+                </ion-col>
+              </ion-row>
+              <ion-row style="overflow: scroll;" *ngIf="showReport =='doorSummaryReport'"
+                class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-door-summary-report *ngIf="showReport =='doorSummaryReport'"></app-door-summary-report>
+                </ion-col>
+              </ion-row>
+              <ion-row style="overflow: scroll;" *ngIf="showReport =='doorCountReport'"
+                class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-door-open-count *ngIf="showReport =='doorCountReport'"></app-door-open-count>
+                </ion-col>
+              </ion-row>
+              <ion-row style="overflow: scroll;" *ngIf="showReport =='alarmreport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-alarmreport *ngIf="showReport =='alarmreport'"></app-alarmreport>
+                </ion-col>
+              </ion-row>
+              <ion-row style="overflow: scroll;" *ngIf="showReport =='fuelreport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-fuelreport *ngIf="showReport =='fuelreport'"></app-fuelreport>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='studentreport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-alert' :'commom-type']">
+                  <app-student-alert-report *ngIf="showReport =='studentreport'"></app-student-alert-report>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="showReport =='attendancereport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-overspeed' :'overspeed']">
+                  <app-attendance-report *ngIf="showReport =='attendancereport'"></app-attendance-report>
+                </ion-col>
+              </ion-row>
+              <ion-row  *ngIf="showReport =='income&expensereport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-overspeed' :'overspeed']">
+                  <app-incomeandexpense-report *ngIf="showReport =='income&expensereport'" ></app-incomeandexpense-report>
+                </ion-col>
+              </ion-row>
+
+              <ion-row  *ngIf="showReport =='income&expensegroupreport'" class="margin-set common-margin">
+                <ion-col size="12" [ngClass]="[page == 'Grid view' ? 'max-overspeed' :'overspeed']">
+                  <app-incomeandexpensegroup-report *ngIf="showReport =='income&expensegroupreport'" ></app-incomeandexpensegroup-report>
+                </ion-col>
+              </ion-row>
+
+             
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'tableView'" class="margin-set">
+            <ion-col size="12" class="margin-set">
+              <app-table [reportTitle]="showReport"></app-table>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngSwitchCase="'graphView'" style="height: 100%;width: 100%;" class="margin-set">
+            <ion-col size="12" class="margin-set">
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

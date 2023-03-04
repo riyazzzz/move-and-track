@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Extend 1 Yr Status Update</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col>
+      <form [formGroup]="topupForm">
+        <ion-row class="form-field">
+          <ion-col>
+            <ion-row>
+              <ion-col size="5" style="align-self: center; text-align: center"
+                >Validity Requested :</ion-col
+              >
+              <ion-col size="7">
+                <ion-input
+                  class="input"
+                  formControlName="extendoneyearvaliditymonth"
+                  disabled
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="5" style="align-self: center; text-align: center">
+                <ion-label class="col-content">Comment :</ion-label></ion-col
+              >
+              <ion-col size="7">
+                <textarea
+                  class="comment"
+                  type="text"
+                  placeholder="Enter the Comments"
+                  formControlName="comment"
+                ></textarea>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col style="text-align: center; padding: 15px">
+                <ion-button (click)="submitBtn()" [disabled]="!topupForm.valid"
+                  >Submit</ion-button
+                >
+                <ion-button type="submit" (click)="cancelBtn()"
+                  >Cancel</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

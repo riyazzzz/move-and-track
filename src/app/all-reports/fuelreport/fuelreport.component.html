@@ -1,0 +1,82 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+  <ion-toolbar class="appHeader">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-grid class="appHeaderTitle">
+    <ion-row>
+      <ion-col size=10>
+        <ion-title>Fuel consumption report</ion-title>
+      </ion-col>
+      <ion-col size="2" style="text-align: -webkit-right;">
+        <div class="pdf-wrapper" (click)="createPdf()" *ngIf="_showPdf != 'ionic4ios'"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col style="padding: 0px;" size="12" size-sm="12" size-md="6" size-lg="6" size-xl="4"
+      *ngFor="let data of data;">
+      <ion-card>
+        <ion-card-content style="padding: 3px;">
+          <ion-row class="headtext bold">
+            {{data.plateNo}}
+          </ion-row>
+          <ion-row class="rowColor">
+            <ion-col size=4 class="leftcol">
+              <ion-row class="font dateHeading contentCenter black">
+                Date
+              </ion-row>
+              <ion-row class="font contentCenter white">
+                {{data.date}}
+              </ion-row>
+              <ion-row class="font dateHeading contentCenter black">
+                Fuel price
+              </ion-row>
+              <ion-row class="font contentCenter white">
+                Rs. {{data.price}} per liter
+              </ion-row>
+            </ion-col>
+            <ion-col size=4 class="centerCol">
+              <ion-row>
+                <ion-col size=12 style="padding: 0px; padding-top: 8px;" class="verticleCenter">
+                  <ion-row>
+                    <ion-label class="fuelPrice black contentCenter">
+                      <span class="font8">RS</span> {{data.consumePrice}}
+                    </ion-label>
+                  </ion-row>
+                  <ion-row class="font2 black contentCenter">
+                    mileage : {{data.mileage}}
+                  </ion-row>
+                  <ion-row class="font2 black contentCenter">
+                    odometer : {{data.odometer}}
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col size=4 class="rightcol">
+              <ion-row class="font dateHeading contentCenter black">
+                Consume quantity
+              </ion-row>
+              <ion-row class="font contentCenter white">
+                {{data.consumeQuantity}} L
+              </ion-row>
+              <ion-row class="font dateHeading contentCenter black">
+                Fuel type
+              </ion-row>
+              <ion-row class="font contentCenter white">
+                {{data.fuelType}}
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Dealer Hierarchy</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content> 
+  <jqxTreeGrid [pageable]=true [pageSizeOptions]="page" [theme]="'material'"  [filterable]="true" [sortable]="true" [height]="'auto'" [width]="'100%'"   [source]="dataAdapter"  [columns]="columns">
+  </jqxTreeGrid>
+</ion-content>
+  <!-- <jqxGrid *ngIf='show' #myGrid [selectionmode]="'checkbox'" (onRowselect)="myGridOnRowSelect($event)"
+    [theme]="'material'" [width]="'99.5%'" [autoheight]="true" [source]="dataAdapter" [columns]="columns"
+    [sortable]="true" [filterable]="true" [columns]="columns" [columnsresize]="true" [enabletooltips]="true"
+    [pageable]="true" [showfilterrow]="true"
+    style="font-size:16px;text-align: center !important;margin:auto;cursor:pointer">
+  </jqxGrid> -->

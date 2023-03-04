@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar mode="md" class="appHeader">
+    <ion-grid>
+      <ion-row>
+        <ion-col size='2'>
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+        <ion-col style='align-self: center;' size="7">
+          <ion-title>Geo Fence</ion-title>
+        </ion-col>
+        <ion-col *ngIf='filterValue == "All"' (click)='open()' size="2">
+          <ion-button color="dark" size="small">+ADD</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" [ngClass]='{"selectedTab": zoneType === "prefer", "unSelectedTab":zoneType != "prefer"}'
+        (click)=" getGeoFenceData('prefer')">
+        Preferred
+      </ion-col>
+      <ion-col size="6" [ngClass]='{"selectedTab": zoneType === "restrict", "unSelectedTab":zoneType != "restrict"}'
+        (click)=" getGeoFenceData('restrict')">
+        Restricted
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <div *ngIf='filterValue != "All"'>
+        <ion-row *ngIf="selectedZoneData.length">
+          <ion-col (click)="cancelSelected()" style="text-align:right;color:orange;font-size:22px">
+            <ion-icon name="close"></ion-icon>
+          </ion-col>
+          <!-- <ion-col (click)="assignGeoToVehicle()" style="text-align:center;color:blue;font-size:22px">
+      <ion-icon name="ios-cloud-upload"></ion-icon>
+    </ion-col> -->
+          <ion-col (click)='deleteSelectedGeoZone()' style="text-align:left;color:red;font-size:22px">
+            <ion-icon name="ios-trash"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-row>
+    <ion-row class="padBot">
+      <!-- <ion-card [id]='data.id' style="border-left: 6px solid #017afe;" *ngFor="let data of geoFenceJson" (press)= 'onLongPress($event, data)'> -->
+      <ion-card [id]='data.id' class="cardMargin cardProp" *ngFor="let data of geoFenceJson">
+        <ion-ripple-effect></ion-ripple-effect>
+        <ion-card-content class="cardContentPad">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3" (click)="geoFenceModel(data.Vin,data)">
+                <ion-row class="displayType">
+                  <ion-row class="ion-align-items-center ion-justify-content-center">
+                    <ion-img style="width:45px" src="assets/icon/Geo Fence.png">
+                    </ion-img>
+                  </ion-row>
+                </ion-row>
+              </ion-col>
+              <ion-col size="7" class="fontLabel" (click)="geoFenceModel(data.Vin,data)">
+                <ion-row>
+                  <ion-label style="font-weight: bold;">Zone:{{data.Zone}}</ion-label>
+                </ion-row>
+                <ion-row>shape:{{data.Shape}}</ion-row>
+              </ion-col>
+              <ion-col size="1">
+                <ion-icon class="iconSize" *ngIf="!data.clicked && filterValue=='All'"
+                  (click)='deleteSelectedGeoZone(data)' color="danger" name='ios-trash'>
+                </ion-icon>
+              </ion-col>
+              <ion-col size="1">
+                <ion-icon class="iconSize" color="primary" *ngIf="data.clicked" name='md-checkmark-circle-outline'>
+                </ion-icon>
+                <ion-icon class="iconSize" (click)="assignGeoToVehicle(data.associated,data.Status)" color="primary"
+                  *ngIf="data.associated && (!data.clicked && filterValue!='All')" name='md-add-circle-outline'>
+                </ion-icon>
+                <ion-icon class="iconSize" (click)="assignGeoToVehicle(data.associated,data.Status)" color="danger"
+                  *ngIf="!data.associated && (!data.clicked && filterValue!='All')" name='md-remove-circle-outline'>
+                </ion-icon>
+                <ion-icon class="iconSize" (click)="listAssociated(data.Status)" color="primary"
+                  *ngIf="!data.clicked && filterValue=='All'" name='md-arrow-dropright-circle'>
+                </ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>

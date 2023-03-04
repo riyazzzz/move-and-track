@@ -1,0 +1,98 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Renewal Request Validity</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="myPlatform != 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-md="10"
+        offset-md="1"
+        size-lg="12"
+        offset-lg="0"
+      >
+        <form [formGroup]="requestForm">
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Select the Plan :</ion-label>
+              <ionic-selectable
+                class="label-style selectable-input"
+                formControlName="validity"
+                placeholder="Select the Plan Validity"
+                [items]="valid"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              class="button"
+              type="submit"
+              [disabled]="!requestForm.valid"
+              (click)="submitBtn()"
+              >Submit
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="myPlatform == 'desktop'" class="content-style label-style">
+  <ion-row>
+    <ion-col>
+      <form [formGroup]="requestForm">
+        <ion-row class="total-data">
+          <ion-col>
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Select the Plan : </ion-col>
+              <ion-col size="7">
+                <ionic-selectable
+                  class="label-style selectable-input"
+                  formControlName="validity"
+                  placeholder="Select the Plan Validity"
+                  [items]="valid"
+                  [canSearch]="true"
+                  [hasVirtualScroll]="true"
+                  [disabledItems]="data"
+                >
+                </ionic-selectable>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <ion-row class="content-style">
+        <ion-col style="text-align: center !important; padding: 20px">
+          <ion-button
+            class="button"
+            type="submit"
+            [disabled]="!requestForm.valid || button"
+            (click)="submitBtn()"
+            >Submit
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

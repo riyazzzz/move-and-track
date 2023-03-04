@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>IMEI No Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="padding: 10px">
+    <ion-col size="12">
+      <jqxGrid
+        #myGrid
+        [theme]="'material'"
+        [width]="'99.5%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [enablebrowserselection]="true"
+        [columns]="columns"
+        [filterable]="true"
+        [sortable]="true"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true"
+        style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+
+  <ion-fab vertical="bottom" horizontal="center">
+    <ion-fab-button
+      style="
+        --background: #0000000;
+        --box-shadow: #0000000;
+        width: 100px;
+        height: 100px;
+      "
+    >
+      <ion-icon
+        (click)="openModel()"
+        style="font-size: 100px; color: #7c68f8"
+        [name]="icon"
+      ></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

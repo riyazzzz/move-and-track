@@ -1,0 +1,178 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1Imewe0nOi5KoTk9thUxblLdQ-JeB6VQ&callback=myMap"></script>
+<!-- <div class="lds-dual-ring"></div> -->
+<div>
+  <div
+    [ngClass]="[loadingRefresh == false ? 'nodata-wrapper' : 'nodatahide']"
+  ></div>
+</div>
+<!-- <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div> -->
+
+<ion-app *ngIf="myPlatform != 'desktop'">
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-content>
+        <ion-row
+          style="
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            padding-top: 25px;
+            border-bottom: 1px solid;
+          "
+        >
+          <ion-col size="12">
+            <ion-img
+              style="height: 90px; padding: 0px"
+              [src]="app.logo"
+            ></ion-img>
+          </ion-col>
+          <ion-col size="12" style="padding: 0px">
+            <div class="header" style="float: right">
+              Welcome <span class="name">{{ app.company }}</span>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menuObject">
+            <ion-item
+              *ngIf="p.name != 'Manage'"
+              class="itemMob"
+              (click)="logOutFunction(p)"
+              [ngClass]="[
+                p == selectedMenu
+                  ? isDealer == true
+                    ? 'activeDealer'
+                    : 'actives'
+                  : ''
+              ]"
+            >
+              <ion-icon
+                class="iconMobSize"
+                slot="start"
+                [name]="appIcon[p]"
+              ></ion-icon>
+              <ion-label>
+                {{ p }}
+              </ion-label>
+              <ion-icon
+                class="iconMobSize"
+                slot="end"
+                name="arrow-dropright"
+              ></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
+
+<ion-app *ngIf="myPlatform == 'desktop'">
+  <ion-split-pane>
+    <ion-menu
+      side="start"
+      [ngClass]="[
+        appSideMenu !== 'listMenu' ? 'helloItem' : 'mainMenus',
+        menuOver ? 'menu-mouse-over' : ''
+      ]"
+    >
+      <ion-content>
+        <ion-row class="companyName">
+          <ion-col>
+            <ion-row>
+              <ion-col size="12">
+                <ion-icon
+                  class="iconWebSize"
+                  name="menu"
+                  class="menuIconbtn"
+                  (click)="menuSelection()"
+                ></ion-icon>
+              </ion-col>
+              <ion-col
+                size="12"
+                class="ion-text-center"
+                style="padding: 0px; padding-top: 12px; padding-left: 12px"
+              >
+                <ion-label>
+                  <div class="header">
+                    Welcome <span class="nameWeb">{{ app.company }}</span>
+                  </div>
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-list *ngIf="appSideMenu == 'listMenu'">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
+            <ion-item class="itemWeb" lines="none" (click)="logOutFunction(p)" [ngClass]="[p.title == selectedMenu ? 'active':'']">
+              <ion-icon class='iconWebSize' slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list> -->
+        <ion-list *ngIf="appSideMenu == 'listMenu'" class="list">
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menuObject">
+            <ion-item
+              title="{{ p }}"
+              class="itemWeb"
+              lines="none"
+              (click)="logOutFunction(p)"
+              (mouseover)="setMenuOver(false)"
+              [ngClass]="[
+                p == selectedMenu
+                  ? isDealer == true
+                    ? 'activeDealer'
+                    : 'active'
+                  : ''
+              ]"
+            >
+              <ion-icon
+                class="iconWebSize"
+                slot="start"
+                [name]="appIcon[p]"
+              ></ion-icon>
+              <ion-label>
+                {{ p }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-list
+          *ngIf="appSideMenu !== 'listMenu'"
+          class="menuIcon"
+          class="list"
+        >
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of menuObject">
+            <ion-item
+              class="itemWeb"
+              lines="none"
+              (click)="logOutFunction(p)"
+              [ngClass]="[p == selectedMenu ? 'active' : '']"
+              (mouseover)="setMenuOver(true)"
+              (mouseleave)="setMenuOver(false)"
+            >
+              <ion-icon slot="start" [name]="appIcon[p]"></ion-icon>
+              <ion-label class="menu-label">
+                {{ p }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+        <ion-row>
+          <ion-col size="8" offset="2" class="apmLogo">
+            <ion-row>
+              <ion-img [src]="app.logo"></ion-img>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet
+      main
+      [ngClass]="menuOver ? 'menu-m-left' : ''"
+    ></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

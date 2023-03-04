@@ -1,0 +1,70 @@
+<ion-row>
+  <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+  </ion-searchbar>
+</ion-row>
+<ion-row>
+  <ion-col>
+    <ion-row style="margin:0px ;padding:0;float:right">
+      <ion-col class="ion-activatable download-buttons" (click)="createPdf()">
+        <div class="pdf-wrapper"></div>
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+      </ion-col>
+      <ion-col class="ion-activatable download-buttons" (click)="exportToExcel()">
+        <div class="excel-wrapper"></div>
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let items of detail | searchmanage: searchInput">
+    <ion-card class="card-content" (click)="editMode(items)">
+      <ion-card-content>
+        <ion-row class="content-wraper">
+          <ion-col>
+            <ion-row class="plateNum">
+              <label title="Plate No">{{items.plateNo}}</label>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-row>{{items.icon}}</ion-row>
+                <ion-row>
+                  <ion-icon ios="ios-car" md="md-car" class="icon-size"></ion-icon>
+                  <label class="manage-title">Vehicle Type</label>
+                </ion-row>
+                <ion-row>{{items.make}}</ion-row>
+                <ion-row>
+                  <ion-icon name="build" class="icon-size"></ion-icon>
+                  <label class="manage-title">Make</label>
+                </ion-row>
+                <ion-row>{{items.imeiNo}}</ion-row>
+                <ion-row>
+                  <ion-img src="assets/simcard.svg" class="svg-size"></ion-img>
+                  <label class="manage-title"> IMEI</label>
+                </ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-row>{{items.odometer}}</ion-row>
+                <ion-row>
+                  <ion-icon name="speedometer" class="icon-size"></ion-icon>
+                  <label class="manage-title">Odometer</label>
+                </ion-row>
+                <ion-row style="z-index: 3;">{{items.model}}</ion-row>
+                <ion-row>
+                  <ion-icon name="cog" class="icon-size"></ion-icon>
+                  <label class="manage-title">Model</label>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <div class="wrapper-container"></div>
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+<ion-fab class="botmRow" (click)="openModel()">
+  <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+    <ion-icon name="add" class="add-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

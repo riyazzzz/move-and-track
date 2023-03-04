@@ -1,0 +1,102 @@
+ion-card-content {
+  padding: 5px;
+}
+ion-label {
+  padding: 0 3px;
+}
+.headDetail {
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+}
+.topMargin {
+  margin-top: 10px;
+}
+.legendFont {
+  font-size: 7px;
+}
+.legendFlex {
+  display: inline-flex;
+}
+.circle {
+  height: 10px;
+  width: 10px;
+  margin: 4px;
+  border-radius: 20px;
+  background: orangered;
+  align-items: center;
+}
+.square {
+  height: 8px;
+  width: 8px;
+}
+.green {
+  background: #55b35f;
+  color: white;
+}
+.red {
+  background: rgba(255, 0, 0);
+  color: white;
+}
+.blue {
+  background: rgb(1, 83, 190);
+  color: white;
+}
+.pink {
+  background: rgb(204, 67, 193);
+  color: white;
+}
+.fontSmall {
+  font-size: smaller;
+  font-weight: bold;
+}
+.textCenter {
+  text-align: center;
+  justify-content: center;
+}
+.darkText {
+  color: rgb(58, 58, 58);
+}
+.roundedCorner {
+  border-radius: 3px;
+}
+.xSmallFont {
+  font-size: x-small;
+}
+.fontBoldAndSize{
+  color: #3a3939;
+  font-size: 11px;
+  font-weight: bold;
+  justify-content: center;
+}
+//______________________New changes_________________//
+.dateTimeHead,.dateTimeHead1{
+  font-size: 11px;
+  color:#5d5959;
+  
+}
+
+.dateTimecols1{
+  text-align: center;
+  margin: auto;
+  font-size: 8px;
+  color:green;
+}
+
+.location{
+  padding-top: 1px;
+  font-size: 9px;
+  text-align: center;
+  margin: auto;
+}
+.locationHead{
+    font-size: 9px;
+    background-color: red;
+    padding: 0px;
+    color: white;
+    float: left; 
+    margin-left: -5px;
+    padding-right: 20px;
+    padding-left: 5px;
+    border-radius: 0px 5px 5px 0px;
+}
+

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-back" (click)="locationBack()"  class="icon-size"></ion-icon>
+    </ion-buttons>
+    <ion-title style="text-align:left">{{headerText}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let values of resultantNearByPlaceDetails">
+    <ion-card-header>
+      <ion-card-subtitle style="font-weight:bold;">{{values.vicinity}}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>{{values.name}}
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2">
+            <ion-img (click)="locationSelected(values.name,values.vicinity)" src="assets/Armoron/direction.png">
+            </ion-img>
+          </ion-col>
+          <ion-col size="2">
+            <ion-img (click)="contactSelected(values.place_id)" src="assets/Armoron/contact.png"></ion-img>
+          </ion-col>
+          <ion-col size="8" style="text-align:right">
+            <ion-img [src]="values.status" style="width: 40%;margin-left: 44%;margin-bottom: -20px;margin-top: -16px;">
+            </ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

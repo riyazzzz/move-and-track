@@ -1,0 +1,54 @@
+<ion-header class='header'>
+  <ion-toolbar [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+      <ion-grid>
+          <ion-row *ngIf="!showSearch && myPlatform !='desktop'"  style="align-items: center;">
+              <ion-col size='2'>
+                  <ion-menu-button> </ion-menu-button>
+              </ion-col>
+              <ion-col size='7.5' style='align-self: center;'>
+                  <ion-row>
+                      <ion-label style="font-size: 20px;font-weight: bold;">User diagnosis</ion-label>
+                  </ion-row>
+              </ion-col>
+              <ion-col  style="text-align: center;" size='1'>
+               
+              </ion-col>
+              <ion-col size='1.5' style="padding: 0px;">
+                  <ion-row >
+                      <ion-col size='3' style="align-self: center;"> 
+                        
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+          <ion-row *ngIf="!showSearch && myPlatform =='desktop'"  style="align-items: center;">
+            <ion-col size='2'>
+                <ion-menu-button> </ion-menu-button>
+            </ion-col>
+            <ion-col size='7.5' style='align-self: center;'>
+                <ion-row>
+                    <ion-label class="headercolour">User diagnosis</ion-label>
+                </ion-row>
+            </ion-col>
+            <ion-col  style="text-align: center;" size='1'>
+             
+            </ion-col>
+            <ion-col size='1.5' style="padding: 0px;">
+                <ion-row >
+                    <ion-col size='3' style="align-self: center;"> 
+                      
+                    </ion-col>
+                    
+                   <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+                    <ion-img [src]="app.logo"></ion-img>
+                   </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<app-vts-user-diagnosis></app-vts-user-diagnosis>
+</ion-content>

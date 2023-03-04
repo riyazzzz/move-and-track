@@ -1,0 +1,61 @@
+<ion-header class='header'>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row></ion-row>
+          <ion-row>
+            <ion-col size=2>
+              <ion-menu-button></ion-menu-button>
+            </ion-col>
+              <ion-col size='8.5' style='align-self: center;'>
+                  <ion-row>
+                      <ion-label> ADD DEVICE </ion-label>
+                  </ion-row>
+              </ion-col>
+              <!-- <ion-col size='1.5'>
+                      <ion-row><ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon></ion-row>
+                  </ion-col> -->
+              <ion-col size='1.5' style="padding: 0px; align-self: center;">
+                <!-- <ion-icon (click) = "doRefresh()" name="refresh"></ion-icon> -->
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content force-overscroll="false">
+  <!-- <video autoplay loop src="assets/Login Video/loginCCTV.mp4"></video> -->
+  <div class="page-centered-element">
+    <div class="content">
+      <ion-row>
+    <form [formGroup]="addDevice" >
+      <ion-item  class=" labelSpacing">
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-input formControlName="deviceId" placeholder="Serial Number"></ion-input>
+      </ion-item>
+      <!-- <ion-item  class=" labelSpacing">
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input formControlName="UserName" placeholder="User Name"></ion-input>
+    </ion-item>
+      <ion-item class=" labelSpacing">
+          <ion-icon slot="start" name="key"></ion-icon>
+          <ion-input formControlName="password" placeholder="Password" (keyup.enter)="submitLogin()" [type]="password_type">
+          </ion-input>
+          <ion-icon slot="end" [name]="eye_icon" (click)="showHidePass()"></ion-icon>
+      </ion-item> -->
+  </form>
+</ion-row>
+
+<div class="buttons-container">
+  <ion-row class="center-button">
+        <ion-button (click) = "addNewDevice()"
+        shape="round" expand="block">
+        <ion-icon name="log-in" class="iconSize"></ion-icon>
+    </ion-button>
+  </ion-row>
+  </div>
+  </div>
+  </div>
+
+ 
+  
+</ion-content>

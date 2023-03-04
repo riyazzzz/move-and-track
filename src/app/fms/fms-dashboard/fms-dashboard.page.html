@@ -1,0 +1,386 @@
+
+<ion-header>
+  <ion-toolbar mode="md" [ngClass]="{'companyHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+         <ion-row>
+            <ion-col size='2'>
+              <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size="9">
+              <ion-label class="headercolour">Dashboard</ion-label>
+            </ion-col>
+            <ion-col style="margin: 0;
+            padding: 0;">
+              <ion-img style="height: 40px;" [src]="app.logo"></ion-img>
+            </ion-col>
+           </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>  
+</ion-header>
+<ion-content>
+  <ion-row>
+    <ion-col size="4"
+        [ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+        <ion-card class="card" style="height: 100%;">
+            <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+               Top 5 Overall Expenses</ion-card-header>
+            <ion-card-content>
+              <ion-radio-group allow-empty-selection="false" name="radio-group"
+              (ionChange)="overallCompanyExpense($event)">
+              <ion-row>
+                  <ion-col size='4' *ngFor="let overallCompanyExpense of statusChanger">
+                      <ion-row>
+                          <ion-col size='3'>
+                              <ion-radio color='danger'
+                                  style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                                  id='{{overallCompanyExpense.status}}' checked
+                                  value="{{overallCompanyExpense.status}}"></ion-radio>
+                          </ion-col>
+                          <ion-col size='8'>
+                              <ion-label style="font-size: 11px;">{{overallCompanyExpense.status}}
+                              </ion-label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-col>
+              </ion-row>
+          </ion-radio-group>
+                <ion-row>
+                    <ion-col size="12">
+                        <div id="OverallExpense"
+                            style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+        </ion-card>
+    </ion-col>
+    <ion-col size="4"
+    [ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+    <ion-card class="card" style="height: 100%;">
+        <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+          Top 5 Vehicle Expenses</ion-card-header>
+            <ion-card-content>
+              <ion-radio-group allow-empty-selection="false" name="radio-group"
+              (ionChange)="vehicleexpense($event)">
+              <ion-row>
+                  <ion-col size='4' *ngFor="let vehicleExpense of statusChanger">
+                      <ion-row>
+                          <ion-col size='3'>
+                              <ion-radio color='danger'
+                                  style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                                  id='{{vehicleExpense.status}}' checked
+                                  value="{{vehicleExpense.status}}"></ion-radio>
+                          </ion-col>
+                          <ion-col size='8'>
+                              <ion-label style="font-size: 11px;">{{vehicleExpense.status}}
+                              </ion-label>
+                          </ion-col>
+                      </ion-row>
+                  </ion-col>
+              </ion-row>
+          </ion-radio-group>
+                <ion-row>
+                    <ion-col size="12">
+                        <div id="vehicleExpense"
+                            style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-card-content>
+    </ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+      Top 5 Fuel Expenses</ion-card-header>
+        <ion-card-content>
+          <ion-radio-group allow-empty-selection="false" name="radio-group"
+          (ionChange)="fuelexpense($event)">
+          <ion-row>
+              <ion-col size='4' *ngFor="let fuelExpense of statusChanger">
+                  <ion-row>
+                      <ion-col size='3'>
+                          <ion-radio color='danger'
+                              style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                              id='{{fuelExpense.status}}' checked
+                              value="{{fuelExpense.status}}"></ion-radio>
+                      </ion-col>
+                      <ion-col size='8'>
+                          <ion-label style="font-size: 11px;">{{fuelExpense.status}}
+                          </ion-label>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+      </ion-radio-group>
+            <ion-row>
+                <ion-col size="12">
+                    <div id="fuelExpense"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+      Top 5 Overall Incomes</ion-card-header>
+        <ion-card-content>
+          <ion-radio-group allow-empty-selection="false" name="radio-group"
+          (ionChange)="overallCompanyIncome($event)">
+          <ion-row>
+              <ion-col size='4' *ngFor="let overallCompanyIncome of statusChanger">
+                  <ion-row>
+                      <ion-col size='3'>
+                          <ion-radio color='danger'
+                              style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                              id='{{overallCompanyIncome.status}}' checked
+                              value="{{overallCompanyIncome.status}}"></ion-radio>
+                      </ion-col>
+                      <ion-col size='8'>
+                          <ion-label style="font-size: 11px;">{{overallCompanyIncome.status}}
+                          </ion-label>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+      </ion-radio-group>
+            <ion-row>
+                <ion-col size="12">
+                    <div id="Overallincome"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+      Top 5 Vehicle Incomes</ion-card-header>
+        <ion-card-content>
+          <ion-radio-group allow-empty-selection="false" name="radio-group"
+          (ionChange)="vehicleincome($event)">
+          <ion-row>
+              <ion-col size='4' *ngFor="let vehicleIncome of statusChanger">
+                  <ion-row>
+                      <ion-col size='3'>
+                          <ion-radio color='danger'
+                              style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                              id='{{vehicleIncome.status}}' checked
+                              value="{{vehicleIncome.status}}"></ion-radio>
+                      </ion-col>
+                      <ion-col size='8'>
+                          <ion-label style="font-size: 11px;">{{vehicleIncome.status}}
+                          </ion-label>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+      </ion-radio-group>
+            <ion-row>
+                <ion-col size="12">
+                    <div id="vehicleincome"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+      Top 5 Profitable Vehicles</ion-card-header>
+        <ion-card-content>
+          <ion-radio-group allow-empty-selection="false" name="radio-group"
+          (ionChange)="profitablevehicle($event)">
+          <ion-row>
+              <ion-col size='4' *ngFor="let profitableVehicle of statusChanger">
+                  <ion-row>
+                      <ion-col size='3'>
+                          <ion-radio color='danger'
+                              style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                              id='{{profitableVehicle.status}}' checked
+                              value="{{profitableVehicle.status}}"></ion-radio>
+                      </ion-col>
+                      <ion-col size='8'>
+                          <ion-label style="font-size: 11px;">{{profitableVehicle.status}}
+                          </ion-label>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+      </ion-radio-group>
+            <ion-row>
+                <ion-col size="12">
+                    <div id="Profitablevehicle"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+      Top 5 Lossable Vehicles</ion-card-header>
+        <ion-card-content>
+          <ion-radio-group allow-empty-selection="false" name="radio-group"
+          (ionChange)="lossablevehicle($event)">
+          <ion-row>
+              <ion-col size='4' *ngFor="let LossableVehicle of statusChanger">
+                  <ion-row>
+                      <ion-col size='3'>
+                          <ion-radio color='danger'
+                              style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                              id='{{LossableVehicle.status}}' checked
+                              value="{{LossableVehicle.status}}"></ion-radio>
+                      </ion-col>
+                      <ion-col size='8'>
+                          <ion-label style="font-size: 11px;">{{LossableVehicle.status}}
+                          </ion-label>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+      </ion-radio-group>
+            <ion-row>
+                <ion-col size="12">
+                    <div id="Lossable"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;"> 
+<ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+Overall Trip Chart</ion-card-header>
+<ion-card-content>
+  <ion-radio-group allow-empty-selection="false" name="radio-group"
+  (ionChange)="overalltrip($event)">
+  <ion-row>
+      <ion-col size='4' *ngFor="let overallTrip of statusChanger">
+          <ion-row>
+              <ion-col size='3'>
+                  <ion-radio color='danger'
+                      style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                      id='{{overallTrip.status}}' checked
+                      value="{{overallTrip.status}}"></ion-radio>
+              </ion-col>
+              <ion-col size='8'>
+                  <ion-label style="font-size: 11px;">{{overallTrip.status}}
+                  </ion-label>
+              </ion-col>
+          </ion-row>
+      </ion-col>
+  </ion-row>
+</ion-radio-group>
+    <ion-row>
+        <ion-col size="9">
+            <div id="Overalltrip"
+                style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px;">
+            </div>
+        </ion-col>
+        <ion-col size="3">
+            <div style="padding-top: 50px ; font-size: 11px;"  *ngFor="let items of OverallTripCount">
+                <ion-row>
+                    <ion-col size="1.5">
+                        <div class="circle" style="border-color:#e06b8f;"></div>
+                    </ion-col>
+                    <ion-col size="10.5" style="padding: 2px 0px 0px 0px;font-size: 12px;color: black;font-weight: 700;">
+                       <ion-label style="padding: 0px 0px 0px 14px;font-weight:100;"> OPEN </ion-label>{{items.open}}
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="1.5">
+                        <div class="circle" style="border-color:#7f82be;"></div>
+                    </ion-col>
+                    <ion-col size="10.5" style="padding: 2px 0px 0px 0px;font-size: 12px;color: black;font-weight: 700;">
+                       <ion-label style="padding: 0px 0px 0px 14px;font-weight:100;"> CLOSE </ion-label>{{items.close}}
+                    </ion-col>
+                </ion-row>
+            </div>
+        </ion-col>
+    </ion-row>
+</ion-card-content>
+</ion-card>
+</ion-col>
+<ion-col size="4"
+[ngClass]='{"displayDesktop": myPlatform === "desktop", "displayOthers":myPlatform !== "desktop"}'>
+<ion-card class="card" style="height: 100%;">
+    <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+        Overall Income and Expense</ion-card-header>
+        <ion-card-content>
+               <ion-row>
+                <ion-col size="12">
+                  <ion-radio-group allow-empty-selection="false" name="radio-group"
+                  (ionChange)="overallIncomeandExpense($event)">
+                  <ion-row>
+                      <ion-col size='4' *ngFor="let overallIncomeandExpense of statusChanger">
+                          <ion-row>
+                              <ion-col size='3'>
+                                  <ion-radio color='danger'
+                                      style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                                      id='{{overallIncomeandExpense.status}}' checked
+                                      value="{{overallIncomeandExpense.status}}"></ion-radio>
+                              </ion-col>
+                              <ion-col size='8'>
+                                  <ion-label style="font-size: 11px;">{{overallIncomeandExpense.status}}
+                                  </ion-label>
+                              </ion-col>
+                          </ion-row>
+                      </ion-col>
+                  </ion-row>
+              </ion-radio-group>
+                 <ion-row class="incomeandexpense"  *ngFor="let data of OverallIncomeandExpense">
+                    <ion-col size="6" size-sm="12" size-md="6" size-lg="6">
+                      <ion-card class="expense-border-model"> 
+                        <ion-row class="table-head">Income</ion-row>
+                        <ion-row>
+                          <ion-col size=12>
+                           <ion-row style="place-content: center;">
+                              <ion-row class="income-expense-label">{{data.TotalIncome}}</ion-row>
+                           </ion-row>
+                          </ion-col>
+                        </ion-row>
+                      </ion-card>
+                    </ion-col>
+                    <ion-col size="6" size-sm="12" size-md="6" size-lg="6" >
+                      <ion-card class="expense-border-model"> 
+                        <ion-row class="table-head">Expense</ion-row>
+                        <ion-row>
+                          <ion-col size=12>
+                           <ion-row style="place-content: center;">
+                              <ion-row class="income-expense-label">{{data.TotalExpense}}</ion-row>
+                           </ion-row>
+                          </ion-col>
+                        </ion-row>
+                      </ion-card>
+                    </ion-col>
+                    <ion-col size="12" class="income-expense-col"><ion-label class="expense-cost-label">{{data.List}}:{{data.value}}</ion-label></ion-col>
+                   </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+</ion-card>
+</ion-col>
+    </ion-row>
+</ion-content>

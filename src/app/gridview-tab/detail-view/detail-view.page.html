@@ -1,0 +1,127 @@
+<ion-header>
+  <ion-toolbar class="appHeader">
+    <ion-row>
+      <ion-col style="font-size: 25px; text-align: center;">
+        <ion-icon icon="md-arrow-back" style="color:rgb(0, 0, 0)" (click)='getBack()'></ion-icon>
+      </ion-col>
+      <ion-col size=8>
+        <ion-grid class="appHeaderTitle">
+          <ion-title style="font-size: medium;">DETAIL VIEW</ion-title>
+        </ion-grid>
+      </ion-col>
+      <ion-col size=2>
+
+        <ion-row (click)="bellRouter()">
+          <ion-img src="/assets/dashboard_background/bell.png" style="width:22px; height:22px"></ion-img>
+          <ion-badge color="danger" style="    position: absolute;font-size: 7px;
+                  font-size: 9px;
+                  top: 6px;
+                  left: 17px;
+                  padding: 2px;
+                  color: white;
+                  font-weight: bold;">
+            {{totalAlertCount}}
+          </ion-badge>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col class="headerTitle" size=9>
+          MAP VIEW
+        </ion-col>
+      </ion-row>
+      <div style="height:40%" #mapElement></div>
+  <!--Grid View Card-->
+  <ion-row>
+    <ion-col class="headerTitle" size=9>
+      LIVE DATA
+    </ion-col>
+  </ion-row>
+  <ion-card>
+
+    <app-gridview-card [commonData]='selectedCard'></app-gridview-card>
+  </ion-card>
+
+  <!--Executive summary card-->
+  <ion-row *ngIf='executive'>
+    <ion-col class="headerTitle" size=9>
+      YESTERDAY STATUS
+    </ion-col>
+  </ion-row>
+  <!-- <app-overall-summary-bar></app-overall-summary-bar> -->
+  <canvas   id='barChart' #barChart height="250"></canvas>
+  <app-executive-summary-card  *ngIf='executive' [commonData]='executiveData'></app-executive-summary-card>
+
+  <!--Odometer data-->
+  <ion-row>
+    <ion-col class="headerTitle" size=9>
+      VEHICLE OVERVIEW
+    </ion-col>
+  </ion-row>
+  <ion-card style="padding: 0px;">
+    <ion-card-content style="padding: 0px;">
+      <app-week-odometer></app-week-odometer>
+    </ion-card-content>
+  </ion-card>
+
+   <!--Temprature Sensor data-->
+<div *ngIf="tempratureSensor">
+  <ion-row>
+    <ion-col class="headerTitle" size=9>
+      Temprature Sensor
+    </ion-col>
+  </ion-row>
+  <ion-card style="padding: 0px;">
+    <ion-card-content style="padding: 0px;">
+      <app-temprature-range style="width: 100%;" [gridView]= "selectedCard.vin"></app-temprature-range>
+    </ion-card-content>
+  </ion-card>
+  <ion-card style="padding: 0px;">
+    <ion-card-content style="padding: 0px;">
+      <app-temperature-grid-view></app-temperature-grid-view>
+    </ion-card-content>
+  </ion-card>
+</div>
+   
+  <!--Vehicle Info-->
+  <ion-row>
+    <ion-col class="headerTitle" size=9>
+      VEHICLE INFO
+    </ion-col>
+  </ion-row>
+  <ion-card style="padding: 0px;">
+    <ion-card-content style="padding: 0px;">
+      <app-vts-info></app-vts-info>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-row >
+    <ion-col class="headerTitle" size=9>
+      TODAY ALERT
+    </ion-col>
+  </ion-row>
+  <ion-img src="assets/background_img/NoData.svg" *ngIf="totalAlertCount == 0"
+  style="height: 39.5vh;bottom: 0px;left: 120px;"></ion-img>
+  <ion-card *ngIf='totalAlertCount != 0' id='totalAlert'>
+    <app-alerts  [mode]='alertMode' ></app-alerts>
+  </ion-card>
+  <!-- <div *ngIf="entryPoint == 'VTS'">
+  <ion-row>
+   
+
+    <ion-col class="headerTitle" size=9>
+      SCHEDULE MAINTENANCE
+    </ion-col>
+  </ion-row>
+  <ion-card style="padding: 0px;">
+    <ion-card-content style="padding: 0px;">
+      <app-schedule-maintenance [scheduleMaintenance]="maintenance2" ></app-schedule-maintenance>
+    </ion-card-content>
+  </ion-card>
+  </div> -->
+
+</ion-content>

@@ -1,0 +1,111 @@
+
+ <!--------*********************WebView*************************------------------->
+<ion-header *ngIf="myPlatform == 'desktop'">
+  <ion-toolbar>
+    <div class="class-wrapper">
+      <ion-row class="header-section">
+        <ion-col size="2" size-sm="2" size-md="2" size-lg="0">
+          <ion-menu-button></ion-menu-button>
+        </ion-col>
+        <ion-col size="10" size-sm="10" size-md="10" size-lg="12" id="btn-wrapper">
+          School Enable/Disable Date
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button color='primary' class="class-btn" (click)='add()'>Add</ion-button>
+          <ion-button color='primary' class="class-btn" (click)='editMode()'>Edit</ion-button>
+          <ion-button color='primary' class="class-btn" (click)='deleteMode() '>Delete</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div id="export-wrapper">
+      <!-- <ion-img src="assets/student_Details/print.svg" class="toolbar-row" (click)="btnOnClick()"></ion-img> -->
+      <ion-img src="assets/student_Details/pdf.svg" class="toolbar-row" (click)="createPdf()"></ion-img>
+      <ion-img src="assets/student_Details/excel.svg" class="toolbar-row"  (click)="exportToExcel()"> </ion-img>
+      <!-- <ion-img src="assets/student_Details/refresher.svg" class="toolbar-row"></ion-img> -->
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="grid_Container" *ngIf="myPlatform == 'desktop'">
+    <jqxGrid (onRowselect)="myGridOnRowSelect($event)" [pageable]="true" [selectionmode]="'singlerow'"
+      [showfilterrow]="true" [filterable]="true" [sortable]="true" [width]="'100%'" [source]="dataAdapter"
+      [columns]="columns" [autoheight]="true" [theme]="'material'" #myGrid
+      style="font-size:16px;text-align: center !important;">
+    </jqxGrid>
+  </div>
+ <!--------*********************WebViewEnd*************************------------------->
+
+
+  <!--------*********************MobileView*************************------------------->
+  <ion-header *ngIf="myPlatform != 'desktop'">
+    <ion-toolbar color="primary" style="color: white;">
+      <div>
+        <ion-row>
+          <ion-col size="2">
+            <ion-menu-button></ion-menu-button>
+          </ion-col>
+          <ion-col size="8" class="header">
+            <ion-title>school Enable</ion-title>
+          </ion-col>
+          <ion-col size="2">
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <div *ngIf="myPlatform != 'desktop'">
+    <ion-row>
+      <ion-col size=12 style="padding: 0px;">
+        <ion-row>
+          <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of details">
+            <ion-card id="enable-disable-card" (click)='editMode(data)'>
+              <ion-row>
+                <ion-col size=2 style="text-align: center;">
+                  <ion-icon name="business" id="icon-style"></ion-icon>
+                </ion-col>
+                <ion-col size=10>
+                  <ion-row>
+                    <ion-col id="reason-type">
+                      {{data.reason}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="status-detail">
+                      Status:{{data.type}}
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size=6 class="date-col">
+                      <ion-row>
+                        <ion-col size=12 class="date-header">
+                          From :{{data.fromDate}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                    <ion-col size=6 class="date-col">
+                      <ion-row>
+                        <ion-col size=12 class="date-header">
+                          To :{{data.toDate}}
+                        </ion-col>
+                      </ion-row>
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+        <ion-fab (click)="add()">
+          <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+            <ion-icon name="add" class="add-icon"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+    </ion-row>
+  </div>
+   <!--------*********************MobileViewEnd*************************------------------->
+</ion-content>

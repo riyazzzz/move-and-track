@@ -1,0 +1,100 @@
+input {
+  margin-top: 11px;
+  margin-left: 18%;
+}
+
+#myGrid {
+  border: 1px solid;
+}
+
+#submitbtn {
+  --background: #6252ee !important;
+}
+
+.cardCenter {
+  width: 70vw;
+  display: grid;
+  height: 20%;
+  place-content: center;
+}
+
+.uploaderRow {
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.submitBtn {
+  margin: 0px 14px 0px 0px;
+  --ion-color-primary: #7c68f8;
+  --background: white;
+  --color: #7c68f8;
+  --background-hover: #7c68f8;
+  --color-hover: white;
+}
+
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+  width: 18px;
+  height: 20px;
+}
+
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -8px;
+  right: -9px;
+  height: 30px;
+  width: 30px;
+}
+
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltipRenewal {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipRenewal .tooltiprenewaltext {
+  visibility: hidden;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.tooltipRenewal:hover .tooltiprenewaltext {
+  visibility: visible;
+}

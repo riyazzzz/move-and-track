@@ -1,0 +1,50 @@
+.student-wrapper,.grid_Container{
+    border: 1px solid rgb(199, 195, 195);
+    margin: 5px 10px 0;
+ }
+ .grid_Container{
+    margin: 0px 10px 0px;  
+ }
+ .header-section{
+  background-color: #e8e8e8;
+  border: 1px solid #cac2c2;
+}
+.student-btn{
+    width: 80px;
+    height: 30px;
+    margin: 5px 10px;
+    font-size: 12px;
+ }
+ #export-wrapper{
+   text-align: right;
+   background-color: #e8e8e8;
+   height: 42px;
+   border-top: 1px solid gainsboro;
+   margin: 0px 10px 0px;
+   border-left: 2px solid #c7c7c7;
+ }
+ #btn-wrapper{
+   text-align: center;
+   background-color: #e8e8e8;
+   height: 40px;
+   padding: 0px;
+   font-size: 20px;
+   border-bottom:1px solid #cac2c2;
+   font-weight: 700;
+ }
+ .toolbar-row{
+   height: 40px;
+   width: 40px;
+   display: inline-block;
+   margin:0px;
+   border: 1px solid #b9b7b7;
+   padding: 5px;
+}
+.toolbar-row:hover{
+    background-color: whitesmoke;
+}
+ #myGrid:hover{
+ background: gray !important;
+ }
+ 
+ 

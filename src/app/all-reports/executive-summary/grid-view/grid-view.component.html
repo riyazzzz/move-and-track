@@ -1,0 +1,12 @@
+
+<ion-grid style="padding: 0px;">
+  <ion-row style="padding: 0px;">
+   
+      <ion-virtual-scroll [items]="gridData| searchReport:reportSearch" approxItemHeight="320px">
+        <ion-card class="cardMargin" *virtualItem="let x; ">
+<app-executive-summary-card [commonData] = 'x' [searchTerm]= 'reportSearch'></app-executive-summary-card>
+</ion-card>
+</ion-virtual-scroll>
+
+</ion-row>
+</ion-grid>

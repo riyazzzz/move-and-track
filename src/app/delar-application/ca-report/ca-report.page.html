@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar mode="md"  class="dealerHeader">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+       <ion-title >CA Report</ion-title>
+        </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col size="12" > 
+      <form [formGroup]="CAReportForm">
+      <ion-row  class="form-field">
+        <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+          <ion-label class="label-head">CA Request Number:</ion-label>
+          <ionic-selectable class="input selectable-input" formControlName="CaRequestNo" placeholder="Select CA Request Number"
+          [items]="carequestNo"  [canSearch]="true" (onChange)="getCalist($event)"
+         [hasVirtualScroll]="true" [disabledItems]="data">
+        </ionic-selectable>
+        </ion-col>
+        <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+          <ion-label class="label-head">Invoice Number:</ion-label>
+          <ion-input type="text" *ngIf="!showInvoiceNumber" placeholder="Invoice Number" formControlName="InvoiceNo" class="input" disabled></ion-input>
+          <ionic-selectable *ngIf="showInvoiceNumber" class="input selectable-input" formControlName="InvoiceNo" placeholder="Select Invoice Number" [disabled]="hideSerialNo"
+          [items]="Invoice"  [canSearch]="true" (onChange)="getinvoicelist($event)"
+         [hasVirtualScroll]="true" [disabledItems]="data">
+        </ionic-selectable>
+        </ion-col>
+        <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+          <ion-label class="label-head">Serial Number:</ion-label>
+          <ion-input type="text" *ngIf="!showSerialNo" placeholder="Select Serial Number" formControlName="SerialNo" class="input" disabled></ion-input>
+          <ionic-selectable *ngIf="showSerialNo" class="input selectable-input" formControlName="SerialNo" placeholder="Select Serial Number"  [disabled]="hideSerialNo"
+          [items]="SerialNo"  [canSearch]="true" (onChange)="getseriallist($event)"
+         [hasVirtualScroll]="true" [disabledItems]="data">
+        </ionic-selectable>
+        </ion-col>
+        <ion-col size='12' size-lg="2.4"  size-md="2.4" >  
+          <ion-label class="label-head">Iccid Number:</ion-label>
+          <ion-input type="text" placeholder="Iccid Number" formControlName="iccidNumber" class="input">
+          </ion-input>
+        </ion-col>
+        <ion-col size='12' size-lg="2.4"  size-md="2.4" >  
+          <ion-label class="label-head">Imei Number:</ion-label>
+          <ion-input type="text" placeholder="Imei Number" formControlName="ImeiNumber" class="input">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      </form>
+      <ion-row>
+        <ion-col size='12' size-lg="12"  size-md="12" style="margin: 10px 0px 0px;text-align: center;">  
+<ion-button class="submitbtn" (click)="SearchData()"[disabled]="!CAReportForm.valid">Search</ion-button>
+<ion-button class="submitbtn"  (click)="clear()">Clear</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 10px;" *ngIf='show'>
+        <ion-col size=12>
+          <ion-label><span class="dealer-label">Invoice No:</span><span class="dealer-data">{{details.invoiceno}}</span><span class="dealer-label">Total Qty:</span><span class="dealer-data">{{details.totalquantity}}</span><span class="dealer-label">Sales Date:</span><span class="dealer-data">{{details.saledate}}</span><span class="dealer-label">Serial No:</span><span class="dealer-data">{{details.serialno}}</span><span class="dealer-label">Distributor:</span><span class="dealer-data">{{details.saledistributor}}</span></ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 10px;"> 
+        <ion-col size=12>
+        <jqxGrid  *ngIf='show'
+        #myGrid
+        [theme]="'material'"
+        [width]="'99.5%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [columns]="columns"
+        [sortable]="true"
+        [filterable]="true"
+        [columns]="columns"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true" 
+       style="font-size:16px;text-align: center !important;margin:auto;cursor:pointer"
+      >
+      </jqxGrid>
+        </ion-col>
+      </ion-row>
+</ion-col>
+        </ion-row>
+</ion-content>

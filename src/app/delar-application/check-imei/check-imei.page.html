@@ -1,0 +1,224 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-title>Detach</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <div class="padding25px">
+      <ion-row>
+        <ion-col size="12" id="radio-wrapper">
+          <ion-radio-group
+            allow-empty-selection="false"
+            name="radio-group"
+            value="Imei Number"
+            (ionChange)="getImeiMobileNumber($event)"
+          >
+            <ion-col size="12" *ngFor="let items of imeiMobileSearch">
+              <ion-col size="4">
+                <ion-radio id="radio-btn" checked [value]="items"></ion-radio>
+              </ion-col>
+              <ion-col size="8">
+                <ion-label>{{items}}</ion-label>
+              </ion-col>
+            </ion-col>
+          </ion-radio-group>
+        </ion-col>
+      </ion-row>
+
+      <form [formGroup]="numberSearch">
+        <ion-row>
+          <ion-col size="12" *ngIf="hide_mob">
+            <ion-row class="paddingBottom10px">
+              <ion-input
+                type="tel"
+                [maxlength]="maxNum"
+                class="imeibox"
+                [placeholder]="holder"
+                formControlName="commonNumber"
+              ></ion-input>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="form-field">
+          <ion-col size="12" *ngIf="show_select">
+            <!-- <ion-select formControlName="commonNumber"  placeHolder = 'select company' style="background-color: #e8e8e8;">
+              <ion-select-option  *ngFor="let comp_name of companyName" [value]="comp_name">
+                {{comp_name}}
+              </ion-select-option>
+            </ion-select> -->
+            <input
+              list="num"
+              class="input col"
+              formControlName="commonNumber"
+              placeholder="Search Company"
+              style="padding: 0px"
+            />
+            <!-- <input class="input col" type="number" list="num"  formControlName="imeiNo" placeholder="Imei No" /> -->
+            <datalist id="num">
+              <option *ngFor="let numbers of companyName">{{numbers}}</option>
+            </datalist>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col style="text-align: center; margin: 10px">
+            <!-- <ion-button class="buttonWidth" (click)='submit()' [disabled]="!numberSearch.valid">Submit</ion-button> -->
+            <ion-button
+              class="buttonWidth"
+              (click)="submit()"
+              [disabled]="!numberSearch.valid"
+              >Submit</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </form>
+    </div>
+    <ion-row *ngIf="reportData">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-lg="4"
+        size-md="6"
+        *ngFor="let ImeiDetail of reportData"
+        style="margin: auto"
+      >
+        <ion-card
+          style="border-left: 4px solid #7c68f8; margin: 0px"
+          (click)='delete_imei(ImeiDetail,"imei")'
+        >
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="12">
+                <ion-row>
+                  <ion-col size="8" class="ImeiStyle">
+                    {{ImeiDetail.plateNo}}
+                  </ion-col>
+                  <ion-col size="4">
+                    <ion-row
+                      style="
+                        font-size: 11px;
+                        margin: 0px 0px 5px 0px;
+                        justify-content: center;
+                        font-weight: 600;
+                      "
+                      >Warranty Expiry</ion-row
+                    >
+                    <ion-row class="ImeiStyle Expirystyle"
+                      >{{ImeiDetail.warrantyExpiryDate}}</ion-row
+                    >
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12" class="ImeiNo">
+                    {{ImeiDetail.imei}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12" class="ImeiStyle">
+                    <ion-icon class="iconColor" name="call"></ion-icon>
+                    {{ImeiDetail.simcardNo}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size="12" class="ImeiStyle">
+                    <ion-icon class="iconColor" name="business"></ion-icon>
+                    {{ImeiDetail.companyId}} ({{ImeiDetail.currentAgency}})
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+            <ion-row class="timestampRow">
+              <ion-col size="12" class="ImeiStyle timestampCol">
+                <ion-label
+                  style="
+                    font-size: 11px;
+                    margin: 0px 0px 5px 0px;
+                    justify-content: center;
+                    font-weight: 600;
+                    text-transform: initial;
+                  "
+                  >Date of Purchase:</ion-label
+                >
+                {{ImeiDetail.dop}}
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="mobileNumber">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-lg="4"
+        size-md="6"
+        style="margin: auto"
+      >
+        <ion-card style="border-left: 4px solid #7c68f8; margin: 0px">
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="9">
+                <ion-row class="companyName uppercase">
+                  {{mobileNumber.companyName}}
+                </ion-row>
+                <ion-row class="centerAlign">
+                  <ion-icon class="iconColor" name="call"></ion-icon>
+                  <label> {{mobileNumber.contact}}</label>
+                </ion-row>
+                <ion-row class="centerAlign">
+                  <ion-icon class="iconColor" name="mail"></ion-icon>
+                  <label> {{mobileNumber.emailId}}</label>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="centerColNum">
+                <ion-label> {{mobileNumber.vehicle_Count}} </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="showCompany">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-lg="4"
+        size-md="6"
+        style="margin: auto"
+        *ngFor="let showList of showList"
+      >
+        <ion-card
+          style="border-left: 4px solid #7c68f8; margin: 0px"
+          (click)='delete_imei(showList,"comp")'
+        >
+          <ion-card-content>
+            <ion-row>
+              <ion-col size="9">
+                <ion-row class="companyName uppercase">
+                  {{showList.companyName}}
+                </ion-row>
+                <ion-row class="centerAlign">
+                  <ion-icon class="iconColor" name="call"></ion-icon>
+                  <label> {{showList.contact}}</label>
+                </ion-row>
+                <ion-row class="centerAlign">
+                  <ion-icon class="iconColor" name="mail"></ion-icon>
+                  <label> {{showList.emailId}}</label>
+                </ion-row>
+              </ion-col>
+              <ion-col size="3" class="centerColNum">
+                <ion-label> {{showList.vehicle_Count}} </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,490 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        routerLink="/tabs-login/certificate"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title style="margin-left: 1%">Certficate Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <ion-col size="12" class="wrapper-container">
+      <form [formGroup]="certificatedetails">
+        <ion-row>
+          <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+            <label class="heading">Vehicle Details</label>
+          </ion-col>
+        </ion-row>
+        <div>
+          <ion-row>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Vehicle Registration No:</label>
+              <ion-input
+                type="text"
+                placeholder="Vehicle Registration No"
+                formControlName="RegistraionNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Vehicle Registration Date:</label>
+              <ion-input
+                type="date"
+                placeholder="Vehicle Registration Date"
+                formControlName="RegistraionDate"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Chassis Number:</label>
+              <ion-input
+                type="text"
+                placeholder="Chassis Number"
+                formControlName="ChassisNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Engine Number:</label>
+              <ion-input
+                type="text"
+                placeholder="Engine Number"
+                formControlName="EngineNo"
+              >
+              </ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Vehicle Make:</label>
+              <ion-input
+                type="text"
+                placeholder="Vehicle Make"
+                formControlName="Make"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Vehicle Model:</label>
+              <ion-input
+                type="text"
+                placeholder="Vehicle Model"
+                formControlName="Model"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Category:</label>
+              <ion-input
+                type="text"
+                placeholder="Category"
+                formControlName="Category"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+            <label class="heading">Vehicle Owner Details</label>
+          </ion-col>
+        </ion-row>
+        <div>
+          <ion-row>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Vehicle Owner Name:</label>
+              <ion-input
+                type="text"
+                placeholder="Vehicle Owner Name"
+                formControlName="OwnerName"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Address:</label>
+              <ion-input
+                type="text"
+                placeholder="Address"
+                formControlName="OwnerAddress"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Phone Number:</label>
+              <ion-input
+                type="number"
+                placeholder="Phone Number"
+                formControlName="PhoneNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Email ID:</label>
+              <ion-input
+                type="text"
+                placeholder="Email ID"
+                formControlName="Emailid"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Adhar Number:</label>
+              <ion-input
+                type="number"
+                placeholder="Adhar Number"
+                formControlName="AadharNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">PAN Number:</label>
+              <ion-input
+                type="text"
+                placeholder="PAN Number"
+                formControlName="PanNo"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col
+            size-sm="8"
+            size-md="8"
+            size-lg="6"
+            class="head"
+            class="form_col"
+          >
+            <label class="heading">VLTD Details</label>
+          </ion-col>
+        </ion-row>
+        <div>
+          <ion-row>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">ICCID Number:</label>
+              <ion-input
+                type="text"
+                placeholder="ICCID Number"
+                formControlName="IccidNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">VLTD Serial No:</label>
+              <ion-input
+                type="text"
+                placeholder="VLTD Serial No"
+                formControlName="VltdSerialNo"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Device Manufacture Year:</label>
+              <ion-input
+                type="text"
+                placeholder="Device Manufacture Year"
+                formControlName="DeviceManufactureYear"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Sim Provider 1:</label>
+              <ion-input
+                type="text"
+                placeholder="Sim Provider 1"
+                formControlName="Sim1"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Sim Provider 2:</label>
+              <ion-input
+                type="text"
+                placeholder="Sim Provider 2"
+                formControlName="Sim2"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Imei Number:</label>
+              <ion-input
+                type="number"
+                placeholder="Imei Number"
+                formControlName="imeiNumber"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Renewal Date:</label>
+              <ion-input type="date" formControlName="RenewalDate"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+            <label class="heading">Installation Details</label>
+          </ion-col>
+        </ion-row>
+        <div>
+          <ion-row>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Installation Name:</label>
+              <ion-input
+                type="text"
+                placeholder="Installation Name"
+                formControlName="InstallationName"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Installation Address:</label>
+              <ion-input
+                type="text"
+                placeholder="Installation Address"
+                formControlName="InstallationAddress"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Installation City:</label>
+              <ion-input
+                type="text"
+                placeholder="City"
+                formControlName="City"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Installation Pincode:</label>
+              <ion-input
+                type="text"
+                placeholder="Pincode"
+                formControlName="Pincode"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row>
+          <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+            <label class="heading">Camera Details</label>
+          </ion-col>
+        </ion-row>
+        <div>
+          <ion-row>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Camera Imei Number:</label>
+              <ion-input
+                type="text"
+                placeholder="Camera Imei Number"
+                formControlName="Cameraimei"
+              ></ion-input>
+            </ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-md="6"
+              size-lg="6"
+              class="form_col"
+            >
+              <label class="label-heading">Camera Serial Number:</label>
+              <ion-input
+                type="text"
+                placeholder="Camera Serial Number"
+                formControlName="Cameraserial"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+              <ion-row>
+                <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+                  <label class="heading">Vehicle Image</label>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 6px">
+                <input
+                  type="file"
+                  class="documents"
+                  ng2FileSelect
+                  [uploader]="uploader"
+                />
+              </ion-row>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+              <ion-row>
+                <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+                  <label class="heading">Camera Image</label>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 6px">
+                <input
+                  type="file"
+                  class="documents"
+                  ng2FileSelect
+                  [uploader]="uploader"
+                />
+              </ion-row>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6">
+              <ion-row>
+                <ion-col size-sm="8" size-md="8" size-lg="6" class="head">
+                  <label class="heading">Captured Image</label>
+                </ion-col>
+              </ion-row>
+              <ion-row style="margin: 6px">
+                <input
+                  type="file"
+                  class="documents"
+                  ng2FileSelect
+                  [uploader]="uploader"
+                />
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </div>
+      </form>
+      <ion-row style="padding: 0px">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button
+            id="btn"
+            [disabled]="!certificatedetails.valid"
+            (click)="submit()"
+            autocapitalize="characters"
+            >Submit</ion-button
+          ></ion-col
+        ></ion-row
+      >
+    </ion-col>
+  </ion-row>
+</ion-content>

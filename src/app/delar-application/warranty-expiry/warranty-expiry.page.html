@@ -1,0 +1,181 @@
+<ion-header>
+  <ion-toolbar
+    [ngClass]="{'dealerHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}"
+    mode="md"
+  >
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sim Card Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col>
+        <form [formGroup]="validityForm">
+          <ion-row style="text-align: center">
+            <ion-col size="12" size-sm="6" size-lg="6" size-md="6">
+              <ion-item>
+                <ion-label position="fixed" style="color: Blue"
+                  >Imei Number</ion-label
+                >
+                <ion-input
+                  [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                  type="number"
+                  formControlName="imeino"
+                ></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="12" size-sm="4" size-lg="4" size-md="4">
+              <ion-button
+                (click)="onSubmit()"
+                id="submitbtn"
+                [disabled]="!validityForm.valid"
+              >
+                Submit
+              </ion-button>
+              <ion-button
+                (click)="deleteMethod()"
+                id="submitbtn"
+                [disabled]="!validityForm.valid"
+              >
+                Delete
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <div style="margin: 32px; border: 1px solid black">
+          <ion-header>
+            <ion-toolbar>
+              <ion-title style="text-align: center; padding: 25px"
+                >Sim Renewal Details</ion-title
+              >
+            </ion-toolbar>
+          </ion-header>
+          <form [formGroup]="UpdateForm">
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="fixed" style="color: Blue"
+                    >Purchase On</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="dateofpurchase"
+                    type="date"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="fixed" style="color: Blue"
+                    >Expiring On</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="warrantyexpirydate"
+                    type="date"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Sim No 1</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="simcardno1"
+                    type="number"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Sim No 2</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="simcardno2"
+                    type="number"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Device Model</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="devicemodel"
+                    type="text"
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Agency Code</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="agency"
+                    type="number"
+                    disabled
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Current Agency Code</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="currentagency"
+                    type="number"
+                    disabled
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-item>
+                  <ion-label position="floating" style="color: Blue"
+                    >Previous Agency Code</ion-label
+                  >
+                  <ion-input
+                    [ngClass]="{'armoron' : appName == 'Armoron', 'heading' : appName != 'Armoron'}"
+                    formControlName="previousagency"
+                    type="number"
+                    disabled
+                  ></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </form>
+          <ion-row>
+            <ion-col style="text-align: center; padding: 32px">
+              <ion-button (click)="save()" [disabled]="!UpdateForm.valid"
+                >Save</ion-button
+              >
+              <ion-button (click)="clear()">Clear</ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

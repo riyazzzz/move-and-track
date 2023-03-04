@@ -1,0 +1,27 @@
+.viewTypeRow {
+  background: #777474;
+  color: white;
+  text-align: center;
+
+  .active {
+    background: #b5b5b5;
+  }
+}
+
+.headerTitle {
+  background: #34384b;
+}
+
+.titleColor {
+  color: white;
+}
+
+.paddingLeft {
+  padding: 0 4%;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}

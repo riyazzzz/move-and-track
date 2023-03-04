@@ -1,0 +1,108 @@
+@media(min-width:320px)and(max-width:1023px){
+  * {
+    font-size: 11px;
+    margin: 0;
+    padding: 0.3px;
+    font-weight: 500;
+  }
+}
+
+ion-button {
+  width: 100%;
+  --border-radius: 23px;
+  height: 22px;
+  text-transform: capitalize;
+  font-size: 11px;
+}
+.btn-item {
+  --background: transparent;
+  color: white;
+}
+
+.btn-color {
+  color: white;
+}
+/*-----maintanence-table-css----*/
+.download-buttons {
+  margin: 0px 3px;
+  padding: 4px 6px;
+  background: #915a9a;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.download-buttons:hover {
+  background-color: #efe2f1;
+}
+.toolbar-icon {
+  font-size: small;
+  color: white;
+  margin-left: 3px;
+}
+.toolbar-buttons {
+  padding: 10px 0;
+  width: 78px !important;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 23px;
+  height: 24px;
+}
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+}
+.submitBtn {
+  --background: #6c2a84;
+  width: 69px;
+  margin: 0px 10px;
+}
+.maintanence-card {
+  margin: 10px 5px;
+  padding: 0.6;
+  background: #ffffff;
+}
+
+.common-status {
+  font-weight: 700;
+  color: rgb(0 0 0 / 87%);
+  padding-bottom: 4px;
+}
+#plateNo {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(0 0 0 / 87%);
+  border-bottom: 1px solid #f1f1f1;
+  padding: 5px 0px 5px 20px;
+}
+.status-row {
+  border-right: 1px solid #f1f1f1;
+  text-align: center;
+}
+
+.status_docorclose {
+  border-left: 3px solid red;
+}
+
+.add-icon {
+  font-size: 32px;
+  color: white;
+}
+
+
+.status_docoropen{
+  border-left: 3px solid #017afe;
+}
+.alert-col{
+  background: #017afe;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 12px;
+  display: grid;
+  place-content: center;
+  padding-bottom: 5px;
+}
+ion-icon{
+  font-size: 15px;
+  color:#017afe;
+}

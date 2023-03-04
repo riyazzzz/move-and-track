@@ -1,0 +1,110 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-col size="6">
+        <ion-title style="margin: 7px">Accounts Mapping</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-row style="margin: 0px; padding: 0; float: right">
+          <ion-col style="margin-top: 0" class="tooltip">
+            <ion-fab-button
+              size="small"
+              class="fab-btn"
+              href="https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/EsimExcelDowmload/EsimSimNo.xlsx"
+              download="sample.xlsx"
+            >
+              <div class="excel-wrapper"></div>
+            </ion-fab-button>
+            <span class="tooltiptext">Excel-Format</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="accountmapForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Sim Provider:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="provider"
+                placeholder="Select the Sim Provider"
+                [items]="Provider"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Account No:</ion-label>
+              <ion-input
+                type="text"
+                placeholder="Enter the Account No"
+                formControlName="accountno"
+                class="input"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">File Upload:</ion-label>
+              <input
+                type="file"
+                (change)="onFileChange($event)"
+                formControlName="fileupload"
+                class="documents"
+              />
+            </ion-col>
+
+            <ion-col style="margin: 27px 0px 0px; text-align: end">
+              <ion-button
+                class="submitbtn"
+                (click)="SubmitData()"
+                [disabled]="!accountmapForm.valid"
+                >Submit</ion-button
+              >
+              <ion-button
+                class="submitbtn"
+                [disabled]="!accountmapForm.valid"
+                (click)="clear()"
+                >Clear</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <jqxGrid
+      #myGrid
+      [theme]="'material'"
+      [width]="'99%'"
+      [autoheight]="true"
+      [source]="dataAdapter"
+      [columns]="columns"
+      [sortable]="true"
+      [filterable]="true"
+      [columnsresize]="true"
+      [enablebrowserselection]="true"
+      [enabletooltips]="true"
+      [pagesizeoptions]="page"
+      [pageable]="true"
+      [showfilterrow]="true"
+      style="
+        font-size: 16px;
+        text-align: center !important;
+        margin: auto;
+        cursor: pointer;
+      "
+    >
+    </jqxGrid>
+  </ion-grid>
+</ion-content>

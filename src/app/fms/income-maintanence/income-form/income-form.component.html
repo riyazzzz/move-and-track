@@ -1,0 +1,93 @@
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+      <ion-item lines="none"style="--background:transparent;">
+        <ion-icon  (click)="cancelBtn()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+          <div class="incomehead">Income Details</div>
+        </ion-item>
+  <form [formGroup]="incomemaintenanceForm">
+          <div class="wrapper-form">
+          <ion-row>
+            <ion-col  *ngIf="!hideSerialNo">
+              <ion-label class="input-label">Vehicle No :</ion-label>
+              <ionic-selectable class="input-item selectable-input" formControlName="plateNo" placeholder=" Select the Vehcile Number"
+              [items]="vin"  [canSearch]="true" (onChange)="gettriplist($event)"
+             [hasVirtualScroll]="true" [disabledItems]="data">
+            </ionic-selectable>
+             </ion-col>
+             <ion-col *ngIf="hideSerialNo">
+              <ion-label class="input-label">Vehicle No :</ion-label>
+              <ion-input type="text" formControlName="plateNo" [disabled]='hideSerialNo'  class="input-item"></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+             <ion-col *ngIf="!hideSerialNo">
+              <ion-label class="input-label">Trip Name :</ion-label>
+             <ion-select class="input-item select-input" formControlName="tripName" placeholder=" Select the Trip Name"  (click)="triplist()">
+               <ion-select-option *ngFor="let list of tripname" value={{list}}>{{list}}</ion-select-option>
+             </ion-select>
+            </ion-col>
+            <ion-col *ngIf="hideSerialNo">
+              <ion-label class="input-label">Trip Name :</ion-label>
+              <ion-input type="text" formControlName="tripName" [disabled]='hideSerialNo'  class="input-item"></ion-input>
+            </ion-col>
+            </ion-row>
+            <ion-row *ngIf="Addbutton">
+              <ion-col size="11">
+                <ion-label class="input-label">Income List :</ion-label>
+                <ion-select  class="input-item select-input"  formControlName="Income"  placeholder="Select the Income Option" >
+                  <ion-select-option *ngFor="let reason of income" value={{reason}} >{{reason}}</ion-select-option>
+                </ion-select>
+              </ion-col>
+              <ion-col size="1" style="padding: 26px 0px 0px 0px;">
+                <ion-button (click)='openModel()' id="add-icon">+</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="Editbutton">
+              <ion-col>
+                <ion-label class="input-label">Income List :</ion-label>
+                <ion-select  class="input-item select-input"  formControlName="Income"  placeholder="Select Income Option" >
+                  <ion-select-option *ngFor="let reason of income" value={{reason}} >{{reason}}</ion-select-option>
+                </ion-select>
+              </ion-col>
+            </ion-row> 
+            <ion-row>
+              <ion-col>
+                <ion-label class="input-label">Cost :</ion-label>
+                <ion-row>
+                  <ion-col size="1" style="padding: 5px 0px 0px 0px;">
+                    <ion-input class="input-cost" disabled value={{currencyvalue}}></ion-input>
+                  </ion-col>
+                <ion-col size="11">
+                  <ion-input type="number" formControlName="Cost" placeholder="Enter the Cost" class="input-item"></ion-input>
+                </ion-col>
+               </ion-row>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                 <ion-label class="input-label">Discription :</ion-label>
+                  <ion-input type="text" maxlength="200" formControlName="Description"  placeholder="Enter the Description"class="input-item" ></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-label class="input-label">Date:</ion-label>
+                  <ion-input type="date" [max]="maxDate" formControlName="fromDate" class="input-item" ></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-label class="input-label">Time :</ion-label>
+                  <ion-input type="time"  formControlName="fromtime" class="input-item" ></ion-input>
+                </ion-col>
+            </ion-row>
+       </div>
+        </form>
+       <ion-row>
+          <ion-col size="12" style="text-align: center !important;padding: 20px;">
+            <ion-button  class="submitBtn" shape="round" (click)="submit()" [disabled]="!incomemaintenanceForm.valid">Submit</ion-button>
+            <ion-button  class="submitBtn" shape="round" (click)="clear()">Clear</ion-button>
+          </ion-col>
+        </ion-row>
+     </ion-col>
+    </ion-row>

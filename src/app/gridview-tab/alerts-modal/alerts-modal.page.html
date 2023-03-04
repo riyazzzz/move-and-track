@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-grid [ngClass]="{'appHeaderTitle' : appName != 'Armoron' , 'header-color': appName == 'Armoron'}" style="padding-bottom:0px">
+    <ion-row [@inOutAnimation] *ngIf="!showSearch">
+      <ion-col size="2">
+        <ion-icon style="font-size: x-large;" name="arrow-back" (click)="getBack()"></ion-icon>
+      </ion-col>
+      <ion-col size="7"><ion-title [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-color': appName == 'Armoron'}" style="padding-top: 6px;text-align: center;">Alerts</ion-title></ion-col>
+      <ion-col size='1.5' class="ion-align-self-end" (click)="searchActivity('open')">
+        <ion-icon class="iconSize" name="search"></ion-icon>
+      </ion-col>
+      <ion-col size='1.5' class="ion-align-self-end">
+        <ion-img src="assets/dashboard_background/bell.png" style="height: 22px;width: 22px;">
+        </ion-img>
+          <!-- <ion-badge color="danger">{{totalAlert}}</ion-badge> -->
+         </ion-col>
+    </ion-row>
+    <ion-row [@inOutAnimation] *ngIf="showSearch">
+      <ion-col size="2" (click)="searchActivity('close')">
+        <ion-row>
+          <ion-icon class="iconSize" name="md-arrow-back"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col size="10" class="botNoPad">
+        <ion-searchbar [(ngModel)]="searchInput" debounce="500" placeholder="Search" animated class="noPad">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid class="appHeaderTitle ion-padding" [@inOutAnimation] *ngIf="!initialHeader" style="padding-bottom:8px">
+    <ion-row [@inOutAnimation] *ngIf="!showSearch">
+      <ion-col size="2">
+        <ion-icon style="font-size: x-large;" name="arrow-back" (click)="getBack()"></ion-icon>
+      </ion-col>
+      <ion-col size="8">
+        <ion-title class="appHeaderTitle" style="padding-top: 6px;text-align: center;">Alerts</ion-title>
+      </ion-col>
+      <ion-col class="ion-align-self-end" (click)="searchActivity('open')">
+        <ion-icon class="iconSize" name="search"></ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row [@inOutAnimation] *ngIf="showSearch">
+      <ion-col size="2" (click)="searchActivity('close')">
+        <ion-row>
+          <ion-icon class="iconSize" name="md-arrow-back"></ion-icon>
+        </ion-row>
+      </ion-col>
+      <ion-col size="10" class="botNoPad">
+        <ion-searchbar [(ngModel)]="searchInput" debounce="500" placeholder="Search" animated class="noPad">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+  <ion-row style="border-top: 1px solid" *ngIf="mode!='all'" class="ion-text-center ion-justify-content-center">
+    <span class="roundedPlate">{{currentPlateno}}</span>
+  </ion-row>
+</ion-header>
+<ion-content (ionScroll)="scroll($event)" [scrollEvents]="true">
+  <app-alerts [searchInput]="searchInput" mode="vin" (total)="totalAlerts($event)"></app-alerts>
+</ion-content>

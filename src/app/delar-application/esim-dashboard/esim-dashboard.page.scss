@@ -1,0 +1,252 @@
+.grid-item {
+  background-color: #eeeeee;
+  border: solid 3px #d9d9d9;
+  //   box-shadow: -5px 5px 10px #737373 inset;
+  text-align: center;
+  color: #737373;
+  font-size: 16px;
+  height: 100px;
+  margin: 10px;
+  width: 100px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+.grid-item:hover {
+  background-color: #ffffff;
+  border: solid 3px #7d67f8;
+  box-shadow: -5px 5px 10px #7d67f8;
+  color: #000000;
+}
+
+//initial loader start
+.nodata-wrapper {
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nodatahide {
+  display: none;
+}
+
+@media only screen and(min-width:300px) and(max-width:650px) {
+  .nodata-wrapper {
+    width: auto;
+    margin-top: 49%;
+    zoom: 33%;
+  }
+}
+
+@media only screen and(min-width:651px) and (max-width: 1023px) {
+  .nodata-wrapper {
+    width: 49%;
+    margin: 12% auto;
+    zoom: 40%;
+  }
+}
+
+@media only screen and(min-width:1024px) {
+  .nodata-wrapper {
+    width: 49%;
+    margin: 10% auto;
+    zoom: 50%;
+  }
+}
+
+// initial loader end
+
+ion-icon {
+  color: #000000;
+}
+
+.companyName {
+  color: #74788b;
+}
+
+.name {
+  font-size: 35px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.nameWeb {
+  font-size: 15px;
+  color: #74788b;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+
+ion-img {
+  width: 100%;
+  height: 90%;
+}
+
+.header {
+  // margin-left: 100px;;
+  padding-right: 20px;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.itemMob {
+  border-bottom: 1px solid white;
+  border-radius: 0px 20px 20px 0px;
+  font-size: 14px;
+}
+
+.itemWeb {
+  border-bottom: 1px solid white;
+  border-radius: 25px 25px 25px 25px;
+  font-size: 11px;
+}
+
+ion-list {
+  --color: black;
+}
+
+.iconWebSize {
+  font-size: 40px;
+}
+
+.itemWeb:hover {
+  cursor: pointer;
+}
+
+.iconMobSize {
+  font-size: 25px;
+}
+
+.name {
+  font-size: 16px;
+  color: gray;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.active {
+  --background: #6c2a84;
+  --color: rgb(66, 9, 87);
+}
+
+.activeDealer {
+  --background: #7d67f8;
+  --color: white;
+}
+
+.header {
+  margin: auto;
+  font-size: 13px;
+  color: gray;
+  font-weight: bold;
+}
+
+ion-img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+@media only screen and (min-width: 1024px) {
+  .split-pane-md.split-pane-visible > .split-pane-side {
+    min-width: 0px;
+    --border: none;
+  }
+
+  .menuIcon,
+  .menuIconbtn {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .menuIcon,
+  .menuIconbtn {
+    display: none;
+  }
+}
+
+.menuIconbtn {
+  padding: 2px;
+  font-size: 22px;
+  color: black;
+  border-radius: 13px;
+}
+
+.menuIconbtn:hover {
+  background-color: #e2dcdc;
+  cursor: pointer;
+}
+
+.helloItem {
+  --max-width: 88px;
+  flex-grow: 0;
+  flex-basis: 88px;
+
+  .menu-label,
+  .header,
+  .apmLogo {
+    display: none;
+  }
+}
+
+.helloItem.menu-mouse-over {
+  --max-width: 188px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 188px;
+  background: #fff;
+
+  .menu-label,
+  .header,
+  .apmLogo {
+    display: block;
+  }
+}
+
+.list {
+  height: 69%;
+  overflow-y: scroll;
+}
+
+.menu-m-left {
+  margin-left: 88px;
+}
+
+.mainMenus {
+  --max-width: 130px;
+  flex-grow: 0;
+  flex-basis: 130px;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(170, 170, 170);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(255, 19, 19);
+}

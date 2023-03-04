@@ -1,0 +1,253 @@
+// .startAddress{
+//     font-size: 10px;
+//     color:black;
+//     text-align: center;
+// }
+// .dragDown {
+//     transition: 0.5s;
+//     bottom: -1200px;
+// }
+
+// .dragUp {
+//     transition: 0.5s;
+//     bottom: -50px;
+// }
+// .modal {
+//     z-index: 12;
+//     background-color: #c3c3d4;
+//     border-radius: 12px;
+//     position: fixed;
+//     right: 0px;
+//     width: 100%;
+//     height: 60%;
+//     transition: 0.5s;
+//     border-top-left-radius: 40px;
+//     border-top-right-radius: 40px;
+// }
+// .closeModal {
+//     z-index: 12;
+//     position: fixed;
+//     right: 0px;
+//     width: 100%;
+//     transition: 0.5s;
+//     border-top-left-radius: 40px;
+//     border-top-right-radius: 40px;
+// }
+// .closeUp {
+//     transition: 0.5s;
+//     top: -280px;
+// }
+// .closeDown{
+//     transition: 0.5s;
+//     top: 20px;
+// }
+// #map{
+//     height : 100%;
+// }
+// .odometerTitle{
+//     color: #000000;
+//     font-weight: bold;
+// }
+// #idle{
+//     background: #139be9;
+//     color: white;
+// }
+// #running{
+//     color: white;
+//     background: #1db372;
+// }
+// #towed{
+//     color: white;
+//     background: #c200b8; 
+// }
+
+// .number{
+//     color:black;
+//     vertical-align: middle;
+//     align-self: center;
+// }
+// #end{
+//     color: white;
+//     background: #ff0000;
+// }
+// .image{
+//     height: 40px;
+// }
+
+// .semiCircle {
+//     background: #32384b;
+//     width: 100%;
+//     padding: 2%;
+//     border-radius: 0px 0px 20px 18px;
+//   }
+  
+//   .alertsStyle {
+//     color: white;
+//     font-size: 16px;
+//   }
+//   .statusStyle1{
+//     justify-content: center;
+//     padding-top: 20px;
+//   }
+//   .rectangleBox{
+//     justify-content: center;
+//     background: white;
+//     color: black;
+//     font-weight: bold;
+//     margin: 7px;
+//   }
+
+.startAddress{
+    font-size: 10px;
+    color:black;
+    text-align: center;
+}
+.dragDown {
+    transition: 0.5s;
+    bottom: -1200px;
+}
+
+.dragUp {
+    transition: 0.5s;
+    bottom: -50px;
+}
+.modal {
+    z-index: 12;
+    background-color: #c3c3d4;
+    border-radius: 12px;
+    position: fixed;
+    right: 0px;
+    width: 100%;
+    height: 60%;
+    transition: 0.5s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.closeModal {
+    z-index: 12;
+    position: fixed;
+    right: 0px;
+    width: 100%;
+    transition: 0.5s;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+.closeUp {
+    transition: 0.5s;
+    top: -280px;
+}
+.closeDown{
+    transition: 0.5s;
+    top: 20px;
+}
+#map{
+    height : 100%;
+}
+.odometerTitle{
+    color: #000000;
+    font-weight: bold;
+}
+#idle{
+    background: #139be9;
+    color: white;
+}
+#running{
+    color: white;
+    background: #1db372;
+}
+#towed{
+    color: white;
+    background: #c200b8; 
+}
+
+.number{
+    color:black;
+    vertical-align: middle;
+    align-self: center;
+}
+#end{
+    color: white;
+    background: #ff0000;
+}
+
+
+.semiCircle {
+    background: #32384b;
+    width: 100%;
+    padding: 2%;
+    border-radius: 0px 0px 20px 18px;
+  }
+  
+  .alertsStyle {
+    color: white;
+    font-size: 16px;
+  }
+  .statusStyle1{
+    justify-content: center;
+    padding-top: 20px;
+  }
+  .rectangleBox{
+    justify-content: center;
+    background: white;
+    color: black;
+    font-weight: bold;
+    margin: 7px;
+  }
+  
+
+.engine{
+    vertical-align: top;
+    font-size: 18px;
+    padding-right: 10px;
+    color: #3e3d3d;
+}
+.header{
+    border:1px solid #f6f6f6;
+}
+.idle-row{
+    color: white;
+    background: #1db372;
+    padding-left: 10px;
+    border-radius: 3px 0px 0px 3px;
+    margin-right: 2px;
+}
+.running-row{
+    color: white;
+    background: #139be9;
+    padding-left: 10px;
+    border-radius: 3px 0px 0px 3px;
+}
+.location{
+    padding: 2px 3px;
+}
+.fab-btn{
+    position: absolute;
+    right: 2px;
+    top: -2px;
+}
+legend{
+    font-size: 13px;
+    text-align: left;
+}
+fieldset{
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid #efecec;
+    margin: 0px -7px;
+    padding: 2px 3px;
+}
+.tripCard{
+    zoom: 80%;
+    border-left: 4px solid red;
+    margin: 5px;
+}
+.image{
+    height: 40px;
+    width: 40px;
+}
+.odometerTime{
+    padding-left: 10px;
+}
+.time{
+    color:black;
+}

@@ -1,0 +1,23 @@
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+    <ion-item lines="none"style="--background:transparent;">
+      <ion-icon  (click)="cancelBtn()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+        <div class="addexpensehead">Add Expense</div>
+      </ion-item>
+    <form [formGroup]="addexpenseForm">
+      <div class="wrapper-form">
+        <ion-row>
+          <ion-col>
+            <ion-input type="text" formControlName="Description" placeholder="Description" class="input-item" [disabled]='hideSerialNo' ></ion-input>
+          </ion-col>
+        </ion-row>
+      </div>
+    </form>
+    <ion-row>
+      <ion-col size="12" style="text-align: center !important;">
+        <ion-button  class="submitBtn" shape="round" (click)="submit()"[disabled]="!addexpenseForm.valid">Submit</ion-button>
+        <ion-button  class="submitBtn" shape="round" (click)="clear()">Clear</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

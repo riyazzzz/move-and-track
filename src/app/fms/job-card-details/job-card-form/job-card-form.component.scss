@@ -1,0 +1,52 @@
+@media only screen and (min-width: 1024px) {
+    .wrapper-form{
+         padding: 0px 10px;
+    }
+   
+    
+}
+.jobcard-head
+{
+    font-size: 16px;
+    color: #9c27b0;
+    font-weight: bold;
+}
+.input-item{
+    --padding-start:15px;
+    height: 36px;
+    font-size:14px;
+    background-color: lightgrey;
+    margin-top: 5px;
+    
+}
+.select-input{
+    padding: 10px 11px 4px 15px;
+    margin-top: 5px;
+}
+.selectable-input{
+    padding: 8px 11px 4px 8px;
+    margin-top: 5px;
+}
+.border-item {
+    height: 36px;
+    font-size: 14px;
+    background-color: lightgrey;
+    margin-top: 5px;
+    padding: 8px 0px 0px 10px;
+ }
+.maxWidth {
+    width: 100%;
+}
+.datetime {
+    background-color: #d7d2d2;
+    color: #838383;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0px 8px 14px;
+    margin: 5px 5px 5px 0px;
+}
+.form_col{
+    line-height: 18px;
+    font-size: 16px;  
+ 
+ }

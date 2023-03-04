@@ -1,0 +1,148 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-title>Billing Generation</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="BillinggenForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Sim Provider:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="provider"
+                placeholder="Select the Sim Provider"
+                [items]="Provider"
+                (onChange)="getplanname($event)"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Plan Name:</ion-label>
+              <ion-input
+                type="text"
+                *ngIf="!showplaname"
+                placeholder="Select the Plan Name"
+                formControlName="planname"
+                class="input"
+                disabled
+              ></ion-input>
+              <ionic-selectable
+                *ngIf="showplaname"
+                class="input selectable-input"
+                formControlName="planname"
+                placeholder="Select the Plan Name"
+                [items]="Planname"
+                (onChange)="getaccountno($event)"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">Account No:</ion-label>
+              <ion-input
+                type="text"
+                *ngIf="!showaccountno"
+                placeholder="Select the Account No"
+                formControlName="accountno"
+                class="input"
+                disabled
+              ></ion-input>
+              <ionic-selectable
+                *ngIf="showaccountno"
+                class="input selectable-input"
+                formControlName="accountno"
+                placeholder="Select the Account No"
+                [items]="Accountno"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">From Date:</ion-label>
+              <ion-input
+                type="date"
+                formControlName="fromdate"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="2.4" size-md="2.4">
+              <ion-label class="label-head">To Date:</ion-label>
+              <ion-input
+                type="date"
+                formControlName="todate"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col style="margin: 27px 0px 0px; text-align: end">
+              <ion-button
+                class="submitbtn"
+                (click)="SearchData()"
+                [disabled]="!BillinggenForm.valid"
+                >Bill Generate</ion-button
+              >
+              <ion-button
+                class="submitbtn"
+                [disabled]="!BillinggenForm.valid"
+                (click)="clear()"
+                >Clear</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="show">
+      <ion-col style="margin-right: 4%; margin-bottom: 9px; text-align: end">
+        <ion-label class="dealer-label"
+          >Total Amount : {{totalamount.totalbillamount}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+
+    <jqxGrid
+      *ngIf="show"
+      #myGrid
+      [theme]="'material'"
+      (onRowclick)="myGridOnRowSelect($event)"
+      [width]="'99%'"
+      [autoheight]="true"
+      [source]="dataAdapter"
+      [columns]="columns"
+      [sortable]="true"
+      [filterable]="true"
+      [columnsresize]="true"
+      [enablebrowserselection]="true"
+      [enabletooltips]="true"
+      [pagesizeoptions]="page"
+      [pageable]="true"
+      [showfilterrow]="true"
+      style="
+        font-size: 16px;
+        text-align: center !important;
+        margin: auto;
+        cursor: pointer;
+      "
+    >
+    </jqxGrid>
+  </ion-grid>
+</ion-content>

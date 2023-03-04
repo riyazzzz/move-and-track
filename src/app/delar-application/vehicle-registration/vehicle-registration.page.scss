@@ -1,0 +1,73 @@
+.input{
+    border: 1px solid #e5e5e5;
+    height: 42px;
+    line-height: 18px;
+    --padding-start: 15px;
+    background: #e8e8e8;
+    
+}
+#submitbtn{
+  --background:#6252ee;
+}
+@media only screen and (min-width:768px){
+    .input{
+    margin-top: 12px;
+    }
+    #submitbtn{
+        width:20%;
+    }
+}
+@media only screen and (max-width:767px){
+    .form-field{
+    zoom:80%;
+    }
+    #submitbtn{
+        width:40%;
+    }
+}
+.form-field{
+    margin: -5px 5px 0px;
+    border-radius: 7px;
+    // display: flex;
+    // place-content: space-evenly;
+}
+.heading{
+    color: #6252ee;
+}
+.col{
+    padding-left: 15px;
+    width: 100%;
+}
+ion-button:hover{
+   --background-color:#6c2a84;
+}
+
+ .label-text{
+    font-weight: 500;
+    font-size: 17px;
+}
+
+@media only screen and(min-width:320px)and(max-width:1023px){
+    .wrapper-container{
+        border: none;
+        margin: 8px 0 0;
+        padding: 0;
+    }
+    .label-text {
+        font-size: 14px;
+    }
+}
+@media only screen and(min-width:1024px){
+    .wrapper-container{
+        margin: 8px 1px;
+        padding-right: 20px;
+    }
+    
+}
+.heading-label{
+    font-size: 14px;
+    font-weight: bold;
+}
+.head{
+    padding: 10px 0px 0px 5px;
+}

@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar class="header">
+    <ion-grid >
+      <ion-row>
+        <ion-col>
+          <ion-row *ngIf="myPlatform != 'desktop'">
+            <ion-col size="2">
+               <ion-icon name="arrow-back" (click)="closeModel()" id="back_icon"></ion-icon>
+            </ion-col>
+           <ion-col size="8">
+            <ion-label class="label_head">Odometer History</ion-label>
+           </ion-col>  
+        </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>  
+</ion-header>
+<ion-content>
+  <ion-row id="head_border">
+    <ion-col size=6 class="label_head">Date</ion-col>
+    <ion-col size=6 class="odometer_head label_head">Odometer</ion-col>
+  </ion-row >
+
+  <ion-row class="date_data" *ngFor='let items of details' >
+    <ion-col size=6 >{{items.date}}</ion-col>
+    <ion-col size=6 class="odometer_head">{{items.odometer}} km</ion-col>
+  </ion-row>
+
+ </ion-content>

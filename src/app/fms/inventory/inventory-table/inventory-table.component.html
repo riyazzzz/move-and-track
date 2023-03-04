@@ -1,0 +1,21 @@
+<ion-row>
+  <ion-col size=12 style="padding: 0px;">
+  <jqxGrid 
+  (onRowselect)="myGridOnRowSelect($event)" 
+  [pageable]="true"
+  [selectionmode]="'singlerow'"
+  [showfilterrow]="true" 
+  [filterable]="true"
+  [sortable]="true" 
+  [width]="'99.2%'"
+  [source]="dataAdapter" 
+  [columns]="columns" 
+  [autoheight]="true"
+  [theme]="'material'" 
+  [columnsresize]="true" 
+  [enabletooltips]="true" 
+  #myGrid 
+   style="font-size:10px;text-align: center !important">
+  </jqxGrid>
+  </ion-col>
+  </ion-row>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar
+    [ngClass]="{'dealerHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}"
+    mode="md"
+  >
+    <ion-buttons *ngIf="appName != 'Armoron'" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="padding: 10px">
+    <ion-col size="12">
+      <jqxGrid
+        #myGrid
+        (onRowclick)="myGridOnRowSelect($event)"
+        [theme]="'material'"
+        [width]="'99.5%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [pagesizeoptions]="page"
+        [enablebrowserselection]="true"
+        [sortable]="true"
+        [filterable]="true"
+        [columns]="columns"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true"
+        style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,997 @@
+<ion-refresher *ngIf='showSwipeModal === "false" && myPlatform != "desktop"' slot="fixed"
+    (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+</ion-refresher>
+<ion-content>
+
+
+    <ion-fab *ngIf='showSwipeModal === "false" && myPlatform != "desktop"  &&  appName != "Armoron"' horizontal="end"
+        vertical="bottom" slot="fixed">
+        <ion-fab-button color="light">
+            <ion-icon name="funnel"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-list side="start" size="small">
+
+        </ion-fab-list>
+        <ion-fab-list side="top">
+            <ion-fab-button color="light" (click)="filterPage('watchMode')">
+                <svg width="35" height="35" viewBox="0 0 800 800"
+                    style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+                    <path attr.fill="{{watchFilter==true ? '#1d93ed' : 'black'}}"
+                        d="M430 586.53c-38.76,0 -72.57,-8.35 -101.64,-30.26 -23.48,-17.69 -42.12,-38.46 -54.23,-65.66 -25.5,-57.32 -16.5,-119.47 21.29,-169.22 5.71,-7.52 14.31,-14.96 20.32,-20.98 3.66,-3.66 6.82,-5.64 11.1,-8.87 45.82,-34.58 114.25,-42.08 166.23,-15.87 26.01,13.11 22.96,12.83 41.25,28.02 2.68,2.23 3.36,2.15 5.71,4.95 21.61,25.86 34.09,41.43 42.37,77.52 6.04,26.29 6.13,44.87 0.72,71.06 -5.44,26.3 -15.66,47.2 -32.06,67.85 -3.66,4.61 -6.09,6.85 -9.91,11.41 -4.97,5.94 -14.96,13.85 -21.32,18.65 -8.52,6.42 -15.1,9.99 -24.99,14.97 -16.11,8.1 -41.32,16.43 -64.84,16.43zm-99.92 -203.83c6.3,3.33 13.53,5.52 20.45,8.87 6.9,3.34 13.46,5.7 19.95,9.35l38.2 21.74c-7.98,10.9 -69.47,36.48 -78.6,41.3 4.87,20.89 32.99,45.12 56.14,54.44 25.57,10.31 56.37,9.23 80.65,-2.91 50.26,-25.13 71.85,-78.41 50.51,-132.25 -9.01,-22.73 -28.38,-40.94 -49.62,-51.62 -42.27,-21.25 -92.62,-9.51 -123.98,27.48 -3.87,4.57 -12.27,17.49 -13.7,23.6zm-247.79 41.3l14.63 18.67c4.77,6.26 10.17,11.51 15.24,18.07 22.98,29.66 86.65,83.79 113.99,101.83l53.31 30.62c34.19,17.15 88.84,34.64 131.89,34.64 55.33,0 83.37,-4.63 132.85,-24.35 23.09,-9.21 55.22,-26.56 75.53,-40.37l47.71 -36.22c28.49,-25.39 34.46,-31.2 58.63,-57.28l30.51 -36.1c2.23,-2.99 5.13,-7.56 7.8,-9.51 -2.05,-3.07 -4.1,-6.53 -6.46,-9.53 -15.48,-19.68 -54.17,-64.69 -72.14,-78.4l-36.15 -30.46c-6.52,-5.21 -11.83,-9.35 -19,-14.3 -22.47,-15.51 -37.38,-24.8 -62.53,-37.39 -34.95,-17.51 -88.82,-35.08 -132.77,-35.08 -55.33,0 -83.37,4.62 -132.86,24.34 -8.3,3.32 -15.62,6.58 -23.01,10.29 -32.56,16.33 -73.09,42.11 -100.23,66.3 -43.92,39.15 -55.7,51.86 -89.88,93.97 -2.86,3.52 -4.72,6.76 -7.06,10.26z" />
+                </svg>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="filterPage('battery')">
+                <svg width="25" height="25" viewBox="0 0 800 800"
+                    style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+                    <path attr.fill="{{batteryStatusFilter == true ? '#1d93ed' : 'black'}}"
+                        d="M-0 248.48l0 486.31 846.66 -0.01 0 -486.3 -846.66 0zm87.77 -55.22l205.61 0 0 -81.39 -205.61 0 0 81.39zm465.53 0l205.61 0 0 -81.39 -205.61 0 0 81.39zm-297.64 259.53l0 0 -37.49 0 0 37.48 -55.21 0.01 0 -37.48 -37.49 -0.01 0 -55.22 37.49 0 0 -37.48 55.21 0 0 37.48 37.49 0 0 55.22zm193.28 199.43l-51.22 -20.62 37.76 -93.8 -106.05 0 68.29 -169.63 51.22 20.62 -37.76 93.8 106.05 -0.01 -68.29 169.64zm272.25 -199.43l-130.19 0 0 -55.22 130.19 0 0 55.22z" />
+                </svg>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="filterPage('gsm')">
+                <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="7mm" height="7mm" version="1.1"
+                    style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                    viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <path attr.fill="{{gsmStatusFilter == true ? '#1d93ed' : 'black'}}"
+                        d="M273.84 700.03c0,10.28 3.11,13.39 13.38,13.39l124.95 0 0 -98.17 -138.33 0 0 84.78zm182.96 -232.05l0 232.05c0,10.28 3.1,13.39 13.39,13.39l124.95 0 0 -258.82 -124.95 0c-10.29,0 -13.39,3.1 -13.39,13.38zm-254.36 245.44l40.16 0 0 -374.85c0,-24.95 99.44,-157.07 124.95,-205.27l-298.98 0 104.46 163.29c21.32,30.97 16.17,25.19 16.03,73.22l-0.39 312.76c-0.13,16.63 -3.44,30.85 13.77,30.85zm21.17 -403.47l-111.3 -159.72 203.51 0 -92.21 159.72zm420.61 403.47l133.87 0 0 -401.62c0,-10.29 -3.1,-13.39 -13.37,-13.39l-120.5 0 0 415.01z" />
+                </svg>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="filterPage('gps')">
+                <ion-icon style='font-size: 25px;'
+                    [ngClass]="{selecedFabIcon : gpsFilter === true, notSelecedFabIcon : gpsFilter === false}"
+                    name="md-locate"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button color="light" (click)="filterPage('subscription')">
+                <ion-icon style='font-size: 25px;'
+                    [ngClass]="{selecedFabIcon : subscriptionFilter === true, notSelecedFabIcon : subscriptionFilter === false}"
+                    name="logo-usd"></ion-icon>
+            </ion-fab-button>
+
+            <!-- <ion-fab-button style='font-weight: bold;' color="light" (click)="openGridModel()">
+                        <ion-icon style='font-size: 25px;' name="ios-browsers"></ion-icon>
+                    </ion-fab-button> -->
+        </ion-fab-list>
+    </ion-fab>
+
+    <!-- Mobile MVT -->
+    <div *ngIf="myPlatform !='desktop' && appName != 'Armoron'">
+
+
+        <!-- search and filter are customized based on pipe refer search.pipe and filter.pipe -->
+        <ion-virtual-scroll
+            [items]="dashboardData | search:searchTerm | status: filterValue : count : statusGrid: manualFilter"
+            [trackBy]="identify" approxItemHeight="320px" [itemHeight]="itemHeightFn" [approxHeaderHeight]="1"
+            [approxFooterHeight]="1">
+            <ion-card *virtualItem="let data;" style="padding:0px;" disabled='{{data.warrantyExpiry}}'
+                [ngClass]='{"runningCardBorder": data.status === "Running" || data.status === "Good","stopCardBorder":data.status === "Stop" || data.status === "HighTemp" , "idleCardBorder":data.status === "Idle" || data.status === "Geofence", "noTransCardBorder":data.status === "No Transmission" ,"powerFail": data.status === "PowerFail","doorOpen": data.status === "DoorOpen", "overspeedCardBorder": data.status === "Overspeed"}'
+                >
+                <ion-card-content style="padding:0px;" >
+                        <app-gridview-card (click)='showModal(data)' [commonData]='data' [temperatureView]='temperatureView'></app-gridview-card>
+                    
+
+                        <ion-row (click)='showLocation(data)' class="address">
+                            <ion-col size=12 style="padding-top: 0px; padding-bottom: 0px;">
+                                <ion-row *ngIf="data.location">
+                                    {{data.location}}
+                            
+                                </ion-row>
+                                <ion-row *ngIf="!data.location">
+                                    <!-- <ion-spinner name="dots"></ion-spinner> -->
+                                    Click for location 
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                </ion-card-content>
+                <!-- <app-gridview-card [commonData]='data' [temperatureView]='temperatureView'></app-gridview-card> -->
+            </ion-card>
+        </ion-virtual-scroll>
+
+
+
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+            <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+
+        <div class="modal"
+            [ngClass]="{dragDown : showSwipeModal === 'false',dragUp : showSwipeModal === 'true', dragUpIos: showSwipeModal === 'iOS'}"
+            swipeAll (swipedown)="hideModal()">
+            <ion-grid style="padding:0px">
+                <ion-row>
+                    <ion-col size="2"></ion-col>
+                    <ion-col style="padding:0px" size="8" class="ion-text-center">
+                        <div class="semiCircle">
+                            <ion-ripple-effect></ion-ripple-effect>
+                            <ion-label class="alertsStyle">{{plateNo}}
+                            </ion-label>
+                        </div>
+                    </ion-col>
+                    <ion-col size="2"></ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid>
+                <ion-row>
+                    <ion-col *ngIf="vehicleActivity.includes('Live Track')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/livetrack']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/livetrack.svg"></ion-img>
+                        </ion-row>
+                        <ion-row class="ion-text-center">Live Track</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="vehicleActivity.includes('Track History')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/trackhistory']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/trackhistory.svg"></ion-img>
+                        </ion-row>
+                        <ion-row class="ion-text-center">Track History</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="vehicleActivity.includes('Reports')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/reports',selectedVin.plateNo]">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/reports.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Reports</ion-row>
+                    </ion-col>
+
+                    <ion-col *ngIf="vehicleActivity.includes('Nearby')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/nearby']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/nearby.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Nearby</ion-row>
+                    </ion-col>
+
+
+                    <ion-col *ngIf="vehicleActivity.includes('Alerts')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        (click)="openAlertsModal()">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/alerts.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Alerts</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="vehicleActivity.includes('GeoFence')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/geofence','vin','null']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/geofence.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>GeoFence</ion-row>
+                    </ion-col>
+
+                    <ion-col *ngIf="vehicleActivity.includes('Detail View')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/detail-view']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <!-- <ion-img src="assets/icon/nearby.svg"></ion-img> -->
+                            <ion-icon style="font-size: 32px;" ios="ios-pie" md="md-pie"></ion-icon>
+                        </ion-row>
+                        <ion-row>Detail View</ion-row>
+                    </ion-col>
+
+                    <ion-col *ngIf="vehicleActivity.includes('Immobilize')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        (click)="openActionModal('Immobilize')">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/immobilize.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Immobilize</ion-row>
+                    </ion-col>
+
+                    <ion-col *ngIf="vehicleActivity.includes('Settings')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        [routerLink]="['/settings','Vin']">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize"
+                            style="font-size: 30px;">
+                            <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+                        </ion-row>
+                        <ion-row>Settings</ion-row>
+                    </ion-col>
+
+                    <ion-col *ngIf="vehicleActivity.includes('Share')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType" (click)="shareLocation()">
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/share.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Share</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="vehicleActivity.includes('Link')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType" (click)='copyLinkClip()'>
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <ion-img src="assets/icon/link.svg"></ion-img>
+                        </ion-row>
+                        <ion-row>Link</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="vehicleActivity.includes('Navigation')" size=4
+                        class="ion-align-items-center ion-justify-content-center displayType"
+                        (click)='navigateToGoogle()'>
+                        <ion-row class="ion-align-items-center ion-justify-content-center imgSize">
+                            <!-- <ion-img src="assets/icon/geofence.svg"></ion-img> -->
+                            <ion-icon style="font-size: 32px;" name="ios-navigate"></ion-icon>
+                        </ion-row>
+                        <ion-row>Navigation</ion-row>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+
+    <!-- Mobile Armoron -->
+
+    <div *ngIf="myPlatform !='desktop' && appName == 'Armoron'">
+        <div style="background-color:rgb(59,59,59);margin: 5px;" *ngFor="let data of staticVariableData">
+            <ion-grid>
+                <ion-row>
+                    <ion-col size="7.5"
+                        style="color:aliceblue;font-size:17px;font-family: Adobe Garamond Pro Bold;left:10px;top:5px;">
+                        {{data.plateNo}}</ion-col>
+
+                    <ion-col size="1.5" style="color:aliceblue;font-size:25px;text-align: left">
+                        <ion-icon name="battery-full"
+                            *ngIf="data.batteryvoltage != null &&  data.batteryvoltage != 'No Power'"
+                            [ngStyle]="{'color':(data.batteryvoltage == 'Very High' || data.batteryvoltage == 'High' || data.batteryvoltage == 'Medium' ? 'green':'red')}">
+                        </ion-icon>
+                        <ion-icon name="battery-dead" *ngIf="data.batteryvoltage == 'No Power'" style="color:red;">
+                        </ion-icon>
+                    </ion-col>
+                    <ion-col size="1.5" style="color:aliceblue;font-size:25px;text-align: left">
+                        <ion-icon name="cellular" *ngIf="data.gsmSignalStrength != null "
+                            [ngStyle]="{'color':(data.gsmSignalStrength == 1 ? 'grey':'white')}"></ion-icon>
+                    </ion-col>
+                    <ion-col size="1.5" style="color:aliceblue;font-size:25px;text-align: left">
+                        <ion-icon name="locate" *ngIf="data.gsmSignalStrength != null "
+                            [ngStyle]="{'color':(data.gps == true ?'white':'grey')}"></ion-icon>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="2" style="left:15px">
+                        <ion-row>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width:100%;height:100%;padding-top:50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="161.5" cy="161.51" r="161.35" />
+                                    <circle fill="#848688" cx="161.5" cy="161.51" r="146.24" />
+                                    <text x="105.75" y="128.29" fill="#fbfbfb "
+                                        style="font-weight:500;font-size:90px;font-family:'digital-clock-font'">{{data.speedalt || '00'}}</text>
+                                    <path fill="#FEFEFE"
+                                        d="M280.8 246.11c-30.82,-25.51 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.7 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                    <text x="103.75" y="270.93" fill="#373435 "
+                                        style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">{{'km/hr' }}</text>
+                                    <text x="84.42" y="378.55" fill="#FEFEFE "
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'speed' }}</text>
+                                </g>
+                            </svg>
+                        </ion-row>
+                        <ion-row>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width:100%;height:100%;padding-top:50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                *ngIf="data.model !== 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="161.5" cy="166.87" r="161.35" />
+                                    <circle fill="#848688" cx="161.5" cy="166.87" r="146.24" />
+                                    <text x="80" y="128.29" fill="#fbfbfb "
+                                        style="font-weight:500;font-size:50px;font-family:'Roboto Lt'">{{ data.cummulativeOdometer || '0'}}</text>
+                                    <path fill="#E6E7E8"
+                                        d="M280.8 251.47c-30.82,-25.51 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.7 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                    <text x="120.75" y="270.93" fill="#373435 "
+                                        style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">{{ data.odometeralt || '0'}}</text>
+                                    <text x="37.3" y="383.91" fill="#FEFEFE "
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'odometer' }}</text>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width: 100%;height: 100%;padding-top: 50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                (click)="setCommonAlert(data.vin,data.plateNo,'SOS')"
+                                *ngIf="data.geoCnt != 1 && data.model == 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="161.5" cy="166.7" r="161.35" />
+                                    <circle [attr.fill]="data.watchStatusColor" cx="161.5" cy="166.7" r="146.24" />
+                                    <path fill="#E6E7E8"
+                                        d="M280.8 251.3c-30.82,-25.5 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.71 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                    <text x="81.77" y="384.08" fill="#FEFEFE"
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'SOS' }}</text>
+                                    <path fill="#FEFEFE"
+                                        d="M130.35 51.98l15.07 32.32c-9.6,4.12 -17.28,11.81 -21.41,21.41l-32.32 -15.07c-2.07,4.65 -3.69,9.54 -4.83,14.61 5.27,-23.86 21.67,-43.51 43.48,-53.27zm17.23 36.94c4.28,-1.82 8.98,-2.83 13.92,-2.83 4.94,0 9.64,1.01 13.92,2.82 8.52,3.61 15.33,10.43 18.95,18.95 1.81,4.28 2.82,8.98 2.82,13.92 0,4.94 -1.01,9.64 -2.82,13.92 -3.61,8.52 -10.43,15.33 -18.95,18.94 -4.28,1.82 -8.98,2.83 -13.92,2.83 -4.94,0 -9.64,-1.01 -13.92,-2.82 -8.52,-3.61 -15.33,-10.43 -18.94,-18.95 -1.82,-4.28 -2.83,-8.98 -2.83,-13.92 0,-4.94 1.01,-9.64 2.83,-13.92 3.61,-8.52 10.43,-15.33 18.94,-18.94zm45.06 -36.94c-4.65,-2.07 -9.54,-3.69 -14.61,-4.83 5.08,1.13 9.96,2.76 14.61,4.83zm-15.07 32.32l15.07 -32.32c17.18,7.68 30.99,21.49 38.67,38.65l-32.32 15.08c-4.12,-9.6 -11.82,-17.29 -21.41,-21.41zm60.4 37.48c0,-2.74 -0.16,-5.44 -0.44,-8.11 0.29,2.67 0.44,5.37 0.44,8.11zm-0.95 -11.78c-0.22,-1.45 -0.47,-2.89 -0.78,-4.32 0.31,1.42 0.56,2.86 0.78,4.32zm-5.59 -19.06c-0.04,-0.09 -0.08,-0.18 -0.12,-0.27 0.04,0.09 0.08,0.18 0.12,0.27zm-60.35 -44.98c-0.11,-0.01 -0.22,-0.03 -0.33,-0.04 0.11,0.01 0.22,0.03 0.33,0.04zm-19.28 0.02c-2.15,0.27 -4.3,0.61 -6.39,1.06 2.09,-0.46 4.24,-0.79 6.39,-1.06zm-6.83 1.17c-5.06,1.13 -9.94,2.75 -14.57,4.82 4.63,-2.07 9.5,-3.69 14.57,-4.82zm-59.27 64.98c-0.02,0.13 -0.03,0.27 -0.05,0.41 0.02,-0.13 0.03,-0.27 0.05,-0.41zm6 40.8l32.32 -15.07c4.12,9.6 11.82,17.28 21.41,21.4l-15.07 32.33c-17.17,-7.68 -30.97,-21.48 -38.66,-38.65zm-6.05 -21.92c0.28,2.32 0.64,4.62 1.11,6.87 -0.49,-2.25 -0.84,-4.55 -1.11,-6.87zm59.76 65.51c2.23,0.49 4.53,0.84 6.84,1.11 -2.31,-0.28 -4.6,-0.63 -6.84,-1.11zm-15.01 -4.93c4.62,2.06 9.49,3.67 14.54,4.81 -5.06,-1.12 -9.92,-2.75 -14.54,-4.81zm31.1 6.66c2.74,0 5.44,-0.16 8.11,-0.44 -2.67,0.29 -5.37,0.44 -8.11,0.44zm69.8 -45.33c2.07,-4.65 3.69,-9.54 4.83,-14.61 -1.11,5.08 -2.75,9.96 -4.83,14.61zm-53.73 6.33c9.6,-4.12 17.29,-11.81 21.41,-21.4l32.32 15.06c-7.68,17.18 -21.48,30.98 -38.65,38.67l-15.08 -32.33zm7.79 35.15c2.47,-0.81 4.88,-1.75 7.24,-2.8 -2.36,1.06 -4.77,1.99 -7.24,2.8zm50.88 -56.52c0.49,-2.25 0.83,-4.55 1.13,-6.86 -0.29,2.32 -0.64,4.61 -1.13,6.86zm-74.74 -97.67c-45.04,0 -81.57,36.52 -81.57,81.57 0,45.04 36.52,81.57 81.57,81.57 45.05,0 81.57,-36.52 81.57,-81.57 0,-45.05 -36.52,-81.57 -81.57,-81.57zm76.04 89.67c0.28,-2.67 0.44,-5.37 0.44,-8.1 0,2.74 -0.15,5.43 -0.44,8.1zm-0.18 -17.35c-0.1,-0.85 -0.21,-1.69 -0.33,-2.52 0.12,0.84 0.23,1.68 0.33,2.52zm-1.23 -7.32c-1.11,-4.95 -2.69,-9.73 -4.69,-14.27 2,4.54 3.59,9.31 4.69,14.27zm-58.52 -58.17c-2.14,-0.45 -4.32,-0.8 -6.52,-1.07 2.2,0.27 4.38,0.61 6.52,1.07zm-25.34 -1.11c-0.15,0.02 -0.31,0.04 -0.46,0.06 0.15,-0.02 0.31,-0.04 0.46,-0.06zm-65.5 59.75c-0.45,2.12 -0.8,4.27 -1.07,6.45 0.27,-2.18 0.61,-4.34 1.07,-6.45zm0.1 32.61c1.13,5.09 2.77,9.98 4.84,14.64 -2.07,-4.66 -3.7,-9.56 -4.84,-14.64zm66.54 59.52c2.67,0.29 5.37,0.44 8.1,0.44 -2.74,0 -5.43,-0.16 -8.1,-0.44z" />
+                                    <text x="123.68" y="281.26" fill="#373435"
+                                        style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">{{data.watchStatus}}</text>
+                                </g>
+                            </svg>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="8" align-self-center>
+                        <!-- <ion-img src="assets/Armoron/BIKE.png" alt="" style="width: 100%; height: 150px;background-repeat: no-repeat;background-size: cover;"></ion-img> -->
+                        <app-model-status [paint]="paintingForVeh[data.model]" [model]="modelForVeh[data.model]"
+                            [status]="data.status" [color]="vehicleColor[data.status]"></app-model-status>
+                    </ion-col>
+                    <ion-col size="2" style="right:15px">
+                        <ion-row>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.322709in"
+                                height="0.379331in" version="1.1"
+                                style="width: 100%;height: 100%;padding-top:50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 379" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                (click)="ajxCallForImmobilize(data.vin,data.imeiNo,data.deviceManufacturer,data.deviceModel,data.vin+ 'immobilizeOff')"
+                                *ngIf="data.model !== 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <g id="_879281518880">
+                                        <circle fill="#FEFEFE" cx="161" cy="161" r="161" />
+                                        <circle [attr.fill]="data.immobilizeStatusColor" cx="161" cy="161" r="146" />
+                                        <path fill="#E6E7E8"
+                                            d="M281 246c-31,-26 -73,-41 -120,-41 -46,0 -88,15 -119,41 27,37 70,62 119,62 50,0 93,-25 120,-62z" />
+                                        <g transform="matrix(1 0 0 1 -134.165 189.059)">
+                                            <text x="161" y="190" fill="#FEFEFE"
+                                                style="font-weight:normal;font-size:55.5591px;font-family:'Arial'">{{'immobilize' }}</text>
+                                        </g>
+                                        <g transform="matrix(1 0 0 1 -38.7441 86.2402)">
+                                            <text x="161" y="190" fill="#373435"
+                                                style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">{{data.immobilizeStatus}}</text>
+                                        </g>
+                                        <path fill="#FEFEFE"
+                                            d="M170 146c-6,-2 -8,-7 -8,-16 1,-8 1,-16 1,-24l-68 0c2,-6 5,-16 8,-22 3,-7 8,-12 16,-13 12,-1 33,0 46,0 2,0 3,-1 5,-2 4,-1 4,0 4,-4 -3,-1 -50,0 -56,0 -19,3 -21,22 -25,31 -7,1 -13,1 -16,5 -5,6 2,9 6,11 -10,9 -7,23 -7,34 -1,5 -5,6 -3,22 1,9 13,7 27,7 16,0 130,1 133,-1 5,-1 5,-6 5,-12 0,-9 0,-8 -4,-14 -11,-1 -58,1 -64,-2l0 0zm24 -70l32 0c0,-7 1,-14 -2,-19 -6,-11 -21,-11 -28,-1 -3,5 -2,13 -2,20l0 0zm12 38c-1,3 -2,9 -2,12 3,1 8,1 12,0 0,-3 0,-4 -1,-7 -3,-10 2,-5 3,-12 1,-9 -10,-11 -15,-5 -3,5 1,9 3,12zm7 52l1 0c6,0 8,-2 5,-7l-4 -1c-11,-1 -12,8 -2,8l0 0zm-121 -7c-7,3 3,10 10,6 3,-1 4,-5 0,-6 -2,-1 -8,-1 -10,0l0 0zm42 0c0,3 2,3 5,3l30 0c5,0 7,1 8,-3 -10,-1 -32,-1 -43,0l0 0zm43 -7c-4,-3 -18,-1 -24,-1 -4,0 -14,-1 -17,0 -3,0 -4,2 0,3l38 0c4,-1 2,0 3,-2l0 0zm-91 -30c-4,2 -4,4 -3,8 0,5 1,6 5,6 3,0 21,0 23,0 4,-1 3,-7 -7,-11 -4,-1 -14,-5 -18,-3zm29 63l1 -8 -37 0c0,16 0,13 21,13 15,0 13,1 15,-5zm117 0l0 -8 -37 0c0,5 0,9 2,12 4,2 28,1 32,1l3 -5 0 0zm-62 -105c-1,13 0,35 0,50 0,8 1,10 8,10 11,0 23,0 34,0 11,0 24,0 35,0 5,-5 3,-8 3,-16 0,-7 0,-13 0,-20 0,-31 2,-27 -11,-29 -1,-13 1,-18 -6,-28 -4,-5 -12,-11 -23,-11 -11,0 -19,5 -23,11 -7,11 -5,15 -6,29 -6,0 -9,-1 -11,4l0 0z" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="8.1968mm"
+                                height="9.635mm" version="1.1"
+                                style="width: 100%;height: 100%;padding-top: 50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 819.68 963.5" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                *ngIf="data.geoCnt != 1 && data.model == 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="409.85" cy="409.83" r="409.83" />
+                                    <circle fill="green" cx="409.85" cy="409.83" r="371.45" />
+                                    <path fill="#E6E7E8"
+                                        d="M712.86 624.71c-78.28,-64.77 -185.17,-104.67 -303.02,-104.67 -117.86,0 -224.74,39.9 -303.02,104.67 67.31,94.73 177.95,156.53 303.02,156.53 125.07,0 235.71,-61.8 303.02,-156.53z" />
+                                    <g transform="matrix(0.999993 0 0 0.999993 -188.559 480.217)">
+                                        <text x="409.84" y="481.75" fill="#FEFEFE"
+                                            style="font-weight:normal;font-size:141.12px;font-family:'Arial'">Call</text>
+                                    </g>
+                                    <path fill="white"
+                                        d="M499.55 341.52c-11.26,-11.12 -25.32,-11.12 -36.51,0 -8.53,8.46 -17.07,16.93 -25.46,25.54 -2.3,2.36 -4.24,2.87 -7.03,1.29 -5.53,-3.02 -11.41,-5.45 -16.72,-8.75 -24.75,-15.57 -45.48,-35.58 -63.84,-58.11 -9.11,-11.19 -17.22,-23.17 -22.88,-36.65 -1.15,-2.73 -0.94,-4.52 1.29,-6.75 8.53,-8.25 16.85,-16.71 25.25,-25.18 11.69,-11.76 11.69,-25.53 -0.07,-37.37 -6.68,-6.74 -13.35,-13.34 -20.02,-20.09 -6.88,-6.88 -13.7,-13.84 -20.66,-20.65 -11.26,-10.98 -25.32,-10.98 -36.51,0.07 -8.61,8.46 -16.86,17.14 -25.61,25.46 -8.11,7.68 -12.19,17.08 -13.06,28.05 -1.36,17.86 3.02,34.72 9.19,51.15 12.62,34 31.85,64.2 55.16,91.89 31.49,37.44 69.08,67.07 113.05,88.45 19.8,9.61 40.32,17 62.63,18.22 15.35,0.86 28.69,-3.02 39.38,-15 7.32,-8.17 15.57,-15.63 23.31,-23.45 11.48,-11.62 11.55,-25.68 0.15,-37.16 -13.63,-13.7 -27.33,-27.33 -41.04,-40.96z" />
+                                    <g transform="matrix(0.999993 0 0 0.999993 -77.5693 219.058)">
+                                        <text x="409.84" y="481.75"
+                                            style="font-weight:normal;font-size:105.84px;font-family:'Arial'">ON</text>
+                                    </g>
+                                </g>
+                            </svg>
+                        </ion-row>
+                        <ion-row>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width: 100%;height: 100%;padding-top: 50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                (click)="setCommonAlert(data.vin,data.plateNo,'ENGINESTATUS')"
+                                *ngIf="data.geoCnt != 1 && data.model !== 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="161.5" cy="166.7" r="161.35" />
+                                    <circle [attr.fill]="data.watchStatusColor" cx="161.5" cy="166.7" r="146.24" />
+                                    <path fill="#E6E7E8"
+                                        d="M280.8 251.3c-30.82,-25.5 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.71 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                    <text x="81.77" y="384.08" fill="#FEFEFE"
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'watch' }}</text>
+                                    <path fill="#FEFEFE"
+                                        d="M161.5 86.05c-54.54,0 -83.13,40.18 -83.13,46.55 0,6.37 28.59,46.55 83.13,46.55 54.53,0 83.13,-40.18 83.13,-46.55 0,-6.37 -28.59,-46.55 -83.13,-46.55zm0 82.36c-20.41,0 -36.95,-16.03 -36.95,-35.81 0,-19.78 16.54,-35.81 36.95,-35.81 20.4,0 36.94,16.03 36.94,35.81 0,19.78 -16.54,35.81 -36.94,35.81zm18.47 -35.81c0,9.89 -8.27,17.91 -18.47,17.91 -10.2,0 -18.47,-8.02 -18.47,-17.91 0,-9.89 8.27,-17.91 18.47,-17.91 5.51,0 -3.39,14.19 0,17.91 2.87,3.16 18.47,-4.54 18.47,0z" />
+                                    <text x="123.68" y="281.26" fill="#373435"
+                                        style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">{{data.watchStatus}}</text>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width: 100%;height: 100%;padding-top: 50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                *ngIf="data.geoCnt != 1 && data.model == 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="161.5" cy="166.7" r="161.35" />
+                                    <circle [attr.fill]="data.watchStatusColor" cx="161.5" cy="166.7" r="146.24" />
+                                    <path fill="#E6E7E8"
+                                        d="M280.8 251.3c-30.82,-25.5 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.71 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                    <text x="81.77" y="384.08" fill="#FEFEFE"
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'Listen' }}</text>
+                                    <path fill="#FEFEFE"
+                                        d="M 7.464844 2.828125 C 7.390625 2.828125 7.328125 2.855469 7.273438 2.90625 L 5.851562 4.273438 L 4.730469 4.273438 C 4.65625 4.273438 4.59375 4.296875 4.539062 4.351562 C 4.484375 4.402344 4.457031 4.464844 4.457031 4.535156 L 4.457031 6.109375 C 4.457031 6.179688 4.484375 6.242188 4.539062 6.292969 C 4.59375 6.34375 4.65625 6.371094 4.730469 6.371094 L 5.851562 6.371094 L 7.273438 7.738281 C 7.328125 7.789062 7.390625 7.816406 7.464844 7.816406 C 7.539062 7.816406 7.601562 7.789062 7.65625 7.738281 C 7.710938 7.683594 7.738281 7.625 7.738281 7.550781 L 7.738281 3.09375 C 7.738281 3.019531 7.710938 2.960938 7.65625 2.90625 C 7.601562 2.855469 7.539062 2.828125 7.464844 2.828125 Z M 11.023438 3.589844 C 10.664062 3.0625 10.179688 2.675781 9.582031 2.429688 C 9.542969 2.414062 9.507812 2.40625 9.46875 2.40625 C 9.394531 2.40625 9.332031 2.433594 9.277344 2.484375 C 9.222656 2.539062 9.195312 2.597656 9.195312 2.671875 C 9.195312 2.769531 9.25 2.847656 9.363281 2.910156 C 9.382812 2.921875 9.414062 2.9375 9.457031 2.953125 C 9.503906 2.972656 9.535156 2.988281 9.554688 2.996094 C 9.683594 3.066406 9.800781 3.136719 9.90625 3.207031 C 10.253906 3.457031 10.527344 3.765625 10.726562 4.136719 C 10.921875 4.507812 11.019531 4.902344 11.019531 5.320312 C 11.019531 5.738281 10.921875 6.136719 10.726562 6.507812 C 10.527344 6.878906 10.253906 7.1875 9.90625 7.4375 C 9.800781 7.507812 9.683594 7.578125 9.554688 7.648438 C 9.535156 7.65625 9.503906 7.671875 9.457031 7.6875 C 9.414062 7.707031 9.382812 7.722656 9.363281 7.734375 C 9.25 7.796875 9.195312 7.875 9.195312 7.972656 C 9.195312 8.046875 9.222656 8.105469 9.277344 8.160156 C 9.332031 8.210938 9.394531 8.238281 9.46875 8.238281 C 9.507812 8.238281 9.542969 8.230469 9.582031 8.214844 C 10.179688 7.96875 10.664062 7.582031 11.023438 7.054688 C 11.386719 6.527344 11.566406 5.949219 11.566406 5.320312 C 11.566406 4.695312 11.386719 4.117188 11.023438 3.589844 Z M 10.109375 6.480469 C 10.351562 6.125 10.472656 5.742188 10.472656 5.324219 C 10.472656 4.902344 10.351562 4.519531 10.109375 4.164062 C 9.867188 3.808594 9.546875 3.550781 9.148438 3.390625 C 9.113281 3.378906 9.074219 3.371094 9.039062 3.371094 C 8.964844 3.371094 8.898438 3.398438 8.84375 3.449219 C 8.792969 3.5 8.765625 3.5625 8.765625 3.632812 C 8.765625 3.738281 8.820312 3.820312 8.929688 3.875 C 9.089844 3.953125 9.199219 4.015625 9.253906 4.054688 C 9.464844 4.203125 9.628906 4.386719 9.75 4.609375 C 9.867188 4.832031 9.925781 5.070312 9.925781 5.324219 C 9.925781 5.574219 9.867188 5.8125 9.75 6.035156 C 9.628906 6.257812 9.464844 6.441406 9.253906 6.589844 C 9.199219 6.628906 9.089844 6.691406 8.929688 6.769531 C 8.820312 6.824219 8.765625 6.90625 8.765625 7.011719 C 8.765625 7.082031 8.792969 7.144531 8.84375 7.195312 C 8.898438 7.246094 8.964844 7.273438 9.042969 7.273438 C 9.074219 7.273438 9.113281 7.265625 9.148438 7.253906 C 9.546875 7.089844 9.867188 6.835938 10.109375 6.480469 Z M 9.199219 5.902344 C 9.320312 5.722656 9.378906 5.53125 9.378906 5.324219 C 9.378906 5.113281 9.320312 4.921875 9.199219 4.738281 C 9.078125 4.558594 8.917969 4.433594 8.71875 4.359375 C 8.6875 4.34375 8.652344 4.339844 8.609375 4.339844 C 8.535156 4.339844 8.472656 4.363281 8.417969 4.414062 C 8.363281 4.464844 8.335938 4.527344 8.335938 4.601562 C 8.335938 4.65625 8.355469 4.707031 8.386719 4.746094 C 8.421875 4.785156 8.464844 4.820312 8.511719 4.847656 C 8.558594 4.878906 8.609375 4.910156 8.65625 4.941406 C 8.707031 4.976562 8.746094 5.027344 8.78125 5.089844 C 8.816406 5.152344 8.832031 5.230469 8.832031 5.320312 C 8.832031 5.414062 8.816406 5.492188 8.78125 5.554688 C 8.746094 5.617188 8.707031 5.667969 8.65625 5.703125 C 8.609375 5.734375 8.558594 5.765625 8.511719 5.796875 C 8.464844 5.824219 8.421875 5.859375 8.386719 5.898438 C 8.355469 5.9375 8.335938 5.984375 8.335938 6.042969 C 8.335938 6.117188 8.363281 6.179688 8.417969 6.230469 C 8.472656 6.28125 8.535156 6.304688 8.609375 6.304688 C 8.652344 6.304688 8.6875 6.300781 8.71875 6.285156 C 8.917969 6.207031 9.078125 6.082031 9.199219 5.902344 Z M 9.199219 5.902344 " />
+                                    <text x="123.68" y="281.26" fill="#373435"
+                                        style="font-weight:500;font-size:41.67px;font-family:'Roboto Lt'">ON</text>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="0.323in" height="0.39in"
+                                version="1.1"
+                                style="width: 100%;height: 100%;padding-top: 50%;shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 323 390" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                *ngIf="data.geoCnt != 1 && data.model == 'Person'"
+                                (click)="listenFromDevice(data.imeiNo,data.simCardNumber)">
+                                <circle fill="#FEFEFE" cx="161.5" cy="166.7" r="161.35" />
+                                <circle fill="green" cx="161.5" cy="166.7" r="146.24" />
+                                <path fill="#E6E7E8"
+                                    d="M280.8 251.3c-30.82,-25.5 -72.9,-41.21 -119.3,-41.21 -46.4,0 -88.48,15.71 -119.3,41.21 26.5,37.3 70.06,61.63 119.3,61.63 49.24,0 92.8,-24.33 119.3,-61.63z" />
+                                <g transform="matrix(0.999993 0 0 0.999993 -188.559 480.217)">
+                                    <text x="81.77" y="384.08" fill="#FEFEFE"
+                                        style="font-weight:500;font-size:55.56px;font-family:'Roboto Lt'">{{'Listen' }}</text>
+                                </g>
+                                <path fill="white"
+                                    d="M381.86 150.85c-3.77,0 -7.05,1.39 -9.82,4.15l-72.77 72.77 -57.26 0c-3.79,0 -7.06,1.38 -9.84,4.14 -2.76,2.78 -4.14,6.06 -4.14,9.85l0 83.91c0,3.79 1.38,7.07 4.14,9.84 2.78,2.76 6.05,4.14 9.84,4.14l57.26 0 72.77 72.79c2.77,2.76 6.04,4.14 9.82,4.14 3.8,0 7.08,-1.38 9.85,-4.14 2.77,-2.78 4.14,-6.05 4.14,-9.84l0 -237.77c0,-3.79 -1.37,-7.06 -4.14,-9.84 -2.77,-2.76 -6.04,-4.14 -9.85,-4.14l0 0zm182.05 40.54c-18.5,-28.04 -43.13,-48.7 -73.86,-61.96 -1.9,-0.73 -3.79,-1.08 -5.68,-1.08 -3.79,0 -7.08,1.38 -9.84,4.14 -2.77,2.78 -4.16,6.05 -4.16,9.84 0,5.25 2.85,9.55 8.54,12.89 1.02,0.59 2.65,1.36 4.91,2.3 2.26,0.94 3.9,1.71 4.91,2.29 6.71,3.63 12.69,7.36 17.93,11.15 17.92,13.26 31.91,29.79 41.96,49.6 10.05,19.82 15.07,40.86 15.07,63.16 0,22.28 -5.02,43.34 -15.07,63.16 -10.05,19.82 -24.05,36.35 -41.96,49.6 -5.24,3.8 -11.22,7.5 -17.93,11.15 -1.01,0.58 -2.65,1.34 -4.91,2.28 -2.27,0.95 -3.89,1.72 -4.91,2.31 -5.69,3.35 -8.54,7.64 -8.54,12.88 0,3.79 1.39,7.06 4.16,9.85 2.76,2.76 6.05,4.14 9.84,4.14 1.89,0 3.78,-0.36 5.68,-1.09 30.73,-13.26 55.37,-33.91 73.86,-61.96 18.5,-28.04 27.75,-58.82 27.75,-92.32 0,-33.52 -9.25,-64.29 -27.75,-92.33zm-46.77 154.06c12.39,-18.86 18.58,-39.44 18.58,-61.72 0,-22.3 -6.19,-42.89 -18.58,-61.76 -12.38,-18.86 -28.78,-32.59 -49.17,-41.19 -1.88,-0.72 -3.78,-1.09 -5.67,-1.09 -3.78,0 -7.07,1.38 -9.84,4.16 -2.76,2.76 -4.15,6.03 -4.15,9.83 0,5.69 2.85,9.98 8.52,12.9 8.17,4.22 13.7,7.43 16.62,9.6 10.78,7.88 19.19,17.74 25.24,29.62 6.04,11.88 9.07,24.51 9.07,37.93 0,13.39 -3.02,26.03 -9.07,37.9 -6.05,11.88 -14.47,21.75 -25.24,29.61 -2.92,2.2 -8.45,5.4 -16.62,9.61 -5.67,2.93 -8.52,7.22 -8.52,12.91 0,3.78 1.39,7.07 4.15,9.83 2.77,2.77 6.11,4.16 10.05,4.16 1.76,0 3.58,-0.37 5.46,-1.1 20.39,-8.6 36.79,-22.33 49.17,-41.2zm-46.65 -30.81c6.19,-9.54 9.28,-19.85 9.28,-30.91 0,-11.09 -3.1,-21.43 -9.28,-31.05 -6.19,-9.61 -14.38,-16.39 -24.59,-20.33 -1.45,-0.72 -3.28,-1.09 -5.46,-1.09 -3.79,0 -7.07,1.35 -9.83,4.04 -2.77,2.7 -4.16,6.02 -4.16,9.95 0,3.05 0.88,5.63 2.63,7.76 1.73,2.12 3.86,3.94 6.34,5.46 2.46,1.53 4.95,3.2 7.43,5.03 2.48,1.82 4.59,4.4 6.34,7.75 1.73,3.36 2.62,7.51 2.62,12.47 0,4.95 -0.87,9.1 -2.62,12.45 -1.75,3.35 -3.86,5.93 -6.34,7.76 -2.48,1.82 -4.96,3.5 -7.43,5.02 -2.48,1.54 -4.6,3.36 -6.34,5.47 -1.75,2.11 -2.63,4.7 -2.63,7.77 0,3.92 1.39,7.24 4.16,9.93 2.76,2.7 6.04,4.04 9.83,4.04 2.18,0 4.01,-0.36 5.46,-1.08 10.21,-4.09 18.4,-10.89 24.59,-20.44l0 0z" />
+                                <g transform="matrix(0.999993 0 0 0.999993 -77.5693 219.058)">
+                                    <text x="123.68" y="281.26" fill="#373435">ON</text>
+                                </g>
+                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="8.1968mm"
+                                height="9.635mm" version="1.1"
+                                style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                                viewBox="0 0 819.68 963.5" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                *ngIf="data.geoCnt != 1 && data.model == 'Person'">
+                                <g id="Layer_x0020_1">
+                                    <metadata id="CorelCorpID_0Corel-Layer" />
+                                    <circle fill="#FEFEFE" cx="409.85" cy="409.83" r="409.83" />
+                                    <circle fill="green" cx="409.85" cy="409.83" r="371.45" />
+                                    <path fill="#E6E7E8"
+                                        d="M712.86 624.71c-78.28,-64.77 -185.17,-104.67 -303.02,-104.67 -117.86,0 -224.74,39.9 -303.02,104.67 67.31,94.73 177.95,156.53 303.02,156.53 125.07,0 235.71,-61.8 303.02,-156.53z" />
+                                    <g transform="matrix(0.999993 0 0 0.999993 -188.559 480.217)">
+                                        <text x="409.84" y="481.75" fill="#666666"
+                                            style="font-weight:normal;font-size:141.12px;font-family:'Arial'">{{'Listen' }}</text>
+                                    </g>
+                                    <path fill="white"
+                                        d="M381.86 150.85c-3.77,0 -7.05,1.39 -9.82,4.15l-72.77 72.77 -57.26 0c-3.79,0 -7.06,1.38 -9.84,4.14 -2.76,2.78 -4.14,6.06 -4.14,9.85l0 83.91c0,3.79 1.38,7.07 4.14,9.84 2.78,2.76 6.05,4.14 9.84,4.14l57.26 0 72.77 72.79c2.77,2.76 6.04,4.14 9.82,4.14 3.8,0 7.08,-1.38 9.85,-4.14 2.77,-2.78 4.14,-6.05 4.14,-9.84l0 -237.77c0,-3.79 -1.37,-7.06 -4.14,-9.84 -2.77,-2.76 -6.04,-4.14 -9.85,-4.14l0 0zm182.05 40.54c-18.5,-28.04 -43.13,-48.7 -73.86,-61.96 -1.9,-0.73 -3.79,-1.08 -5.68,-1.08 -3.79,0 -7.08,1.38 -9.84,4.14 -2.77,2.78 -4.16,6.05 -4.16,9.84 0,5.25 2.85,9.55 8.54,12.89 1.02,0.59 2.65,1.36 4.91,2.3 2.26,0.94 3.9,1.71 4.91,2.29 6.71,3.63 12.69,7.36 17.93,11.15 17.92,13.26 31.91,29.79 41.96,49.6 10.05,19.82 15.07,40.86 15.07,63.16 0,22.28 -5.02,43.34 -15.07,63.16 -10.05,19.82 -24.05,36.35 -41.96,49.6 -5.24,3.8 -11.22,7.5 -17.93,11.15 -1.01,0.58 -2.65,1.34 -4.91,2.28 -2.27,0.95 -3.89,1.72 -4.91,2.31 -5.69,3.35 -8.54,7.64 -8.54,12.88 0,3.79 1.39,7.06 4.16,9.85 2.76,2.76 6.05,4.14 9.84,4.14 1.89,0 3.78,-0.36 5.68,-1.09 30.73,-13.26 55.37,-33.91 73.86,-61.96 18.5,-28.04 27.75,-58.82 27.75,-92.32 0,-33.52 -9.25,-64.29 -27.75,-92.33zm-46.77 154.06c12.39,-18.86 18.58,-39.44 18.58,-61.72 0,-22.3 -6.19,-42.89 -18.58,-61.76 -12.38,-18.86 -28.78,-32.59 -49.17,-41.19 -1.88,-0.72 -3.78,-1.09 -5.67,-1.09 -3.78,0 -7.07,1.38 -9.84,4.16 -2.76,2.76 -4.15,6.03 -4.15,9.83 0,5.69 2.85,9.98 8.52,12.9 8.17,4.22 13.7,7.43 16.62,9.6 10.78,7.88 19.19,17.74 25.24,29.62 6.04,11.88 9.07,24.51 9.07,37.93 0,13.39 -3.02,26.03 -9.07,37.9 -6.05,11.88 -14.47,21.75 -25.24,29.61 -2.92,2.2 -8.45,5.4 -16.62,9.61 -5.67,2.93 -8.52,7.22 -8.52,12.91 0,3.78 1.39,7.07 4.15,9.83 2.77,2.77 6.11,4.16 10.05,4.16 1.76,0 3.58,-0.37 5.46,-1.1 20.39,-8.6 36.79,-22.33 49.17,-41.2zm-46.65 -30.81c6.19,-9.54 9.28,-19.85 9.28,-30.91 0,-11.09 -3.1,-21.43 -9.28,-31.05 -6.19,-9.61 -14.38,-16.39 -24.59,-20.33 -1.45,-0.72 -3.28,-1.09 -5.46,-1.09 -3.79,0 -7.07,1.35 -9.83,4.04 -2.77,2.7 -4.16,6.02 -4.16,9.95 0,3.05 0.88,5.63 2.63,7.76 1.73,2.12 3.86,3.94 6.34,5.46 2.46,1.53 4.95,3.2 7.43,5.03 2.48,1.82 4.59,4.4 6.34,7.75 1.73,3.36 2.62,7.51 2.62,12.47 0,4.95 -0.87,9.1 -2.62,12.45 -1.75,3.35 -3.86,5.93 -6.34,7.76 -2.48,1.82 -4.96,3.5 -7.43,5.02 -2.48,1.54 -4.6,3.36 -6.34,5.47 -1.75,2.11 -2.63,4.7 -2.63,7.77 0,3.92 1.39,7.24 4.16,9.93 2.76,2.7 6.04,4.04 9.83,4.04 2.18,0 4.01,-0.36 5.46,-1.08 10.21,-4.09 18.4,-10.89 24.59,-20.44l0 0z" />
+                                    <g transform="matrix(0.999993 0 0 0.999993 -77.5693 219.058)">
+                                        <text x="409.84" y="481.75"
+                                            style="font-weight:normal;font-size:105.84px;font-family:'Arial'">ON</text>
+                                    </g>
+                                </g>
+                            </svg>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <div class="col timediff ng-binding">{{data.timeDifference}} </div>
+                </ion-row>
+                <ion-row align-items-center *ngIf="data.model !== 'Person'">
+                    <ion-col size="3" class="DashboardButtons" *ngIf="data.model != 'Person'"
+                        [attr.disabled]="data.status == 'Yet_to_transmit' || data.geoCnt == 1"
+                        (click)="armoronFunctionality('livetrack', data)" routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/track.svg" style="left:35%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/trackDisabled.svg" style="left:35%"
+                            *ngIf=" data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Live Track' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        (click)="armoronFunctionality('alerts', data)">
+                        <ion-img class="imgbuttons" src="assets/Armoron/alerts.svg" style="left:36%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/alertsDisabled.svg" style="left:36%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Alerts' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/reports',data.plateNo]">
+                        <ion-img class="imgbuttons" src="assets/Armoron/Diagnosis.svg" style="left:34%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/DiagnosisDisabled.svg" style="left:34%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Reports' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/maintenance-tab/maintenance','insurance', data.vin]" routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/Maintance.svg" style="left:34%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/MaintanceDisabled.svg" style="left:34%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Maintenance' }}
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="data.model !== 'Person'">
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        (click)="armoronFunctionality('settings', data)">
+                        <ion-img class="imgbuttons" src="assets/Armoron/setting.svg" style="left:35%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/settingDisabled.svg" style="left:35%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Settings' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/nearby/','Petrol Bunks',data.latitude,data.longitude,data.vin]">
+                        <ion-img class="imgbuttons" src="assets/Armoron/fuel station.svg" style="left:39%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/fuel stationDisabled.svg" style="left:39%"
+                            *ngIf="data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Fuel_Station' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/nearby/','Vehicle Repair',data.latitude,data.longitude,data.vin]">
+                        <ion-img class="imgbuttons" src="assets/Armoron/workshop.svg" style="left:34%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/workshopDisabled.svg" style="left:34%"
+                            *ngIf="data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Workshop' }}
+                    </ion-col>
+                    <ion-col size="3" class="DashboardButtons"
+                        [attr.disabled]="data.status == 'Yet_to_transmit' || data.geoCnt == 1"
+                        [routerLink]="['/geo-fence/', data.vin]" routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/geoFence.svg" style="left:37%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/geoFenceDisabled.svg" style="left:37%"
+                            *ngIf="data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Geo_Fence' }}
+                    </ion-col>
+                </ion-row>
+                <ion-row align-items-center *ngIf="data.model == 'Person'">
+                    <ion-col size="2.4" class="DashboardButtons"
+                        [attr.disabled]="data.status == 'Yet_to_transmit' || data.geoCnt == 1"
+                        [routerLink]="['/track-tabs/track',data.vin]" routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/track.svg" style="left:35%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/trackDisabled.svg" style="left:35%"
+                            *ngIf=" data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Live Track' }}
+                    </ion-col>
+                    <ion-col size="2.4" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/alerts/', data.vin]">
+                        <ion-img class="imgbuttons" src="assets/Armoron/alerts.svg" style="left:36%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/alertsDisabled.svg" style="left:36%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Alerts' }}
+                    </ion-col>
+                    <ion-col size="2.4" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/nearby/','Police Station',data.latitude,data.longitude,data.vin]"
+                        routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/policeStation.svg" style="left:34%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/policeStationDisabled.svg"
+                            style="left:34%" *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Police' }}
+                    </ion-col>
+                    <ion-col size="2.4" class="DashboardButtons" [attr.disabled]="data.geoCnt == 1"
+                        [routerLink]="['/setting/', data.vin ,data.model]">
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/setting.svg" style="left:35%"
+                            *ngIf="data.geoCnt != 1"></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/settingDisabled.svg" style="left:35%"
+                            *ngIf="data.geoCnt == 1"></ion-img>
+                        <br>{{'Settings' }}
+                    </ion-col>
+                    <ion-col size="2.4" class="DashboardButtons"
+                        [attr.disabled]="data.status == 'Yet_to_transmit' || data.geoCnt == 1"
+                        [routerLink]="['/geo-fence/', data.vin]" routerDirection="forward">
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/geoFence.svg" style="left:37%"
+                            *ngIf="data.geoCnt != 1 && data.status != 'Yet_to_transmit' "></ion-img>
+                        <ion-img class="imgbuttons" src="assets/Armoron/Armoron/geoFenceDisabled.svg" style="left:37%"
+                            *ngIf="data.geoCnt == 1 || data.status == 'Yet_to_transmit' "></ion-img>
+                        <br>{{'Geo_Fence' }}
+                    </ion-col>
+                </ion-row>
+                <ion-row style="margin-top: 3%;margin-left: 2%;" *ngIf="data.status != 'Yet_to_transmit'">
+                    <p style="color:white;font-size:3vw;text-decoration:underline;" *ngIf="hitPermission "
+                        (click)="location(data.latitude, data.longitude, data.vin)">{{'Location' }} :
+                        {{ data.liveTrackLocation }}</p>
+                    <p style="color:white;font-size:3vw;text-decoration:underline;" *ngIf="!hitPermission"
+                        (click)="location(data.latitude, data.longitude, data.vin)">
+                        {{'location : click here to locate address' }}</p>
+                    <p style="color:white;font-size:3vw;text-decoration:underline;" *ngIf="data.geoCnt == 1">
+                        {{'Subscription expired for this vehicle.' }}</p>
+                </ion-row>
+            </ion-grid>
+        </div>
+    </div>
+
+
+    <!-- Web  -->
+
+    <div *ngIf="myPlatform == 'desktop'">
+        <ion-row style="height: 35px;">
+            <ion-col size=10.5 style="text-align: center;     background: white;
+                position: fixed;
+                z-index: 11;
+                height: 43px;">
+                <!-- <span style="font-weight: bold;font-size: 28px;">{{plateNum}}</span> -->
+
+            </ion-col>
+            <ion-col style="align-self: center; position: fixed;
+                right: 117px; z-index: 12;" size=0.5>
+                <ion-row style="align-self: center;     float: right;">
+                    <ion-img src="assets/dashboard_background/bell.png" style="width:22px; height:22px;"></ion-img>
+                    <ion-badge color="danger"
+                        style="position: absolute; align-self: center;margin-left: -35px; font-size: 9px; left: 76px; color: white; font-weight: bold;  top: 0px;">
+                        {{alertCount}}
+                    </ion-badge>
+                </ion-row>
+            </ion-col>
+            <ion-col style="text-align: -webkit-center; position: fixed; right: 5px; z-index: 15;" size=1>
+                <ion-img class="logo" [src]="app.logo"></ion-img>
+            </ion-col>
+        </ion-row>
+
+        <ion-row style="    margin-top: 7px;">
+            <ion-col size="2.5" style="   margin-top: 7px;max-width: 20%; margin: 0px;padding: 0px;">
+                <ion-row style="text-align: -webkit-center;    width: 20.9%;
+                        /* left: 9px; */
+                        position: fixed;
+                        z-index: 12;
+                        border-top: 5px solid rgb(108, 42, 132);
+                        background: white;">
+                    <ion-col size="2">
+
+                        <ion-row class="statusBar" style="background-color:#989aa2 ;"
+                            (click)="changeGridView({'type':'All', 'count': vehicleCount.Total})">{{vehicleCount.Total}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('Running')">
+                        <ion-row class="statusBar" style="background-color:#1eb15d;"
+                            (click)="changeGridView({'type':'Running', 'count': vehicleCount.Running})">
+                            {{vehicleCount.Running}}</ion-row>
+                    </ion-col>
+
+                    <ion-col size="2" *ngIf="loginData.includes('Stop')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">STOP</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                            (click)="changeGridView({'type':'Stop', 'count': vehicleCount.Stop})">{{vehicleCount.Stop}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('HighTemp')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">STOP</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                            (click)="changeGridView({'type':'HighTemp', 'count': vehicleCount.HighTemp})">
+                            {{vehicleCount.HighTemp}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('Idle')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">IDLE</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                            (click)="changeGridView({'type':'Idle', 'count': vehicleCount.Idle})">{{vehicleCount.Idle}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('Geofence')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">IDLE</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                            (click)="changeGridView({'type':'Geofence', 'count': vehicleCount.Geofence})">
+                            {{vehicleCount.Geofence}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('PowerFail')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">NOTRANSMIT</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#724040 ;"
+                            (click)="changeGridView({'type':'PowerFail', 'count': vehicleCount['PowerFail']})">
+                            {{vehicleCount['PowerFail']}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('No Transmission')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">NOTRANSMIT</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#000000 ;"
+                            (click)="changeGridView({'type':'No Transmission', 'count': vehicleCount['No Transmission']})">
+                            {{vehicleCount['No Transmission']}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('Overspeed')">
+                        <!-- <ion-row style="font-size: xx-small; place-content: center;">OVERSPEED</ion-row> -->
+                        <ion-row class="statusBar" style="background-color:#f28918 ;"
+                            (click)="changeGridView({'type':'Overspeed', 'count': vehicleCount.Overspeed})">
+                            {{vehicleCount.Overspeed}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2" *ngIf="loginData.includes('DoorOpen')">
+                        <ion-row class="statusBar" style="background-color:#FF851B ;"
+                            (click)="changeGridView({'type':'DoorOpen', 'count': vehicleCount.DoorOpen})">
+                            {{vehicleCount.DoorOpen}}</ion-row>
+
+                    </ion-col>
+                </ion-row>
+                <!-- <ion-row *ngIf="statusBarOthers.length > 0" style="text-align: -webkit-center;    width: 20.9%;
+                            /* left: 9px; */
+                            position: fixed;
+                            font-size: 15px;
+                            z-index: 12;
+                            border-top: 5px solid rgb(108, 42, 132);
+                            background: white;">
+                                <ion-col style="font-size: 8px;" (click)="changeGridView({'type': sensor, 'count': vehicleCount[sensor]})" *ngFor = "let sensor of statusBarOthers">
+                                  
+                                     <ion-label *ngIf="sensor != 'good'"> {{sensor}} </ion-label>
+                                </ion-col>
+                            </ion-row> -->
+                <ion-row style="width: 20.9%;
+                        position: fixed;
+                        padding: 2px;
+                        z-index: 1;
+                        top: 86px;
+                        background: white;">
+                    <ion-col style="padding: 0px; " size=10>
+                        <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+                        </ion-searchbar>
+                    </ion-col>
+                    <ion-col size=1 style="align-self: center;
+                            text-align: center; padding: 0px;">
+                        <ion-icon style="font-size: 25px;" (click)="openFilter()" [name]="filterIcon"></ion-icon>
+                    </ion-col>
+                    <ion-col (click)="doRefresh($event)" size=1 style="align-self: center;
+                            text-align: center; padding: 0px;">
+                        <ion-icon style="
+                                     font-size: 25px;" name="md-refresh"></ion-icon>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="width: 21%;
+                        position: fixed;
+                        z-index: 1;
+                        top: 129px;
+                        background: white;" *ngIf="filterIcon == 'md-close'">
+
+                    <ion-col color="light" (click)="filterPage('watchMode')">
+                        <svg width="35" height="35" viewBox="0 0 800 800"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+                            <path attr.fill="{{watchFilter==true ? '#1d93ed' : 'black'}}"
+                                d="M430 586.53c-38.76,0 -72.57,-8.35 -101.64,-30.26 -23.48,-17.69 -42.12,-38.46 -54.23,-65.66 -25.5,-57.32 -16.5,-119.47 21.29,-169.22 5.71,-7.52 14.31,-14.96 20.32,-20.98 3.66,-3.66 6.82,-5.64 11.1,-8.87 45.82,-34.58 114.25,-42.08 166.23,-15.87 26.01,13.11 22.96,12.83 41.25,28.02 2.68,2.23 3.36,2.15 5.71,4.95 21.61,25.86 34.09,41.43 42.37,77.52 6.04,26.29 6.13,44.87 0.72,71.06 -5.44,26.3 -15.66,47.2 -32.06,67.85 -3.66,4.61 -6.09,6.85 -9.91,11.41 -4.97,5.94 -14.96,13.85 -21.32,18.65 -8.52,6.42 -15.1,9.99 -24.99,14.97 -16.11,8.1 -41.32,16.43 -64.84,16.43zm-99.92 -203.83c6.3,3.33 13.53,5.52 20.45,8.87 6.9,3.34 13.46,5.7 19.95,9.35l38.2 21.74c-7.98,10.9 -69.47,36.48 -78.6,41.3 4.87,20.89 32.99,45.12 56.14,54.44 25.57,10.31 56.37,9.23 80.65,-2.91 50.26,-25.13 71.85,-78.41 50.51,-132.25 -9.01,-22.73 -28.38,-40.94 -49.62,-51.62 -42.27,-21.25 -92.62,-9.51 -123.98,27.48 -3.87,4.57 -12.27,17.49 -13.7,23.6zm-247.79 41.3l14.63 18.67c4.77,6.26 10.17,11.51 15.24,18.07 22.98,29.66 86.65,83.79 113.99,101.83l53.31 30.62c34.19,17.15 88.84,34.64 131.89,34.64 55.33,0 83.37,-4.63 132.85,-24.35 23.09,-9.21 55.22,-26.56 75.53,-40.37l47.71 -36.22c28.49,-25.39 34.46,-31.2 58.63,-57.28l30.51 -36.1c2.23,-2.99 5.13,-7.56 7.8,-9.51 -2.05,-3.07 -4.1,-6.53 -6.46,-9.53 -15.48,-19.68 -54.17,-64.69 -72.14,-78.4l-36.15 -30.46c-6.52,-5.21 -11.83,-9.35 -19,-14.3 -22.47,-15.51 -37.38,-24.8 -62.53,-37.39 -34.95,-17.51 -88.82,-35.08 -132.77,-35.08 -55.33,0 -83.37,4.62 -132.86,24.34 -8.3,3.32 -15.62,6.58 -23.01,10.29 -32.56,16.33 -73.09,42.11 -100.23,66.3 -43.92,39.15 -55.7,51.86 -89.88,93.97 -2.86,3.52 -4.72,6.76 -7.06,10.26z" />
+                        </svg>
+                    </ion-col>
+                    <ion-col color="light" (click)="filterPage('battery')" style="align-self: center;">
+                        <svg width="25" height="25" viewBox="0 0 800 800"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+                            <path attr.fill="{{batteryStatusFilter == true ? '#1d93ed' : 'black'}}"
+                                d="M-0 248.48l0 486.31 846.66 -0.01 0 -486.3 -846.66 0zm87.77 -55.22l205.61 0 0 -81.39 -205.61 0 0 81.39zm465.53 0l205.61 0 0 -81.39 -205.61 0 0 81.39zm-297.64 259.53l0 0 -37.49 0 0 37.48 -55.21 0.01 0 -37.48 -37.49 -0.01 0 -55.22 37.49 0 0 -37.48 55.21 0 0 37.48 37.49 0 0 55.22zm193.28 199.43l-51.22 -20.62 37.76 -93.8 -106.05 0 68.29 -169.63 51.22 20.62 -37.76 93.8 106.05 -0.01 -68.29 169.64zm272.25 -199.43l-130.19 0 0 -55.22 130.19 0 0 55.22z" />
+                        </svg>
+                    </ion-col>
+                    <ion-col color="light" (click)="filterPage('gsm')" style="align-self: center;">
+                        <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="7mm" height="7mm"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <path attr.fill="{{gsmStatusFilter == true ? '#1d93ed' : 'black'}}"
+                                d="M273.84 700.03c0,10.28 3.11,13.39 13.38,13.39l124.95 0 0 -98.17 -138.33 0 0 84.78zm182.96 -232.05l0 232.05c0,10.28 3.1,13.39 13.39,13.39l124.95 0 0 -258.82 -124.95 0c-10.29,0 -13.39,3.1 -13.39,13.38zm-254.36 245.44l40.16 0 0 -374.85c0,-24.95 99.44,-157.07 124.95,-205.27l-298.98 0 104.46 163.29c21.32,30.97 16.17,25.19 16.03,73.22l-0.39 312.76c-0.13,16.63 -3.44,30.85 13.77,30.85zm21.17 -403.47l-111.3 -159.72 203.51 0 -92.21 159.72zm420.61 403.47l133.87 0 0 -401.62c0,-10.29 -3.1,-13.39 -13.37,-13.39l-120.5 0 0 415.01z" />
+                        </svg>
+                    </ion-col>
+                    <ion-col color="light" (click)="filterPage('gps')" style="align-self: center;">
+                        <ion-icon style='font-size: 25px;'
+                            [ngClass]="{selecedFabIcon : gpsFilter === true, notSelecedFabIcon : gpsFilter === false}"
+                            name="md-locate"></ion-icon>
+                    </ion-col>
+                    <ion-col color="light" (click)="filterPage('subscription')" style="align-self: center;">
+                        <ion-icon style='font-size: 25px;'
+                            [ngClass]="{selecedFabIcon : subscriptionFilter === true, notSelecedFabIcon : subscriptionFilter === false}"
+                            name="logo-usd"></ion-icon>
+                    </ion-col>
+
+                    <!-- <ion-col style='font-weight: bold;' color="light" (click)="openGridModel()">
+                                <ion-icon style='font-size: 25px;' name="ios-browsers"></ion-icon>
+                            </ion-col> -->
+                </ion-row>
+                <ion-row>
+                    <ion-virtual-scroll style="top: 88px;"
+                        [items]="dashboardData | search:searchInput | status: filterValue : count : statusGrid: manualFilter"
+                        [trackBy]="identify" approxItemHeight="350px" [itemHeight]="itemHeightFn"
+                        [approxFooterHeight]="1">
+                        <ion-card *virtualItem="let data;" style="padding:0px; margin: 10px 3px 12px 2px;"
+                            disabled='{{data.warrantyExpiry}}'
+                            [ngClass]='{"runningCardBorder": data.status === "Running" || data.status === "Good", "stopCardBorder":data.status === "Stop" || data.status === "HighTemp", "idleCardBorder":data.status === "Idle" || data.status === "Geofence" ,"doorOpen": data.status === "DoorOpen", "noTransCardBorder":data.status === "No Transmission","powerFail": data.status === "PowerFail" , "overspeedCardBorder": data.status === "Overspeed", "active": data.plateNo === selectedVin.plateNo}'
+                            >
+                            <ion-card-content>
+                                <ion-row (click)="showModal(data)">
+                                    <app-gridview-card [commonData]='data'></app-gridview-card>
+                                </ion-row>
+                                <ion-row>
+
+                                    <ion-row class="address">
+                                        <ion-col size=12 style="padding-top: 0px; padding-bottom: 0px;">
+                                            <ion-row *ngIf="data.location">
+                                                {{data.location}}
+                                            </ion-row>
+                                            <ion-row *ngIf="!data.location">
+                                                <ion-spinner name="dots"></ion-spinner>
+                                            </ion-row>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-row>
+                            </ion-card-content>
+                            
+                        </ion-card>
+                    </ion-virtual-scroll>
+                </ion-row>
+                <!-- <ion-row>
+                            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMoreData($event)">
+                                    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+                                    </ion-infinite-scroll-content>
+                                </ion-infinite-scroll>
+                       </ion-row> -->
+
+                <!-- <ion-card  *ngFor="let data of dashboardData"
+                        [ngClass]='{"runningCardBorder": data.status === "Running", "stopCardBorder":data.status === "Stop", "idleCardBorder":data.status === "Idle", "noTransCardBorder":data.status === "No Transmission", "overspeedCardBorder": data.status === "Overspeed"}'
+                        (click)="showModal(data)" >
+                        <app-gridview-card [commonData]='data'></app-gridview-card> 
+                    </ion-card>-->
+            </ion-col>
+
+            <ion-col style="max-width: 80%; overflow-y: hidden;
+                    position: fixed; max-width: 80%;left: 20.2%;" size="9.5" id="mapv">
+                <ion-row *ngIf="pageSeleter == 'gridview'" style="height: 53vh">
+                    <ion-col style="max-width: 50%;">
+                        <ion-row class="heading">
+                            Map View
+                        </ion-row>
+                        <ion-row>
+                            <div class="map" #mapElement></div>
+                        </ion-row>
+                    </ion-col>
+                    <ion-col style="max-width: 26%;" id="alert">
+                        <ion-card style="margin: 0px; height: 100%;">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> Alert</span>
+                                </ion-row>
+                                <ion-row [ngClass]='{"alertCardGreater": alertCount >= 3}'>
+                                    <ion-card *ngFor="let alertDataCard of alertData">
+                                        <app-alert-card [data]="alertDataCard"></app-alert-card>
+                                    </ion-card>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col style="max-width: 24%;" id="vehicleInfo">
+                        <ion-card style="margin: 0px; height: 100%;">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> Vehicle Info</span>
+                                </ion-row>
+                                <ion-row *ngIf="selectedVin.vin" class='alertCardGreater' style="margin: 0px;">
+                                    <app-vts-info style="width: 100%;" [gridView]="selectedVin.vin"></app-vts-info>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row *ngIf="pageSeleter == 'gridview' && gridCardOption[this.selectedVin.icon] == null">
+                    <ion-col style="max-width: 33%;">
+                        <ion-card class="cardStyle" id="yesterdayStatus">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> Yesterday Status</span>
+                                </ion-row>
+                                <ion-row style="margin: 0px;">
+                                    <canvas id='barChart' #barChart height="170"></canvas>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col style="max-width: 33%;">
+
+                        <ion-card class="cardStyle" id="executiveSummary">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin">Executive Summary</span>
+                                </ion-row>
+                                <ion-row style="margin: 0px;" class='executiveGreater'>
+                                    <app-executive-summary-card *ngIf="executiveCard" style="width:100%"
+                                        [commonData]='executiveCard'>
+                                    </app-executive-summary-card>
+
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+                    <ion-col style="max-width: 43%;">
+
+                        <ion-card class="cardStyle" id="odometer">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> Odometer History</span>
+                                </ion-row>
+                                <ion-row *ngIf="vehicleInfo"
+                                    style="margin: 0px; padding-top:3vh; justify-content: center;">
+                                    <app-week-odometer [gridView]="vehicleInfo"></app-week-odometer>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-row *ngIf="pageSeleter == 'gridview' && gridCardOption[this.selectedVin.icon] != null">
+                    <ion-col style="max-width: 76%;">
+                        <ion-card class="cardStyle" id="odometer">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> Temprature Range</span>
+                                </ion-row>
+                                <ion-row style="margin: 0px;justify-content: center;">
+                                    <app-temprature-range [gridView]="selectedVin.vin " style="width:100%">
+                                    </app-temprature-range>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col style="max-width: 33%;">
+                        <ion-card class="cardStyle" id="odometer">
+                            <ion-card-content style="margin: 0px; padding: 0px;">
+                                <ion-row class="heading">
+                                    <span class="margin"> No Of Counts</span>
+                                </ion-row>
+                                <ion-row style="justify-content: center;">
+                                    <app-temperature-grid-view style="width: 100%;" [gridView]="selectedVin.vin ">
+                                    </app-temperature-grid-view>
+
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+
+
+                </ion-row>
+
+                <ion-row *ngIf="pageSeleter == 'livetrack'" style="padding: 5px;">
+                    <ion-row class="heading">
+                        <span class="margin"> Live Tracking</span>
+                    </ion-row>
+                    <app-vtslivetrack [liveTrackChanging]="liveTrackingChanges" [gridLiveChange]='liveChange'
+                        (gridView)="livetrackWeb($event)" style="width: 100%;">
+                    </app-vtslivetrack>
+                    <!-- <ion-card>
+                                        <app-gridview-card [commonData] = 'traveVinData' ></app-gridview-card>
+                                </ion-card> -->
+                </ion-row>
+                <ion-row *ngIf="pageSeleter == 'trackhistory'" style="padding: 5px;">
+                    <ion-row class="heading">
+                        <span class="margin"> Track History</span>
+                    </ion-row>
+                    <app-vts-trackhistory [gridLiveChange]='liveChange' style="width: 100%;"></app-vts-trackhistory>
+                </ion-row>
+                <ion-row *ngIf="pageSeleter == 'nearby'" style="padding: 5px;">
+                    <ion-row class="heading">
+                        <span class="margin"> Near By Vehicle</span>
+                    </ion-row>
+                    <app-vts-nearby [gridLiveChange]='liveChange' style="width: 100%;"></app-vts-nearby>
+                </ion-row>
+                <ion-row *ngIf="pageSeleter == 'geofence'" style="padding: 5px;">
+                    <ion-row class="heading">
+                        <span class="margin"> Geo Fence</span>
+                    </ion-row>
+                    <ion-row style="    height: 83vh; padding: 5px;
+                            overflow: auto;    width: 100%;">
+                        <ion-col size=12 style="padding: 0px;">
+                            <app-vts-geofence [vinGrid]='pageSeleter' style="width: 100%; height: 100vh;">
+                            </app-vts-geofence>
+                        </ion-col>
+                    </ion-row>
+                </ion-row>
+                <ion-row *ngIf="pageSeleter == 'settings'" style="padding: 5px;">
+                    <ion-row class="heading">
+                        <span class="margin"> Settinges </span>
+                    </ion-row>
+                    <ion-row style="    height: 83vh; 
+                            overflow: auto;    width: 100%;">
+                        <ion-col size=12 style="padding: 0px;">
+                            <app-overall-settings [gridLiveChange]="selectedVin.plateNo " [pageType]="state"
+                                style="width: 100%;"></app-overall-settings>
+                        </ion-col>
+                    </ion-row>
+                </ion-row>
+
+                <ion-row *ngIf="pageSeleter == 'reports'">
+                    <ion-row class="heading">
+                        <span class="margin"> Reports </span>
+                    </ion-row>
+                    <ion-row style="    height: 100%;
+                            overflow: auto;    width: 100%;">
+                        <ion-col size=12 style="padding: 0px;">
+                            <app-vts-reports [plateNo]="selectedVin.plateNo" style="width: 100%;"></app-vts-reports>
+                        </ion-col>
+                    </ion-row>
+                </ion-row>
+                <ion-row class="botmRow"
+                    style="width:77.3%; justify-content: center;border-top: 1px solid #eceaea;background-color: white;">
+                    <app-vehicle-function [plateNo]="selectedVin.plateNo" (gridView)="vehicleFunctionClick($event)">
+                    </app-vehicle-function>
+                </ion-row>
+
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

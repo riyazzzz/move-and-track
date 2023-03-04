@@ -1,0 +1,38 @@
+ion-input,ion-select{
+    background-color: lightgray;
+    border-radius: 2px;
+    height: 35px;
+    font-size: 14px;
+ }
+
+.heading{
+   color: #6c2a84;
+   font-weight: bold;
+   margin-left: 10px;
+}
+
+.profile{
+    margin: auto;
+}
+@media only screen and (min-width:0px)and (max-width:1022px){
+    .input-item{
+        padding:3px 15px;
+
+    }    
+} 
+.armoron{
+    font-size: 16px;
+    color: #f6b220;
+    font-weight: bold;
+    padding: 10px;
+}
+
+@media only screen and (min-width:1023px){
+    .input-item{
+        padding:10px 15px;
+    }   
+    .profile{
+        padding-left: 30px;
+    } 
+} 
+

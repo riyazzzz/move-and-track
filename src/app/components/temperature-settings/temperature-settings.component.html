@@ -1,0 +1,313 @@
+
+<ion-row>
+    <ion-col *ngIf=" pageType == 'Vin'" size=4 style="text-align: center;">Temp Name</ion-col>
+    <ion-col size=3 style="text-align: center;"><ion-row style="justify-content: center;">Min<sub>oC</sub></ion-row> </ion-col>
+    <ion-col size=3 style="text-align: center;"><ion-row style="justify-content: center;">Max<sub>oC</sub></ion-row></ion-col>
+    <ion-col *ngIf=" pageType == 'Vin'" size=1 style="text-align: center;">Id</ion-col>
+</ion-row>
+
+<ion-row *ngIf="temperature.temp1.visible">
+    <ion-col size=1 class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp1.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3 *ngIf=" pageType == 'Vin'" style="padding-left: 4%;">
+        <ion-input [(ngModel)]="temperature.temp1.name" disabled="{{!temperature.temp1.editEnable}}" placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+    
+    <ion-col size=3 style="padding-right: 2%;" class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp1.min" disabled="{{!temperature.temp1.editEnable}}" placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+  
+      <ion-col size=3 style="padding-right: 2%;" class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp1.max" disabled="{{!temperature.temp1.editEnable}}" placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon *ngIf="!temperature.temp1.imeiVisible" name="ios-arrow-down" (click)="showHide(temperature.temp1)"></ion-icon>
+        <ion-icon *ngIf="temperature.temp1.imeiVisible" name="ios-arrow-up" (click)="showHide(temperature.temp1)"></ion-icon>
+      </ion-col>
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon style="color: red; font-size: 21px" name="ios-trash" (click)="remove('temp1',77)"></ion-icon>
+     </ion-col>
+      <ion-row style="width:100%" *ngIf="temperature.temp1.imeiVisible && pageType == 'Vin'"> 
+          <ion-col size="1" style="padding: 0px; "></ion-col>
+        <!-- <ion-col size=11 style="padding: 0px; ">
+            <ion-input style= "width: 100%; "[(ngModel)]="temperature.temp1.imei" disabled="{{!temperature.temp1.editEnable}}" placeholder = '{{temperature.temp1.name}} Device Id' style="padding: 0px; "></ion-input>
+          </ion-col> -->
+<!-- gokul -->
+          <ion-col size=11 > 
+            <input style= "width: 100%;" list="num"  [(ngModel)]="temperature.temp1.imei" disabled="{{!temperature.temp1.editEnable}}" placeholder = '{{temperature.temp1.name}} Device Id' style="padding: 0px; " />
+            <!-- <input class="input col" type="number" list="num"  formControlName="imeiNo" placeholder="Imei No" /> -->
+            <datalist id="num">
+            <option *ngFor="let numbers of imeiNo" >{{numbers}}</option>
+            </datalist>
+            </ion-col> 
+      </ion-row>
+      <ion-row style="width:100%" *ngIf="temperature.temp1.imeiVisible && pageType == 'Vin'"> 
+        <ion-col size="1" style="padding: 0px; "></ion-col>
+      <ion-col size=9 style="padding: 0px; ">
+          <ion-input [(ngModel)]="temperature.temp1.latLng" disabled="{{!temperature.temp1.editEnable}}" placeholder = '{{temperature.temp1.name}} Location' style="padding: 0px; "></ion-input>
+         
+        </ion-col>
+        <ion-col size="1">
+            <ion-icon style="font-size: 24px;" name="locate" (click)="currentLocation('temp1')"></ion-icon>
+        </ion-col>
+        <ion-col size=1>
+            <ion-icon style="font-size: 24px;"  name="map" (click)="mapLocation('temp1')"></ion-icon>
+        </ion-col>
+    </ion-row>
+   
+</ion-row>
+
+<ion-row *ngIf="temperature.temp2.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp2.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3 *ngIf=" pageType == 'Vin'" style="padding-left: 4%;">
+        <ion-input [(ngModel)]="temperature.temp2.name" disabled="{{!temperature.temp2.editEnable}}" placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+    <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+        <ion-input [(ngModel)]="temperature.temp2.min" disabled="{{!temperature.temp2.editEnable}}" placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+          <ion-input [(ngModel)]="temperature.temp2.max" disabled="{{!temperature.temp2.editEnable}}" placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+     
+
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon *ngIf="!temperature.temp2.imeiVisible" name="ios-arrow-down" (click)="showHide(temperature.temp2)"></ion-icon>
+        <ion-icon *ngIf="temperature.temp2.imeiVisible" name="ios-arrow-up" (click)="showHide(temperature.temp2)"></ion-icon>
+      </ion-col>
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon style="color: red; font-size: 21px" name="ios-trash" (click)="remove('temp2',78)"></ion-icon>
+     </ion-col>
+      <ion-row  style="width:100%"  *ngIf="temperature.temp2.imeiVisible && pageType == 'Vin'"> 
+          <ion-col size="1" style="padding: 0px; "></ion-col>
+        <!-- <ion-col size=11 style="padding: 0px; ">
+            <ion-input [(ngModel)]="temperature.temp2.imei" disabled="{{!temperature.temp2.editEnable}}" placeholder = '{{temperature.temp2.name}} Device Id' style="padding: 0px; "></ion-input>
+          </ion-col> -->
+
+          <!-- gokul -->
+          <ion-col size=11 > 
+            <input [(ngModel)]="temperature.temp2.imei" list="num" disabled="{{!temperature.temp2.editEnable}}" placeholder = '{{temperature.temp2.name}} Device Id' style="padding: 0px; " />
+            <!-- <input class="input col" type="number" list="num"  formControlName="imeiNo" placeholder="Imei No" /> -->
+            <datalist id="num">
+            <option *ngFor="let numbers of imeiNo" >{{numbers}}</option>
+            </datalist>
+            </ion-col> 
+      </ion-row>
+      <ion-row style="width:100%" *ngIf="temperature.temp2.imeiVisible && pageType == 'Vin'"> 
+        <ion-col size="1" style="padding: 0px; "></ion-col>
+      <ion-col size=9 style="padding: 0px; ">
+          <ion-input [(ngModel)]="temperature.temp2.latLng" disabled="{{!temperature.temp2.editEnable}}" placeholder = '{{temperature.temp2.name}} Location' style="padding: 0px; "></ion-input>
+         
+        </ion-col>
+        <ion-col size="1">
+            <ion-icon style="font-size: 24px;" name="locate" (click)="currentLocation('temp2')"></ion-icon>
+        </ion-col>
+        <ion-col size=1>
+            <ion-icon style="font-size: 24px;"  name="map" (click)="mapLocation('temp2')"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-row>
+
+<ion-row *ngIf="temperature.temp3.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp3.editEnable" ></ion-checkbox>
+    </ion-col>
+    <ion-col size=3 *ngIf=" pageType == 'Vin'" style="padding-left: 4%;">
+        <ion-input [(ngModel)]="temperature.temp3.name" disabled="{{!temperature.temp3.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+    <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+        <ion-input [(ngModel)]="temperature.temp3.min" disabled="{{!temperature.temp3.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+          <ion-input [(ngModel)]="temperature.temp3.max" disabled="{{!temperature.temp3.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+      
+      
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon *ngIf="!temperature.temp3.imeiVisible" name="ios-arrow-down" (click)="showHide(temperature.temp3)"></ion-icon>
+        <ion-icon *ngIf="temperature.temp3.imeiVisible" name="ios-arrow-up" (click)="showHide(temperature.temp3)"></ion-icon>
+      </ion-col>
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon style="color: red; font-size: 21px" name="ios-trash" (click)="remove('temp3',79)"></ion-icon>
+     </ion-col>
+      <ion-row  style="width:100%"  *ngIf="temperature.temp3.imeiVisible && pageType == 'Vin'"> 
+          <ion-col size="1" style="padding: 0px; "></ion-col>
+        <!-- <ion-col size=11 style="padding: 0px; ">
+            <ion-input [(ngModel)]="temperature.temp3.imei" disabled="{{!temperature.temp3.editEnable}}" placeholder = '{{temperature.temp3.name}} Device Id' style="padding: 0px; "></ion-input>
+          </ion-col> -->
+       <!-- gokul -->
+       <ion-col size=11 > 
+        <input [(ngModel)]="temperature.temp3.imei" list="num" disabled="{{!temperature.temp3.editEnable}}" placeholder = '{{temperature.temp3.name}} Device Id' style="padding: 0px; " />
+        <!-- <input class="input col" type="number" list="num"  formControlName="imeiNo" placeholder="Imei No" /> -->
+        <datalist id="num">
+        <option *ngFor="let numbers of imeiNo" >{{numbers}}</option>
+        </datalist>
+        </ion-col> 
+          
+      </ion-row>
+      <ion-row style="width:100%" *ngIf="temperature.temp3.imeiVisible && pageType == 'Vin'"> 
+        <ion-col size="1" style="padding: 0px; "></ion-col>
+      <ion-col size=9 style="padding: 0px; ">
+          <ion-input [(ngModel)]="temperature.temp3.latLng" disabled="{{!temperature.temp3.editEnable}}" placeholder = '{{temperature.temp3.name}} Location' style="padding: 0px; "></ion-input>
+         
+        </ion-col>
+        <ion-col size="1">
+            <ion-icon style="font-size: 24px;" name="locate" (click)="currentLocation('temp3')"></ion-icon>
+        </ion-col>
+        <ion-col size=1>
+            <ion-icon style="font-size: 24px;"  name="map" (click)="mapLocation('temp3')"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-row>
+
+<ion-row *ngIf="temperature.temp4.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp4.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3 *ngIf=" pageType == 'Vin'" style="padding-left: 4%;">
+        <ion-input [(ngModel)]="temperature.temp4.name" disabled="{{!temperature.temp4.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+    
+    <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+        <ion-input [(ngModel)]="temperature.temp4.min" disabled="{{!temperature.temp4.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+    
+      <ion-col size=3  class="paddingZero" style="padding-right: 2%;">
+          <ion-input [(ngModel)]="temperature.temp4.max" disabled="{{!temperature.temp4.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+      
+      
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon *ngIf="!temperature.temp4.imeiVisible" name="ios-arrow-down" (click)="showHide(temperature.temp4)"></ion-icon>
+        <ion-icon *ngIf="temperature.temp4.imeiVisible" name="ios-arrow-up" (click)="showHide(temperature.temp4)"></ion-icon>
+      </ion-col>
+
+      <ion-col size="1"  class="paddingZero" *ngIf="pageType == 'Vin'">
+        <ion-icon style="color: red; font-size: 21px" name="ios-trash" (click)="remove('temp4',76)"></ion-icon>
+     </ion-col>
+
+      <ion-row  style="width:100%" *ngIf="temperature.temp4.imeiVisible && pageType == 'Vin'"> 
+          <ion-col size="1" style="padding: 0px; "></ion-col>
+        <!-- <ion-col size=11 style="padding: 0px; ">
+            <ion-input [(ngModel)]="temperature.temp4.imei" disabled="{{!temperature.temp4.editEnable}}" placeholder = '{{temperature.temp4.name}} Device Id' style="padding: 0px; "></ion-input>
+          </ion-col> -->
+
+
+          <!-- gokul -->
+       <ion-col size=11 > 
+        <input [(ngModel)]="temperature.temp4.imei" list="num" disabled="{{!temperature.temp4.editEnable}}" placeholder = '{{temperature.temp4.name}} Device Id' style="padding: 0px; " />
+        <!-- <input class="input col" type="number" list="num"  formControlName="imeiNo" placeholder="Imei No" /> -->
+        <datalist id="num">
+        <option *ngFor="let number of imeiNo" >{{number}}</option>
+        </datalist>
+        </ion-col> 
+      </ion-row>
+      <ion-row style="width:100%" *ngIf="temperature.temp4.imeiVisible && pageType == 'Vin'"> 
+        <ion-col size="1" style="padding: 0px; "></ion-col>
+      <ion-col size=9 style="padding: 0px; ">
+          <ion-input [(ngModel)]="temperature.temp4.latLng" disabled="{{!temperature.temp4.editEnable}}" placeholder = '{{temperature.temp4.name}} Location' style="padding: 0px; "></ion-input>
+         
+        </ion-col>
+        <ion-col size="1">
+            <ion-icon style="font-size: 24px;" name="locate" (click)="currentLocation('temp4')"></ion-icon>
+        </ion-col>
+        <ion-col size=1>
+            <ion-icon style="font-size: 24px;"  name="map" (click)="mapLocation('temp4')"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-row>
+<!-- 
+<ion-row *ngIf="temperature.temp5.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp5.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp5.name" disabled="{{!temperature.temp5.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+   
+    <ion-col size=4  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp5.min" disabled="{{!temperature.temp5.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=4  class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp5.max" disabled="{{!temperature.temp5.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+</ion-row>
+
+
+<ion-row *ngIf="temperature.temp6.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp6.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp6.name" disabled="{{!temperature.temp6.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+   
+    <ion-col size=4  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp6.min" disabled="{{!temperature.temp6.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=4  class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp6.max" disabled="{{!temperature.temp6.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+</ion-row>
+
+
+<ion-row *ngIf="temperature.temp8.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp8.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp8.name" disabled="{{!temperature.temp8.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+   
+    <ion-col size=4  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp8.min" disabled="{{!temperature.temp8.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=4  class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp8.max" disabled="{{!temperature.temp8.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+</ion-row>
+
+
+<ion-row *ngIf="temperature.temp9.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp9.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp9.name" disabled="{{!temperature.temp9.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+   
+    <ion-col size=4  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp9.min" disabled="{{!temperature.temp9.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=4  class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp9.max" disabled="{{!temperature.temp9.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+</ion-row>
+
+
+<ion-row *ngIf="temperature.temp10.visible">
+    <ion-col size=1  class="paddingZero">
+        <ion-checkbox [(ngModel)]="temperature.temp10.editEnable" (click)="stateChange()"></ion-checkbox>
+    </ion-col>
+    <ion-col size=3  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp10.name" disabled="{{!temperature.temp10.editEnable}}"  placeholder = 'Zone Name' style="padding: 0px; "></ion-input>
+    </ion-col>
+   
+    <ion-col size=4  class="paddingZero">
+        <ion-input [(ngModel)]="temperature.temp10.min" disabled="{{!temperature.temp10.editEnable}}"  placeholder = 'min' style="padding: 0px; "></ion-input>
+    </ion-col>
+      <ion-col size=4  class="paddingZero">
+          <ion-input [(ngModel)]="temperature.temp10.max" disabled="{{!temperature.temp10.editEnable}}"  placeholder = 'max' style="padding: 0px; "></ion-input>
+      </ion-col>
+</ion-row>
+-->
+<ion-row  style="justify-content: center;">
+     <ion-col  size=6 style="text-align: end;">
+        <ion-button style="width: 80px; font-size: 9px; height: 25px; " shape="round" color="primary" (click)="submit()">submit</ion-button>
+    </ion-col>
+    <ion-col size=6>
+        <ion-button style="width: 80px; font-size: 9px; height: 25px;" shape="round" color="primary" (click)= "addMoreTemp()">Add More</ion-button>
+    </ion-col>
+</ion-row> 

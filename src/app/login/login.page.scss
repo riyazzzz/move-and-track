@@ -1,0 +1,306 @@
+
+ion-input {
+    .native-input {
+        border-radius: 25px
+    }
+}
+.Tracalogic{
+    --background:rgb(255, 174, 0);
+}
+.Moveandtrack{
+    --background:rgb(237, 27, 36);
+}
+.GE{
+    --background:rgb(255, 174, 0);
+}
+.Upcot-mvt{
+    --background:rgb(237, 27, 36);
+}
+.Remoncloud{
+    --background:rgb(237, 27, 36);
+}
+.moveAndTrackSpacing{
+    margin-top: 12%;
+}
+.labelSpacing{
+    margin-bottom: 2%;
+    margin-left: 6%;
+    width: 85%;
+}
+// .forgotPass {
+//     padding-left: 50px;
+//     font-size: 11px;
+// }
+
+.check {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px
+}
+
+.backgroundCol{
+    background:#32384b;
+}
+
+.noWhiteSpace{
+    padding:0px;
+}
+
+.iconSize{
+    width: 50px;
+    height: 35px;
+}
+// .appImageBackground{
+//     --background: url(../../assets/backgroungImage/Default-Portrait@~ipadpro.png) 0 0/100% 100% no-repeat;
+// }
+.appDarkBackground{
+    background:#32384b;
+}
+
+
+
+
+///////////////////////web///////////////////@at-root
+.label-shape{
+    //border-radius: 40px;
+    background-color: none;
+    height: 40px;
+    //width: 420px;  
+}
+.label-shape-box{
+    background-color: none;
+    height: 40px;
+    // width:20%;
+    margin-bottom: 3%;
+}
+.input-spacing{
+    top: 5vh;
+    right: 2vh;
+}
+.input-spacing{
+    float: right;
+}
+.web-input{
+    --padding-top: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: system-ui;
+}
+ion-input {
+    .native-input {
+        border-radius: 25px
+    }
+}
+.Tracalogic{
+    --background:rgb(255, 174, 0);
+}
+.Moveandtrack{
+    --background:rgb(237, 27, 36);
+}
+.GE{
+    --background:rgb(255, 174, 0);
+}
+
+
+.moveAndTrackSpacing{
+    opacity: 0.9;
+    width: 300px;
+    margin: auto;
+    position: relative;
+    top: 50px;
+    border-radius: 5px;
+    
+}
+@media only screen and (max-width: 550px)  {
+    .moveAndTrackSpacing {
+        // position: fixed !important;
+        top: 50px;
+    }
+    
+  }
+  @media only screen and (min-width:551px){
+    .moveAndTrackSpacing {
+         width: 360px;
+    } 
+    .moveAndTrackSpacingNew {
+        width: 360px;
+   } 
+  }
+
+@media only screen and (min-width: 999px) {
+    
+    .moveAndTrackSpacing {
+        position: fixed !important;
+        float: right;
+        right: -4.5% ;
+        transform: scale(0.8) !important;
+        
+        
+    }
+    .moveAndTrackSpacingNew {
+        position: absolute;
+        right: 8px;
+        top: 4vh;
+        background: #f1f1f170;
+    }
+    
+  }
+  @media only screen and (min-width: 1100px) {
+    .moveAndTrackSpacing {
+        position: fixed !important;
+        right: -3% !important;
+        transform: scale(0.9) !important;
+        background: #f1f1f170;
+    }
+}
+    @media only screen and (min-width: 1200px) {
+        .moveAndTrackSpacing {
+            position: fixed !important;
+            right: -2% !important;
+            transform: scale(0.9) !important;
+            background: #f1f1f170;
+            
+            
+    }
+    
+}
+@media only screen and (min-width: 1300px) {
+    .moveAndTrackSpacing {
+        position: fixed !important;
+        right: 0% !important;
+        transform: scale(0.9) !important;
+        background: #f1f1f170;
+        
+}
+}
+  
+.forgotNew{
+    font-size: 12px;
+    line-height: 31px;
+    color: red;
+    padding-right: 24px;
+    cursor: pointer;
+}
+#remember-item{
+    --background: transparent;
+    margin: -15px 0 0 0px;
+    position: absolute;
+    right: -12px;
+    font-size: 12px;
+    padding: 0 !important;
+    width: 148px;
+}
+
+.container{
+    margin: 0px;
+    height: 100vh;
+    display: block;
+}
+.text-box-spacing{
+height: 60px;
+}
+
+.labelSpacing-web {
+    margin-bottom: 3%;
+}
+
+.left-side-form-grp{
+    width: 20%;
+    /* height: 6%; */
+    /* float: right; */
+    position: fixed;
+    top: 10vh;
+    right: 2vh;
+}
+.container-wrapper{
+    margin: 0px;
+    height: 100vh;
+    display: block;
+    background: url("../../assets/loginLogo/mvtlogin.jpg") center center / cover no-repeat fixed;
+    background-size: 100% 99%;
+    //background: url("https://kingstrackimages.s3.amazonaws.com/loginimages/track_apmkingstrack_com_background.jpg") center center / cover no-repeat fixed;  
+}
+.fms-container-wrapper{
+    margin: 0px;
+    height: 100vh;
+    display: block;
+    background: url("https://kingstrackimages.s3.ap-southeast-1.amazonaws.com/Company/fmslogin.gif") center center / cover no-repeat fixed;
+    background-size: 100% 99%;
+    //background: url("https://kingstrackimages.s3.amazonaws.com/loginimages/track_apmkingstrack_com_background.jpg") center center / cover no-repeat fixed;  
+}
+.labelSpacing{
+    margin-bottom: 3%;
+    margin-left: 6%;
+    width: 85%;
+}
+
+.forgotPass {
+    font-size: 13px;
+}
+.forgot{
+    font-size: 11px; 
+}
+.svg_img{
+    width: 20px;
+    padding: 0px 0px 6px;
+}
+.check {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px
+}
+
+.backgroundCol{
+    background:#32384b;
+}
+
+.noWhiteSpace{
+    padding:0px;
+}
+
+.iconSize{
+    width: 50px;
+    height: 35px;
+}
+
+.appDarkBackground{
+    background:#32384b;
+}
+
+////Armoron
+
+.background {
+    --background: url("../../assets/Armoron/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.buttonArmoron {
+    color: blanchedalmond;
+    height: 56px;
+    width: 56px;
+}
+
+.iconsize {
+    font-size: 30px;
+}
+
+.rowstyle {
+    border-bottom: 1px solid #ba7203;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+#languageIcon, #countryIcon {
+    font-size: 20px;
+}
+.contryCodeStyle{
+    color:whitesmoke;
+    border-bottom:1px solid whitesmoke;
+    padding-top: 32px;
+}

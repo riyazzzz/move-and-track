@@ -1,0 +1,308 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="margin-left: 1%">Dealer Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col>
+        <form class="formPadding" [formGroup]="details">
+          <ion-row>
+            <ion-col>
+              <div class="header-label">Login details</div>
+              <ion-row>
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="dealerName"
+                    placeholder="Dealer name"
+                    class="form-control"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="delaarID"
+                    placeholder="Login id"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="password"
+                    placeholder="Password"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+              <!------->
+              <div class="header-label">Address</div>
+              <ion-row>
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="address"
+                    placeholder="Address"
+                  ></ion-input>
+                </ion-col>
+                <!--******************Mobile view***************----->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform !== "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder=" Country"
+                    formControlName="country"
+                    (ionChange)="getState('state')"
+                    [disabled]="imeiTrue"
+                  >
+                    <ion-select-option
+                      *ngFor="let countries of country"
+                      [value]="countries"
+                      >{{countries}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform !== "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="State"
+                    formControlName="state"
+                    (ionChange)="getState('city')"
+                  >
+                    <ion-select-option
+                      *ngFor="let states of state"
+                      [value]="states"
+                      >{{states}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform !== "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="District"
+                    formControlName="city"
+                    (ionChange)="getState('rto')"
+                  >
+                    <ion-select-option *ngFor="let city of cities"
+                      >{{city}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform !== "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="Rto area"
+                    formControlName="rtoArea"
+                    multiple="true"
+                  >
+                    <ion-select-option *ngFor="let rto of rtos"
+                      >{{rto}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!--******************Mobile view***************----->
+                <!--*******************Webview***************----->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform === "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder=" Country"
+                    formControlName="country"
+                    (ionChange)="getState('state')"
+                    [disabled]="imeiTrue"
+                    interface="popover"
+                  >
+                    <ion-select-option
+                      *ngFor="let countries of country"
+                      [value]="countries"
+                      >{{countries}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform === "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="State"
+                    formControlName="state"
+                    (ionChange)="getState('city')"
+                    interface="popover"
+                  >
+                    <ion-select-option
+                      *ngFor="let states of state"
+                      [value]="states"
+                      >{{states}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform === "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="District"
+                    formControlName="city"
+                    (ionChange)="getState('rto')"
+                    interface="popover"
+                  >
+                    <ion-select-option *ngFor="let city of cities"
+                      >{{city}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!------->
+                <ion-col
+                  size="12"
+                  size-sm="12"
+                  size-md="6"
+                  size-lg="4"
+                  *ngIf='myPlatform === "desktop"'
+                >
+                  <ion-select
+                    class="input select-btn"
+                    placeholder="Rto area"
+                    formControlName="rtoArea"
+                    interface="popover"
+                    multiple="true"
+                  >
+                    <ion-select-option *ngFor="let rto of rtos"
+                      >{{rto}}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+                <!--*******************Webview***************----->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input formControlName="dtcZone" placeholder="Dtc zone">
+                  </ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="taluk"
+                    placeholder="Taluk"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="pin"
+                    placeholder=" Pin number"
+                    type="number"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="gstIn"
+                    placeholder=" Gstin"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+              <!------->
+              <div class="header-label">Contact details</div>
+              <ion-row>
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="mobile"
+                    placeholder="Mobile number"
+                    type="number"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="panNo"
+                    placeholder="Pan number"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="e_Mail"
+                    placeholder="Email id"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="adhaarNo"
+                    placeholder="Aadhaar number"
+                    maxlength="12"
+                    type="number"
+                  ></ion-input>
+                </ion-col>
+                <!------->
+                <ion-col size="12" size-sm="12" size-md="6" size-lg="4">
+                  <ion-input
+                    formControlName="whatApp"
+                    placeholder="Whatsapp"
+                    type="number"
+                    pattern="[1-9]{1}[0-9]{9}"
+                    class="form-control"
+                  >
+                  </ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <!---submitbutton-->
+    <ion-row>
+      <ion-col style="text-align: center">
+        <ion-button
+          (click)="onSubmit()"
+          id="submitbtn"
+          [disabled]="!details.valid"
+          >Submit</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

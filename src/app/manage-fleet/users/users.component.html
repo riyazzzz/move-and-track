@@ -1,0 +1,120 @@
+<ion-content>
+  <ion-row>
+    <ion-col *ngIf="myPlatform != 'desktop'" size=12 style="padding: 0px;">
+      <ion-row>
+        <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+        </ion-searchbar>
+      </ion-row>
+ 
+        <ion-virtual-scroll [items]="detail | searchuser: searchInput "  [trackBy]="identify" >
+          <ion-card *virtualItem="let items;"  class="user-card" (click)="editMode(items)">
+           <ion-row class="user-content">
+              <ion-col size="12">
+                <ion-row>
+                  <ion-col size=12 class="headdata">
+                    {{items.userName}}
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col size=12 class="user-detail">
+                    <ion-row>
+                      <ion-col size=6 class="detailcol">
+                        <ion-row>
+                          <ion-col size=12>
+                            Password
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col class="data">
+                            {{items.pwd}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+                      <ion-col size=6 class="detailcol">
+                        <ion-row>
+                          <ion-col size=12>
+                            Contact no
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col size=12 class="data">
+                            {{items.contact}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col size=6 class="detailcol">
+                        <ion-row>
+                          <ion-col size=12>
+                            Email
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col size=12 class="data">
+                            {{items.email}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+                      <ion-col size=6 class="detailcol">
+                        <ion-row>
+                          <ion-col size=12>
+                            Address
+                          </ion-col>
+                        </ion-row>
+                        <ion-row>
+                          <ion-col size=12 class="data">
+                            {{items.addressLine1}}
+                          </ion-col>
+                        </ion-row>
+                      </ion-col>
+                    </ion-row>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-virtual-scroll>
+      <ion-fab class="botmRow" (click)="openModel()">
+        <ion-fab-button style="position: fixed;bottom: 43px;right: 15px;">
+          <ion-icon name="add" class="add-icon"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col *ngIf="myPlatform == 'desktop'" size=12 style="padding: 0px;">
+      <ion-row style="border: 1px solid #dad9d9; width: 99.2%">
+        <ion-col style="padding: 0;">
+          <ion-row style="float:left; margin: 0">
+            <ion-col size="4">
+              <ion-button (click)="openModel()" class="submitBtn" shape="round" size="small">
+                Add
+                <ion-icon name="add-circle" class="toolbar-icons"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="4">
+              <ion-button shape="round" (click)="editMode()" class="submitBtn" size="small">
+                Edit
+                <ion-icon name="create" class="toolbar-icons"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col  size="4">
+              <ion-button *ngIf="isDeleteShow" shape="round" (click)="deleteMode()" class="submitBtn" size="small">
+                Delete
+                <ion-icon name="trash" style="font-size: 25px;" class="toolbar-icons"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+
+      <jqxGrid #myGrid (onRowselect)="myGridOnRowSelect($event)" [theme]="'material'" [width]="'99%'" [height]="600"
+        [autoheight]="true" [showfilterrow]="true" [rowsheight]="40" [source]="dataAdapter" [columns]="columns"
+        [sortable]="true" [filterable]="true" [columns]="columns" [columnsresize]="true" [enabletooltips]="true"
+        [pageable]="true" [selectionmode]="'singlerow'" style="font-size: 10px !important">
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+</ion-content>

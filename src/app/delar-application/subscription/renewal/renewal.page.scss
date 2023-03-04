@@ -1,0 +1,41 @@
+.wrapper-container{
+    border: 1px solid #f6f6f6;
+    // padding:3em 5em;
+}
+ion-item{
+    border: 1px solid #eaf5f4;
+    margin: 5px 0px;
+    border-radius: 5px;
+}
+.btn{
+ --background:#7c68f8;
+  width:50%;
+  }
+ion-input{
+    --placeholder-color:darkgray;
+    color:gray;
+}
+.renewal-icon{
+    color:#7c68f8;
+    border-right: 1px solid #f6f6f6;
+    padding-right: 5px;
+}
+
+@media only screen and(min-width:320px)and(max-width:766px){
+    .wrapper-container{
+     padding:1em 5px;
+    } 
+
+}
+@media only screen and(min-width:767px)and(max-width:1010px){
+    .wrapper-container{
+     padding:1em ;
+    } 
+
+}
+@media only screen and(min-width:1011px){
+    .wrapper-container{
+     padding:2em 1em;
+    } 
+
+}

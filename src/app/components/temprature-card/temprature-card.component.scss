@@ -1,0 +1,76 @@
+// .safe{
+//     font-weight: bold;
+//     font-size: 17px;
+//     justify-content: center;
+//     background-color: green;
+//     color: white;
+// }
+// .unsafe {
+//     font-weight: bold;
+//     justify-content: center;
+//     background-color: green;
+//     color: white;
+// }
+*{
+    margin:0;
+    padding: 0;
+}
+#plateNo{
+    margin: auto !important;
+    padding-left: 15px;
+    font-size:medium;
+}
+.card-wrapp{
+    margin:10px 5px;
+    zoom: 85%;
+    border: 1px solid #716f6f;
+}
+.subScript{
+    font-size: 9px;
+    position: absolute;
+    top: 7px;
+}
+.subScript-min{
+    font-size: 9px;
+    position: absolute;
+    top: 0px;
+}
+
+.temp-value{
+    font-size: 24px;
+    font-weight: bold;
+}
+.date-column{
+    font-size: 11px;
+}
+.min{
+    margin: 0 7px 0 -7px;
+}
+.zone{
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+.zone-block{
+    background-color: #f6f6f6;
+    color:black;
+    text-align: center;
+    font-size: 9px;
+    padding: 5px 0px;
+    margin: 1px;
+}
+#plateno-border{
+    border-bottom:1px solid #b6b5b5;
+    padding: 2px;
+}
+.data{
+    text-align: center;
+    font-size: 9px;
+    color: white;
+    background-color: #00bfa5;
+    padding: 5px 0px;
+    margin: 1px;
+}
+.icon-size{
+    font-size: 15px;
+    margin-right: 10px;
+}

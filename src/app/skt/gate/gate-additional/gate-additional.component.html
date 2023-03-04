@@ -1,0 +1,51 @@
+<!---------- GateDetails ------------>
+<ion-header style="height: 100px;">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="1"><ion-icon name="arrow-back" style="float: right;color: gray;font-size: 25px; margin:0px auto;" (click)="closeModal()"></ion-icon></ion-col>
+      <ion-col size="11"><ion-title  class="popup-head">Gate Details</ion-title></ion-col>
+    </ion-row> 
+  </ion-toolbar>
+</ion-header>
+
+<div class="gate-container">
+  <form [formGroup]="gateLogin">
+  <ion-row >
+    <ion-col size="12" size-sm="12" size-md="12" size-lg="12" style="margin:auto">
+      <ion-list lines="none" style="background:transparent;">
+        <ion-item class="gate-items">
+          <ion-img src="assets/student_Details/gate.svg" class="stu-col1-img"></ion-img>
+          <ion-input type="text" placeholder="Gate Name  ( Mandatory )" formControlName="gatename"  class="gate-input"></ion-input>
+        </ion-item>
+        <ion-item class="gate-items">
+         <ion-img src="assets/student_Details/iconmonstr-location-1.svg" class="stu-col1-img"></ion-img>
+          <ion-input type="text" placeholder="Location  ( Mandatory )" formControlName="location" class="gate-input" ></ion-input>
+        </ion-item>
+  
+        <ion-item class="gate-items">
+          <ion-img src="assets/student_Details/edit-list.svg" class="stu-col1-img"></ion-img>
+          <ion-input type="text" placeholder="Description"   formControlName="description" class="gate-input require" ></ion-input>
+        </ion-item>
+        
+        <ion-item class="gate-items">
+          <ion-img src="assets/student_Details/imei.svg" class="stu-col1-img"></ion-img>
+          <ion-input type="number" placeholder="Device IMEI ( Mandatory )" formControlName="deviceIMEI"  class="gate-input"></ion-input>
+        </ion-item>
+        </ion-list>
+    </ion-col>
+  </ion-row>
+  
+<ion-row>
+  <ion-col style="margin:auto;text-align: center;">
+    <div>
+      <ion-button  shape="round" color="primary" class="gate-btn" (click)="onSubmit()" [disabled]="!gateLogin.valid">submit</ion-button>
+      <ion-button type="reset" fill="outline" shape="round" color="primary" class="gate-btn">clear</ion-button>
+    </div>
+  </ion-col>
+</ion-row>
+</form>  
+</div>
+<!----------GateDetailsEnd--------->
+
+
+

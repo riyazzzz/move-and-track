@@ -1,0 +1,248 @@
+
+   <ion-header >  
+    <ion-toolbar  id="toolbar-fix">
+          <ion-row style="background: #f2f2f2;margin: 10px 1% 1px;border: 1px solid #f1f3f5;">
+            <ion-col size="1"><ion-icon name="arrow-back" style="   border-radius: 50%;
+              float: right;color: gray;font-size: 38px;margin: 0px auto; background: white;
+              background-color: white;line-height: 32px;
+              margin-top: 11px;" (click)="closeModal()"></ion-icon></ion-col>
+            <ion-col size="10">
+              <ion-title style="text-align: center;" >
+              <h1 class="popup-head">
+                Student Details</h1> 
+              </ion-title>
+            </ion-col>
+          </ion-row>    
+    </ion-toolbar>
+  </ion-header>
+ 
+  <ion-content id="content-fix">
+  <div class="wrapper-container">
+    <form  [formGroup]="studentDetails">
+    <fieldset style="border:none; border-radius: 5px;box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.19)">
+      <ion-row>
+        <ion-col size-lg="12" size-sm="12" size-md="12" style="margin:auto;text-align:center">
+          <ion-row>
+            <!------StudentInfo-Col1------->
+       <ion-col size="12" size-sm="12" size-lg="4" size-md="6" class="ion-text-start">
+              <div class="deatils-header">Student Info</div>
+              <div class="box-column">
+                <ion-list lines="none" style="background: transparent;margin-top: 0px;padding-top: 0px;">
+
+                  <ion-item class="stu-items" style="background: transparent;">
+                    <ion-img src="assets/student_Details/rollnumber.svg" class="stu-col1-img"></ion-img>
+                    <ion-input type="number" placeholder="Enter Roll Number" class="stu-input" formControlName="rollno"></ion-input>
+                  </ion-item>
+
+                  <ion-item class="stu-items" style="background: transparent;">
+                    <ion-img src="assets/student_Details/student.svg" class="stu-col1-img"></ion-img>
+                    <ion-input type="text" placeholder="Enter Student Name" class="stu-input" formControlName="firstname"></ion-input>
+                  </ion-item>
+
+                  <ion-item class="stu-items" style="background: transparent;">
+                    <ion-icon name="phone-portrait" slot="start" class="stu-icon"></ion-icon>
+                    <ion-input type="number" placeholder="Enter Phone Number" class="stu-input" formControlName="contactno"></ion-input>
+                  </ion-item>
+                  
+                  <ion-radio-group allow-empty-selection="false" name="radio-group" value="Male"  formControlName="gender"  (ionChange)=" genderSelection($event)" >
+                  <ion-item style="background: transparent;--padding-bottom:10px;" class="stu-items">
+                    <ion-radio class="radioBtn" value="Male" checked></ion-radio>
+                    <ion-label slot="start" style="font-size: 22px;margin: 0px;padding: 0px ;
+                     color: #b8b8b8;">Gender</ion-label>
+                    <ion-img src="assets/student_Details/male.svg " class="genderImg"></ion-img>
+                    <ion-radio class="radioBtn" value="Female"></ion-radio>
+                    <ion-img src="assets/student_Details/female-avatar.svg" class="genderImg"></ion-img>
+                  </ion-item>
+                </ion-radio-group>
+                </ion-list>
+
+                <!-----Select Parent--------->
+                <ion-row style="margin-top:-8px;">
+                  <ion-col size="9.5" class="stu-items stu-select-box option-body">
+                    
+                      <select  class="stu-input select-input" formControlName="parentName" >
+                      <option value=""  selected    class="option-head">Select Parent Name</option>
+                      <option  *ngFor="let parentDetailsList of parentDetailsList" [value]="parentDetailsList" >{{parentDetailsList}}</option>
+                    </select>
+                  </ion-col>
+                  <ion-col size="2">
+                    <ion-button class="student-toggleBtn" (click)="openDetailsModel('parentDetails')"> +
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+                <!------Select Tag Id------------>
+                <ion-row style="margin-top:0;">
+                  <ion-col size="9.5" class="stu-items stu-select-box option-body"   >
+                    <select class="stu-input select-input" formControlName="tagId" >
+                      <option  value=""  selected  class="option-head" >Select Tag Id</option>
+                      <option  [disabled]="controlEnabled"  *ngFor="let selecttagid of selecttagid" [value]="selecttagid" >{{selecttagid}}</option>
+                    </select> 
+
+                  </ion-col>
+                  <ion-col size="2">
+                    <ion-button class="student-toggleBtn" (click)="openDetailsModel('tagDetails')"> +</ion-button>
+                  </ion-col>
+                </ion-row>
+                <ion-row style="margin-top:0;">
+                  <ion-col size="9.5" class="stu-items stu-select-box">
+                    <ion-icon name="contacts" slot="start" class="stu-icon"></ion-icon>
+               
+                    <select  class="stu-input select-input" formControlName="classId">
+                      <option value="" disabled selected hidden  class="option-head">Select Class Id</option>
+                      <option  [disabled]="controlEnabled" *ngFor="let classid of classid" value={{classid}}>{{classid}}</option>
+                    </select>
+                 
+                  </ion-col>
+                  <ion-col size="2">
+                    <ion-button class="student-toggleBtn" (click)="openDetailsModel('classDetails')"> +
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+                <ion-row style="margin-top:0px;">
+                  <ion-col  size="11.5" class="stu-items stu-select-box" style="margin-bottom: 5px;" >
+                    <select  class="stu-input select-input" formControlName="sectionId">
+                    <option value="" disabled selected hidden class="option-head" >Select section Id</option>
+                    <option  [disabled]="controlEnabled" *ngFor="let sectionIds of sectionIds" [value]="sectionIds">{{sectionIds}}</option>
+                  </select>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+            <!------RouteInfo-Col2---------->
+           <ion-col size="12" size-sm="12" size-lg="4" size-md="6">
+              <div class="deatils-header">Route Info 
+                <ion-button class="student-toggleBtn" style="margin: 0px;
+                padding-right: 20px;"  (click)="openDetailsModel('routeandTrip')"> +
+              </ion-button>
+            </div>
+              <div class="box-column" style="padding: 30px 0px;">
+
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/route1.svg" class="stu-svg"></ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="select-routeinfo stu-input route-info" formControlName="pickuproute" >
+                      <option value="" disabled selected hidden  class="option-head"  >Select Pickup Route</option>
+                      <option *ngFor="let pickuproute of pickuproute" [value]="pickuproute">{{pickuproute}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/bus- dropstop-svg.svg" class="stu-svg"></ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="stu-input select-routeinfo route-info"  formControlName="pickuptrip">
+                      <option value="" disabled selected hidden class="option-head"  >Select Pickup Trip</option>
+                      <option *ngFor="let pickuptrip of pickuptrip" [value]="pickuptrip">{{pickuptrip}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/Bus_stop.svg" class="stu-svg"></ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="stu-input select-routeinfo route-info" formControlName="pickupstop">
+                      <option value="" disabled selected hidden class="option-head">Select Pickup Stop</option>
+                      <option *ngFor="let pickupstop of pickupstop" [value]="pickupstop.stopPointId">{{pickupstop.stopName}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/droproute1.svg" class="stu-svg">
+                    </ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="select-routeinfo stu-input route-info" formControlName="droproute"   >
+                      <option value="" disabled selected hidden  class="option-head" >Select Drop Route</option>
+                      <option *ngFor="let droproute of droproute" [value]="droproute">{{droproute}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/drop route.svg" class="stu-svg">
+                    </ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    
+                    <select  class="stu-input select-routeinfo route-info" formControlName="droptrip" >
+                      <option value="" disabled selected hidden class="option-head"  >Select Drop Trip</option>
+                      <option *ngFor="let droptrip of droptrip" [value]="droptrip">{{droptrip}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+
+                <ion-row class="stu-select-box text-select-box">
+                  <ion-col size="1.7">
+                    <ion-img src="assets/student_Details/pickup-route.svg" class="stu-svg"></ion-img>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="stu-input select-routeinfo route-info" formControlName="dropstop" >
+                      <option value="" disabled selected hidden class="option-head" >Select Drop Stop</option>
+                      <option *ngFor="let dropstop of dropstop" [value]="dropstop.stopPointId">{{dropstop.stopName}}</option>
+                    </select>
+                  </ion-col> 
+                </ion-row>
+
+                <ion-row class="stu-select-box text-select-box" style="margin-bottom: 5px;">
+                  <ion-col size="1.7">
+                    <ion-icon name="notifications" class="stu-svg" style="padding: 0px;margin-right: 63px;"></ion-icon>
+                  </ion-col>
+                  <ion-col size="9.3">
+                    <select  class="select-routeinfo stu-input route-info"  formControlName="alertoption" >
+                      <option value="" disabled selected hidden  class="option-head" >Select Alert Option</option>
+                      <option *ngFor="let alerts of alertOption;let i = index" [value]="alerts.type">{{alerts.name}}</option>
+                    </select>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+
+
+            <!------AlertInfo-Col3---------->
+        <ion-col size="12" size-sm="12" size-lg="4" size-md="12">
+              <div class="deatils-header">Alert Info</div>
+              <div class="box-column3">
+                <div class="alert-info">
+                  <ion-row  *ngFor="let alert of alertchecks">
+                    <ion-col size="1">
+                      <ion-checkbox class="alert-checkbox" (click)="selectData(alert)" [value]="alert.isChecked"></ion-checkbox>
+                    </ion-col>
+                    <ion-col size="11" class="ion-text-start">
+                   {{alert.alertname}}
+                    </ion-col>
+                  </ion-row>
+                </div>
+                
+                <div class="deatils-header">Geo Zone Info</div>
+               <span>
+                  <ion-searchbar style="width: 80%;z-index: 12;position: absolute;bottom: 45%;
+                background: transparent;">
+                </ion-searchbar>
+              </span>
+              <!-- <span>
+                <select  class="shapes-item" >
+                  <option value="Circle">&#9679;</option>
+                  <option value="Rectangle" >&#x25AC;</option>
+                </select>
+              </span> -->
+                <div class="geozone-info  map studentPage" style="margin-bottom: 0;background: #f3f3f3;" #mapElement></div>
+                </div>
+              
+            </ion-col>
+          </ion-row>
+          <ion-button shape="round" color="primary" (click)="submit()" class="main-container-btn" [disabled]="!studentDetails.valid">submit</ion-button>
+          <ion-button type="reset" fill="outline" shape="round" color="primary" class="main-container-btn">clear</ion-button>
+        </ion-col>
+      </ion-row>
+    </fieldset>
+  </form>
+  </div> 
+</ion-content>

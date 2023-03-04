@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Stock Uploader</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="uploaderContent">
+  <ion-row class="uploaderRow">
+    <form [formGroup]="stockform">
+      <ion-card class="cardCenter">
+        <ion-card-content>
+          <ion-row style="padding: 0px">
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+            >
+              <input
+                type="file"
+                (change)="onFileChange($event)"
+                formControlName="fileupload"
+            /></ion-col>
+            <ion-col
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+              class="ion-text-center"
+              ><ion-button
+                (click)="sendToServer()"
+                id="submitbtn"
+                [disabled]="!stockform.valid"
+                >Submit
+              </ion-button>
+              <ion-button
+                (click)="reset()"
+                [disabled]="!stockform.valid"
+                id="submitbtn"
+                >Clear
+              </ion-button></ion-col
+            >
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </form>
+  </ion-row>
+  <jqxGrid
+    *ngIf="show"
+    #myGrid
+    [editable]="false"
+    [theme]="'material'"
+    [width]="'99%'"
+    [autoheight]="true"
+    [source]="dataAdapter"
+    [sortable]="true"
+    [filterable]="true"
+    [columns]="columns"
+    [columnsresize]="true"
+    [enabletooltips]="true"
+    [pageable]="true"
+    [showfilterrow]="true"
+    style="
+      font-size: 16px;
+      text-align: center !important;
+      margin: 5px;
+      cursor: pointer;
+    "
+  >
+    >
+  </jqxGrid>
+</ion-content>

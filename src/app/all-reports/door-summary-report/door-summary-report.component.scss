@@ -1,0 +1,31 @@
+*{
+    font-size: 12px;
+}
+.center{
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+
+}
+.statusOpen{
+    color:red;
+}
+.statusClose{
+    color:green;
+}
+.time{
+    font-size: 10px;
+    color:gray;
+    padding-left: 14px;
+}
+.timehead{
+    color: black;
+    font-weight: 600;
+    padding-left: 13px;
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}

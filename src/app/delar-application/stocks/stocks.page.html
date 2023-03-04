@@ -1,0 +1,64 @@
+
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+     <ion-title style="bottom: 16px;
+     position: fixed;">Stocks</ion-title>
+  <!-- <ion-button  shape="round" class="dealerHeader" style="margin-left: 50%;" (click)="openModel()">
+       Assign  
+    
+      </ion-button> -->
+      </ion-toolbar>
+      <ion-row class="upperRow">
+        <ion-col (click)="typeSelector('Assign')" [ngClass]="{'selectedUpperCol': type =='Assign', 'upperCol': type !='Assign'}" size=3.5>
+          <ion-label>Assign</ion-label>
+        </ion-col>
+        <ion-col (click)="typeSelector('Re-assign')" [ngClass]="{'selectedUpperCol': type !='Assign', 'upperCol': type =='Assign'}" size=3.5>
+          <ion-label>Re-assign</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-searchbar [(ngModel)]="terms" placeholder="Search">
+      </ion-searchbar>
+</ion-header>
+<ion-content>
+  
+  <!-- <ion-virtual-scroll [items]="showList  | searchDelar:terms"  approxItemHeight="320px">
+    <ion-list  *virtualItem="let showList;let i = index"  [id]='showList.imei' style= 'padding:0px;' >
+     <ion-item>
+          <ion-grid style='padding:0px;margin: 0px;'>
+            <ion-row style='padding:0px;margin: 0px;'>
+            
+              <ion-col size='8'  >{{showList.imei}}</ion-col>
+              <ion-col size='3'></ion-col>
+            
+           </ion-row>
+          </ion-grid>
+          <ion-checkbox class="checkbox" #checkboxes (ionChange)="updateAnswer($event,i, showList.imei, showList)" slot="end"></ion-checkbox>
+    </ion-item>
+    </ion-list>
+  </ion-virtual-scroll> -->
+  <ion-list style="padding: 0px;" *ngFor="let showList of showList | searchDelar:terms">
+    <ion-item style="padding: 0px;">
+      <ion-grid style='padding:0px;margin: 0px;'>
+        <ion-row style='padding:0px;margin: 0px;'>
+          <ion-col style="padding: 0px;" size='12'>{{showList.imei}}</ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-checkbox class="checkbox" #checkboxes (ionChange)="updateAnswer($event,i, showList.imei, showList)"
+        slot="end"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+  <!-- <ion-row class="ion-text-center"> 
+    
+  <ion-col size="12" style="position: fixed;
+   bottom: 0px;"><ion-button (click)="assign()" >Submit</ion-button></ion-col>
+  </ion-row> -->
+  <ion-fab *ngIf="selectedArray.length != 0" vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button style="--background: #0000000;
+    --box-shadow: #0000000; width: 100px; height: 100px;">
+      <ion-icon (click)="openModel()" style="font-size: 100px;     color: #7c68f8;" [name]="icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

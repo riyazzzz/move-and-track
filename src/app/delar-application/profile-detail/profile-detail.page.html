@@ -1,0 +1,64 @@
+<ion-content>
+  <ion-row class="backgroundGrd" style="height: 35%">
+    <ion-row>
+      <ion-icon
+        class="iconSize25px"
+        (click)="closePage()"
+        name="arrow-back"
+      ></ion-icon>
+    </ion-row>
+  </ion-row>
+  <ion-row class="iconPlace">
+    <ion-icon
+      class="iconStyle"
+      style="font-size: 120px"
+      name="contact"
+    ></ion-icon>
+  </ion-row>
+  <ion-row class="rowCenter">
+    <ion-card class="card">
+      <ion-card-content class="cardContent">
+        <ion-row style="border-bottom: 2px solid #d9d9d9" class="rowCenter">
+          <ion-label
+            style="padding: 19px"
+            class="userFontName dealerfont capitial"
+          >
+            {{detail.firstName}} {{detail.lastName}}</ion-label
+          >
+        </ion-row>
+        <ion-row class="rowPadding">
+          <ion-col size="1">
+            <ion-icon class="detailIcon" name="phone-portrait"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-label class="label"> {{detail.contactNo}} </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="rowPadding">
+          <ion-col size="1">
+            <ion-icon class="detailIcon" name="mail"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-label class="label"> {{detail.fax}} </ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="rowPadding">
+          <ion-col size="1">
+            <ion-icon class="detailIcon" name="compass"></ion-icon>
+          </ion-col>
+          <ion-col>
+            <ion-label class="label">
+              {{detail.addressLine1}}, {{detail.addressLine2}},
+              {{detail.addressCity}}, {{detail.countryCode}}
+            </ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+  <ion-row class="bottomButton">
+    <ion-button [routerLink]="['/manage-fleet/Profile']" class="buttonWidth">
+      Edit profile
+    </ion-button>
+  </ion-row>
+</ion-content>

@@ -1,0 +1,141 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>RSU Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col size="12">
+      <form [formGroup]="RsurequestForm">
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="3" size-md="3" *ngIf="Showdata">
+            <ion-label class="label-head">Sales Distributor:</ion-label>
+            <ionic-selectable
+              class="input selectable-input"
+              formControlName="SalesDistributor"
+              placeholder="Select Sales Distributors"
+              [items]="SalesDistributors"
+              [canSearch]="true"
+              [hasVirtualScroll]="true"
+              [disabledItems]="data"
+            >
+            </ionic-selectable>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3" *ngIf="showdata">
+            <ion-label class="label-head">Sales Distributor:</ion-label>
+            <ion-input
+              type="text"
+              disabled
+              placeholder="Imei Number"
+              formControlName="SalesDistributor"
+              placeholder="Select Sales Distributors"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">Request ID:</ion-label>
+            <ionic-selectable
+              class="input selectable-input"
+              formControlName="RequestId"
+              placeholder="Select Request ID"
+              [items]="RequestList"
+              [canSearch]="true"
+              [hasVirtualScroll]="true"
+              [disabledItems]="data"
+            >
+            </ionic-selectable>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">Iccid Number:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Iccid Number"
+              formControlName="iccidNumber"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+          <ion-col size="12" size-lg="3" size-md="3">
+            <ion-label class="label-head">Imei Number:</ion-label>
+            <ion-input
+              type="text"
+              placeholder="Imei Number"
+              formControlName="ImeiNumber"
+              class="input"
+            >
+            </ion-input>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col
+          size="12"
+          size-lg="12"
+          size-md="12"
+          style="margin: 10px 0px 0px; text-align: center"
+        >
+          <ion-button
+            class="submitbtn"
+            (click)="SearchData()"
+            [disabled]="!RsurequestForm.valid"
+            >Search</ion-button
+          >
+          <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 10px">
+        <ion-col size="12">
+          <jqxGrid
+            *ngIf="show"
+            #myGrid
+            [selectionmode]="'checkbox'"
+            (onRowselect)="myGridOnRowSelect($event)"
+            (onRowunselect)="myGridOnRowSelect($event)"
+            [theme]="'material'"
+            [width]="'99.5%'"
+            [autoheight]="true"
+            [source]="dataAdapter"
+            [columns]="columns"
+            [sortable]="true"
+            [filterable]="true"
+            [columns]="columns"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="true"
+            [showfilterrow]="true"
+            style="
+              font-size: 16px;
+              text-align: center !important;
+              margin: auto;
+              cursor: pointer;
+            "
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="showButton">
+        <ion-col
+          size="12"
+          size-lg="12"
+          size-md="12"
+          style="margin: 10px 0px 0px; text-align: end"
+        >
+          <ion-button class="submitbtn" (click)="Approvevalue($event)"
+            >Rejected</ion-button
+          >
+          <ion-button class="submitbtn" (click)="Approvevalue($event)"
+            >Approved</ion-button
+          >
+          <ion-button class="submitbtn" (click)="Approvevalue($event)"
+            >Renewal</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

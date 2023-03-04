@@ -1,0 +1,190 @@
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of displayData" style="padding:0px"> 
+  <ion-card class="cardMargin" >
+    <ion-card-content style="padding:0px">
+      <div class="ion-activatable">
+        <ion-ripple-effect type="bounded"></ion-ripple-effect>
+        <ion-grid style="padding:0px">
+          <ion-row>
+            <ion-col size='7' style="padding:0px;">
+              <ion-row style="padding:0px;  padding-left: 5px;">
+                <ion-col size='6' style="padding:0px; align-self: center;">
+                  <ion-row style="padding:0px">
+                    <ion-col size='3' style="padding:0px">
+                      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm"
+                        version="1.1"
+                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                        viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path fill="#1eb15d"
+                          d="M663.22 475.97c38.9,0 70.55,31.65 70.55,70.56 0,38.9 -31.65,70.56 -70.55,70.56 -38.91,0 -70.56,-31.65 -70.56,-70.56 0,-38.91 31.65,-70.56 70.56,-70.56zm-479.78 0c38.9,0 70.55,31.65 70.55,70.56 0,38.9 -31.65,70.56 -70.55,70.56 -38.91,0 -70.56,-31.65 -70.56,-70.56 0,-38.91 31.65,-70.56 70.56,-70.56zm0 112.89c23.34,0 42.33,-18.99 42.33,-42.33 0,-23.34 -18.99,-42.33 -42.33,-42.33 -23.34,0 -42.34,18.99 -42.34,42.33 0,23.34 19,42.33 42.34,42.33zm-169.34 -112.89l0 -84.67c0,-6.06 3.88,-11.47 9.65,-13.38l79.62 -26.55c29.98,-50.78 71.2,-99.11 162.29,-115.07 0.17,-0.03 0.34,-0.06 0.51,-0.09 168.22,-23.25 294.51,14.69 375.6,112.82 60.35,0.88 121.96,13.49 158.2,36.69 18.76,12.02 29.9,32.95 30.94,55.22l1.64 35.03c7.79,0 14.11,6.33 14.11,14.11l0 56.45c0,7.79 -6.32,14.11 -14.11,14.11l-56.44 0c-7.84,0 -14.1,-6.44 -14.11,-14.27 0,-0.07 -0.02,-0.14 -0.02,-0.22 -0.21,-54.37 -44.34,-98.4 -98.76,-98.4 -54.56,0 -98.78,44.22 -98.78,98.78 1.01,8.56 -5.74,14.11 -14.11,14.11l-254 0c-7.83,0 -14.1,-6.44 -14.11,-14.27 0,-0.07 -0.02,-0.14 -0.02,-0.22 -0.21,-54.38 -44.33,-98.4 -98.76,-98.4 -54.56,0 -98.78,44.22 -98.78,98.78 1.02,8.56 -5.74,14.11 -14.11,14.11l-56.44 0c-7.79,0 -14.11,-6.32 -14.11,-14.11l0 -56.45c-0.01,-7.78 6.31,-14.11 14.1,-14.11zm381 -134.05c0,3.89 3.16,7.05 7.06,7.05l184.02 0c6.52,0 9.49,-8.01 4.67,-12.4 -48.96,-44.64 -111.23,-70.16 -187.97,-76.95 -4.13,-0.37 -7.78,2.97 -7.78,7.11l0 75.19zm-169.53 0.07c0.05,3.86 3.19,6.98 7.06,6.98l127.2 0c3.89,0 7.05,-3.16 7.05,-7.05l0 -77.05c0,-3.91 -3.12,-7.13 -7.01,-7.13 -28.14,-0.03 -57.91,2.02 -89.56,6.4 -15.08,2.65 -28.51,6.29 -40.73,10.76 -2.81,1.03 -4.6,3.76 -4.57,6.75l0.56 60.34zm-73.64 6.98l38.36 0c3.93,0 7.1,-3.2 7.06,-7.12l-0.37 -38.24c-0.05,-5.83 -6.7,-8.99 -11.4,-5.55 -15.25,11.15 -27.94,24.43 -39.24,39.5 -3.53,4.7 -0.28,11.41 5.59,11.41zm511.29 239.89c23.34,0 42.33,-18.99 42.33,-42.33 0,-23.34 -18.99,-42.33 -42.33,-42.33 -23.34,0 -42.34,18.99 -42.34,42.33 0,23.34 19,42.33 42.34,42.33z" />
+                      </svg>
+                    </ion-col>
+                    <ion-col size='9'
+                      style="padding:0px ; font-size: x-small; font-weight: bold; text-align: center; top: -3px; align-self: center;">
+                      {{data.plateNo}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col *ngIf='data.operatorName' size='6' style="padding:0px; align-self: center;">
+                  <ion-row style="padding:0px">
+                    <ion-col size='3' style="padding:0px">
+                      <ion-icon name='person'></ion-icon>
+                    </ion-col>
+                    <ion-col size='9' style="padding:0px; color: #1eb15d;">
+                      {{data.operatorName | uppercase}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row style=" padding-left: 5px;">
+                <ion-col size=6 style="padding:0px ; font-size: 8px;">
+                  <ion-row style="color: green;padding: 0px;">
+                    <ion-col size=2 style="padding:0px ; font-size: 12px;">
+                      <ion-icon ios="ios-time" md="md-time"></ion-icon>
+                    </ion-col>
+                    <ion-col *ngIf='reportName == "overspeed"' size=10 style="padding:0px ; font-size: 12px;">
+                      Start Time
+                    </ion-col>
+                    <ion-col *ngIf='reportName == "speed"' size=10 style="padding:0px ; font-size: 12px;">
+                      Date
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf='reportName == "overspeed"' style="font-size: 10px">
+                    {{data.start}}
+                  </ion-row>
+                  <ion-row *ngIf='reportName == "speed"'>
+                    <span style="font-size: 12px;padding: 0px 1px 0px 15px">{{data.dateStamp}}</span>
+                  </ion-row>
+                </ion-col>
+                <ion-col size=6 style="padding:0px ; font-size: 8px;">
+                  <ion-row style="color: red;padding: 0px;">
+                    <ion-col size=2 style="padding:0px ; font-size: 12px;">
+                      <ion-icon ios="ios-time" md="md-time"></ion-icon>
+                    </ion-col>
+                    <ion-col *ngIf='reportName == "overspeed"' size=10 style="padding:0px ; font-size: 12px;">
+                      End Time
+                    </ion-col>
+                    <ion-col *ngIf='reportName == "speed"' size=10 style="padding:0px ; font-size: 12px;">
+                      Time
+                    </ion-col>
+                  </ion-row>
+                  <ion-row *ngIf='reportName == "overspeed"' style="font-size: 10px">
+                    {{data.end}}
+                  </ion-row>
+                  <ion-row *ngIf='reportName == "speed"'>
+                    <span style="font-size: 12px;padding: 0px 1px 0px 15px">{{data.timeStamp}}</span>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf='reportName == "overspeed"' style="padding:0px;  padding-left: 5px;">
+                <ion-col size='4' style="padding:0px ;">
+                  <ion-card style="padding:0px ; margin: 5px 5px 0px 5px;">
+                    <ion-card-content style="padding:0px ;">
+                      <ion-row style="font-size: 8px;  justify-content: center;">
+                        Min Speed
+                      </ion-row>
+                      <ion-row style="justify-content: center; align-items: center; font-weight: bold;  color:#f28918">
+                        <div class="circle"></div> {{data.min}}
+                      </ion-row>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+                <ion-col size='4' style="padding:0px ;">
+                  <ion-card style="padding:0px ; margin: 5px 5px 0px 5px;">
+                    <ion-card-content style="padding:0px ;">
+                      <ion-row style="font-size: 8px;  justify-content: center;">
+                        Avg Speed
+                      </ion-row>
+                      <ion-row style="justify-content: center; align-items: center; font-weight: bold;  color:#f28918">
+                        <div class="circle"></div> {{data.avg}}
+                      </ion-row>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+                <ion-col size='4' style="padding:0px ;">
+                  <ion-card style="padding:0px ;  margin: 5px 5px 0px 5px;">
+                    <ion-card-content style="padding:0px ;">
+                      <ion-row style="font-size: 8px;  justify-content: center;">
+                        Max Speed
+                      </ion-row>
+                      <ion-row style="justify-content: center;  align-items: center; font-weight: bold; color:#f28918">
+                        <div class="circle"></div> {{data.max}}
+                      </ion-row>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+
+              <ion-row *ngIf='reportName == "speed"'
+                style="background-color: #c3c2c2; font-size: x-small; font-weight: bold; justify-content: center; padding-bottom: 7px; color: white;">
+                <ion-label *ngIf='!data.descripition'> Limit Exceeds </ion-label>
+                <ion-label *ngIf='data.descripition'> {{data.descripition}} </ion-label>
+              </ion-row>
+            </ion-col>
+            <ion-col *ngIf='reportName == "overspeed"' size='3' style="padding: 0px;">
+              <ion-row>
+                <ion-col size='12' style="background-color:#f28918; color: #ffffff; border-radius: 0px 5px 0px 0px;">
+                  <ion-row style="place-content: center;">
+                    <!--<ion-img class='image' src="assets/vtstrackhisIcon/odometer.svg"></ion-img>-->
+                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="10mm" height="10mm"
+                      version="1.1"
+                      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <path fill="#ffffff"
+                        d="M409.64 204.09l0 0 0 0 0 -32.43 0 -64.86 0 0 27.37 0 0 97.29 -0.04 0 0 0.05 -13.64 -0.05 -13.69 0zm-329.9 327.69l68.28 -12.05 27.57 -4.87 0 0 0 0 -2.41 -13.59 -2.36 -13.34 0 0 0 0 -95.8 16.86 4.72 26.99zm605.4 -240.85l-49.2 28.38 0 0.05 0 0 7.56 13.16 6.08 10.5 0 0 84.28 -48.62 -13.69 -23.71 -35.03 20.24zm-425.13 361.08l-10.79 -9.06 0 0 0 0 -62.5 74.5 20.96 17.64 27.23 -32.48 35.32 -42.07 0 0 -10.22 -8.53zm459.83 -6.7l13.68 -23.71 -29.39 -16.96 -54.84 -31.71 0 0 0 0 -7.57 13.11 -6.12 10.6 0 0 0 0 84.24 48.67zm-644.73 -235.4l34.17 6.02 61.63 10.89 0 -0.05 0 0 4.1 -23.13 0.63 -3.8 0 0 -95.81 -16.92 -4.72 26.99zm691.13 -26.27l-26.07 4.58 -69.78 12.29 0 0 0 0 3.52 20 1.25 6.94 0 0 0 0.05 95.81 -16.92 -4.73 -26.94zm-442.52 -159.7l0 0 22.22 -8.09 3.47 -1.25 0 0 -33.25 -91.47 -25.69 9.4 4.72 13.06 28.53 78.35 0 0zm-197.96 420.75l84.28 -48.63 0 -0.05 0 0 -10.55 -18.21 -3.13 -5.45 0 0 0 0 -84.29 48.63 13.69 23.71 0 0 0 0zm449.46 16.28l62.55 74.55 20.96 -17.59 0 0 -62.5 -74.55 0 0 0 0 -14.55 12.2 -6.46 5.39 0 0zm-462.76 -367.15l0 0 84.23 48.62 0 0 11.86 -20.53 1.83 -3.13 0 -0.05 -84.28 -48.62 -13.64 23.71zm658.36 211.69l0 0 -95.8 -16.91 -1.01 5.78 -3.71 21.16 95.8 16.91 4.72 -26.94zm-562.66 -325.61l-20.96 17.59 22.99 27.37 39.56 47.13 0 0 0 0 12.38 -10.41 8.58 -7.18 0 0 0 0 -62.55 -74.5zm314.1 -33.97l-25.11 68.91 0.05 0 0 0 17.11 6.21 8.58 3.14 0 0 0 0 33.3 -91.42 -25.74 -9.35 -8.19 22.51zm69.15 122.06l5.3 4.48 0 0 0 0 62.55 -74.55 -20.96 -17.59 0 0 0 0 -62.55 74.5 0 0 0 0.05 15.66 13.11zm-168.08 -208.66c-224.95,0 -407.97,183.02 -407.97,407.97 0,129.63 60.76,245.19 155.26,320.03l41.35 -0.05c-103.75,-68.72 -172.32,-186.5 -172.32,-319.98 0,-211.55 172.13,-383.63 383.68,-383.63 211.55,0 383.68,172.08 383.68,383.63 0,133.48 -68.57,251.26 -172.32,320.03l41.34 -0.05c94.5,-74.79 155.27,-190.35 155.27,-319.98 0.05,-224.95 -183.02,-407.97 -407.97,-407.97zm11.9 445.75c-1.73,0 -3.23,0.63 -4.77,0.96l-187.02 -164.95 166.35 187.22c-0.1,0.91 -0.58,1.78 -0.58,2.7 0,14.41 11.61,26.07 26.02,26.07 14.31,0 25.93,-11.66 25.93,-26.07 0.04,-14.27 -11.62,-25.93 -25.93,-25.93z" />
+                    </svg>
+                  </ion-row>
+                  <ion-row style="font-size: xx-small; justify-content: center; text-align: center;">
+                    OVERSPEED <br> DURATION</ion-row>
+                  <ion-row class='rectangleBox'>{{data.duration}}</ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+            <ion-col *ngIf='reportName == "speed"' size='3'
+              style="background-color:#f28918; color: #ffffff; padding: 0px; border-radius: 0px 5px 0px 0px; align-self: center;">
+              <ion-row style="place-content: center; padding: 23px 0px 23px 0px;">
+                <ion-label style='font-size: 20px; font-weight: bold;'>{{data.speed}} <sub
+                    style='font-size: 8px;'>KM</sub>
+                </ion-label>
+              </ion-row>
+            </ion-col>
+            <ion-col size='2' style="padding: 0px;" (click)="toggleMapView(data)">
+              <ion-img style="width: 100px;padding: 0px; position: absolute;" src="assets/vtsLiveTrack/default.png">
+              </ion-img>
+              <ion-row
+                style="padding: 0px; position: absolute;  font-weight: bold; text-align: center; top: 20px; color: black;">
+                Map View </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  </ion-col>
+  </ion-row>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+<div class="modal" [ngClass]="{'dragDown' : mapView === false,'dragUp' : mapView === true}" swipeAll>
+  <ion-grid style="padding:0px">
+    <ion-row>
+      <ion-col size="2"></ion-col>
+      <ion-col style="padding:0px" size="8" class="ion-text-center">
+        <div class="semiCircle">
+          <ion-ripple-effect></ion-ripple-effect>
+          <ion-label class="alertsStyle">Map View
+          </ion-label>
+        </div>
+      </ion-col>
+      <ion-col size="2">
+        <ion-icon name="md-close" (click)='closeMap()'> </ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <div class='map showspeed' [ngClass]="{'hidespeed' : mapView === false,'showspeed' : mapView === true}" #mapElement></div>
+</div>

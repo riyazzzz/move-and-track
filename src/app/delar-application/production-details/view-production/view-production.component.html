@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-row>
+      <ion-col size="2">
+        <ion-icon class="iconSize25px" (click)="cancelBtn()" name="arrow-back"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-title>View Details</ion-title>
+      </ion-col>
+    </ion-row>
+</ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <ion-row>
+    <ion-col size=12>
+  <jqxGrid 
+  #myGrid
+   [theme]="'material'"
+   [width]="'99%'"
+   [autoheight]="true"
+   [source]="dataAdapter"
+   [columns]="columns"
+   [sortable]="true"
+   [filterable]="true"
+   [columns]="columns"
+   [columnsresize]="true"
+   [enabletooltips]="true" 
+   [pageable]="true"
+   style="font-size:16px;text-align: center !important;margin:auto;cursor:pointer;">
+  </jqxGrid>
+    </ion-col>
+  </ion-row>
+  </ion-content>

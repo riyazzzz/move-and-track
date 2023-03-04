@@ -1,0 +1,15 @@
+
+<ion-header class='header'>
+  <ion-row><ion-col size='11'>Completed List</ion-col> 
+
+    <ion-col size='1' (click)='closeModal()'><ion-icon  name="close-circle-outline"></ion-icon></ion-col> 
+  </ion-row>  
+</ion-header>
+<ion-content>
+  <ion-card class='expiry' *ngFor="let items of completeddatas">
+ <ion-row>
+  <ion-col size="12" size-lg="12"  size-md="7" style="padding-top: 0px;"><ion-icon name="checkmark-circle"  style="padding-right:5px;color:green;padding-top: 5px;font-size: 10px;"></ion-icon>{{items}}</ion-col>
+  </ion-row>
+  </ion-card>
+
+</ion-content>  

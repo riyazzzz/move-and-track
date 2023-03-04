@@ -1,0 +1,51 @@
+<ion-row>
+  <ion-col size=12 style="padding: 0px;">
+  <ion-row  style="border: 1px solid #dad9d9; width: 99.2%">
+  <ion-col style="padding: 0;">
+    <ion-row style="float:left; margin: 0">
+      <ion-col size=6 class="toolbar-buttons">
+  <ion-button  class="submitBtn"  (click)="openModel()"shape="round" size="small">
+  Add
+  <ion-icon name="add-circle" class="toolbar-icon"></ion-icon>
+  </ion-button>
+      </ion-col>
+      <ion-col size=6 class="toolbar-buttons">
+  <ion-button  class="submitBtn"  (click)="editModel()"shape="round" size="small">
+  Edit
+  <ion-icon name="create" class="toolbar-icon"></ion-icon>
+  </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  <ion-col>
+    <ion-row  style="margin:0px ;padding:0;float:right">
+      <ion-col class="ion-activatable download-buttons" (click)="createPdf()">
+        <div class="pdf-wrapper"></div>
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+      </ion-col>
+      <ion-col class="ion-activatable download-buttons" (click)="exportToExcel()">
+        <div class="excel-wrapper"></div>
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+  </ion-row>
+  <jqxGrid 
+  (onRowselect)="myGridOnRowSelect($event)" 
+  [pageable]="true"
+  [selectionmode]="'singlerow'"
+  [showfilterrow]="true" 
+  [filterable]="true"
+  [sortable]="true" 
+  [width]="'99.2%'"
+  [source]="dataAdapter" 
+  [columns]="columns" 
+  [autoheight]="true"
+  [theme]="'material'" 
+  [columnsresize]="true" 
+  [enabletooltips]="true" 
+  #myGrid 
+   style="font-size:10px;text-align: center !important">
+  </jqxGrid>
+  </ion-col>
+  </ion-row>

@@ -1,0 +1,621 @@
+$stop: red;
+$running: #1eb15d;
+$idle: #1f5baa;
+$overspeed: #f28918;
+$noTransmission: #000000;
+$powerFail: #724040;
+$doorOpen: #ff851b;
+$towed: #c200b8;
+$yettotrans: #7d410f;
+$online: #00e1bc;
+
+#gridView {
+  height: 124vh !important;
+  overflow-y: scroll;
+}
+#alert {
+  height: 53vh !important;
+}
+//   #mapv{
+//     height: 30vh !important;
+//     }
+
+.active {
+  --background: rgb(211, 211, 211);
+}
+
+.botmRow {
+  position: fixed;
+  left: 21%;
+  bottom: 0px;
+  right: 0;
+}
+.vehicleInfo {
+  height: 75vh !important;
+}
+.vehicleInfoTts{
+  height: 75vh !important;
+}
+#preventive{
+  margin-top: 0px;
+ 
+}
+#yesterdayStatus {
+  height: 33vh !important;
+}
+#executiveSummary {
+  height: 33vh !important;
+}
+.executiveGreater {
+  overflow-y: scroll;
+  height: 30vh;
+}
+#odometer {
+  height: 33vh !important;
+}
+.address {
+  font-size: 10px;
+}
+// .statusBar {
+//   font-size: 14px;
+//   color: white;
+//   font-weight: bold;
+//   -webkit-box-align: center;
+//   align-items: center;
+//   height: 29px;
+//   width: 29px;
+//   border-radius: 54%;
+//   box-shadow: 0 0 0 3px #00000024;
+//   place-content: center;
+// }
+
+.gridviewMargin {
+  margin-top: 8px;
+}
+.livetrackMargin {
+  margin-top: 85px;
+}
+.cardStyle {
+  height: 342px;
+  margin: 0px;
+}
+.blockDisplay {
+  display: block;
+}
+.noneDisplay {
+  display: none;
+}
+.statusLabel {
+  font-size: 11px;
+  text-align: center;
+}
+
+.filterPad {
+  padding: 5px 1px;
+}
+
+.filterPad .ion-activatable .grayBackground {
+  background-color: #cacaca;
+}
+
+.filter {
+  position: fixed;
+  width: 100%;
+  z-index: 12;
+}
+
+.searchBackground {
+  background: #32384b;
+}
+
+.card {
+  top: 10vh;
+}
+
+.modal {
+  background-color: white;
+  color: rgb(32, 32, 32);
+  z-index: 12;
+  position: fixed;
+  right: 0px;
+  width: 100%;
+  //border-bottom: 1px solid;
+  transition: 0.5s;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.dragDown {
+  transition: 0.5s;
+  bottom: -500px;
+}
+
+.dragUp {
+  transition: 0.5s;
+  bottom: 0px;
+}
+.dragUpIos {
+  transition: 0.5s;
+  bottom: 50px;
+}
+.displayType {
+  display: grid;
+}
+
+.semiCircle {
+  background: black;
+  width: 100%;
+  padding: 2%;
+  border-radius: 0px 0px 20px 18px;
+}
+
+.alertsStyle {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.borderRight {
+  border-right: 1px solid #dedede;
+}
+
+.imgSize {
+  height: 30px;
+}
+
+.cardContentPad {
+  padding-top: 6px;
+  padding-bottom: 0px;
+}
+
+.cardMargin {
+  // border-left: 6px solid $stop;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+}
+
+.running {
+  background-color: #1eb15d;
+}
+.towed {
+  background-color: $towed;
+}
+.yettotransmit {
+  background-color: $yettotrans;
+}
+.online {
+  background-color: $online;
+}
+.idle {
+  background-color: #1f5baa;
+}
+.stop {
+  background-color: #ff0000;
+}
+.overspeed {
+  background-color: #f28918;
+}
+.notransmission {
+  background-color: #000000;
+}
+.all {
+  background-color: #989aa2;
+}
+/*******New Design ****/
+/*******Side Border****/
+.runningCardBorder {
+  border-left: 6px solid $running;
+}
+.towedCardBorder {
+  border-left: 6px solid $towed;
+}
+.yetToTransmitCardBorder {
+  border-left: 6px solid $yettotrans;
+}
+.onlineCardBorder {
+  border-left: 6px solid $online;
+}
+.runningCardBorder {
+  border-left: 6px solid $running;
+}
+.idleCardBorder {
+  border-left: 6px solid $idle;
+}
+.noTransCardBorder {
+  border-left: 6px solid $noTransmission;
+}
+.powerFail {
+  border-left: 6px solid $powerFail;
+  // $powerFail:#412525;
+}
+.overspeedCardBorder {
+  border-left: 6px solid $overspeed;
+}
+.stopCardBorder {
+  border-left: 6px solid $stop;
+}
+.doorOpen {
+  border-left: 6px solid $doorOpen;
+}
+/*******driver bg****/
+.runningDriverBg {
+  background-color: $running;
+}
+.idleDriverBg {
+  background-color: $idle;
+}
+.noTransDriverBg {
+  background-color: $noTransmission;
+}
+.overspeedDriverBg {
+  background-color: $overspeed;
+}
+.stopDriverBg {
+  background-color: $stop;
+}
+
+/*******Address broder****/
+.runningAddressBorder {
+  border: 2px solid $running;
+}
+.idleAddressBorder {
+  border: 2px solid $idle;
+}
+.noTransAddressBorder {
+  border: 2px solid $noTransmission;
+}
+.overspeedAddressBorder {
+  border: 2px solid $overspeed;
+}
+.stopAddressBorder {
+  border: 2px solid $stop;
+}
+
+/*******text cooor****/
+.runningText {
+  color: $running;
+}
+.idleText {
+  color: $idle;
+}
+.noTransText {
+  color: $noTransmission;
+}
+.overspeedText {
+  color: $overspeed;
+}
+.stopText {
+  color: $stop;
+}
+.selecedFabIcon {
+  color: #1d93ed;
+}
+.notSelecedFabIcon {
+  color: #000000;
+}
+
+.heading {
+  height: 22px;
+  background-color: #6c2a84;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  justify-content: center;
+  width: 100%;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  padding: 6px;
+}
+.map {
+  width: 100%;
+  height: 48vh;
+}
+.cardDesign::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+.cardDesign::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255); /* color of the tracking area */
+}
+.cardDesign::-webkit-scrollbar-thumb {
+  background-color: white; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid rgb(211, 211, 211); /* creates padding around scroll thumb */
+}
+
+.alertCardGreater {
+  height: 48vh;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(202, 202, 202);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(202, 202, 202);
+}
+// new changes
+
+.margin {
+  margin-top: -2px;
+}
+div.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  background-color: green;
+  width: 500px;
+  height: 110px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
+
+// Armoron
+
+.timediff {
+  text-align: center;
+  color: white;
+  position: relative;
+  font-size: 3vw;
+  bottom: 7px;
+}
+
+.col {
+  -webkit-box-flex: 1;
+  flex: 1;
+  display: block;
+  padding: 5px;
+  width: 100%;
+}
+
+.DashboardButtons {
+  color: #ffda44;
+  font-size: 3vw;
+  background-color: transparent;
+  text-align: center;
+}
+
+.imgbuttons {
+  width: 30%;
+  position: relative;
+}
+
+/*Start Scss*/
+.header-background-color {
+  --background: #f6b221;
+}
+
+.a.white {
+  color: white;
+}
+.a.red {
+  color: red;
+}
+.arrowNext::after{
+  content: "";
+  font: normal normal normal 17px/0 FontAwesome;
+  color: #6c2a84;
+  position: fixed;
+  top: 9.3%;
+  left: 20.1%;
+  font-size: 13px;
+  z-index: 33;
+}
+.arrowPrevious::after{
+  content: '\f053';
+  font: normal normal normal 17px/0 FontAwesome;
+  color: #6c2a84;
+  right: 0px; 
+  position: fixed;
+  top: 9.3%;
+  left: 0%;
+  font-size: 13px;
+}
+.emptyClear,.emptyClearleft{
+  height: 51px;
+  width: 23px;
+  display: block;
+  background-color: white;
+  position: fixed;
+  top: 5.8%;
+  left: 19.2%;
+  z-index: 1;
+}
+.emptyClearleft{
+  height: 70px;
+  left:0%;
+}
+// .statusBar{
+//   font-size: 14px;
+//   color: white;
+//   font-weight: bold;
+//   height: 29px;
+//   width: 29px !important;
+//   border-radius: 50%;
+//   margin:4px 12px 16px 7px;
+//   box-shadow: 0 0 0 3px #00000024;
+//   display: grid !important;
+//   place-content: center;
+// }
+// .tooltip {
+//   position: relative;
+//   display: inline-block;
+// }
+// .tooltip .tooltiptextinitial {
+//   visibility: hidden;
+//   width: 120px;
+//   color: black;
+//   text-align: center;
+//   border-radius: 6px;
+//   padding: 13px 0;
+//   bottom: 100%;
+//   font-size: 10px;
+//   position: absolute;
+//   top: 20px;
+//   left: -47px;
+//   z-index: 1;
+// }
+// .tooltip .tooltiptext {
+//   visibility: hidden;
+//   width: 120px;
+//   color: #1d1c1c;
+//   text-align: center;
+//   border-radius: 6px;
+//   padding: 13px 0;
+//   bottom: 100%;
+//   font-size: 10px;
+//   position: absolute;
+//   top: 20px;
+//   left: -45px;
+//   z-index: 1;
+// }
+
+// .tooltip:hover .tooltiptext {
+//   visibility: visible;
+// }
+// .tooltip:hover .tooltiptextinitial {
+//   visibility: visible;
+// }
+
+//Bar -type 
+.statusBar{
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  height: 22px;
+  border-radius: 9%;
+  text-align: center;
+  display: grid !important;
+  place-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,0.2),
+  0 2px 2px 0 rgba(0,0,0,0.14),
+  0 1px 5px 0 rgba(0,0,0,0.12);
+  }
+.padding10{
+  padding: 3px 21px;
+ }
+  // .statusBar{
+  //   font-size: 14px;
+  //   color: white;
+  //   font-weight: bold;
+  //   height: 28px;
+  //   width: 31px !important;
+  //   border-radius: 50%;
+  //   text-align: center;
+  //   display: grid !important;
+  //   place-content: center;
+  //   box-shadow: 0 0 0 3px #00000024;
+  //   cursor: pointer;
+  //   opacity: 0.8;
+  // }
+  //Bar****
+  .statusBar .status-head{
+  visibility: hidden;
+  font-size: xx-small;
+  place-content: center;
+  line-height: 0;
+  position: relative;
+  top: 7px;
+  left: 0px;
+  font-weight: bold;
+  z-index: 1;
+  color:black;
+}
+
+//Circle -new below two
+// .statusBar .status-head{
+//   visibility: hidden;
+//   font-size: xx-small;
+//   place-content: center;
+//   line-height: 0;
+//   position: relative;
+//   top: 13px;
+//   left: 0px;
+//   font-weight: bold;
+//   z-index: 1;
+//   color:black;
+// }
+#filter-row{
+  line-height: 0; 
+  transform: scale(0.6);
+  padding-left: 5px;
+  position: fixed;
+  z-index: 1;
+  top: 1px;
+  left: -27px;
+}
+
+.filter-btn{
+  box-shadow: none;
+  --background:white;
+}
+.filter-btn:hover{
+  --background-hover:lightgray;
+}
+.filter-icons{
+  vertical-align: middle;
+  font-size: 18px;
+  color:black;
+}
+.filter-fabs{
+  height: 28px;
+  width: 30px;
+  display: inline-block;
+  margin: 0;
+  vertical-align: middle;
+  --background: #f3f2f2;
+  --box-shadow: none;
+}
+.filter-fabs:hover{
+  --background-hover:lightgray;
+}
+.search-bar{
+  width: 20.9%;
+  position: fixed;
+  padding: 2px;
+  z-index: 3;
+  background: white;
+  border-top:5px solid purple;
+
+}
+.statusBar:hover .status-head {
+  visibility: visible !important;
+
+}
+.statusBar:hover{
+  opacity: 1;
+}
+#status-row{
+  margin: 0;
+  padding: 0px;
+  position: fixed;
+  top: 68px;
+  background: white;
+  z-index: 1;
+  width: 21%;
+}
+
+.input-item{
+  height: 36px;
+  background-color: lightgray;
+  --padding-start:10px;
+}
+.input-new{
+  width:100%;
+  border:none;
+  outline:none;
+}

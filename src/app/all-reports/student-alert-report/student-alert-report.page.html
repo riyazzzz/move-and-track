@@ -1,0 +1,35 @@
+<ion-content>
+  <ion-row>
+   <ion-col size="12" size-sm="12" size-md="6" size-lg="6"  *ngFor="let items of  displayData">
+     <ion-card class="user-card"> 
+       <ion-row>
+         <ion-col size=12>
+           <ion-row class="student">
+            {{items.StudentName}}
+           </ion-row>
+           <ion-row class="contact">
+             {{items.ContactNo}}
+           </ion-row>
+          <ion-row style="background: white;border-radius: 5px">
+            <ion-col size=3  *ngFor = "let data of headers">
+              
+              <ion-row class="alerttype">{{data}}</ion-row>
+              <ion-row>
+                <ion-col style="text-align: center;">
+              
+                  <ion-row class="alerttype">{{items[data]}}</ion-row>
+                <!-- <ion-icon [name]="icon[data.status]" class="icon-color"[ngStyle]="data.status == 'notsent' ? {'color':'red'}  : {'color':'green'}" ></ion-icon> -->
+              </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+         </ion-col>
+       </ion-row>
+     </ion-card>
+   </ion-col>
+  </ion-row>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+ </ion-content>

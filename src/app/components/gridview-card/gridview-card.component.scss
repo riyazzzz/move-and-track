@@ -1,0 +1,402 @@
+$stop: red;
+$running: #1eb15d;
+$idle: #1f5baa;
+$overspeed: #f28918;
+$noTransmission: #000000;
+$power: #412525;
+$doorOpen: #ff851b;
+$towed: #c200b8;
+$yettotrans: #7d410f;
+$online: #00e1bc;
+
+
+@media(min-width:1024px)and(max-width:1250px){
+  *ion-row,ion-col{
+    zoom:97%
+  }
+}
+.icon-col{
+  align-self: center;
+  padding: 2px 4px 0;
+}
+.time-stamp{
+  font-size: 10px;
+  font-weight: bold;
+  color: white;
+  padding: 2px 10px 2px 12px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.set-float{
+text-align: center;
+padding-right: 10px;
+}
+.set-float2{
+  padding-left: 10px;
+}
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  font-size: x-small;
+  text-align: center;
+  border-radius: 6px;
+  position: absolute;
+  top: 5px;
+  left: -25px;
+  font-weight: bold;
+  line-height: 1;
+  z-index: 1;
+  color:black;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.odometer {
+  font-size: 8px;
+  //padding-top: 11px;
+  color: black;
+}
+.cardAlign {
+  padding-left: 10px;
+}
+.address {
+  font-size: 10px;
+}
+.plateno {
+  padding: 9px 0px 0px 7px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.platenoweb {
+  padding: 9px 0px 0px 7px;
+  font-weight: bold;
+  font-size: 12px;
+}
+.underline,
+.underline2,
+.underline-sm,
+.speed-sm{
+  text-align: center;
+  font-size: 15px;
+  // color:rgb(0, 119, 255);
+  margin-top: 0px;
+  padding-top: 0px;
+  position: relative;
+}
+
+.underline:before {
+  margin: auto;
+  position: absolute;
+  content: "";
+  height: 2.7px;
+  bottom: 13px;
+  width: 13px;
+  background: grey;
+  left: 10px;
+}
+
+.underline2:before {
+  margin: auto;
+  position: absolute;
+  content: "";
+  height: 2.7px;
+  bottom: 5px;
+  width: 20px;
+  background: grey;
+  left: 3px;
+}
+.underline-sm:before {
+  margin: auto;
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: 3px;
+  width: 15px;
+  background: grey;
+  left: 5px;
+}
+.speed-sm:before {
+  margin: auto;
+  position: absolute;
+  content: "";
+  height: 2px;
+  bottom: 2px;
+  width: 13px;
+  background: grey;
+  left: 9px;
+}
+.iconBackground {
+  border-top: 1px solid grey;
+  border-right: 1px solid grey;
+  border-bottom: 1px solid grey;
+  border-left: 1px solid grey;
+  border-radius: 10px 10px 10px 10px;
+  margin: 0px;
+  line-height: 5px;
+}
+.svgSize {
+  height: 16px;
+  width: 16px;
+}
+// .display-container{
+//   margin-left:-5px;
+//   border-top:1px solid grey;
+//   border-bottom:1px solid grey ;
+//   border-left:1px solid grey ;
+//   border-radius: 10px 0px 0px 10px;
+//   width:36px;
+//   display:flex;
+//   .iconsegmentOne{
+//    width:16px;
+//    align-items: center;
+//   }
+//   .iconsegmentTwo{
+//     width:16px;
+//     align-items: center;
+//   }
+// }
+// .address {
+//   font-size: 11px;
+//   line-height: initial;
+//   margin-top: 3px;
+// }
+
+// .date {
+//   font-size: 12px;
+//   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+// }
+
+// .vehicleName {
+//   font-size: small;
+//   font-weight: bold;
+// }
+
+// .speed {
+//   font-size: 30px;
+//   text-align: center;
+// }
+
+// .speedUnit {
+//   font-size: 15px;
+// }
+
+// .filterName {
+//   font-size: 9px;
+//   color: white;
+// }
+
+// .filterValue {
+//   color: black;
+// }
+
+.statusLabel {
+  font-size: 11px;
+  text-align: center;
+}
+
+.filterPad {
+  padding: 5px 1px;
+}
+
+.filterPad .ion-activatable .grayBackground {
+  background-color: #cacaca;
+}
+
+.filter {
+  position: fixed;
+  width: 100%;
+  z-index: 12;
+}
+
+.searchBackground {
+  background: #32384b;
+}
+
+.card {
+  top: 10vh;
+}
+
+.modal {
+  background-color: #c3c3d4;
+  color: rgb(32, 32, 32);
+  z-index: 12;
+  position: fixed;
+  right: 0px;
+  width: 100%;
+  transition: 0.5s;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+}
+
+.dragDown {
+  transition: 0.5s;
+  bottom: -280px;
+}
+
+.dragUp {
+  transition: 0.5s;
+  bottom: 0px;
+}
+.dragUpIos {
+  transition: 0.5s;
+  bottom: 50px;
+}
+.displayType {
+  display: grid;
+}
+
+.semiCircle {
+  background: #32384b;
+  width: 100%;
+  padding: 2%;
+  border-radius: 0px 0px 20px 18px;
+}
+
+.alertsStyle {
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.borderRight {
+  border-right: 1px solid #dedede;
+}
+
+.imgSize {
+  height: 30px;
+}
+
+.cardContentPad {
+  padding-top: 6px;
+  padding-bottom: 0px;
+}
+
+.cardMargin {
+  // border-left: 6px solid $stop;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+}
+
+.running {
+  background-color: #1eb15d;
+}
+.idle {
+  background-color: #1f5baa;
+}
+.stop {
+  background-color: #ff0000;
+}
+.overspeed {
+  background-color: #f28918;
+}
+.notransmission {
+  background-color: #000000;
+}
+.all {
+  background-color: #989aa2;
+}
+/*******New Design ****/
+/*******Side Border****/
+.runningCardBorder {
+  border-left: 6px solid $running;
+}
+.idleCardBorder {
+  border-left: 6px solid $idle;
+}
+.noTransCardBorder {
+  border-left: 6px solid $noTransmission;
+}
+.overspeedCardBorder {
+  border-left: 6px solid $overspeed;
+}
+.stopCardBorder {
+  border-left: 6px solid $stop;
+}
+
+/*******driver bg****/
+.runningDriverBg {
+  background-color: $running;
+}
+.idleDriverBg {
+  background-color: $idle;
+}
+.noTransDriverBg {
+  background-color: $noTransmission;
+}
+.overspeedDriverBg {
+  background-color: $overspeed;
+}
+.stopDriverBg {
+  background-color: $stop;
+}
+.towedDriverBg {
+  background-color: $towed;
+}
+.onlineDriverBg {
+  background-color: $online;
+}
+.yetToTransmitDriverBg {
+  background-color: $yettotrans;
+}
+.powerFail {
+  background-color: #412525;
+}
+.doorOpenBg {
+  background-color: $doorOpen;
+}
+
+/*******Address broder****/
+.runningAddressBorder {
+  border: 2px solid $running;
+}
+.idleAddressBorder {
+  border: 2px solid $idle;
+}
+.noTransAddressBorder {
+  border: 2px solid $noTransmission;
+}
+.overspeedAddressBorder {
+  border: 2px solid $overspeed;
+}
+.stopAddressBorder {
+  border: 2px solid $stop;
+}
+
+/*******text cooor****/
+.runningText {
+  color: $running;
+}
+.towedText {
+  color: $towed;
+}
+.yetToTransmittext {
+  color: $yettotrans;
+}
+.onlinetext {
+  color: $online;
+}
+.idleText {
+  color: $idle;
+}
+.noTransText {
+  color: $noTransmission;
+}
+.overspeedText {
+  color: $overspeed;
+}
+.stopText {
+  color: $stop;
+}
+.powerFailText {
+  color: $power;
+}
+.doorOpen {
+  color: $doorOpen;
+}

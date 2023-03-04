@@ -1,0 +1,148 @@
+*{
+    
+    main .scroll-y {
+      overflow-y: none !important;
+   }
+   .scroll-y {
+    overflow-y: none !important;
+ }
+ }
+.routeTripcontainer {
+    width           : 95%;
+    height          : 80%;
+    margin          : -20px auto 32px;
+    padding         : 7px 0;
+    background-color: #f3f3f3;
+}
+
+.routeTripbtn {
+    height    : 30px;
+    font-size : small;
+    width     : 100px;
+    margin    : 10px auto 0;
+    padding   : 2px;
+    text-align: center;
+}
+
+.popup-head {
+    color: #3880ff;
+    margin-left: -15px;
+    text-align: -webkit-center;
+    padding-left: 0px;
+}
+.checkbox-inline{
+    position: relative;
+    padding-left: 15px;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 11px;
+    vertical-align: middle;
+    cursor: pointer;
+    display: inline-block !important;
+    margin-left: 23px !important;
+ }
+ .day-input{
+    position: absolute; 
+    margin-left: -20px;
+ }
+ .checkbox-list{
+    font-size: 13px;
+    background-color: white;
+    margin: 0px;
+    border: 1px solid #cfe8ec;
+    border-radius: 5px;
+ }
+ #checkbox-icon{
+    font-size: 22px;
+    margin: 0px 22px 0 0px;
+    vertical-align: middle;
+    color: #3880ff;
+    border-right: 1px solid #efedeb;
+    padding: 2px 8px;
+ }
+ .set-size{
+    padding: 0 44px 0 0 !important;
+ }
+ .label-column{
+    margin: auto;
+    padding-left: 15px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #6b6969;
+}
+
+.select-container{
+    font-size: 12px;
+}
+.stu-icon,
+.stu-svg {
+    font-size    : 32px;
+    border-right : 1px solid #efedeb;
+    padding-right: 10px;
+    margin       : 0px 15px 5px 0px;
+    color        : #3880ff;
+}
+
+.stu-svg {
+    padding: 0px 10px 0px 0px;
+    height: 23px;
+    width  : 42px;
+    margin : 5px 15px 7px 8px;
+}
+select.stu-input {
+    outline: none;
+}
+.select-input,.select-routeinfo{
+    border: 0;
+    margin:15px;
+    width:90%;
+    color:rgb(85, 87, 87);
+    background: none;
+}
+.select-routeinfo{
+    width:100%
+}
+select.option-body:hover{
+    outline: none;
+}
+.option-head{
+    background-color: darkgray;
+}
+.route-info{
+    margin: 0px;
+}
+option:focus{
+    outline: none;
+}
+.stu-select-box{
+    border       : 1px solid #cfe8ec;
+    height       : 48px;
+    border-radius: 7px;
+    background   : white;
+
+}
+
+.text-select-box {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.route-items {
+    padding         : 0px;
+    border          : 1px solid #cfe8ec;
+    border-radius   : 7px;
+    height: 40px;
+    background-color: #fcfcfc;
+}
+.route-input {
+    --placeholder-color: rgb(117, 118, 119);
+    --padding-top:0;
+    font-size: 12px;
+}
+.stu-col1-img {
+    padding     : 0px 15px 0px 0px;
+    height      : 30px;
+    width       : 42px;
+    margin      : 5px 15px 7px 0px;
+    border-right: 1px solid #efedeb;
+}

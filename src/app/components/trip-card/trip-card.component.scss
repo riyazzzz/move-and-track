@@ -1,0 +1,97 @@
+* ion-row,
+ion-col {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+}
+.inactive {
+  border-left: 3px solid #ff0000;
+  
+}
+.trip-wrapper{
+  font-size: 16px;
+}
+.active{
+  border-left: 3px solid green;
+}
+.trip-content {
+  padding: 7px 5px;
+  color: black;
+  font-weight: 500;
+}
+
+.sub-status {
+  border: 1px solid lightgray;
+  padding-left: 10px;
+}
+#ind-icon {
+  background-color: green;
+  border-radius: 12px;
+  color: green;
+  vertical-align: middle;
+}
+#odo-icon {
+  font-size: 35px;
+  vertical-align: middle;
+  color: gray;
+}
+.current-status {
+  margin: auto;
+}
+.inner-card {
+  box-shadow: none;
+  border: 1px solid lightgray;
+  margin: 3px 2px;
+  padding: 10px;
+  border-radius: 9px;
+  background: lavender;
+  color: black;
+  font-weight: 500;
+}
+.header {
+  font-weight: 500;
+  color: #7d7d7d;
+}
+#delete-icon {
+  color: red;
+  font-size: 22px;
+}
+#edit-icon {
+  color:green;
+  font-size: 20px;
+}
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  height: 30px;
+  width: 30px;
+}
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: black;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -8px;
+  margin-left: -6px;
+  position: absolute;
+  z-index: 1;
+  font-size: 10px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

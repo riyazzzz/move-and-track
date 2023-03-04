@@ -1,0 +1,155 @@
+$unSeletedColor : white;
+$stopColor: #eb3636;
+$runningColor: #36eb9d;
+$idleColor: #36a2eb;
+$towedColor:#eb368d;
+$meterColor:#7d410f;
+
+.pdf-wrapper,.excel-wrapper{
+  background:url("../../../assets/pdf.svg")no-repeat;
+  width:22px;
+  height: 22px;
+
+}
+
+
+.report{
+  height: '40vh';
+}
+.selectedTab{
+  background-color: $unSeletedColor;
+  color: black;
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+.unSelectedTab{
+  background-color :#737b92; 
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+/*Design For the grid */
+
+
+
+.displayType {
+  display: grid
+}
+.odometerStyle{    
+  border:1px solid #139be9;  
+}
+.odometerHeader{
+  background-color:#139be9;
+  color:white;
+  font-weight: bold;
+}
+.odometerPartitionLine{
+  border-right: 1px solid #139be9;    
+}
+.engineStyle{    
+  border:1px solid #0db0ab;  
+}
+.engineHeader{
+  background-color:#0db0ab;
+  color:white;
+  font-weight: bold;
+}
+.enginePartitionLine{
+  border-right: 1px solid #0db0ab;    
+}
+.speedStyle{    
+  border:1px solid #f8951d;  
+}
+.speedHeader{
+  background-color:#f8951d;
+  color:white;
+  font-weight: bold;
+}
+.gridTime{
+  font-size: 12px;
+}
+.odometerTime{
+  font-size: 18px;
+  font-weight: bold;
+}
+.odometerTitle{
+  font-size: 15px;
+    font-weight: bold;
+    color:$meterColor;
+}
+.image{
+  height: 100px;
+  width: 100px;
+}
+.StopStyle{    
+  border:0px solid $stopColor;  
+  height: 54px;
+}
+.Stop{
+  background-color: $stopColor;
+  color:white;
+  font-weight: bold;
+}
+.StopPartitionLine{
+  border-right: 0px solid $stopColor;    
+}
+
+.RunningStyle{    
+  border:0px solid $runningColor;  
+  height: 54px;
+}
+.Running{
+  background-color: $runningColor;
+  color:white;
+  font-weight: bold;
+}
+.RunningPartitionLine{
+  border: 0px solid $runningColor;    
+}
+
+.IdleStyle{    
+  border:0px solid $idleColor;  
+  height: 54px;
+}
+.Idle{
+  background-color: $idleColor;
+  color:white;
+  font-weight: bold;
+}
+.IdlePartitionLine{
+  border-right: 0px solid $idleColor;    
+}
+.TowedStyle{    
+  border:0px solid $towedColor;  
+  height: 54px;
+}
+.Towed{
+  background-color: $towedColor;
+  color:white;
+  font-weight: bold;
+}
+.TowedPartitionLine{
+  border-right: 0px solid $towedColor;    
+}
+.meterStyle{    
+  border:1px solid $meterColor;  
+}
+.meterHeader{
+  background-color: $meterColor;
+  color:white;
+  font-weight: bold;
+  font-size: 15.3px;
+}
+.meterPartitionLine{
+  border-right: 1px solid $meterColor;    
+}
+
+.odometer{
+  color:black;
+  vertical-align: middle;
+  align-self: center;
+}

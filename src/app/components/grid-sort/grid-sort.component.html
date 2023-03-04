@@ -1,0 +1,138 @@
+<!---------SortBy------------>
+<ion-radio-group >
+  <ion-row class="filterSortHeading">SORT BY</ion-row>
+  <ion-row class="container">
+    <ion-col size="6">
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio (click)="filterPage('watchMode')" class="radioBtn" name='sortRadio' value='watchMode'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">Watch Mode</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription" style="padding: 0px">
+                <!-------EyeSvg-------->
+                <svg width="28" height="30" viewBox="0 0 800 800"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd;position: relative;left:-7px;right: 5px;top:5px;">
+                  <path fill="#0779e4"
+                    d="M430 586.53c-38.76,0 -72.57,-8.35 -101.64,-30.26 -23.48,-17.69 -42.12,-38.46 -54.23,-65.66 -25.5,-57.32 -16.5,-119.47 21.29,-169.22 5.71,-7.52 14.31,-14.96 20.32,-20.98 3.66,-3.66 6.82,-5.64 11.1,-8.87 45.82,-34.58 114.25,-42.08 166.23,-15.87 26.01,13.11 22.96,12.83 41.25,28.02 2.68,2.23 3.36,2.15 5.71,4.95 21.61,25.86 34.09,41.43 42.37,77.52 6.04,26.29 6.13,44.87 0.72,71.06 -5.44,26.3 -15.66,47.2 -32.06,67.85 -3.66,4.61 -6.09,6.85 -9.91,11.41 -4.97,5.94 -14.96,13.85 -21.32,18.65 -8.52,6.42 -15.1,9.99 -24.99,14.97 -16.11,8.1 -41.32,16.43 -64.84,16.43zm-99.92 -203.83c6.3,3.33 13.53,5.52 20.45,8.87 6.9,3.34 13.46,5.7 19.95,9.35l38.2 21.74c-7.98,10.9 -69.47,36.48 -78.6,41.3 4.87,20.89 32.99,45.12 56.14,54.44 25.57,10.31 56.37,9.23 80.65,-2.91 50.26,-25.13 71.85,-78.41 50.51,-132.25 -9.01,-22.73 -28.38,-40.94 -49.62,-51.62 -42.27,-21.25 -92.62,-9.51 -123.98,27.48 -3.87,4.57 -12.27,17.49 -13.7,23.6zm-247.79 41.3l14.63 18.67c4.77,6.26 10.17,11.51 15.24,18.07 22.98,29.66 86.65,83.79 113.99,101.83l53.31 30.62c34.19,17.15 88.84,34.64 131.89,34.64 55.33,0 83.37,-4.63 132.85,-24.35 23.09,-9.21 55.22,-26.56 75.53,-40.37l47.71 -36.22c28.49,-25.39 34.46,-31.2 58.63,-57.28l30.51 -36.1c2.23,-2.99 5.13,-7.56 7.8,-9.51 -2.05,-3.07 -4.1,-6.53 -6.46,-9.53 -15.48,-19.68 -54.17,-64.69 -72.14,-78.4l-36.15 -30.46c-6.52,-5.21 -11.83,-9.35 -19,-14.3 -22.47,-15.51 -37.38,-24.8 -62.53,-37.39 -34.95,-17.51 -88.82,-35.08 -132.77,-35.08 -55.33,0 -83.37,4.62 -132.86,24.34 -8.3,3.32 -15.62,6.58 -23.01,10.29 -32.56,16.33 -73.09,42.11 -100.23,66.3 -43.92,39.15 -55.7,51.86 -89.88,93.97 -2.86,3.52 -4.72,6.76 -7.06,10.26z" />
+                </svg>
+                <u class="labelOff">OFF</u>
+                <ion-toggle (ionChange)='watchToggle()' color="success"
+                  style="padding: 3px 2px 4px 0px;margin: 0px;display: inline-block;position: relative;top: 1px;right: 2px;">
+                </ion-toggle>
+                <u class="labelOn">ON</u>
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio (click)="filterPage('gsm')" class="radioBtn" name='sortRadio' value='gsmstrength'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">GSM Strength</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription">
+                <ion-icon name="cellular" class="sortIcon"></ion-icon>
+                Low to High
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio  (click)="filterPage('gps')" class="radioBtn" name='sortRadio' value='gpsstrength'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">GPS Strength</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription">
+                <ion-icon name="locate" class="sortIcon"></ion-icon>
+                Low to High
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <!----1ndendCol-->
+    <ion-col size="6">
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio (click)="filterPage('battery')" class="radioBtn" name='sortRadio' value='batteryStatus'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">Battery Status</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription">
+                <svg width="28" height="20" viewBox="0 0 800 800"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd">
+                  <path fill="#0779e4"
+                    d="M-0 248.48l0 486.31 846.66 -0.01 0 -486.3 -846.66 0zm87.77 -55.22l205.61 0 0 -81.39 -205.61 0 0 81.39zm465.53 0l205.61 0 0 -81.39 -205.61 0 0 81.39zm-297.64 259.53l0 0 -37.49 0 0 37.48 -55.21 0.01 0 -37.48 -37.49 -0.01 0 -55.22 37.49 0 0 -37.48 55.21 0 0 37.48 37.49 0 0 55.22zm193.28 199.43l-51.22 -20.62 37.76 -93.8 -106.05 0 68.29 -169.63 51.22 20.62 -37.76 93.8 106.05 -0.01 -68.29 169.64zm272.25 -199.43l-130.19 0 0 -55.22 130.19 0 0 55.22z" />
+                </svg>
+                Low to High
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio class="radioBtn" name='sortRadio' value='transmission'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">Transmission</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription">
+                <ion-icon name="time" class="sortIcon"></ion-icon>
+                Low to High
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="1">
+          <ion-radio (click)="filterPage('subscription')" class="radioBtn" name='sortRadio' value='SubscriptionExpiry'></ion-radio>
+        </ion-col>
+        <ion-col size="11">
+          <div class="sortContainers ion-text-center">
+            <ion-row>
+              <ion-col class="sortType">Subscription Expiry</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="discription">
+                <ion-icon name="logo-usd"
+                  style="font-size:12px;color:white;background-color: #0779e4;border:2px solid #0779e4;border-radius: 10px;margin:3px 10px 0px -8px;">
+                </ion-icon>
+                Low to High
+              </ion-col>
+            </ion-row>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+    <!----2ndendCol-->
+  </ion-row>
+</ion-radio-group>
+<!--Innerendrow-->

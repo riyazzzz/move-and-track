@@ -1,0 +1,103 @@
+// *{
+//   margin:0px;
+//   padding: 0;
+// }
+// .company-card{
+//   margin: 5px;
+//   padding: 0;
+//   font-size: 11px;
+//   border-left: 2px solid gray;
+// }
+// .selectedTab{
+//     background-color: #fdeeef;
+//     color: black;
+//     border: none;
+//     text-align: center;
+//     text-decoration: none;
+//     font-size: 16px;
+//   }
+//   .unSelectedTab{
+//     background-color :#9e1d25;
+//     border: none;
+//     color: white;
+//     text-align: center;
+//     text-decoration: none;
+//     font-size: 16px;
+//   }
+//   .set-size{
+//     padding-left: 3px;
+//   }
+//   .iconSize{
+//     font-size: 20px;
+//     color: #d9232e;
+//   }
+
+//   .headerlist{
+//     text-transform:uppercase ;
+//     font-size: 12px;
+//   }
+//   .icon-col{
+//     display: grid;
+//     place-content: center;
+//     background-color: #09d8c5;
+//   }
+//   .sub-rows{
+//     margin: 2px 0px !important;
+//   }
+
+//   .company-icon{
+//     font-size: 16px;
+//   }
+//   .underline {
+//     font-size: 11px;
+//     color:#09d8c5;
+//     position: relative;
+//   }
+
+//   .underline:before {
+//     margin: auto;
+//     position: absolute;
+//     content: "";
+//     height: 2px;
+//     bottom: 11px;
+//     width: 13px;
+//     background:#ffd31a;
+//     left: 2px;
+//   }
+
+.companyName {
+  color: #545454;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  // justify-content: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.iconColor {
+  color: #7c68f8;
+  padding-right: 7px;
+}
+
+.centerAlign {
+  align-items: center;
+  font-family: sans-serif;
+  font-size: small;
+}
+.centerColNum{
+  align-self: center;
+    /* justify-items: center; */
+    font-size: x-large;
+    text-align: center;
+    border: 2px solid #7c68f8;
+    border-radius: 100px;
+    background: #f1f1f1;
+    color: black;
+}
+
+
+.iconSize25px{
+  font-size: 25px;
+}

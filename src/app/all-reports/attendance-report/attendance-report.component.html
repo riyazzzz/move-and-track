@@ -1,0 +1,100 @@
+<!-- <ion-header *ngIf="myPlatform !='desktop'">
+  <ion-toolbar mode="md" class="appHeader">
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <ion-icon icon="md-arrow-back" style="color:rgb(0, 0, 0), text-" (click)='getBack()'></ion-icon>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col size="10">
+                  <ion-title style="padding:0px 12px;">Attendance report</ion-title>
+              </ion-col>
+              <ion-col size="2" style="text-align: -webkit-right;">
+                <div class="pdf-wrapper" (click)="createPdf()"></div>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header> -->
+<ion-content>
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let items of displayData">
+    <ion-card class="user-card">
+      <ion-row class="user-content">
+        <ion-col size="12">
+          <ion-row>
+            <ion-col size=10 class="headdata">
+              {{items.firstName}}
+            </ion-col>
+            <ion-col size=2>
+              <ion-icon name="checkmark-circle" [ngStyle]="items.mode == 'Absent' ? {'color':'red'} : items.mode == 'present' ? {'color':'green'} : {'color':'green'}"style="color: gray"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size=12 class="user-detail">
+              <ion-row>
+                <ion-col size=6 class="detailcol">
+                  <ion-row>
+                    <ion-col size=12>
+                     Roll No
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col class="data">
+                      {{items.rollNo}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size=6 class="detailcol">
+                  <ion-row>
+                    <ion-col size=12>
+                      Status
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size=12 class="data">
+                      {{items.mode}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size=6 class="detailcol">
+                  <ion-row>
+                    <ion-col size=12>
+                      Class
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size=12 class="data">
+                      {{items.classId}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+                <ion-col size=6 class="detailcol">
+                  <ion-row>
+                    <ion-col size=12>
+                     Section
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size=12 class="data">
+                      {{items.sectionId}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-col>
+</ion-row>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>
+

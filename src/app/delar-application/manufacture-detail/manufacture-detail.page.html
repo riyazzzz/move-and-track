@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar mode="md"  class="dealerHeader">
+    <ion-row>
+      <ion-col size="11">
+        <ion-title>Manufacture Details</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-row style="margin:0px ;padding:0;float:right">
+          <ion-col style="margin-top:0;"  class="tooltip">    
+            <ion-fab-button size="small" class="fab-btn" href="/assets/sensorise/Manufacturer.xlsx" download="sample.xlsx" >
+              <div class="excel-wrapper"></div>
+            </ion-fab-button>
+            <span  class="tooltiptext">Excel-Format</span>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+        </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-row class="wrapper-container">
+      <ion-col size="12" > 
+        <form [formGroup]="ManufactureForm">
+        <ion-row  class="form-field">
+          <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+            <ion-label class="label-head">Purchase Order Number:</ion-label>
+          <ionic-selectable class="input selectable-input" formControlName="PurchaseOrderNo" placeholder="Purchase Order Number"
+          [items]="PurchaseOrderNo"  [canSearch]="true" (onChange)="getpurchaseorderlist($event)"
+         [hasVirtualScroll]="true" [disabledItems]="data">
+        </ionic-selectable>
+          </ion-col>
+          <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+            <ion-label class="label-head">MFG Quantity:</ion-label>
+            <ion-input type="number" placeholder="MFG Quantity" formControlName="mfgQty" class="input">
+            </ion-input>
+          </ion-col>
+          <ion-col size='12' size-lg="2.4"  size-md="2.4">  
+            <ion-label class="label-head">MFG Date:</ion-label>
+            <ion-input type="date" [max]="maxDate" formControlName="mfgDate" class="input">
+            </ion-input>
+          </ion-col>
+          <ion-col size='12' size-lg="2.4"  size-md="2.4" > 
+            <ion-label class="label-head">MFG Unit:</ion-label> 
+              <ionic-selectable class="input selectable-input" formControlName="mfgunit" placeholder="MFG Unit"
+              [items]="MfgunitList"  [canSearch]="true" (onChange)="getmfgunit($event)"
+             [hasVirtualScroll]="true" [disabledItems]="data">
+            </ionic-selectable>
+          </ion-col>
+          <ion-col size='12' size-lg="2.4"  size-md="2.4" >  
+            <ion-label class="label-heads" style="padding: 0px 0px 0px 25px;">File Upload:</ion-label>
+            <input type="file" (change)="onFileChange($event)" formControlName="fileupload" class="fileinput" />
+          </ion-col>
+        </ion-row>
+        </form>
+        <ion-row>
+          <ion-col size='12' size-lg="12"  size-md="12" style="margin: 10px 0px 0px;text-align: center;">  
+  <ion-button class="submitbtn" (click)="SearchData()"[disabled]="!ManufactureForm.valid">Submit</ion-button>
+  <ion-button class="submitbtn"  (click)="clear()">Clear</ion-button>
+          </ion-col>
+        </ion-row>
+          </ion-col>
+</ion-row>
+
+<jqxGrid
+#myGrid
+[theme]="'material'"
+[width]="'99%'"
+[autoheight]="true"
+[source]="dataAdapter"
+[columns]="columns"
+[sortable]="true"
+[filterable]="true"
+[columns]="columns"
+[columnsresize]="true"
+[enabletooltips]="true" 
+[pageable]="true"
+[showfilterrow]="true" 
+style="font-size:16px;text-align: center !important;margin:auto;cursor:pointer;">
+</jqxGrid>
+</ion-content>

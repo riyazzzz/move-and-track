@@ -1,0 +1,52 @@
+<ion-grid>
+        <!-- <ion-row>
+                <ion-col size="3">
+                         <ion-button [ngClass]="{'active': mode=='yesterday'}" color="light" class="buttonClass"
+                        (click)="modeSelect('yesterday')">Yesterday
+                </ion-button> 
+        </ion-col>
+        <ion-col size="3">
+                <!-- <ion-button [ngClass]="{'active': mode=='last3Days'}" color="light" class="buttonClass"
+                (click)="modeSelect('last3Days')">Last 3 Days
+        </ion-button>
+</ion-col>
+<ion-col size="3">
+        <!-- <ion-button [ngClass]="{'active': mode=='custom'}" color="light" class="buttonClass"
+        (click)="modeSelect('custom')">Custom</ion-button>
+</ion-col>
+<ion-col size="1" *ngIf='window' (click)="exportData('print')"><img width="20px" height="20px"
+        src="../../../../assets/icon/print.svg">
+</ion-col>
+<ion-col size="1" *ngIf='window'  (click)="exportData('xls')"><img width="20px" height="20px"
+        src="../../../../assets/icon/excel.svg">
+</ion-col>
+<ion-col size="1" *ngIf='window'  (click)="exportData('pdf')"><img width="20px" height="20px"
+        src="../../../../assets/icon/pdf.png">
+</ion-col>
+</ion-row>
+<ion-row *ngIf="mode=='custom'" class="floatRight">
+         <ion-row>
+                <input [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" placeholder="From Date">
+                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+        </ion-row> -->
+        <!-- <ion-row>
+                <input [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" placeholder="To Date">
+                <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+        </ion-row> 
+        <ion-col size='4'>
+                <ion-datetime class="dateFormat"  displayFormat="MMM DD, YYYY" pickerFormat = "MMM DD, YYYY" placeholder="DD MM YYYY">
+                </ion-datetime>
+        </ion-col>
+        <ion-col size='4'>
+                <ion-datetime class="dateFormat"  displayFormat="MMM DD, YYYY" pickerFormat = "MMM DD, YYYY" placeholder="DD MM YYYY">
+                </ion-datetime>
+        </ion-col>
+        <ion-col size='4'>
+                <ion-button  color="appColor" shape="round" expand="block" size="small">Submit
+                </ion-button>
+        </ion-col>
+        
+</ion-row> -->
+</ion-grid>
+<jqxGrid width='100%' [source]='dataAdapter' [rowsheight]='60' [sortable]='true' [columns]='columns'
+[columngroups]='columngroups' #grid></jqxGrid>

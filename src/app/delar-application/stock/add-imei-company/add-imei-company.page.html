@@ -1,0 +1,42 @@
+<ion-header >
+  <ion-toolbar mode="md" class="appHeader" >
+    <ion-grid style='padding: 0px;' class='background' >
+      <ion-row style='padding: 0px;' *ngIf = '!searchEnable'>
+        <ion-col size="1" style='align-self: center;'>
+          <ion-icon (click)= 'getBack()' name="arrow-round-back"></ion-icon>
+        </ion-col>
+        <ion-col size="9" style='padding: 0px;'>
+          <ion-title>Assign Imei</ion-title>
+        </ion-col>
+        <ion-col size="2" style='padding: 0px;align-self: center;'>
+          <ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-row style='padding: 0px;' *ngIf = 'searchEnable' >
+      <ion-col style ='    align-self: center; text-align: center;' size='1'>
+        <ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </ion-col>
+      <ion-col size='11'>
+        <ion-searchbar style="padding: 0px;" class='buttonData' mode='ios' cancelButtonText="Custom Cancel" [(ngModel)]="searchInput"  animated></ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-virtual-scroll [items]="showList | search:searchInput" approxItemHeight="320px">
+    <ion-list *virtualItem="let showList" [id]='showList.imei' style= 'padding:0px;' (click) = 'assignImeiToCompany(showList)'>
+      <ion-item-sliding>
+        <ion-item>
+          <ion-grid >
+            <ion-row style= 'padding:0px;'>
+              <ion-col size='2' style= 'text-align: center;'><ion-icon name="people"></ion-icon></ion-col>
+              <ion-col size='9'>{{showList.companyName}}</ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-virtual-scroll>
+</ion-content>

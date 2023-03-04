@@ -1,0 +1,96 @@
+.input {
+  border: 1px solid #e5e5e5;
+  height: 42px;
+  line-height: 18px;
+  --padding-start: 15px;
+  background: #e8e8e8;
+}
+.fileinput {
+  margin-top: 21px;
+  margin-left: 10%;
+}
+.label-head {
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0px 0px 0px 5px;
+}
+.label-heads {
+  font-size: 15px;
+  font-weight: 500;
+}
+.submitbtn {
+  --background: #6252ee;
+}
+@media only screen and (min-width: 768px) {
+  .input {
+    margin-top: 12px;
+  }
+  #submitbtn {
+    width: 20%;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .form-field {
+    zoom: 80%;
+  }
+  #submitbtn {
+    width: 80%;
+  }
+}
+.form-field {
+  margin: -16px 5px 0px;
+  border-radius: 7px;
+}
+@media only screen and(min-width:320px) and(max-width:1023px) {
+  .wrapper-container {
+    border: none;
+    margin: 8px 0 0;
+    padding: 0;
+  }
+}
+@media only screen and(min-width:1024px) {
+  .wrapper-container {
+    margin: 30px 11px;
+    padding-right: 20px;
+  }
+}
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/excelNew.svg") no-repeat;
+  width: 18px;
+  height: 20px;
+}
+.fab-btn {
+  --background: lavender;
+  --box-shadow: none;
+  position: absolute;
+  top: -4px;
+  right: -3px;
+  height: 30px;
+  width: 30px;
+}
+.fab-btn:hover {
+  --background-hover: #b6b6b6;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: -15px;
+  margin-left: -80px;
+  position: absolute;
+  z-index: 1;
+  font-size: 12px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}

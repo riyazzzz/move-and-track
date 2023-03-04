@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Sim Status Update</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="wrapper-container">
+    <ion-col>
+      <form [formGroup]="simupdate">
+        <ion-row class="form-field">
+          <ion-col>
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Vltd No : </ion-col>
+              <ion-col size="7">
+                <ion-input
+                  formControlName="vltdsno"
+                  class="input"
+                  disabled
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Imei No : </ion-col>
+              <ion-col size="7">
+                <ion-input
+                  formControlName="imeino"
+                  class="input"
+                  disabled
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Sim 1 :</ion-col>
+              <ion-col size="7">
+                <ion-input
+                  type="number"
+                  formControlName="sim1"
+                  placeholder="Enter the Sim No"
+                  class="input"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="content-style">
+              <ion-col size="4" class="col-content">Sim 2 :</ion-col>
+              <ion-col size="7">
+                <ion-input
+                  type="number"
+                  formControlName="sim2"
+                  placeholder="Enter the Sim No"
+                  class="input"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </form>
+
+      <ion-row class="content-style">
+        <ion-col style="text-align: center !important; padding: 20px">
+          <ion-button
+            class="button"
+            type="submit"
+            [disabled]="!simupdate.valid || button"
+            (click)="submitBtn()"
+          >
+            Submit
+          </ion-button>
+          <ion-button class="button" type="submit" (click)="cancelBtn()">
+            Cancel
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>

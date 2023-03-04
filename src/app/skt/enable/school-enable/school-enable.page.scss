@@ -1,0 +1,94 @@
+.class-wrapper,.grid_Container{
+    border: 1px solid rgb(199, 195, 195);
+    margin: 5px 10px 0;
+ }
+ .grid_Container{
+    margin: 0px 10px 0px;  
+ }
+ .header-section{
+  background-color: #e8e8e8;
+  border: 1px solid #cac2c2;
+}
+ #export-wrapper{
+   text-align: right;
+   background-color: #e8e8e8;
+   height: 42px;
+   border-top: 1px solid gainsboro;
+   margin: 0px 10px 0px;
+   border-left: 2px solid #c7c7c7;
+ }
+ #btn-wrapper{
+   text-align: center;
+   height: 40px;
+   padding: 0;
+   font-size: 20px;
+   border-bottom:1px solid #cac2c2;
+   font-weight: 700;
+ }
+ .toolbar-row{
+   height: 40px;
+   width: 40px;
+   display: inline-block;
+   margin:0px;
+   border: 1px solid #b9b7b7;
+   padding: 5px;
+}
+.toolbar-row:hover{
+    background-color: whitesmoke;
+}
+.class-btn{
+    width: 80px;
+    height: 30px;
+    margin: 5px 10px;
+    font-size: 12px;
+ }
+ .mytable:hover {
+   background-color: blue;
+ }
+ #enable-disable-card
+ {
+   width        : 95%;
+   height       : 90%;
+   border-left  : 3px solid #3880ff;
+ }
+ #icon-style
+ {
+   font-size    : xx-large;
+   margin-top   : 15px;
+ }
+ #reason-type
+ {
+   padding      : 0px;
+   margin       : 0px;
+   font-size    : 20px;
+   font-weight  : bold;
+   font-variant-caps: all-petite-caps;
+   color        : #3880ff;
+ }
+ .status-detail
+ {
+   padding      : 0px;
+   line-height  : 20px;
+   font-size    : 15px;
+   font-variant : all-petite-caps;
+ }
+ .date-header
+ {
+   padding      : 0px;
+   font-size    : 11px;
+ }
+ .date {
+   font-size    : 10px;
+   margin       : 0;
+   padding      : 0;
+   line-height  : 15px;
+ }
+ .date-col {
+   font-family  : sans-serif;
+   padding      : 0px;
+ }
+ .header{
+  text-transform: capitalize;
+  text-align: center;
+  padding: 7px 0px 0px 0px;
+ }

@@ -1,0 +1,113 @@
+<ion-row style="overflow-y: scroll;">
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+    <ion-item lines="none"style="--background:transparent;">
+      <ion-icon  (click)="cancelBtn()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+        <div class="jobcard-head">Job Card Details</div>
+      </ion-item>
+      <form [formGroup]="JobcardFrom">
+        <div class="wrapper-form">
+          <ion-row>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <!-- <ion-select class="input-item select-input" formControlName="CompanyName" placeholder="Select the Company Name" (ionChange)="getVehicleList($event)">
+                <ion-select-option *ngFor="let company of companyName" value={{company}}>{{company}}</ion-select-option>
+              </ion-select> -->
+              <ionic-selectable class="input-item selectable-input" formControlName="CompanyName" placeholder="Select the Company Name"
+              [items]="companyName"  [canSearch]="true" (onChange)="getVehicleList($event)"
+             [hasVirtualScroll]="true" [disabledItems]="data">
+            </ionic-selectable>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-select class="input-item select-input" formControlName="VehicleNo" placeholder="Select the Vehicle No">
+                <ion-select-option *ngFor="let vin of VehicleList" value={{vin}}>{{vin}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="CustomerName" placeholder="Enter the Customer Name" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="CustomerPhoneNo" placeholder="Enter the Customer Phone Number" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="CustomereMail" placeholder="Enter the Customer MailId" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-datetime class="datetime" formControlName="JobOrder" displayFormat="DD-MM-YYYY hh:mm a"
+              placeholder="Select Job Order Date"></ion-datetime>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="Worklocation" placeholder="Enter the Work Location" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="JobReceiver" placeholder="Enter the Job Receiver Name" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-datetime class="datetime" formControlName="ExpectedStartDate" displayFormat="DD-MM-YYYY hh:mm a"
+              placeholder="Select the Expected Start Date"></ion-datetime>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-datetime class="datetime" formControlName="ExpectedEndDate" displayFormat="DD-MM-YYYY hh:mm a"
+              placeholder="Select the Expected End Date"></ion-datetime>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="TermofService" placeholder="Enter the Term of Service" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="WorkDescription" placeholder="Enter the Work description" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="ServicePersonName" placeholder="Enter the Service Person Name" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="ServicePersonPhoneNo" placeholder="Enter the Service Person PhoneNumber" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="JobCompleter" placeholder="Enter the Job Completer Name" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-datetime class="datetime" formControlName="JobCompletedate" displayFormat="DD-MM-YYYY hh:mm a"
+              placeholder="Select the Job Complete Date"></ion-datetime>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="Remarks" placeholder="Enter the Remarks" class="input-item"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="4" size-lg="4" class="form_col">
+              <ion-input type="text" formControlName="LabourCost" placeholder="Enter the LabourCost" class="input-item"></ion-input>
+            </ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col size="12" size-sm="12" size-md="2.8" size-lg="2.8" class="form_col">
+                <ion-select class="input-item select-input" formControlName="SpareParts" placeholder="Select the Inventory Option">
+                  <ion-select-option *ngFor="let inventory of Inventory" value={{inventory}}>{{inventory}}</ion-select-option>
+                </ion-select>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="2.8" size-lg="2.8" class="form_col">
+                <ion-input type="text" [(ngModel)]="Rate" [ngModelOptions]="{standalone: true}" placeholder="Enter Rate" class="input-item"></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="2.8" size-lg="2.8" class="form_col">
+                <ion-input type="text" [(ngModel)]="Quantity"  (ionChange)="total($event)" [ngModelOptions]="{standalone: true}" placeholder="Enter the Quantity" class="input-item"></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="2.8" size-lg="2.8" class="form_col">
+                <ion-input type="text" [(ngModel)]="Total"  [ngModelOptions]="{standalone: true}" placeholder="Enter TotalCost" class="input-item"></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-md="0.8" size-lg="0.8" class="form_col">
+                <ion-button (click)="Add()">Add</ion-button>
+                            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <jqxGrid *ngIf="isshow" #myGrid [theme]="'material'" [width]="'99%'" [autoheight]="true"
+           [showfilterrow]="false" [rowsheight]="30" [source]="dataAdapter" [columns]="columns" [showstatusbar]="true"
+           [statusbarheight]="30" [showaggregates]="true" [sortable]="false" [filterable]="false" [columns]="columns" [columnsresize]="true" [enabletooltips]="true"
+            [pageable]="false" [selectionmode]="'singlerow'" style="font-size: 10px;text-align: center !important">
+          </jqxGrid>
+            </ion-col>
+          </ion-row>
+        </div>
+      </form>
+      <ion-row>
+        <ion-col size="12" style="text-align: center !important;">
+          <ion-button  class="submitBtn" shape="round" (click)="submit()" [disabled]="!JobcardFrom.valid">Submit</ion-button>
+        </ion-col>
+      </ion-row>
+  </ion-col>
+</ion-row>

@@ -1,0 +1,140 @@
+<!-- <ion-header >
+  <ion-toolbar mode="md" color="primary" >
+    <ion-grid class='background' style='padding: 0px;'>
+      <ion-row style='padding: 0px;'>
+        <ion-col size="2">
+         <ion-icon (click)='getBack()' name="arrow-back" style="font-size: 20px;
+          padding: 10px;"></ion-icon>
+        </ion-col>
+        <ion-col size="7" style='padding: 0px;align-self: center;'>
+          <ion-title style='padding: 0px;'>Company </ion-title>
+        </ion-col>
+        <ion-col size="3" style='padding: 0px;align-self: center;'>
+          <ion-icon  *ngIf = '!searchEnable' style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon>
+          <ion-icon *ngIf = 'searchEnable'  style='font-size: 25px;'  (click) ='searchStatus()'  name="close"></ion-icon>
+        </ion-col>
+       </ion-row>
+       <ion-row>
+       
+       </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  <ion-row color="primary" style="    justify-content: center;" *ngIf = 'searchEnable' >
+    <ion-col size='12'>
+      <ion-searchbar (ionChange)="pipeFilter(searchInput)" style="padding: 0px;" class='buttonData'  cancelButtonText="Custom Cancel" [(ngModel)]="searchInput"  animated></ion-searchbar>
+    </ion-col>
+  </ion-row>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-row>
+      <ion-icon class="iconSize25px" (click)="getBack()" name="arrow-back"></ion-icon>
+      <ion-title >Company</ion-title>
+    </ion-row>
+  </ion-toolbar>
+  <ion-searchbar (ionChange)="pipeFilter(searchInput)" style="padding: 0px;" class='buttonData'  cancelButtonText="Custom Cancel" [(ngModel)]="searchInput"  animated></ion-searchbar>
+</ion-header>
+
+
+<ion-content>
+  
+<ion-grid>
+  <ion-row>
+    <ion-col size=12 size-sm="12" size-lg="4" size-md="6" *ngFor="let companyVehicle of displayData">
+      <ion-card style="border-left: 4px solid #7c68f8; margin: 0px;">
+        <ion-card-content style="padding: 7px;">
+      <app-assert-list-card [cardDetail]="companyVehicle"></app-assert-list-card>
+      </ion-card-content>
+      </ion-card>
+      <!-- <ion-virtual-scroll [items]="companyVehicle" approxItemHeight="320px"> -->
+        <!-- <ion-card  [id]='companyVehicle.imei' class="card-wrapper">
+          <ion-row>
+          <ion-col size="12" class="header-company">{{companyHeader}}</ion-col>
+         </ion-row>
+        <ion-row>
+          <ion-col size="6">
+            <ion-row>
+              <ion-col>
+                   <ion-row>
+                     <ion-col size="2" class="icon_col">
+                      <ion-icon size="12"  name="car"></ion-icon>
+                     </ion-col>
+                    <ion-col size="10" class="align-dataCol">
+                   <ion-row>
+                  <ion-col size="12">
+              {{companyVehicle.plateno}}
+            </ion-col>
+          </ion-row>
+        <ion-row>
+         <ion-col size="12" class="underline">
+            PlateNo
+              </ion-col>
+                </ion-row>
+                     </ion-col>
+                      </ion-row> 
+                       <ion-row>
+                      <ion-col size="2" class="icon_col">
+                        <ion-icon name="phone-portrait" class="common-icon"></ion-icon>
+                      </ion-col>
+                    <ion-col size="10"  class="align-dataCol">
+                  <ion-row>
+                <ion-col size="12">
+               {{companyVehicle.imei}}
+             </ion-col>
+            </ion-row>
+          <ion-row>
+            <ion-col size="12" class="underline">
+              IMEI No
+               </ion-col>
+                 </ion-row>
+                   </ion-col>
+                     </ion-row>
+                     </ion-col>
+                   </ion-row>
+                 </ion-col>
+                 <ion-col  size="6">
+ 
+              <ion-row>
+            <ion-col size="2" class="icon_col">
+              <ion-icon  size="12"  size="12"  name="card"></ion-icon>
+            </ion-col>
+          <ion-col size="10" class="align-dataCol">
+        <ion-row>
+      <ion-col size="12" >
+        {{companyVehicle.sim}}
+          </ion-col>
+            </ion-row>
+              <ion-row>
+               <ion-col size="12" class="underline">
+                Sim No
+                 </ion-col>
+                  </ion-row>
+                </ion-col>
+               </ion-row>
+         <ion-row>
+       <ion-col size="2" class="icon_col">
+        <ion-icon name="cog" class="common-icon"></ion-icon>
+       </ion-col>
+           <ion-col size="10" class="align-dataCol">
+             <ion-row>
+               <ion-col size="12">
+                {{companyVehicle.devicetype}}
+                  </ion-col>
+                    </ion-row>
+                      <ion-row>
+                     <ion-col size="12" class="underline">
+                    Device Type
+                   </ion-col>
+                  </ion-row>
+                 
+              </ion-col>
+            </ion-row> 
+        </ion-col>
+      
+    </ion-card>
+  </ion-virtual-scroll>  -->
+    </ion-col>
+    </ion-row>
+     </ion-grid>
+  </ion-content>

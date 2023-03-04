@@ -1,0 +1,39 @@
+// ion-input,ion-select{
+//     border: 1px solid #e5e5e5;
+//     height: 42px;
+//     line-height: 18px;
+//     --padding-start: 15px;
+//     background: #e8e8e8;
+// }
+
+
+@media only screen and(min-width:10px)and(max-width:767px){
+    .form-field{
+     zoom:80%;
+     margin: 5% auto 3px;
+    }
+    #submitbtn{
+     width:20%;
+    }
+}
+@media only screen and (min-width:768px){
+    .form-field{
+        margin: 3% auto 5px;
+        padding: 0px 20px;
+    }
+    
+    #submitbtn{
+     width:35%;
+    }
+}
+#submitbtn{
+    --background:#6252ee !important;
+}
+
+.heading{
+    border: 1px solid #e5e5e5;
+    height: 42px;
+    line-height: 18px;
+    --padding-start: 15px;
+    background: #e8e8e8;
+}

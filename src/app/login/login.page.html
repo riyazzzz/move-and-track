@@ -1,0 +1,515 @@
+<ion-content
+  [ngClass]="{'background':appName =='Armoron','appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+>
+  <div
+    *ngIf='myPlatform != "desktop" && appName != "Armoron" && appName != "ParentApp"'
+    class="moveAndTrackSpacing"
+    style="background-color: #fffdfd"
+  >
+    <ion-grid>
+      <ion-row>
+        <ion-col
+          size="8"
+          offset="2"
+          class="ion-align-items-center ion-justify-content-center"
+        >
+          <ion-row class="ion-align-items-center ion-justify-content-center">
+            <ion-img style="width: 70%" [src]="logo"></ion-img>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <form [formGroup]="login">
+      <ion-item
+        [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+        class="labelSpacing"
+      >
+        <ion-icon slot="start" name="contacts"></ion-icon>
+        <ion-input
+          formControlName="compId"
+          placeholder="Company id"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+        class="labelSpacing"
+      >
+        <ion-icon slot="start" name="person"></ion-icon>
+        <ion-input
+          formControlName="compName"
+          placeholder="User name"
+        ></ion-input>
+      </ion-item>
+      <ion-item
+        [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic', 'appLightBackground': appName === 'upcot'}"
+        class="labelSpacing"
+      >
+        <ion-icon slot="start" name="key"></ion-icon>
+        <ion-input
+          formControlName="password"
+          placeholder="Password"
+          (keyup.enter)="submitLogin()"
+          [type]="password_type"
+        >
+        </ion-input>
+        <ion-icon
+          slot="end"
+          [name]="eye_icon"
+          (click)="showHidePass()"
+        ></ion-icon>
+      </ion-item>
+    </form>
+    <ion-grid class="appLightBackground">
+      <ion-row>
+        <ion-col offset="7" size="5" class="forgotPass" [class]="appName">
+          <ion-label class="forgotPass" (click)="openFpassModal()"
+            >Forgot Password?</ion-label
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row></ion-row>
+    </ion-grid>
+
+    <ion-row>
+      <ion-col size="6" offset="3">
+        <ion-button
+          [class]="appName"
+          (click)="submitLogin()"
+          shape="round"
+          expand="block"
+          [disabled]="!login.valid"
+        >
+          <ion-icon name="log-in" class="iconSize"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="showDemoUrl">
+      <ion-col
+        size="8"
+        offset="6"
+        style="
+          text-decoration: underline;
+          padding-top: 3rem;
+          font-size: 14px;
+          color: #ed1a24;
+        "
+        (click)="change_demo()"
+      >
+        {{serverName}}
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div
+    *ngIf='myPlatform == "desktop" && appName != "Remoncloud" && appName != "fms"  && appName != "Armoron" && appName != "GE"  && entryPoint !="TTS" && appName != "ParentApp"'
+    [ngClass]="{'container-wrapper': appName === 'Moveandtrack', 'fms-container-wrapper': appName === 'FMS'}"
+    class="labelSpacing label-shape"
+    class="container-wrapper"
+  >
+    <div
+      style="
+        position: absolute;
+        z-index: 14;
+        bottom: 0px;
+        right: 29px;
+        padding: 11px;
+        font-size: 12px;
+        cursor: pointer;
+        background: white;
+      "
+      class="forgot"
+    >
+      <span (click)="changeModule('user')"> I'm a User </span> |
+      <span style="color: red" (click)="changeModule('dealer')">
+        I'm a Dealer
+      </span>
+    </div>
+    <div
+      class="moveAndTrackSpacing ion-align-items-center ion-justify-content-center"
+      size-md="6 "
+      size-lg="6"
+      size-xs="12"
+    >
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            size="8"
+            offset="2"
+            class="ion-align-items-center ion-justify-content-center"
+          >
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+              <ion-img style="width: 70%" [src]="logo"></ion-img>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <form [formGroup]="login">
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing label-shape"
+        >
+          <ion-img
+            src="assets/company.svg"
+            slot="end"
+            class="svg_img"
+          ></ion-img>
+          <ion-input
+            formControlName="compId"
+            placeholder="Company id"
+            class="web-input"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing label-shape"
+        >
+          <ion-icon slot="end" name="contacts"></ion-icon>
+          <ion-input
+            formControlName="compName"
+            placeholder="User name"
+            class="web-input"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing label-shape"
+        >
+          <ion-input
+            formControlName="password"
+            placeholder="Password"
+            (keyup.enter)="submitLogin()"
+            [type]="password_type"
+            class="web-input"
+          >
+          </ion-input>
+          <ion-icon
+            slot="end"
+            [name]="eye_icon"
+            (click)="showHidePass()"
+          ></ion-icon>
+        </ion-item>
+      </form>
+
+      <ion-row style="padding: 0px 0 0 20px">
+        <ion-col style="padding: 0">
+          <ion-button
+            [class]="appName"
+            (click)="submitLogin()"
+            [disabled]="!login.valid"
+            style="font-size: 13px; height: 31px"
+          >
+            Login
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none" id="remember-item">
+            <ion-checkbox
+              [(ngModel)]="isChecked"
+              slot="start"
+              style="margin: 21px 5px"
+            ></ion-checkbox>
+            <ion-label>Remember Me</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col (click)="openFpassModal()" class="forgotNew"
+          >Forgot Password?</ion-col
+        >
+      </ion-row>
+    </div>
+  </div>
+
+  <div
+    [style.background]="'url('+ bgImage+')'"
+    [style.background-repeat]="'no-repeat'"
+    [style.background-size]="'cover'"
+    class="container"
+    *ngIf='myPlatform == "desktop"  && (appName === "GE" || appName == "Remoncloud" || appName == "fms") && appName != "ParentApp"'
+  >
+    <!-- <ion-grid style="position: fixed; width: 20%;">
+        <ion-row>
+            <ion-col style="padding: 0px;" size="12" >
+                <ion-row>
+                    <ion-img style="width:100%;" [src]="logo"></ion-img>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid> -->
+    <div
+      class="moveAndTrackSpacingNew ion-align-items-center ion-justify-content-center"
+      size-md="6 "
+      size-lg="6"
+      size-xs="12"
+    >
+      <ion-grid>
+        <ion-row>
+          <ion-col
+            size="8"
+            offset="2"
+            class="ion-align-items-center ion-justify-content-center"
+          >
+            <ion-row class="ion-align-items-center ion-justify-content-center">
+              <ion-img style="width: 70%" [src]="logo"></ion-img>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <form [formGroup]="login">
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing"
+        >
+          <ion-icon slot="start" name="contacts"></ion-icon>
+          <ion-input
+            formControlName="compId"
+            placeholder="CompanyID"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing"
+        >
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-input
+            formControlName="compName"
+            placeholder="Username"
+          ></ion-input>
+        </ion-item>
+        <ion-item
+          [ngClass]="{'appLightBackground': appName === 'Moveandtrack', 'appImageBackground': appName=== 'GE', 'appDarkBackground': appName === 'Tracalogic'}"
+          class="labelSpacing"
+        >
+          <ion-icon slot="start" name="key"></ion-icon>
+          <ion-input
+            formControlName="password"
+            placeholder="Password"
+            (keyup.enter)="submitLogin()"
+            [type]="password_type"
+          >
+          </ion-input>
+          <ion-icon
+            slot="end"
+            [name]="eye_icon"
+            (click)="showHidePass()"
+          ></ion-icon>
+        </ion-item>
+      </form>
+      <ion-grid class="appLightBackground">
+        <ion-row>
+          <ion-col offset="5" size="7" [class]="appName">
+            <ion-label (click)="openFpassModal()" class="forgotPass"
+              >Forgot Password?</ion-label
+            >
+          </ion-col>
+        </ion-row>
+        <ion-row></ion-row>
+      </ion-grid>
+      <ion-item
+        style="--background: transparent"
+        class="appLightBackground noBorder"
+      >
+        <ion-checkbox
+          class="check"
+          [(ngModel)]="isChecked"
+          slot="start"
+        ></ion-checkbox>
+        <ion-label>Remember Me</ion-label>
+      </ion-item>
+      <ion-row>
+        <ion-col size="6" offset="3">
+          <ion-button
+            [class]="appName"
+            (click)="submitLogin()"
+            shape="round"
+            expand="block"
+            [disabled]="!login.valid"
+          >
+            <ion-icon name="log-in" class="iconSize"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+
+  <div
+    *ngIf='myPlatform != "desktop" && appName === "Armoron" && appName != "ParentApp"'
+  >
+    <div class="row row-center">
+      <div class="col text-center" align-title="center">
+        <ion-img
+          src="assets/Armoron/APM KT LOGO.png"
+          alt=""
+          style="
+            width: 100%;
+            height: 74px;
+            margin-top: 82px;
+            margin-bottom: 12px;
+            background-repeat: no-repeat;
+            background-size: cover;
+          "
+        >
+        </ion-img>
+      </div>
+    </div>
+
+    <ion-grid style="font-size: 12px">
+      <ion-row class="rowstyle" style="font-size: 10px">
+        <ion-col size="1.3" id="countryIcon" class="iconShift">
+          <div style="padding-top: 15px; text-align: right">
+            <ion-icon name="globe" style="color: #ba7203"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="5.7" style="color: #ba7203">
+          <div style="padding-top: 15px">Country</div>
+        </ion-col>
+        <ion-col size="5" style="color: #ba7203">
+          <ion-select
+            selectedText="India"
+            [interfaceOptions]="customPopoverOptions"
+            interface="popover"
+            (change)="countryChanged"
+          >
+            <ion-select-option *ngFor="let y of countryList"
+              >{{y}}</ion-select-option
+            >
+          </ion-select>
+          <!-- <div style="padding-top: 10px;text-align: right;">
+                    <select style="background-color: transparent;border:none;"><option selected>India</option><option>Srilanka</option></select>
+                </div> -->
+        </ion-col>
+      </ion-row>
+      <ion-row class="rowstyle" style="font-size: 10px">
+        <ion-col size="1.3" id="languageIcon" class="iconShift">
+          <div style="padding-top: 3px; text-align: right">
+            <ion-icon name="chatboxes" style="color: #ba7203"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col size="5.7" style="color: #ba7203">
+          <ion-label style="padding-top: 3px">Language</ion-label>
+        </ion-col>
+        <ion-col size="5" style="color: #ba7203">
+          <!-- <div style="padding-top: 3px;text-align: right;"> -->
+          <ion-select
+            [(ngModel)]="armoronApp.selectedlanguage"
+            (ngModelChange)="langChged($event)"
+            selectedText="{{armoronApp.selectedlanguage}}"
+            [interfaceOptions]="customPopoverOptions"
+            interface="popover"
+          >
+            <ion-select-option *ngFor="let x of languageOptions"
+              >{{x}}</ion-select-option
+            >
+          </ion-select>
+          <!-- <ion-select-option *ngFor="let x of languageOptions" >{{x}}</ion-select-option> -->
+          <!-- <select style="background-color: transparent;border:none;"><option selected>ENGLISH</option><option>ARABIC</option></select> -->
+          <!-- </div> -->
+        </ion-col>
+      </ion-row>
+      <form [formGroup]="login">
+        <ion-row>
+          <ion-col size="2">
+            <div
+              style="
+                padding-top: 22px;
+                padding-bottom: unset;
+                text-align: right;
+              "
+            >
+              <ion-icon
+                name="phone-portrait"
+                style="color: whitesmoke"
+                class="iconsize"
+              ></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col size="1.3" ngDefaultControl class="contryCodeStyle">
+            <div style="border-right: 1px solid whitesmoke">
+              <ion-label ngDefaultControl>{{armoronApp.countryCode}}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col
+            size="5.7"
+            style="
+              border-bottom: 1px solid whitesmoke;
+              padding-top: 22px;
+              padding-bottom: unset;
+            "
+          >
+            <div>
+              <ion-input
+                type="text"
+                placeholder="Phone number"
+                style="color: white"
+                formControlName="compName"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col
+            size="2"
+            offset="1"
+            style="color: #ba7203; position: relative; padding-top: 1px"
+          >
+            <button
+              class="buttonArmoron"
+              style="
+                border-radius: 50px;
+                background-color: #6abd51;
+                position: relative;
+                top: 24px;
+              "
+              (click)="generateOTP()"
+            >
+              <ion-icon name="send" class="iconsize"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+
+        <ion-row style="margin-top: 32px">
+          <ion-col size="2">
+            <div
+              style="
+                padding-bottom: unset;
+                text-align: right;
+                padding-top: 10px;
+              "
+            >
+              <ion-icon
+                name="mail"
+                style="color: whitesmoke"
+                class="iconsize"
+              ></ion-icon>
+            </div>
+          </ion-col>
+          <ion-col size="7" style="padding-bottom: unset">
+            <div>
+              <ion-input
+                type="text"
+                placeholder="OTP"
+                formControlName="password"
+                style="color: white; border-bottom: 1px solid whitesmoke"
+              ></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size="2" offset="1" style="color: #ba7203">
+            <button
+              class="buttonArmoron"
+              style="
+                border-radius: 50px;
+                background-color: #6abd51;
+                padding-bottom: unset;
+              "
+              (click)="verifyOTPMethod(login.value.password, login.value.compName)"
+            >
+              <ion-icon name="checkmark" class="iconsize"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-grid>
+  </div>
+
+  <div
+    *ngIf='myPlatform != "desktop" && appName != "Armoron" && appName === "ParentApp"'
+  >
+    <app-student-login [data]="check"></app-student-login>
+  </div>
+</ion-content>

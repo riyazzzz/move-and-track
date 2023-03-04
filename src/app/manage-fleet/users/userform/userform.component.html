@@ -1,0 +1,70 @@
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="10" offset-md="1" size-lg="12"  offset-lg="0" >
+    <ion-item lines="none"style="--background:transparent;">
+      <ion-icon *ngIf='value != undefined && isDeleteShow == true'  name='trash' (click)="deleteSelectedOperator()" slot='end'></ion-icon>
+      <ion-icon  (click)="closeModal()" name="arrow-back" class="arrow-back" slot="start"></ion-icon>
+      <div style="font-size: 16px;color: #9c27b0;font-weight: bold;margin-left: 15px;">User details</div>
+    </ion-item>
+
+        <form [formGroup]="userForm">
+          <div class="wrapper-form">
+          <ion-row>
+            <ion-col>
+             <ion-input type="text" formControlName="userName" placeholder="User name" class="input-item" [disabled]='hideSerialNo' ></ion-input>
+             </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" formControlName="firstName" placeholder="First name" class="input-item" ></ion-input>
+           </ion-col>
+          </ion-row>
+         <ion-row>
+          <ion-col>
+                <ion-input type="text" formControlName="password"  placeholder="Password" class="input-item"></ion-input>
+               </ion-col>
+            </ion-row>  
+           
+            <ion-row>
+              <ion-col>
+                <ion-input type="text" formControlName="email" placeholder="Email id" class="input-item"></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <ion-input type="text" formControlName="Address1"   placeholder="Address line 1" class="input-item" ></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col >
+                 <ion-input type="text" formControlName="Address2"  placeholder="Address line 2" class="input-item" ></ion-input>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+               <ion-input type="text" formControlName="city"   placeholder="City" class="input-item"></ion-input>
+                </ion-col>
+            </ion-row>      
+          <ion-row>  
+            <ion-col>
+              <ion-select class="input-item select-input" formControlName="country"   placeholder="{{editCountry}}"  >
+                  <ion-select-option  *ngFor="let fleetManager of countries" [value]="fleetManager">{{fleetManager}}</ion-select-option>
+                  </ion-select>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-input type="text" formControlName="contact"  placeholder="Contact number" class="input-item" ></ion-input>
+              </ion-col>
+          </ion-row>  
+        <ion-row>
+          <ion-col size="12" size-sm="4" size-lg="6" size-xl="6" size-md="4"  style="text-align:center;margin:auto">
+            <ion-button  class="commonButton" shape="round" (click)="submit()" 
+            [disabled]="!userForm.valid">Submit</ion-button>   
+          </ion-col>  
+        </ion-row>
+       </div>
+        </form>
+     </ion-col>
+    </ion-row>
+
+      

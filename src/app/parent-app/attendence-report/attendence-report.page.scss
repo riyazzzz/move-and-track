@@ -1,0 +1,138 @@
+
+.icon-size {
+    font-size: 18px;
+    padding: 9px;
+}
+
+
+.date-input{
+  border: 1px solid #f6f6f6;
+  background: #f6f6f6;
+  --padding-top: 2px;
+  --padding-bottom: 2px;
+}
+
+
+
+a.active {
+    background-color: gray;
+}
+
+#calendar-container {
+    width: 271px;
+}
+
+.calendar-days,.calendar-day {
+    width: 38px;
+    height: 38px;
+    background: #e1fbe1;
+    border: 1px solid #b3b3b3;
+}
+.calendar-day{
+  background:gray;
+  color:white;
+  font-size: 14px;
+}
+
+.inactive {
+ opacity: 0.5;
+ background: #cacaca;
+}
+.present{
+  background: #1aba7e;
+}
+.absent{
+    background:red;
+}
+.holiday{
+  background: white;
+}
+.top-label{
+  font-size: 12px;
+  padding-left: 10px;
+}
+.fill-height-or-more {
+  min-height: 100%;
+}
+
+.flex-footer-pos {
+  flex: 1 0 auto;
+}
+
+.flex-container {
+  display: -webkit-flex;
+  display: flex;
+  font-size: 14px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.flex-left {
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+.flex-column {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.flex-center {
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.flex-center-horz {
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+.flex-center-vert {
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.flex-left-row {
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+.flex-right-row {
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+.flex-right-column {
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+.flex-left-column {
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-space-between-row {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.flex-space-between-column {
+  align-items: space-between;
+  -webkit-align-itemst: space-between;
+}
+.height-20px {
+  height: 20px;
+}
+.width-5{
+  width: 5%;
+}
+

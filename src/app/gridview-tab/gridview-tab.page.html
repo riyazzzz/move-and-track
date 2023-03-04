@@ -1,0 +1,159 @@
+<ion-header>
+    <ion-row *ngIf="myPlatform!='desktop' && appName != 'Armoron'">
+        <ion-grid style="padding: 0px;" class="appHeaderTitle ion-padding">
+            <ion-row [@inOutAnimation] *ngIf="!showSearch">
+                <ion-col size="2">
+                    <ion-menu-button></ion-menu-button>
+                </ion-col>
+                <ion-col size="10" style="align-self: center;" [@fade]>
+                    <ion-searchbar [(ngModel)]="searchInput" placeholder="Search">
+                    </ion-searchbar>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-card style="background: white;" class="statusBarCard">
+            <ion-card-content class="statusBarPad" style="background: white; padding: 0px;">
+                <ion-row style="background: white;" *ngIf="statusBarOthers.length > 0">
+                    <ion-segment style="width:100%" scrollable>
+                        <ion-col size="2">
+                            <ion-row style="font-size: xx-small; place-content: center;">ALL</ion-row>
+                            <ion-row class="statusBar" style="background-color:#989aa2 ;"
+                                (click)="changeGridView({'type':'All', 'count': vehicleCount.Total})">
+                                {{vehicleCount.Total}}
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="2" *ngIf="loginData.includes('Running')">
+                            <ion-row style="font-size: xx-small; place-content: center;">RUNNING</ion-row>
+                            <ion-row class="statusBar" style="background-color:#1eb15d;"
+                                (click)="changeGridView({'type':'Running', 'count': vehicleCount.Running})">
+                                {{vehicleCount.Running}}</ion-row>
+                        </ion-col>
+
+                        <!-- <ion-col size="2"  *ngIf= "loginData.includes('Good')">  
+                        <ion-row style="font-size: xx-small; place-content: center;">GOOD</ion-row>
+                        <ion-row class="statusBar" style="background-color:#1eb15d;"
+                            (click)="changeGridView({'type':'Good', 'count': vehicleCount.good})">
+                            {{vehicleCount.Good}}</ion-row>
+                    </ion-col> -->
+
+                        <ion-col size="2" *ngIf="loginData.includes('Stop')">
+                            <ion-row style="font-size: xx-small; place-content: center;">STOP</ion-row>
+                            <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                                (click)="changeGridView({'type':'Stop', 'count': vehicleCount.Stop})">
+                                {{vehicleCount.Stop}}
+                            </ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('HighTemp')">
+                            <ion-row style="font-size: xx-small; place-content: center;">HIGTEMP</ion-row>
+                            <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                                (click)="changeGridView({'type':'HighTemp', 'count': vehicleCount.HighTemp})">
+                                {{vehicleCount.HighTemp}}
+                            </ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('Idle')">
+                            <ion-row style="font-size: xx-small; place-content: center;">IDLE</ion-row>
+                            <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                                (click)="changeGridView({'type':'Idle', 'count': vehicleCount.Idle})">
+                                {{vehicleCount.Idle}}
+                            </ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('Geofence')">
+                            <ion-row style="font-size: xx-small; place-content: center;">GEOFENCE</ion-row>
+                            <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                                (click)="changeGridView({'type':'Geofence', 'count': vehicleCount.Geofence})">
+                                {{vehicleCount.Geofence}}
+                            </ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('No Transmission')">
+                            <ion-row style="font-size: xx-small; place-content: center;">NOTRANSMIT</ion-row>
+                            <ion-row class="statusBar" style="background-color:#000000 ;"
+                                (click)="changeGridView({'type':'No Transmission', 'count': vehicleCount['No Transmission']})">
+                                {{vehicleCount['No Transmission']}}</ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('PowerFail')">
+                            <ion-row style="font-size: xx-small; place-content: center;">POWERFAIL</ion-row>
+                            <ion-row class="statusBar" style="background-color:#724040 ;"
+                                (click)="changeGridView({'type':'PowerFail', 'count': vehicleCount['PowerFail']})">
+                                {{vehicleCount['PowerFail']}}</ion-row>
+                        </ion-col>
+
+                        <ion-col size="2" *ngIf="loginData.includes('Overspeed')">
+                            <ion-row style="font-size: xx-small; place-content: center;">OVERSPEED</ion-row>
+                            <ion-row class="statusBar" style="background-color:#f28918 ;"
+                                (click)="changeGridView({'type':'Overspeed', 'count': vehicleCount.Overspeed})">
+                                {{vehicleCount.Overspeed}}</ion-row>
+                        </ion-col>
+                        <ion-col size="2" *ngIf="loginData.includes('DoorOpen')">
+                            <ion-row style="font-size: xx-small; place-content: center;">DOOROPEN</ion-row>
+                            <ion-row class="statusBar" style="background-color:#f28918 ;"
+                                (click)="changeGridView({'type':'DoorOpen', 'count': vehicleCount.DoorOpen})">
+                                {{vehicleCount.DoorOpen}}</ion-row>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-row style="font-size: xx-small; place-content: center;"
+                                *ngIf="loginData.includes('Towed')">TOWED</ion-row>
+                            <ion-row class="statusBar" style="background-color:#c200b8 ;"
+                                (click)="changeGridView({'type':'Towed', 'count': vehicleCount.Towed})">
+                                {{vehicleCount.Towed}}</ion-row>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-row style="font-size: xx-small; place-content: center;">YETTOTRANS</ion-row>
+                            <ion-row class="statusBar" style="background-color:#7d410f ;"
+                                (click)="changeGridView({'type':'Yet_to_transmit', 'count': vehicleCount.Yet_to_transmit})">
+                                {{vehicleCount.Yet_to_transmit}}</ion-row>
+                        </ion-col>
+                        <ion-col size="2">
+                            <ion-row style="font-size: xx-small; place-content: center;">ONLINE</ion-row>
+                            <ion-row class="statusBar" style="background-color:#00E1BC ;"
+                                (click)="changeGridView({'type':'Online', 'count': vehicleCount.Online})">
+                                {{vehicleCount.Online}}</ion-row>
+                        </ion-col>
+                    </ion-segment>
+                </ion-row>
+
+            </ion-card-content>
+        </ion-card>
+    </ion-row>
+
+    <ion-row *ngIf="myPlatform!='desktop' && appName == 'Armoron'">
+        <ion-header>
+            <ion-toolbar class="header-background-color">
+                <ion-buttons slot="start">
+                    <ion-menu-button></ion-menu-button>
+                </ion-buttons>
+                <ion-title>
+                    <ion-title style="text-align: center;">ASSETS</ion-title>
+                </ion-title>
+                <ion-button slot="secondary" color="dark" size="small" (click)="openModalAddAsset()">+ Add</ion-button>
+            </ion-toolbar>
+        </ion-header>
+    </ion-row>
+    <!-- <ion-row style="    padding: 8px;" *ngIf="myPlatform=='desktop'">
+        <ion-col size=10.5>
+
+        </ion-col>
+        <ion-col style="align-self: center;" size=0.5>
+            <ion-row style="align-self: center;     float: right;">
+                <ion-img src="/assets/dashboard_background/bell.png" style="width:40px; height:30px"></ion-img>
+                <ion-badge color="danger"
+                    style="position: absolute; align-self: center; font-size: 13px; left: 76px; color: white; font-weight: bold;  top: 3px;">
+                    {{totalAlertCount}}
+                </ion-badge>
+            </ion-row>
+        </ion-col>
+        <ion-col style="text-align: -webkit-center;" size=1>
+                <ion-img class="logo" [src]="app.logo"></ion-img>
+        </ion-col>
+    </ion-row> -->
+</ion-header>
+<ion-content (ionScroll)="scroll($event)" [scrollEvents]="true">
+    <app-vtsgrid *ngIf="entryPoint == 'VTS' || entryPoint == 'TTS' || entryPoint == 'vts' || entryPoint == 'tts'" [searchTerm]="searchInput" [filterValue]="data"
+        [manualFilter]='filter' [temperatureView]="temperatureData" [(ngModel)]="searchInput"
+        (headerValue)='dashboardCountLoader()' (vehicleAlertCount)="vehicleAlert($event)" ngDefaultControl>
+    </app-vtsgrid>
+</ion-content>

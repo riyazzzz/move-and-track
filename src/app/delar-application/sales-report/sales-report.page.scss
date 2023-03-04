@@ -1,0 +1,45 @@
+.image-size {
+  height: 35px;
+  width: 35px;
+  
+  cursor: pointer;
+  display: inline-block;
+  margin: 5px;
+}
+.download-wrapper {
+  padding: 6px;
+  background: #eaeaea;
+}
+.download-wrapper:hover{
+ background-color: #f6f6f6;
+}
+.subscription-title{
+  font-size: 20px;
+}
+.reportInfo {
+  color: #000000;
+  font-size: 12px;
+  font-family: sans-serif;
+
+}
+
+.paddingBottom10px{
+  padding-bottom: 4px;
+}
+
+.padding25px{
+  padding: 20px;
+}
+
+.buttonWidth{
+  width: 34%;
+  margin: 10px auto;
+  height: 30px;
+  --ion-color-primary: #7c68f8;
+}
+
+.datetime{
+  background-color: #e8e8e8;
+  color: #676464;
+  width: 100%;
+}

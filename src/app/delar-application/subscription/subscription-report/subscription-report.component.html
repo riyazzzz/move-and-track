@@ -1,0 +1,179 @@
+<!-- 
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start"  >
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+     <ion-title style="margin-left: 1%;">Subscription
+     <ion-row style="margin:0px ;padding:0;float:right" *ngIf="myPlatform == 'desktop'">
+      <ion-col style="margin:0px ;padding:0;">
+        <div class="pdf-wrapper" (click)="createPdf()"></div>
+       </ion-col>
+       <ion-col style="margin:0px ;padding:0;">
+        <div class="excel-wrapper" (click)="exportToExcel()"></div>
+       </ion-col>
+     </ion-row> 
+    </ion-title>
+    
+  </ion-toolbar>
+  
+</ion-header> -->
+<!-- <ion-content> -->
+<ion-row>
+  <ion-col size=12>
+    <ion-row style="padding-left: 92%;" *ngIf="myPlatform == 'desktop'">
+      <div class="pdf-wrapper" (click)="createPdf()"></div>
+      <div class="excel-wrapper" (click)="exportToExcel()"></div>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="12" size-md="6" size-lg="4" *ngFor="let subcription of subcription">
+        <!-- <ion-col size="12" size-sm="12" size-md="6" size-lg="4" size-lx="4" > -->
+        <!-- *virtualItem="let subcription;"<ion-virtual-scroll [items]="subcription" approxItemHeight="320px" size="12" size-sm="12" size-md="6" size-lg="4" size-lx="4"> -->
+        <ion-card class="status"
+          [ngClass]="{'validBorder' : subcription.status === 'Expired', 'inValidBorder' : subcription.status === 'Not Expired'}"
+          class="card-wrapper" (click)="updateSubscription(subcription.imeiNo)">
+          <ion-row>
+            <ion-col size="12">
+              <ion-row>
+                <ion-col size=6 style="align-self: center;">
+                  <ion-row>
+                    <!-- <ion-col size="2" class="icon_col">
+                      <ion-icon name="car" class="common-icon"></ion-icon>
+                    </ion-col>  -->
+                    <ion-col size="12" class="align-dataCol">
+                      <ion-row>
+                        <ion-col size="12">
+                          {{subcription.imeiNo}}
+                        </ion-col>
+                      </ion-row>
+                      <!-- <ion-row>
+         <ion-col size="12" class="underline">
+            Plate No
+              </ion-col>
+                </ion-row> -->
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+                <ion-col size=6>
+                  <!--PlateNo --->
+                  <ion-row>
+                    <ion-col size="12" style="margin: 0 0px 0px 2px;left: 50%; font-size: 11px;">
+                      Expiry on
+                    </ion-col>
+                    <ion-col size="12" style="margin: 0 0px 0px 2px;margin-top:0px">
+                      <ion-label class="status"
+                        [ngClass]="{'valid' : subcription.status == 'Expired', 'inValid' : subcription.status == 'Not Expired'}">
+                        {{subcription.warrantyExpiryDate}}</ion-label>
+
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size=12>
+                  <!--PlateNo --->
+                  <ion-row>
+                    <!-- <ion-col size="2" class="icon_col">
+                            <ion-icon name="barcode" class="common-icon"></ion-icon>
+                          </ion-col>  -->
+                    <ion-col size="12" class="align-dataCol">
+                      <ion-row>
+                        <ion-col size="12" style="font-size:large;font-weight: bold;color: black;margin-top: -15px;">
+                          {{subcription.plateNo}}
+                        </ion-col>
+                      </ion-row>
+                      <!-- <ion-row>
+               <ion-col size="12" class="underline">
+                  Plate No
+                    </ion-col>
+                      </ion-row> -->
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size=6 style="margin-top: -10px;">
+                  <!--PlateNo --->
+                  <ion-row>
+                    <ion-col size="2" class="icon_col">
+                      <ion-icon name="business" class="common-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" class="align-dataCol">
+                      <ion-row>
+                        <ion-col size="12">
+                          {{subcription.companyName}}
+                        </ion-col>
+                      </ion-row>
+                      <!-- <ion-row>
+                   <ion-col size="12" class="underline">
+                      Plate No
+                        </ion-col>
+                          </ion-row> -->
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+                <ion-col size=6 style="margin-top: -10px;">
+                  <!--PlateNo --->
+                  <ion-row>
+                    <ion-col size="2" class="icon_col">
+                      <ion-icon name="call" class="common-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="10" class="align-dataCol">
+                      <ion-row>
+                        <ion-col size="12">
+                          {{subcription.contactNo}}
+                        </ion-col>
+                      </ion-row>
+                      <!-- <ion-row>
+                        <ion-col size="12" class="underline">
+                           Plate No
+                             </ion-col>
+                               </ion-row> -->
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size=12 style="margin-top: -5px;">
+                  <!--PlateNo --->
+                  <ion-row>
+                    <ion-col size="1" class="icon_col">
+                      <ion-icon name="mail" class="common-icon"></ion-icon>
+                    </ion-col>
+                    <ion-col size="11" class="align-dataCol">
+                      <ion-row>
+                        <ion-col size="12">
+                          {{subcription.email}}
+                        </ion-col>
+                      </ion-row>
+                      <!-- <ion-row>
+                         <ion-col size="12" class="underline">
+                            Plate No
+                              </ion-col>
+                                </ion-row> -->
+                    </ion-col>
+                  </ion-row>
+
+                </ion-col>
+
+              </ion-row>
+            </ion-col>
+
+          </ion-row>
+
+        </ion-card>
+        <!-- </ion-virtual-scroll> -->
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
+<ion-infinite-scroll threshold="100px" (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+<!-- </ion-content> -->

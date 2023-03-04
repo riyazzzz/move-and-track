@@ -1,0 +1,53 @@
+
+<ion-header class='header'>
+  <ion-toolbar [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+      <ion-grid>
+          <ion-row *ngIf="!showSearch && myPlatform !='desktop'"  style="align-items: center;">
+              <ion-col size='2'>
+                  <ion-menu-button></ion-menu-button>
+              </ion-col>
+              <ion-col size='8.5' style='align-self: center;'>
+                      <ion-label style="font-size: 20px;font-weight: bold;"> {{paramMap}}</ion-label>
+              </ion-col>
+              <ion-col size='1.5' style="padding: 0px;">
+                  <ion-row >
+                      <ion-col size='3' style="align-self: center;"> 
+                        
+                      </ion-col>
+                      
+                  </ion-row>
+              </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="!showSearch && myPlatform =='desktop'"  style="align-items: center;">
+            <ion-col size='2'>
+                <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size='8.5' style='align-self: center;'>
+                    <ion-label class="headercolour"> {{paramMap}}</ion-label>
+            </ion-col>
+            <ion-col size='1.5' style="padding: 0px;">
+                <ion-row >
+                    <ion-col size='3' style="align-self: center;"> 
+                      
+                    </ion-col>
+                    
+                   <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+                    <ion-img [src]="app.logo"></ion-img>
+                   </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+         
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+<app-operator *ngIf ="paramMap =='Operator'"></app-operator>
+<app-profile  *ngIf ="paramMap =='Profile'"></app-profile>
+ <app-users  *ngIf =" paramMap =='Users'"></app-users>
+  <!-- <app-user-card  *ngIf =" paramMap =='Users' && myPlatform !='desktop'"></app-user-card> -->
+   <!-- <app-operator-card *ngIf ="paramMap =='Operator' && myPlatform !='desktop'"></app-operator-card> -->
+   
+</ion-content>
+

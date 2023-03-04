@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar class="dealerHeader">
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Sales report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="padding25px">
+    <ion-row>
+  
+      <ion-col size="6">
+        <ion-row class="reportInfo paddingBottom10px">
+          From Date
+        </ion-row>
+        <ion-row class="paddingBottom10px">
+          <ion-datetime class="datetime" [(ngModel)]="subscription.fromDate" displayFormat="D MMM YYYY"
+            placeholder="From date"></ion-datetime>
+        </ion-row>
+      </ion-col>
+      <ion-col size="6">
+        <ion-row class="reportInfo paddingBottom10px">
+          To Date
+        </ion-row>
+        <ion-row class="paddingBottom10px">
+          <ion-datetime class="datetime"  [(ngModel)]="subscription.toDate" displayFormat="D MMM YYYY"
+            placeholder="To date"></ion-datetime>
+        </ion-row>
+       
+      </ion-col>
+    </ion-row>
+    <ion-row >
+      <ion-button class="buttonWidth" (click)='submit()'>Submit</ion-button>
+  </ion-row>
+  </div>
+  <ion-row *ngIf="reportData" style="width: 100%; height: 100%;">
+    <app-sales-card [reportData]="reportData"></app-sales-card>
+  </ion-row>
+  
+  </ion-content>

@@ -1,0 +1,47 @@
+#schedule-btn{
+    height: 33px;
+    --background: #d2d2d2;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+  }
+  #schedule-btn{
+    &:hover{
+    --background-hover:#d2d2d2;
+    }
+  }
+  .fab-btn{
+    &:hover{
+    --background-hover:#989797;
+    }
+  }
+
+  #maintanence{
+    text-align: center;
+    background: #6c2a84;
+    color: white;
+    border-radius: 10px 10px 0 0;
+    font-weight: bold;
+    font-size: 13px;
+  }
+  .fab-btn{
+    height: 35px;
+    width: 35px;
+    --background: #6c2a84;
+    margin: auto;
+    --box-shadow: none;
+  }
+  .green{
+    --color:green;
+  }
+  .red{
+    --color:red;
+  }
+  .orange{
+    --color:orange;
+  }
+  .black{
+    --color:black;
+  }

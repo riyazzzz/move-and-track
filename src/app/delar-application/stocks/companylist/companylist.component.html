@@ -1,0 +1,36 @@
+
+<ion-header >
+  <ion-toolbar mode="md"    class="dealerHeader" >
+    <ion-buttons slot="start" (click)='closeModal()' >
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-buttons>
+     <ion-title style="bottom: 16px;
+     position: fixed;">Select company</ion-title>
+  
+   
+      </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar [(ngModel)]="terms" placeholder="Search">
+  </ion-searchbar>
+  
+  <ion-virtual-scroll [items]="companyList  | searchDelar:terms"  approxItemHeight="320px">
+    <ion-list  *virtualItem="let companyList;let i = index"  [id]='companyList' style= 'padding:0px;' >
+     <ion-item (click)="updateAnswer($event,i, companyList.id, companyList)">
+          <ion-grid style='padding:0px;margin: 0px;'>
+            <ion-row style='padding:0px;margin: 0px;'>
+              <ion-col size='8'  >{{companyList.name}}</ion-col>
+              <ion-col size='3'></ion-col>
+           </ion-row>
+          </ion-grid>
+               
+       
+        </ion-item>
+    </ion-list>
+ 
+  </ion-virtual-scroll>
+  <!-- <ion-row class="ion-text-center"> 
+  <ion-col size="12" style="position: fixed;
+  bottom: 0px;"><ion-button (click)="assign()" >Submit</ion-button></ion-col>
+ </ion-row> -->
+</ion-content>

@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar
+    [ngClass]="{'dealerHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}"
+    mode="md"
+  >
+    <ion-buttons *ngIf="appName != 'Armoron'" slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Third Party Api</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col>
+        <form [formGroup]="thirdpartyform">
+          <ion-row class="form-field">
+            <ion-col size="6" size-sm="6" size-lg="6" size-md="6">
+              <ion-label class="label-head">Third Party Server:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="serverlist"
+                [items]="serverlist"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                placeholder="Select the Server"
+                closeButtonSlot="end"
+              >
+              </ionic-selectable>
+            </ion-col>
+            <ion-col
+              size="6"
+              size-sm="6"
+              size-lg="6"
+              size-md="6"
+              style="text-align: center; margin-top: 25px"
+            >
+              <ion-button
+                class="submitbtn"
+                (click)="onSubmit()"
+                [disabled]="!thirdpartyform.valid"
+              >
+                Submit
+              </ion-button>
+              <ion-button
+                class="submitbtn"
+                [disabled]="!thirdpartyform.valid"
+                (click)="clear()"
+                >Clear</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+        <div>
+          <form [formGroup]="urlform">
+            <ion-row class="form-field">
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-label class="label-head">URL:</ion-label>
+                <ion-input
+                  formControlName="thirdpartyurl"
+                  class="input"
+                  placeholder="URL link"
+                ></ion-input>
+              </ion-col>
+              <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+                <ion-label class="label-head">Imei No:</ion-label>
+                <ion-input
+                  formControlName="imeino"
+                  type="number"
+                  class="input"
+                  placeholder="Enter the Imei No"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+            <ion-row class="form-field">
+              <ion-col style="margin: 10px 0px 0px; text-align: end">
+                <ion-button
+                  class="submitbtn"
+                  (click)="addModel()"
+                  [disabled]="!urlform.valid"
+                  >Add</ion-button
+                >
+                <ion-button
+                  class="submitbtn"
+                  [disabled]="showButton"
+                  (click)="deleteModel()"
+                  >Delete</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </form>
+        </div>
+        <jqxGrid
+          *ngIf="show"
+          #myGrid
+          [selectionmode]="'checkbox'"
+          (onRowselect)="myGridOnRowSelect($event)"
+          (onRowunselect)="myGridOnRowSelect($event)"
+          [enablebrowserselection]="true"
+          [editable]="false"
+          [theme]="'material'"
+          [width]="'99%'"
+          [autoheight]="true"
+          [source]="dataAdapter"
+          [pagesizeoptions]="page"
+          [sortable]="true"
+          [filterable]="true"
+          [columns]="columns"
+          [columnsresize]="true"
+          [enabletooltips]="true"
+          [pageable]="true"
+          [showfilterrow]="true"
+          style="
+            font-size: 16px;
+            text-align: center !important;
+            margin: 5px;
+            cursor: pointer;
+          "
+        >
+        </jqxGrid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,235 @@
+.wrapper-container {
+    border-radius: 5px;
+    margin       : 3px auto;
+    width: 100%;
+}
+@media(min-width:767px){
+.wrapper-container{
+    transform: scale(0.9);
+    position: absolute;
+    top: -10px;
+}
+}
+.sectionId,.parent,.tag,.classid{
+    position: relative;
+}
+.sectionId,.parent,.tag,.classid{
+    &:after{
+    content: "\f022";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #3880ff;
+    font-size: 28px;
+    padding-right: 0.6em;
+    position: absolute;
+    top: 19px;
+    left: 21px;
+    border-right: 1px solid #f0efee;
+    }
+}
+.parent:after{
+    content: "\f007";
+}
+.tag:after{
+    content: "\f09d";
+    padding-right: 0.3em;
+    font-size: 26px;
+    top: 24px;
+}
+.classid:after{
+    content: "\f0f7";
+    font-size: 26px;
+    top: 21px;
+}
+.radio-text{
+    margin: 0px;
+    padding: 7px ;
+    // text-align: center;
+}
+.container{
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.deatils-header {
+    transform: none !important;
+    text-align: center;
+    color: #3880ff;
+    font-size: 24px;
+    font-weight: 500;
+    padding-right: 65px;
+}
+.stu-items {
+    margin          : 10px 6px 0px;
+    padding         : 0px;   
+    height          : 45px;
+    background-color: #fcfcfc;
+    
+
+}
+#student-info{
+    background   : #f2f2f2;
+    border-radius: 3px;
+}
+.stu-input {
+    --placeholder-color: black;
+    font-size: 13px;
+    --padding-top:0px;
+    --padding-bottom:2px;
+}
+
+.textcolor {
+    font-size: 10px;
+    color    : rgb(117, 118, 119)
+}
+
+.stu-icon,
+.stu-svg {
+    font-size    : 32px;
+    border-right : 1px solid #efedeb;
+    padding-right: 10px;
+    margin       : 0px 15px 5px 0px;
+    color        : #3880ff;
+}
+
+.stu-svg {
+    padding: 0px 10px 0px 0px;
+    height : 30px;
+    width  : 42px;
+    margin : 5px 15px 7px 8px;
+}
+
+.stu-select-box,
+.select-box2 {
+    //border       : 1px solid #cfe8ec;
+    height       : 45px;
+    //border-radius: 7px;
+    background   : white;
+
+}
+
+.text-select-box {
+    height    : 48px;
+    text-align: left;
+    margin    : 10px;
+}
+
+.stu-select-box-col {
+    margin : 16px 0px 0px 5px;
+    padding: 0px;
+}
+
+.student-toggleBtn {
+    float          : right;
+    --border-radius: 50%;
+    padding        : 0px;
+    margin         : 5px 0px;
+}
+
+.box-column,
+.box-column3 {
+    border-radius: 5px;
+    padding      : 1px;
+    
+}
+
+.box-column3 {
+    background: white;
+}
+
+.stu-col1-img {
+    padding     : 0px 15px 0px 0px;
+    height      : 30px;
+    width       : 42px;
+    margin      : 5px 15px 7px 0px;
+    border-right: 1px solid #efedeb;
+}
+
+
+.main-container-btn {
+    height : 50px;
+    width  : 200px;
+    margin : 10px auto 0px;
+    padding: 0px 15px 0px 0px;
+}
+.radioBtn {
+    margin: 0px auto;
+}
+.genderImg {
+    width: 32px;
+}
+
+
+.container::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  .container::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .container::-webkit-scrollbar-thumb {
+    background:lightgray; 
+  }
+  
+  /* Handle on hover */
+  .container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+.drop-selection {
+    margin-bottom: 8px;
+}
+select.stu-input {
+    outline: none;
+    background: none;
+}
+.select-input,.select-routeinfo{
+    border: 0;
+    padding: 15px 15px 15px 68px;
+    width :98%;
+    color :rgb(85, 87, 87);
+}
+.select-routeinfo{
+    width:100%
+}
+select.option-body:hover{
+    outline: none;
+}
+.option-head{
+    background-color: darkgray;
+}
+.route-info{
+    margin:10px;
+}
+option:focus{
+    outline: none;
+}
+.geozone-info{
+    border: 1px solid rgb(247, 247, 247);
+    height:273px !important;
+    width :100%;
+}
+.popup-head {
+    color      : #3880ff;
+    margin-left: 30px;
+    font-size  : 28px !important;
+    font-weight: 600;
+    margin     : 10px auto 10px;
+}
+
+.shapes-item{
+    color: #928d8b;
+    z-index: 12;
+    margin: auto;
+    position: absolute;
+    bottom: 45%;
+    right: 10px;
+    font-size: 31px;
+    border: 1px solid #cfe8ec;
+    outline: none;
+}

@@ -1,0 +1,12 @@
+
+  <div id="geoFence" [ngClass]='{"mobMap": myPlatform != "desktop", "webMap": myPlatform === "desktop"}' #mapElement></div>
+  <ion-item>
+      <ion-label>Range in km</ion-label>
+      <ion-select placeHolder = '50 Meter' name="measureSetSelect" [(ngModel)]="range">
+              <ion-select-option *ngFor="let typeSelector of typeSelector" [value]="typeSelector.id">
+                {{typeSelector.name}}
+              </ion-select-option>
+            </ion-select>
+</ion-item>
+<ion-button expand="full" (click)='showNearByVehicle()'>Show Near By Vehicle</ion-button>
+

@@ -1,0 +1,62 @@
+.deatils-header {
+    transform: none !important;
+    text-align: center;
+    color: #3880ff;
+    font-size: 20px;
+    font-weight: 500;
+    padding-right: 50px;
+}
+.box-column3 {
+    border-radius: 5px;
+    padding      : 1px;
+    background: white;
+}
+.alert-info {
+   font-size: 1.8vh;
+   background: #fdf9f0;
+}
+.alert-info ion-row:nth-child(even){
+    background: #f5f5f5; 
+}
+.alert-checkbox {
+    height: 14px;
+    width : 14px;
+    vertical-align: middle;
+}
+.alert-row{
+    border:2px solid white;
+}
+.alert-row,.alert-info ion-row:nth-child(even){
+    &:hover{
+       background: #eeedee;
+    }
+}
+.alert-forward{
+    margin: -5px 10px;
+}
+.forward-text{ 
+    font-size: 13px;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 500;
+    color: gray;
+    text-transform: uppercase;
+}
+.alert-option{
+    text-align: center;
+    margin-bottom: 5px;
+}
+#student-name{
+    font-size: 13px;
+    font-weight: 500; 
+}
+.stu-name
+  {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 500; 
+    
+  }
+  .scroll{
+    overflow-y:scroll;
+}

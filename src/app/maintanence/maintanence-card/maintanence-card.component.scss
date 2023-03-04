@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    text-align: center;
+}
+.wrapper-container{
+    margin: 8px;
+    // background: url("../../../assets/card_backgrounds/user-card.jpg");
+    zoom: 85%;
+}
+.status_docorclose{
+    border-left: 4px solid red;
+}
+.status_docoropen{
+    border-left: 4px solid green;
+}
+.status-container{
+    color: black;
+    border: 1px solid gray;
+    background-color: #f9f9f9;
+}
+.status_close{
+    color:red;
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: -2px;
+}
+.status_open{
+    color:green; 
+    font-size: 16px;
+    font-weight: 700;
+    margin-top: -2px;
+}
+
+
+.mail-container{
+    background-color: #0aa8e4;
+    padding: 0px 5px;
+}
+.validity-container{
+    background-color: #3880ff;
+}
+.col_left{
+ margin: auto;
+}
+.add-icon{
+    font-size: 32px;
+    
+}
+.plateno{
+    clip-path: polygon(0 0, 100% 0%, 91% 100%, 0% 100%);
+    z-index: 3;
+    padding: 5px;
+    color: white;
+    font-size: 14px;
+    background-color: #3880ff;
+}
+.alert-type{
+    font-size: 14px;
+}
+.border_plateno{
+    clip-path: polygon(0 0, 5% 0, 0 99%, 0% 100%);
+    background-color: black;
+    position: relative;
+    //top:10px;
+}
+
+.alert_icon{
+    color: #ff9600;
+    font-size: 20px;
+    padding: 4px;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+.bottom_icons{
+    font-size: 13px;
+    color: black;
+    position: relative;
+    top: -8px;
+    background-color: white;
+    padding: 1px;
+    border: 1px solid gray;
+}
+.alert-contanier{
+    background-color: #52575d;
+    color: white;
+    display: grid;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 11px 0;
+    
+}
+.maintanence-title{
+    font-size: 12px;
+    font-family: "Segoe UI";
+    color: #5bc0de;
+    font-weight: 600;
+    position: relative;
+    z-index: 3;
+  }
+.maintanence-title:before{
+    margin: auto;
+    position: absolute;
+    content: "";
+    height: 1.6px;
+    bottom: 14px;
+    width: 13px;
+    background:grey;
+
+}

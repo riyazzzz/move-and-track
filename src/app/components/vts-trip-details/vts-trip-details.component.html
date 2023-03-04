@@ -1,0 +1,35 @@
+<ion-card
+  *ngIf="tripData?.TripId != undefined"
+  style="width: 100%; margin-left: 15px"
+>
+  <ion-card-content>
+    <ion-row>
+      <ion-col class="vj"> Device ID : </ion-col>
+      <ion-col> {{ tripData?.GPSDeviceId }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj"> Driver Name : </ion-col>
+      <ion-col> {{ tripData?.DriverName }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj"> Mobile No : </ion-col>
+      <ion-col> {{ tripData?.MobileNumber }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj"> Source : </ion-col>
+      <ion-col> {{ tripData?.Source }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj"> Distination: </ion-col>
+      <ion-col> {{ tripData?.Destination }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj">No of Bags : </ion-col>
+      <ion-col> {{ tripData?.Noofbags }} </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="vj"> Weight: </ion-col>
+      <ion-col> {{ tripData?.Weight }} </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>

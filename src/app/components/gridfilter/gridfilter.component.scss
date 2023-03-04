@@ -1,0 +1,116 @@
+.filterSortHeading{
+    color:#0779e4;
+    font-size: 12px;
+    margin: 10px 0px 0px 20px;
+    font-family: sans-serif;
+    font-weight: 700;
+}
+.carSvg,.statusTruck,.usersSvg{
+  height:25px;
+  width: 25px;
+  display: inline-block;
+  margin-left: 8px;
+}
+.innerPadding{
+  padding: 0px;
+  margin: 0px;
+}
+.makeModel,.vehicleStatus,.managers{
+  padding:8px 0px 0px 16px;
+}
+
+.container{
+    border:1px solid #efefef;
+    margin:2px;
+    border-radius: 5px;
+    font-family: sans-serif;
+    color:gray;
+    font-size: 12px;
+    padding: 0px;
+}
+ion-select .makeSelection{
+  --placeholder-color: yellow !important;
+}
+.makeSelection,.modelSelection{
+    margin: 0px 5px 0px 40px;
+    height: 19px; 
+    text-align: center;
+    padding: 2px;
+    color: white;
+    border-radius: 2px;
+    background: #c3c3c5;
+  }
+
+.statusSelection,.vehicleSince,.managersSelction{
+    height: 19px;
+    margin-left: 39px;  
+    text-align: center;
+    padding: 2px;
+    margin: 0px 5px 0px 40px;
+    color: white;
+    border-radius: 2px;
+    background: #c3c3c5;
+    position: relative;
+    top: 0px;
+}
+.vehicleSince{
+  margin-left: 0px;
+}
+.managersSelction{
+  margin: 0px 5px 0px 40px;
+}
+
+.sortContainers{
+  font-size: 12px;
+  border:1px solid #efefef;
+  margin: 0px 0px 0px 10px;
+  line-height:0px;
+  padding:10px 0px;
+}
+.sortType{
+  color:#313131;
+}
+.radioBtn{
+  height: 15px;
+  width: 15px;
+  vertical-align: middle;
+}
+.svgImages{
+  display: inline-block;
+  height: 15px;
+  width: 20px;
+  margin: 5px 8px 0px -11px;
+}
+
+.sortIcon{
+  font-size: 20px;
+  color:#0779e4;
+  position: relative;
+  top: 3px;
+  left: -10px;
+  
+}
+.discription{
+  font-size: 11px;
+  
+}
+.labelOff,.labelOn{
+  position: relative;
+  top: -5px;
+  right: 7px;
+  text-decoration: none;
+  font-size: 10px;
+}
+.labelOn{
+  right: 0px; 
+}
+.clearBtn,.applyBtn{
+  width: 100px;
+  height: 20px;
+  font-size: 11px;
+  margin: 0px 15px;
+}
+
+ion-select {
+  color: #ffffff;
+}

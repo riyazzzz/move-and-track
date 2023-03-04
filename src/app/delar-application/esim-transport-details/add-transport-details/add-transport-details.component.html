@@ -1,0 +1,248 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Add Transport Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="myPlatform != 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-md="10"
+        offset-md="1"
+        size-lg="12"
+        offset-lg="0"
+      >
+        <form [formGroup]="tansportForm">
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Dealer Name :</ion-label>
+              <ionic-selectable
+                class="label-style selectable-input"
+                formControlName="dealer"
+                placeholder="Select the Dealer Name"
+                [items]="Dealer"
+                (onChange)="getinvoicelist($event)"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Invoice Number :</ion-label>
+              <ionic-selectable
+                class="label-style selectable-input"
+                formControlName="invoiceno"
+                placeholder="Select Invoice Number"
+                (click)="invoicelist()"
+                [items]="invoiceno"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content">Transport Date :</ion-label>
+              <ion-input
+                class="label-style"
+                type="date"
+                [max]="maxDate"
+                formControlName="transportdate"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label class="col-content"> Tranpsort Amount :</ion-label>
+              <ion-input
+                class="label-style"
+                type="number"
+                formControlName="transportamount"
+                placeholder="Enter the Transport Amount"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="10">
+              <ion-label class="col-content">File Upload :</ion-label>
+              <input
+                class="documents"
+                type="file"
+                formControlName="transportdocument"
+                ng2FileSelect
+                [uploader]="uploader"
+              />
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              *ngIf="!hideSerialNo"
+              class="button"
+              type="submit"
+              [disabled]="!tansportForm.valid"
+              (click)="edit('submit')"
+              >Submit
+            </ion-button>
+            <ion-button
+              *ngIf="hideSerialNo"
+              class="button"
+              type="submit"
+              [disabled]="!tansportForm.valid"
+              (click)="edit('edit')"
+              >Update
+            </ion-button>
+            <ion-button class="button" type="cancel" (click)="cancelBtn()"
+              >Cancel</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="myPlatform == 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col>
+        <form [formGroup]="tansportForm">
+          <ion-row class="total-data">
+            <ion-col>
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Dealer Name : </ion-col>
+                <ion-col size="7">
+                  <ionic-selectable
+                    class="label-style selectable-input"
+                    formControlName="dealer"
+                    placeholder="Select the Dealer Name"
+                    [items]="Dealer"
+                    (onChange)="getinvoicelist($event)"
+                    [canSearch]="true"
+                    [hasVirtualScroll]="true"
+                    [disabledItems]="data"
+                  >
+                  </ionic-selectable>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Invoice No : </ion-col>
+                <ion-col size="7">
+                  <ionic-selectable
+                    class="label-style selectable-input"
+                    formControlName="invoiceno"
+                    placeholder="Select Invoice Number"
+                    (click)="invoicelist()"
+                    [items]="invoiceno"
+                    [canSearch]="true"
+                    [hasVirtualScroll]="true"
+                    [disabledItems]="data"
+                  >
+                  </ionic-selectable>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Transport No : </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="text"
+                    formControlName="transportno"
+                    placeholder="Enter the Transport No"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Transport Date :</ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="date"
+                    [max]="maxDate"
+                    formControlName="transportdate"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">
+                  Tranpsort Amount :
+                </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="number"
+                    formControlName="transportamount"
+                    placeholder="Enter the Transport Amount"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">File Upload :</ion-col>
+                <ion-col size="7">
+                  <input
+                    class="documents"
+                    type="file"
+                    formControlName="transportdocument"
+                    ng2FileSelect
+                    [uploader]="uploader"
+                  />
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              *ngIf="!hideSerialNo"
+              class="button"
+              type="submit"
+              [disabled]="!tansportForm.valid || button"
+              (click)="edit('submit')"
+              >Submit
+            </ion-button>
+            <ion-button
+              *ngIf="hideSerialNo"
+              class="button"
+              type="submit"
+              [disabled]="!tansportForm.valid || button"
+              (click)="edit('edit')"
+              >Update
+            </ion-button>
+            <ion-button class="button" type="cancel" (click)="cancelBtn()"
+              >Cancel</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

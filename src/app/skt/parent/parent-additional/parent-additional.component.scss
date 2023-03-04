@@ -1,0 +1,55 @@
+.parent-items {
+    margin          : 5px 6px 0px;
+    padding         : 0px;
+    border          : 1px solid #cfe8ec;
+    border-radius   : 18px;
+    height          : 35px;
+    background-color: #fcfcfc;
+}
+
+.parent-container {
+    width           : 95%;
+    height          : 80%;
+    margin          : -20px auto 32px;
+    padding         : 0px auto;
+    background-color: #f3f3f3;
+
+}
+
+.parent-input {
+    font-size          : 13px;
+    --placeholder-color: rgb(117, 118, 119);
+    --padding-bottom   : 25px;
+}
+
+.stu-col1-img {
+    padding     : 0px 15px 5px 0px;
+    height      : 30px;
+    width       : 42px;
+    margin      : 5px 5px 14px 0px;
+    border-right: 1px solid #efedeb;
+}
+
+.parent-icon {
+    font-size    : 25px;
+    border-right : 1px solid #efedeb;
+    padding-right: 10px;
+    margin       : 0px 5px 17px;
+    color        : #3880ff;
+}
+
+.parent-btn {
+    height    : 30px;
+    font-size : small;
+    width     : 100px;
+    margin    : auto;
+    padding   : 2px;
+    text-align: center;
+}
+
+.popup-head {
+    color: #3880ff;
+    margin-left: -15px;
+    text-align: -webkit-center;
+    padding-left: 0px;
+}

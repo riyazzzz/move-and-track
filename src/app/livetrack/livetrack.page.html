@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back" style="color:rgb(0, 0, 0)"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="appHeader">
+      {{headerText}}
+    </ion-title>
+  </ion-toolbar>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwNE2J8f2FWG2grjrxUzCa6GAUPoNbgso"></script>
+</ion-header>
+
+<ion-content>
+  <app-vtslivetrack></app-vtslivetrack>
+
+</ion-content>

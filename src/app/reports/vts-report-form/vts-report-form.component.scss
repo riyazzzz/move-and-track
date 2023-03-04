@@ -1,0 +1,363 @@
+// *{
+//     .scroll-y{
+//         overflow-y:hidden;  
+//     }
+//         main.inner-scroll {
+//             overflow-y: scroll !important;
+//         }
+       
+// }
+.report-container {
+    height: 82vh;
+    border: 1px solid rgb(185, 182, 182);
+    border-top: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden !important;
+    box-shadow: 0px 2px 2px 5px #c1c0c0;
+}
+.report-grid{
+    height:74vh;
+    border: 1px solid rgb(185, 182, 182);
+    border-top: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: hidden !important;
+    box-shadow: 0px 2px 2px 5px #c1c0c0;
+}
+.report-container.scroll-y {
+    overflow-y: hidden !important;
+}
+.border-grid{
+    height: 26px;
+    border-radius: 3px;
+    font-size: 10px;
+    color:#989898;
+    background: white;
+    --icon-color:white;
+}
+.border-item {
+    height: 26px;
+    border-radius:3px;
+    color:#989898;
+    background: white;
+    --icon-color:white;
+    
+}
+@media only screen and (max-width:1024px) {
+    .border-item{
+        font-size: 10px;
+    }
+    .date-lables{
+        margin: 6px 0px 0px 0px;
+        font-size: 9px;
+    }
+    input{
+        padding: 0px;
+    }
+}
+@media only screen and (min-width:1025px) and(max-width:1300px){
+    .border-item{
+        font-size: 11px;
+    }
+    .date-lables{
+        margin: 6px 0px 0px 0px;
+        font-size: 11px;
+    }
+    input{
+        padding: 0px;
+    }
+}
+@media only screen and (min-width:1301px) {
+    .border-item{
+        font-size: 12px;
+    }
+    .border-grid{
+        font-size: 9px; 
+    }  
+    .date-lables{
+        margin: 6px 0px 0px 5px;
+        font-size: 11px;
+    }
+    input{
+        padding: 0px 0px 0px 5px;
+    }
+  }
+
+.common-margin {
+    position: relative;
+    top: -10px;
+}
+.common-margin2 {
+    position: relative;
+    top: -15px;
+}
+.common-report {
+    position: relative;
+    top: -25px;
+}
+.max-speed {
+    height: 57vh;
+}
+.speed {
+    height: 65vh;
+}
+.max-trip {
+    height: 52vh;
+}
+.commom-type {
+    height: 64vh;
+}
+
+.trip {
+    height: 60vh;
+}
+.max-status {
+    height: 57vh;
+}
+.max-overspeed{
+    height:56vh;
+}
+.overspeed{
+    height: 64vh;
+}
+.driver {
+    height: 64vh;
+    padding-bottom: 3.5em;
+}
+.max-driver {
+    height: 56vh;
+    padding-bottom: 3.5em;
+}
+
+.max-alert {
+    height: 56vh;
+}
+.alert {
+    height: 66vh;
+    padding-bottom: 20px;
+}
+.trip-scroll {
+    height: 30vh;
+    overflow-y: scroll;
+}
+
+
+.reportInfo {
+    color: #c1c1d2;
+    font-size: 14px;
+}
+.reportContent {
+    color: #3d3333;
+    font-weight: bold;
+    border-bottom: 1px solid #c1c1d2;
+}
+.maxWidth {
+    width: 100%;
+}
+.column-size {
+    padding: 0px 2px;
+    height: 30px;
+}
+.set-size {
+    width: 100%;
+    height: 61vh;
+    padding: 0px;
+    margin: 0px;
+}
+
+.submitBtn {
+    --background: #6c2a84;
+    font-size: 11px;
+    height: 28px;
+    margin-bottom: 10px;
+}
+
+
+
+input{
+    width: 100%;
+    height: 26px;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+}
+
+.view-btn {
+    height: 20px;
+    padding: 0px;
+    width: 100px;
+    font-size: 12px;
+}
+
+.margin-set {
+    padding: 0px;
+    margin: 0px;
+}
+.reports-title {
+    padding: 0px;
+    margin: 0;
+    position: relative;
+    border: 1px solid rgb(185, 182, 182);
+    border-bottom: none;
+    background: #d2d2d2;
+    color: #8107ad;
+    font-size: large;
+}
+.form-content {
+    background: #d2d2d2;
+    padding: 0 0px 0 3px;
+}
+.form-grid{
+    padding: 0px 0px 0px 8px;
+    background: #d2d2d2;
+}
+
+.image-size {
+    height: 35px;
+    width: 35px;
+    background:#6c2a84;
+    cursor: pointer;
+}
+.image-size:hover{
+    background-color: #efe2f1;
+}
+
+.download-wrapper {
+    padding: 6px;
+}
+
+/*Custome  select Option*/
+.selectdiv{
+    position: relative;
+    float: left;
+    top:-4px;
+    width: 100%;
+    }
+    .selectdiv2{
+        position: relative;
+        float: left;
+        top:0px;
+        width: 100%;
+    }
+    .selectdiv3{
+        position: relative;
+        float: left;
+        top:0px;
+        width: 100%;
+    }
+    .selectdiv4{
+        position: relative;
+        float: left;
+        top:0px;
+        width: 100%;
+    }
+    .selectdiv3:after{
+      content: '\f017';
+      font: normal normal normal 13px/0 FontAwesome;
+      color: white;
+      right: 0px;   
+      top: 0px;
+      height:11px;
+      padding: 15px 8px 0px 8px;
+      border-left: 1px solid #a9abac;
+      background:#6c2a84;
+      position: absolute;
+      pointer-events: none;
+    }
+    .selectdiv:after {
+      content: '\f078';
+      font: normal normal normal 13px/0 FontAwesome;
+      color: white;
+      right: 0px;   
+      top: 5px;
+      height:11px;
+      padding: 15px 8px 0px 8px;
+      border-left: 1px solid #a9abac;
+      background:#6c2a84;
+      position: absolute;
+      pointer-events: none;
+  }
+  .selectdiv4:after {
+    content: '\f078';
+    font: normal normal normal 13px/0 FontAwesome;
+    color: white;
+    right: 0px;   
+    top: 5px;
+    height:11px;
+    padding: 15px 8px 0px 8px;
+    border-left: 1px solid #a9abac;
+    background:#6c2a84;
+    position: absolute;
+    pointer-events: none;
+}
+  .selectdiv2:after {
+    content: '\f073';
+    font: normal normal normal 13px/0 FontAwesome;
+    color: white;
+    right: 0px;   
+    top: 0px;
+    height:11px;
+    padding: 15px 8px 0px 8px;
+    border-left: 1px solid #a9abac;
+    background:#6c2a84;
+    position: absolute;
+    pointer-events: none;
+}
+  
+  /* IE11 hide native button  */
+  .select::-ms-expand {
+  display: none;
+  }
+  .selectdiv2 .select{
+    height: 26px;
+    width: 100%;
+  }
+  .selectdiv3 .select{
+    height: 26px;
+    width: 100%;
+  }
+  .selectdiv .select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 26px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 0px 0px 5px;
+    line-height: 1.75;
+    color: #989898;
+    background-image: none;
+    border: 1px solid #e8e8e8;
+    -ms-word-break: normal;
+    word-break: normal;
+    outline: none;
+    border:none;
+  }
+  .selectdiv4 .select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: block;
+    width: 100%;
+    height: 26px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 0px 0px 5px;
+    // font-size: 16px;
+    line-height: 1.75;
+    color: #989898;
+    // background-color:white;
+    background-image: none;
+    border: 1px solid #e8e8e8;
+    -ms-word-break: normal;
+    word-break: normal;
+    outline: none;
+    border:none;
+  }
+  
+ 

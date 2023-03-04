@@ -1,0 +1,121 @@
+// ion-card-content {
+//     height: 100px;
+//     width:100px;
+//   }
+//   ion-card-title{
+//     text-align: center;
+//     font-size:12px;
+//     font-weight:bold;
+//   }
+//   .circle{
+//     width: 100px;
+//     height: 100px;
+//     margin-left: 10px;
+
+//   }
+//   ion-card{
+//     width: 120px;
+//     height: 122px;
+//     margin-left: 6px;
+//   }
+//   ion-card-header{
+//     padding: 1.5px;
+//   }
+.boxx {
+  background-color: #f0f4fd;
+}
+.in-card {
+  border-radius: 40px;
+}
+
+ion-avatar {
+  border-radius: 40%;
+}
+
+.box {
+  background: #6a52ee;
+  border-radius: 15px 15px 0px 0px;
+}
+.ion-card {
+  text-align: bottom;
+  background: #7d67f8;
+  border-radius: 15px 15px 15px 15px;
+}
+.fixline {
+  height: 70px;
+    font-size: smaller;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+.boxs {
+  background: #ffffff;
+  border-radius: 15px 15px 0px 0px;
+  position: relative;
+  margin-top: -10px;
+}
+.ion-cards {
+  background: rgba(255, 255, 255, 0.137);
+  border-radius: 80px 80px 80px 80px;
+  margin-left: 20px;
+}
+
+.fixlines {
+  height: 70px;
+    font-size: smaller;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.userStyle {
+  align-self: center;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  font-size: large;
+  font-weight: bold;
+}
+
+.iconXXXlarge{
+  font-size: xxx-large;
+}
+
+.verticalCenter{
+  text-align: center;
+}
+
+.countSize{
+  font-size: large;
+  font-weight: bolder;
+  font-family: sans-serif;
+}
+
+.rowCenter{
+  justify-content: center;
+}
+
+.capitial{
+  text-transform: uppercase;
+}
+.bold{
+  font-weight: bold;
+}
+
+.borderAndRadius{
+  border-radius: 25px;
+  border: 2px solid #73737345;
+
+}
+
+.ionCard {
+    --background: var(--ion-item-background,transparent);
+    --color: var(--ion-color-step-550,#737373);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    -webkit-box-shadow: 0 3px 1px -2px rgb(255, 255, 255), 0 2px 2px 0 rgb(255, 255, 255), 0 1px 5px 0 rgb(255, 255, 255); 
+    box-shadow: 0 3px 1px -2px rgba(255, 255, 255), 0 2px 2px 0 rgba(255, 253, 253), 0 1px 5px 0 rgb(255, 255, 255); 
+}

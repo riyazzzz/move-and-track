@@ -1,0 +1,263 @@
+
+ion-input {
+    .native-input {
+        border-radius: 25px
+    }
+}
+.Tracalogic{
+    --background:rgb(255, 174, 0);
+}
+.Moveandtrack{
+    --background:rgb(237, 27, 36);
+}
+.GE{
+    --background:rgb(255, 174, 0);
+}
+.Upcot-mvt{
+    --background:rgb(237, 27, 36);
+}
+.Remoncloud{
+    --background:rgb(237, 27, 36);
+}
+.moveAndTrackSpacing{
+    margin-top: 12%;
+}
+.labelSpacing{
+    //New---
+    margin: 2% auto;
+    width: 77%;
+}
+
+
+.check {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px
+}
+
+.backgroundCol{
+    background:#32384b;
+}
+
+.noWhiteSpace{
+    padding:0px;
+}
+
+.iconSize{
+    width: 50px;
+    height: 35px;
+}
+// .appImageBackground{
+//     --background: url(../../assets/backgroungImage/Default-Portrait@~ipadpro.png) 0 0/100% 100% no-repeat;
+// }
+.appDarkBackground{
+    background:#32384b;
+}
+
+
+
+
+///////////////////////web///////////////////@at-root
+.label-shape{
+    
+    //Neww----
+    background-color: none;
+    height: 36px;
+}
+.label-shape-box{
+    background-color: none;
+    height: 40px;
+    margin-bottom: 3%;
+}
+.input-spacing{
+    top: 5vh;
+    right: 2vh;
+}
+.input-spacing{
+    float: right;
+}
+.web-input{
+    //New
+    --padding-top: 0px;
+    //-----
+    font-size: 14px;
+    font-weight: 600;
+    font-family: system-ui;
+}
+//New---
+ion-icon{
+    margin-top: 0px !important;
+}
+ion-input {
+    .native-input {
+        border-radius: 25px
+    }
+}
+.Tracalogic{
+    --background:rgb(255, 174, 0);
+}
+.Moveandtrack{
+    --background:rgb(237, 27, 36);
+}
+.GE{
+    --background:rgb(255, 174, 0);
+}
+
+
+.moveAndTrackSpacing{
+    //Neww---
+    opacity: 0.9;
+    width: 300px;
+    margin: auto;
+    border-radius: 5px;
+    
+}
+
+@media only screen and (max-width: 550px)  {
+    .moveAndTrackSpacing {
+        position: relative;
+        top: 50px;
+    }
+    //New
+    #remember-item{
+        display: none;
+    }
+  }
+  @media only screen and (min-width:551px){
+    .moveAndTrackSpacing {
+         width: 360px;
+    } 
+    .moveAndTrackSpacingNew {
+        width: 360px;
+   } 
+   //New
+   #remember-item{
+    display: none;
+}
+  }
+
+@media only screen and (min-width: 1024px)and (max-width:1210px) {
+    .moveAndTrackSpacing {
+        //Neww---
+        float: right;
+        padding: 70px 0px;
+        zoom: 65%;
+        
+    }
+    //New
+    #remember-item{
+       display: block;
+    }
+    
+    
+  }
+  @media(min-width:1202px){
+    .moveAndTrackSpacing {
+        //Neww---
+        float: right;
+        padding: 0px 0px 0px;
+        zoom: 90%;
+        
+    }
+    //New
+    #remember-item{
+        display: block;
+    }
+  }
+  
+
+
+.container{
+    margin: 0px;
+    height: 100vh;
+    display: block;
+    //background: url("https://kingstrackimages.s3.amazonaws.com/loginimages/track_apmkingstrack_com_background.jpg") center center / cover no-repeat fixed;
+    // background:url("../../assets/background_img/woodhouse.jpg") center center / cover no-repeat fixed;
+   
+}
+.text-box-spacing{
+height: 60px;
+}
+
+.labelSpacing-web {
+    margin-bottom: 3%;
+}
+
+.left-side-form-grp{
+    width: 20%;
+    position: fixed;
+    top: 10vh;
+    right: 2vh;
+}
+.container-wrapper{
+    margin: 0px;
+    height: 100vh;
+    display: block;
+    //New
+    background:url("../../../assets/loginLogo/mvtlogin.gif") 50% 104% / cover no-repeat fixed;
+    //background: url("https://kingstrackimages.s3.amazonaws.com/loginimages/track_apmkingstrack_com_background.jpg") center center / cover no-repeat fixed;  
+}
+.labelSpacing{
+    margin-bottom: 3%;
+    margin-left: 6%;
+    width: 85%;
+}
+
+.forgotPass {
+    font-size: 13px;
+}
+.forgot{
+    font-size: 12px; 
+    background: white;
+    padding: 11px;
+    margin: 10px 26px 0 24px;
+    float: right;
+    border-radius: 5px;
+    background: white;
+    padding: 11px;
+    width: fit-content;
+}
+//New
+.forgotNew{
+    font-size: 12px;
+    line-height: 31px;
+    color: red;
+    padding-right: 24px;
+}
+.svg_img{
+    width: 20px;
+    padding: 0px 0px 6px;
+}
+.check {
+    width: 12px;
+    height: 12px;
+    margin-right: 10px
+}
+
+.backgroundCol{
+    background:#32384b;
+}
+
+.noWhiteSpace{
+    padding:0px;
+}
+
+.iconSize{
+    width: 50px;
+    height: 35px;
+}
+
+.appDarkBackground{
+    background:#32384b;
+}
+//Neww
+#remember-item{
+    --background: transparent;
+    margin: -15px 0 0 0px;
+    position: absolute;
+    right: -12px;
+    font-size: 12px;
+    padding: 0 !important;
+    width: 148px;
+}
+

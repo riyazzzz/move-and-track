@@ -1,0 +1,308 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Payment Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="myPlatform != 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col
+        size="12"
+        size-sm="12"
+        size-md="10"
+        offset-md="1"
+        size-lg="12"
+        offset-lg="0"
+      >
+        <form [formGroup]="productionForm">
+          <div class="wrapper-form">
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Service Provider :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="text"
+                  formControlName="serviceprovider"
+                  value="Disabled"
+                  disabled
+                  placeholder="Enter the Service Provider"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Invoice No :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="text"
+                  formControlName="invoiceno"
+                  value="Disabled"
+                  disabled
+                  placeholder="Enter the Invoice No"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Invoice Amount :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="invoiceamount"
+                  value="Disabled"
+                  disabled
+                  placeholder="Invoice Amount"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Imei Number :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="imeiNo"
+                  placeholder="Enter the Imei Number"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content"> Balance Amount :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="balanceamount"
+                  value="Disabled"
+                  disabled
+                  placeholder="Balance Amount"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Total Paid Amount :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="totalamountpaid"
+                  value="Disabled"
+                  disabled
+                  placeholder="Total Amount"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Paid Date :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="date"
+                  [max]="maxDate"
+                  formControlName="paiddate"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">Paid Amount :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="number"
+                  formControlName="paidamount"
+                  placeholder="Enter the Paid Amount"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-label class="col-content">UTR No :</ion-label>
+                <ion-input
+                  class="label-style"
+                  type="text"
+                  formControlName="utrno"
+                  placeholder="Enter the Utr no"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </div>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              class="button"
+              type="submit"
+              [disabled]="!productionForm.valid"
+              (click)="submitBtn()"
+              >Submit</ion-button
+            >
+            <ion-button class="button" type="cancel" (click)="cancelBtn()"
+              >Cancel</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-content *ngIf="myPlatform == 'desktop'" class="content-style label-style">
+  <ion-grid>
+    <ion-row class="form-field">
+      <ion-col>
+        <form [formGroup]="productionForm">
+          <ion-row class="total-data">
+            <ion-col>
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">
+                  Service Provider :
+                </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="text"
+                    formControlName="serviceprovider"
+                    value="Disabled"
+                    disabled
+                    placeholder="Enter the Service Provider"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Invoice No :</ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="text"
+                    formControlName="invoiceno"
+                    value="Disabled"
+                    disabled
+                    placeholder="Enter the Invoice No"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">
+                  Invoice Amount :
+                </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="number"
+                    formControlName="invoiceamount"
+                    value="Disabled"
+                    disabled
+                    placeholder="Invoice Amount"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">
+                  Balance Amount :
+                </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="number"
+                    formControlName="balanceamount"
+                    value="Disabled"
+                    disabled
+                    placeholder="Balance Amount"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">
+                  Total Paid Amount :
+                </ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="number"
+                    formControlName="totalamountpaid"
+                    value="Disabled"
+                    disabled
+                    placeholder="Total Amount"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Paid Date :</ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="date"
+                    [max]="maxDate"
+                    formControlName="paiddate"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">Paid Amount :</ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="number"
+                    formControlName="paidamount"
+                    placeholder="Enter the Paid Amount"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="content-style">
+                <ion-col size="4" class="col-content">UTR No :</ion-col>
+                <ion-col size="7">
+                  <ion-input
+                    class="label-style"
+                    type="text"
+                    formControlName="utrno"
+                    placeholder="Enter the Utr no"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-row class="content-style">
+          <ion-col style="text-align: center !important; padding: 20px">
+            <ion-button
+              class="button"
+              type="submit"
+              [disabled]="!productionForm.valid || button"
+              (click)="submitBtn()"
+              >Submit</ion-button
+            >
+            <ion-button class="button" type="cancel" (click)="cancelBtn()"
+              >Cancel</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

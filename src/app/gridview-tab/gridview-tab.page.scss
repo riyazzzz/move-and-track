@@ -1,0 +1,83 @@
+.search {
+  bottom: 1vh;
+}
+.ion-padding,
+[padding] {
+  padding-left: unset;
+  padding-right: unset;
+  -webkit-padding-start: var(--ion-padding, 16px);
+  padding-inline-start: var(--ion-padding, 0px);
+  -webkit-padding-end: var(--ion-padding, -16px);
+  padding-inline-end: var(--ion-padding, 13px);
+  padding-bottom: 8px;
+}
+
+.noPad {
+  padding: 0;
+}
+
+.botNoPad {
+  padding-bottom: 0;
+}
+
+.iconSize {
+  width: 22px;
+  height: 22px;
+}
+.running {
+  background-color: #1eb15d;
+}
+.idle {
+  background-color: #1f5baa;
+}
+.stop {
+  background-color: #ff0000;
+}
+.overspeed {
+  background-color: #f28918;
+}
+.notransmission {
+  background-color: #000000;
+}
+.all {
+  background-color: #989aa2;
+}
+.header-md:after {
+  left: 0;
+  bottom: -5px;
+  background-position: left 0 top -2px;
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  background-image: none;
+  background-repeat: repeat-x;
+  content: "";
+}
+
+.statusBar {
+  padding: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  justify-content: center;
+  font-size: 15px;
+  color: white;
+  padding-top: 5px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.logo{
+  width: 100px;
+    height: 45px;
+}
+.statusBarCard {
+  margin: 0px;
+  width: 100%;
+  padding: 0px;
+  box-shadow: none;
+}
+
+.statusBarPad {
+  //padding: 0px 16px;
+  padding: 0px;
+}

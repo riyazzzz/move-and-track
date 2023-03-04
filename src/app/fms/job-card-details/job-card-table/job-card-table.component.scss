@@ -1,0 +1,48 @@
+@media(min-width:320px)and(max-width:1023px){
+    * {
+      font-size: 13px;
+      margin: 0px;
+      padding: 0px;
+     }
+  }
+  
+  ion-button {
+    width: 100%;
+    --border-radius: 23px;
+    height: 22px;
+    text-transform: capitalize;
+    font-size: 11px;
+  }
+  .download-buttons {
+    margin: 0px 3px;
+    padding: 4px 6px;
+    background: #915a9a;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  .download-buttons:hover {
+    background-color: #efe2f1;
+  }
+  .toolbar-icon {
+    font-size: small;
+    color: white;
+    margin-left: 3px;
+  }
+  .toolbar-buttons {
+    padding: 10px 0;
+    width: 78px !important;
+  }
+  .pdf-wrapper,
+  .excel-wrapper {
+    background: url("../../../../assets/pdf.svg") no-repeat;
+    width: 23px;
+    height: 24px;
+  }
+  .excel-wrapper {
+    background: url("../../../../assets/excelNew.svg") no-repeat;
+  }
+  .submitBtn {
+    --background: #6c2a84;
+    width: 69px;
+    margin: 0px 10px;
+  }

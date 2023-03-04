@@ -1,0 +1,27 @@
+.center{
+    align-self: center;
+    text-align: center;
+    justify-content: center;
+
+}
+.colcenter{
+justify-content: center;
+
+}
+.bold{
+    color: blue;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: system-ui;
+}
+.size{
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.pdf-wrapper,
+.excel-wrapper {
+  background: url("../../../assets/pdf.svg") no-repeat;
+  width: 22px;
+  height: 22px;
+}

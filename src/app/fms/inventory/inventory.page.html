@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar mode="md" [ngClass]="{'appHeader' : appName != 'Armoron' , 'header-background-color': appName == 'Armoron'}">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+         <ion-row>
+            <ion-col size='2'>
+              <ion-menu-button></ion-menu-button>
+            </ion-col>
+            <ion-col size="9">
+              <ion-label>Inventory Stock Uploader</ion-label>
+            </ion-col>
+           </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>  
+</ion-header>
+<ion-content>
+  <ion-row style="padding: 0px;">
+    <ion-col size="12" class="ion-text-center">    <input type="file" (change)="onFileChange($event)" /></ion-col>
+        </ion-row>
+        <ion-row style="padding: 0px;">
+          <ion-col size="12" class="ion-text-center"><ion-button (click)="sendToServer()" id="submitbtn">Submit </ion-button></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size=12 style="padding: 0px;">
+                <jqxGrid 
+                (onRowselect)="myGridOnRowSelect($event)" 
+                [pageable]="true"
+                [selectionmode]="'singlerow'"
+                [showfilterrow]="true" 
+                [filterable]="true"
+                [sortable]="true" 
+                [width]="'99.2%'"
+                [source]="dataAdapter" 
+                [columns]="columns" 
+                [autoheight]="true"
+                [theme]="'material'" 
+                [columnsresize]="true" 
+                [enabletooltips]="true" 
+                #myGrid 
+                 style="font-size:10px;text-align: center !important">
+                </jqxGrid>
+                </ion-col>
+                </ion-row>
+
+</ion-content>

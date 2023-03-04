@@ -1,0 +1,105 @@
+<ion-content>
+  <ion-row>
+    <ion-col size="12" class="wrapper-container">
+      <ion-row>
+        <ion-col  size-sm="8" size-md="8" size-lg="6" class="head" >
+          <label class="heading">Device Details</label>
+        </ion-col>
+      </ion-row>
+      <form [formGroup]="detailsForm">
+        <div>         
+          <ion-row>
+             <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+               <label class="label-heading">Iccid Number:</label>
+               <ion-input  formControlName="iccidNo" type="text" placeholder="Enter the Iccid Number"></ion-input>
+             </ion-col>
+             <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+               <label class="label-heading">Imei Number:</label>
+               <ion-input formControlName="imeiNo" type="number"placeholder="Enter the Imei Number"></ion-input>
+             </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">SR Number:</label>
+              <ion-input formControlName="SRNO" type="text" placeholder="Enter the Sr No"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div> 
+
+        <ion-row>
+          <ion-col  size-sm="8" size-md="8" size-lg="6" class="head">
+             <label class="heading">Vehicle Details</label>
+           </ion-col>
+        </ion-row>
+
+        <div>
+          <ion-row>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+               <label class="label-heading">Engine Number:</label>
+               <ion-input formControlName="engineNo" type="text" placeholder="Enter the Engine Number"></ion-input>
+             </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Chassis Number:</label>
+               <ion-input formControlName="chassisNo" type="text" placeholder="Enter the Chassis Number"></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Registration Number:</label>
+              <ion-input formControlName="RegNo" type="text" placeholder="Enter the Registration Number"></ion-input>
+            </ion-col>
+          </ion-row>  
+        </div>
+
+        <ion-row>
+          <ion-col  size-sm="8" size-md="8" size-lg="6" class="head">
+             <label class="heading">Customer Details</label>
+           </ion-col>
+        </ion-row>
+
+        <div>
+          <ion-row>
+             <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+               <label class="label-heading">Customer Name:</label>
+               <ion-input formControlName="CustomerName" type="text" placeholder="Enter the name"></ion-input>
+             </ion-col>
+             <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+               <label class="label-heading">Customer Mobile Number:</label>
+               <ion-input formControlName="CustomerMobileNo" type="number" placeholder="Enter the mobile Number"></ion-input>
+             </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Address:</label>
+              <ion-input  formControlName="CustomerAddress" type="text" placeholder="Enter the address"></ion-input>
+            </ion-col>
+             <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Proof of Identity:</label>
+              <ion-select  formControlName="NameOnIdentityProof"  placeholder='Select on IdentityProof' style="background-color: #e8e8e8;margin: 5px 0px 0px 0px;">
+                <ion-select-option   *ngFor="let comp_name of proofName" [value]="comp_name">
+                  {{comp_name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Identity Proof Number:</label>
+              <ion-input  formControlName="IdentityDocumentNo" type="text" placeholder="Enter the Identity Proof Number"></ion-input>
+            </ion-col>
+          <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Proof of Address:</label>
+              <ion-select  formControlName="NameOnAddressProof"  placeholder='Select on AddressProof' style="background-color: #e8e8e8;margin: 5px 0px 0px 0px;">
+                <ion-select-option   *ngFor="let comp_name of Addressproof" [value]="comp_name">
+                  {{comp_name}}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-md="6" size-lg="6" class="form_col">
+              <label class="label-heading">Address Proof Number:</label>
+              <ion-input  formControlName="AddressDocumentNo" type="text" placeholder="Enter the Address Proof Number"></ion-input>
+            </ion-col>
+          </ion-row>
+        </div>
+      </form >
+
+       <ion-row>
+          <ion-col class='ion-text-center'>
+             <ion-button (click)="submit()">Submit</ion-button>
+          </ion-col>
+       </ion-row>    
+   </ion-col>
+  </ion-row>
+</ion-content>

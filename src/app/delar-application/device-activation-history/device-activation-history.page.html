@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-row>
+      <ion-title>Device Activation History</ion-title>
+      <ion-col
+        *ngIf="myPlatform == 'desktop'"
+        size="4"
+        style="text-align: right"
+      >
+        <ion-button class="submitBtn" size="small" (click)="newfunc()"
+          >Export</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <form [formGroup]="historyForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="6" size-md="6">
+              <ion-item>
+                <ion-label position="floating">IMEI Number :</ion-label>
+                <ion-input formControlName="imeino" type="Number"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col
+              size="12"
+              size-lg="3"
+              size-md="3"
+              style="margin: 25px 0px 0px; text-align: center"
+            >
+              <ion-button
+                class="submitbtn"
+                (click)="SearchData()"
+                [disabled]="!historyForm.valid"
+                >Submit</ion-button
+              >
+              <ion-button class="submitbtn" (click)="clear()">Clear</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <ion-row style="padding: 10px" *ngIf="show">
+          <ion-col size="12">
+            <jqxGrid
+              #myGrid
+              [theme]="'material'"
+              (onRowclick)="myGridOnRowclick($event)"
+              [enablebrowserselection]="true"
+              [pagesizeoptions]="page"
+              [width]="'99.5%'"
+              [autoheight]="true"
+              [source]="dataAdapter"
+              [columns]="columns"
+              [filterable]="true"
+              [sortable]="true"
+              [columnsresize]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="
+                font-size: 16px;
+                text-align: center !important;
+                margin: auto;
+                cursor: pointer;
+              "
+              [columns]="columns"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

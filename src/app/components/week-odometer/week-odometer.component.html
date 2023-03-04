@@ -1,0 +1,161 @@
+<div *ngIf='odometer'>
+  <ion-row  *ngIf='mobile'>
+    <!-- <ion-row *ngIf='details.isFuel'> -->
+    <ion-col size=2  class="ion-text-right" *ngIf='details.isFuel'>
+      <ion-img style="    height: 22px;
+      width: 57px;
+  " src="assets/vtstrackhisIcon/fuelPercentage.svg" class="svgSize "></ion-img>
+    </ion-col>
+    <ion-col size=4 class="ion-text-left" style="font-size: 14px;
+    font-weight: 500;color: black;" *ngIf='details.isFuel'>Fuel Status</ion-col><ion-col size=6 *ngIf='details.isFuel'><meter style="width: 123px;
+    height: 17px;" title="fuel"  max=
+    100
+     min=
+    1
+     value={{details.fuel}}
+     high=
+    .75
+     low=
+    .25
+     optimum=
+    1.0
+    ></meter></ion-col>
+  <!-- </ion-row> -->
+  <!-- vehicleModel -->
+  <!-- <ion-row *ngIf='vehicleType == "LOADER"'> -->
+      <ion-col size=6 style="padding: 0px;" *ngIf='vehicleType == "LOADER"'>
+        <ion-row>
+        <ion-col size=2  class="ion-text-right" style="font-size:23px;    align-self: center;color: red;
+        ">
+        
+      <ion-icon name="time"></ion-icon>
+        </ion-col> 
+        <ion-col size="10" class="ion-text-center">
+          <ion-row style="font-size: 11px;font-weight: 500;color: black;"><ion-col class="ion-text-center">Today Engine Hours</ion-col></ion-row>
+    <ion-row>  <ion-col style="
+      font-size: 11px;text-align: center;    font-weight: bold;
+  ">{{details.engine.today}}</ion-col> </ion-row>
+     
+       
+        </ion-col>
+      </ion-row>
+      </ion-col>
+      <ion-col size=6 style="padding: 0px;" *ngIf='vehicleType == "LOADER"'>
+        <ion-row>
+        <ion-col size=2  class="ion-text-right" style="font-size:23px;    align-self: center;color: red;
+        ">
+    
+      <ion-icon name="time"></ion-icon>
+        </ion-col> 
+        <ion-col size="10" class="ion-text-center">
+          <ion-row style="font-size: 11px;font-weight: 500;color: black;"> <ion-col class="ion-text-center">Total Engine Hours</ion-col></ion-row>
+    <ion-row>  <ion-col style="
+      font-size: 11px;text-align: center;font-weight: bold;
+  ">{{details.engine.total}}</ion-col> </ion-row>
+     
+       
+        </ion-col>
+      </ion-row>
+      </ion-col>
+    <!-- </ion-row> -->
+      <ion-col style="    padding: 3px 9px 0px 9px;
+      "  size=4 *ngFor='let i  of [0,1,2,3,4,5]'>
+        <ion-grid *ngIf="odometer[i] != undefined" style="border: 1px solid #b9b6c7;border-radius: 12px; padding: 0px;">
+          <ion-row class="font"
+            style="padding: 0px; border-top-left-radius: 9px; border-top-right-radius: 9px;background:  #b9b6c7;font-size: 10px; color: white;">
+            {{odometer[i].date}}
+          </ion-row>
+          <ion-row>
+            <img width="28px" height="28px" src="assets/icon/odometer.svg">
+          </ion-row>
+          <ion-row class="font fontLarge">
+            {{odometer[i].odometer}}
+          </ion-row>
+    
+        </ion-grid>
+      </ion-col>
+  </ion-row>
+
+  <ion-row  *ngIf='!mobile'>
+    <ion-row *ngIf='details.isFuel'>
+    <ion-col size=2  class="ion-text-right">
+      <ion-img style="    height: 22px;
+      width: 57px;
+  " src="assets/vtstrackhisIcon/fuelPercentage.svg" class="svgSize "></ion-img>
+    </ion-col>
+    <ion-col size=4 class="ion-text-left" style="font-size: 14px;
+    font-weight: 500;color: black;">Fuel Status</ion-col><ion-col size=6><meter style="width: 123px;
+    height: 17px;" title="fuel" max=
+    100
+     min=
+    1
+     value={{details.fuel}}
+     high=
+    .75
+     low=
+    .25
+     optimum=
+    1.0
+    ></meter></ion-col>
+    </ion-row>
+    <ion-row *ngIf='vehicleType == "LOADER"'>
+      <ion-col size=6 style="padding: 0px;">
+        <ion-row>
+        <ion-col size=2  class="ion-text-right" style="font-size:23px;    align-self: center;color: red;
+        ">
+        
+      <ion-icon name="time"></ion-icon>
+        </ion-col> 
+        <ion-col size="10" class="ion-text-center">
+          <ion-row style="font-size: 13px;font-weight: 500;color: black;">Today Engine Hours</ion-row>
+    <ion-row>  <ion-col style="
+      font-size: 11px;text-align: center;    font-weight: bold;
+  ">{{details.engine.today}}</ion-col> </ion-row>
+     
+       
+        </ion-col>
+      </ion-row>
+      </ion-col>
+      <ion-col size=6 style="padding: 0px;">
+        <ion-row>
+        <ion-col size=2  class="ion-text-right" style="font-size:23px;    align-self: center;color: red;
+        ">
+    
+      <ion-icon name="time"></ion-icon>
+        </ion-col> 
+        <ion-col size="10" class="ion-text-center">
+          <ion-row style="font-size: 13px;font-weight: 500;color: black;"> Total   Engine Hours</ion-row>
+    <ion-row>  <ion-col style="
+      font-size: 11px;text-align: center;font-weight: bold;
+  ">{{details.engine.total}}</ion-col> </ion-row>
+     
+       
+        </ion-col>
+      </ion-row>
+      </ion-col>
+    </ion-row>
+    
+
+
+    <ion-col style="    padding: 3px 9px 0px 9px;
+    "  size=4 *ngFor='let i  of [0,1,2,3,4,5]'>
+      <ion-grid *ngIf="odometer[i] != undefined" style="border: 1px solid #b9b6c7;border-radius: 12px; padding: 0px;">
+        <ion-row class="font"
+          style="padding: 0px; border-top-left-radius: 9px; border-top-right-radius: 9px;background:  #b9b6c7;font-size: 10px; color: white;">
+          {{odometer[i].date}}
+        </ion-row>
+        <ion-row>
+          <img width="28px" height="28px" src="assets/icon/odometer.svg">
+        </ion-row>
+        <ion-row class="font fontLarge">
+          {{odometer[i].odometer}}
+        </ion-row>
+  
+      </ion-grid>
+    </ion-col>
+  </ion-row>
+  </div>
+  <div *ngIf='entryPoint == "VTS"'>
+  <ion-row   style="font-size: 13px;font-weight: 500;color: black;"><ion-col class="ion-text-center">Preventive Maintenance</ion-col></ion-row>
+  <app-schedule-maintenance style="width: 100%;" [scheduleMaintenance]="selectedCard"></app-schedule-maintenance>
+</div>

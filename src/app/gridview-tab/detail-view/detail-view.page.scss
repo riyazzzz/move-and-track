@@ -1,0 +1,39 @@
+.font{
+    
+    font-weight: bold;
+    justify-content: center;
+    color: black;
+}
+.fontLarge{
+    font-size: x-large;
+}
+
+.keyColor {
+    color: #fff;  
+    font-size: 15px;
+  }
+  .valueColor {
+    background-color: #fff;
+    color: #000000;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .details {
+    background-color: #1eb15d;
+    height: 70%;
+  }
+  
+  .rowMargin {
+    margin: 8px 0;
+  }
+ 
+ .headerTitle { 
+  font-size: large;
+  font-weight: bold;
+  color: red;
+  padding: 12px 12px 0px 12px;
+  margin-bottom: 20px;
+  border-width: 45px;
+  border-bottom: 4px solid red;
+}

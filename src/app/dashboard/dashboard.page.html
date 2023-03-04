@@ -1,0 +1,1243 @@
+<ion-header class='header'>
+    <ion-toolbar>
+        <ion-grid>
+            <ion-row></ion-row>
+
+            <ion-row *ngIf='myPlatform !="desktop"'>
+                <ion-col size='2'>
+                    <ion-menu-button></ion-menu-button>
+                </ion-col>
+                <ion-col size='8.5' style='align-self: center;'>
+                    <ion-row>
+                        <ion-label style="font-size: 20px;font-weight: bold;"> Dashboard </ion-label>
+                    </ion-row>
+                </ion-col>
+                <!-- <ion-col size='1.5'>
+                        <ion-row><ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon></ion-row>
+                    </ion-col> -->
+                <ion-col size='1.5' style="padding: 0px;">
+                    <ion-row (click)="bellRouter()">
+                        <ion-col size='3' style="align-self: center;">
+                            <ion-img src="assets/dashboard_background/bell.png" style="width:22px; height:22px">
+                            </ion-img>
+                            <ion-badge color="danger" style="    position: absolute;font-size: 7px;
+                                font-size: 9px;
+                                top: 6px;
+                                left: 17px;
+                                padding: 2px;
+                                color: white;
+                                font-weight: bold;">
+                                {{totalAlertCount}}
+                            </ion-badge>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+
+            <ion-row *ngIf='myPlatform =="desktop"'>
+                <ion-col size='2'>
+                    <ion-menu-button></ion-menu-button>
+                </ion-col>
+                <ion-col size='8.5' style='align-self: center;'>
+                    <ion-row>
+                        <ion-label class="headercolour"> Dashboard </ion-label>
+                    </ion-row>
+                </ion-col>
+                <!-- <ion-col size='1.5'>
+                        <ion-row><ion-icon style='font-size: 25px;' ios="md-search" (click) ='searchStatus()' md="md-search"></ion-icon></ion-row>
+                    </ion-col> -->
+                <ion-col size='1.5' style="padding: 0px;">
+                    <ion-row (click)="bellRouter()">
+                        <ion-col size='3' style="align-self: center;">
+                            <ion-img src="assets/dashboard_background/bell.png" style="width:22px; height:22px">
+                            </ion-img>
+                            <ion-badge color="danger" style="    position: absolute;font-size: 7px;
+                                font-size: 9px;
+                                top: 6px;
+                                left: 17px;
+                                padding: 2px;
+                                color: white;
+                                font-weight: bold;">
+                                {{totalAlertCount}}
+                            </ion-badge>
+                        </ion-col>
+                        <ion-col *ngIf='myPlatform =="desktop"' size='9'>
+                            <ion-img [src]="app.logo"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <!-- ********************************* Mobile View ****************************************************** -->
+    <div *ngIf="showDashbordChart.includes('Current Vehicle Status')">
+        <ion-row style="margin-top: 7px;">
+            <ion-col
+                [ngClass]='{"displayOthers": (myPlatform === "desktop" && showDashbordChart.includes("Current Vehicle Status") === true), "displayDesktop":(myPlatform !== "desktop" && showDashbordChart.includes("Current Vehicle Status") === true)}'
+                class="displayLine" size="3"> </ion-col>
+            <ion-col
+                [ngClass]='{"displayOthers": (myPlatform === "desktop" && showDashbordChart.includes("Current Vehicle Status") === true), "displayDesktop":(myPlatform !== "desktop" && showDashbordChart.includes("Current Vehicle Status") === true)}'
+                class="vehicleStatusHeading" size="6">Current Vehicle Status </ion-col>
+            <ion-col
+                [ngClass]='{"displayOthers": (myPlatform === "desktop" && showDashbordChart.includes("Current Vehicle Status") === true), "displayDesktop":(myPlatform !== "desktop" && showDashbordChart.includes("Current Vehicle Status") === true)}'
+                style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;" size="3">
+            </ion-col>
+        </ion-row>
+    </div>
+    <ion-card
+        [ngClass]='{"displayOthers":( myPlatform === "desktop" || showDashbordChart.includes("Current Vehicle Status")== false), "displayDesktop": (myPlatform !== "desktop"&& showDashbordChart.includes("Current Vehicle Status") == true)}'>
+        <ion-card-content>
+            
+                <ion-row>
+                    <ion-segment scrollable style="width:100%">
+                    <ion-col size="2.4" *ngIf="!loginData.includes('DoorOpen')">
+                        <ion-row style="font-size: xx-small; place-content: center;">ALL</ion-row>
+                        <ion-row class="statusBar" style="background-color:#989aa2 ;"
+                            (click)="routerModal(vehicleCount.all, 'All')">{{vehicleCount.all}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2.4" *ngIf="loginData.includes('Running')">
+                        <ion-row style="font-size: xx-small; place-content: center;">RUNNING</ion-row>
+                        <ion-row class="statusBar" style="background-color:#1eb15d;"
+                            (click)="routerModal(vehicleCount.running,'Running' )">{{vehicleCount.running}}</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="loginData.includes('Good')">
+                        <ion-row style="font-size: xx-small; place-content: center;">GOOD</ion-row>
+                        <ion-row class="statusBar" style="background-color:#1eb15d;"
+                            (click)="routerModal(vehicleCount.good,'good' )">{{vehicleCount.good}}</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="loginData.includes('DoorOpen')">
+                        <ion-row style="font-size: xx-small; place-content: center;">DOOROPEN</ion-row>
+                        <ion-row class="statusBar" style="background-color:#FF851B ;"
+                            (click)="routerModal(vehicleCount.dooropen,'DoorOpen' )">{{vehicleCount.dooropen}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2.4" *ngIf="loginData.includes('Stop')">
+                        <ion-row style="font-size: xx-small; place-content: center;">STOP</ion-row>
+                        <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                            (click)="routerModal(vehicleCount.stop,'Stop' )">{{vehicleCount.stop}}</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="loginData.includes('HighTemp')">
+                        <ion-row style="font-size: xx-small; place-content: center;">HIGHTEMP</ion-row>
+                        <ion-row class="statusBar" style="background-color:#FF0000 ;"
+                            (click)="routerModal(vehicleCount.hightemp,'HighTemp' )">{{vehicleCount.hightemp}}</ion-row>
+                    </ion-col>
+                    <ion-col size="2.4" *ngIf="loginData.includes('Idle')">
+                        <ion-row style="font-size: xx-small; place-content: center;">IDLE</ion-row>
+                        <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                            (click)="routerModal(vehicleCount.idle,'Idle')">{{vehicleCount.idle}}</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="loginData.includes('Geofence')">
+                        <ion-row style="font-size: xx-small; place-content: center;">GEOFENCE</ion-row>
+                        <ion-row class="statusBar" style="background-color:#1f5baa ;"
+                            (click)="routerModal(vehicleCount.geofence,'Geofence')">{{vehicleCount.geofence}}</ion-row>
+                    </ion-col>
+                    <ion-col *ngIf="loginData.includes('PowerFail')">
+                        <ion-row style="font-size: xx-small; place-content: center;">POWERFAIL</ion-row>
+                        <ion-row class="statusBar" style="background-color:#724040 ;"
+                            (click)="routerModal(vehicleCount.powerfail,'PowerFail')">{{vehicleCount.powerfail}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size=2.4 *ngIf="loginData.includes('No Transmission') && entryPoint =='vts' || 'VTS'">
+                        <ion-row style="font-size: xx-small; place-content: center;">NOTRANSMIT</ion-row>
+                        <ion-row class="statusBar" style="background-color:#000000 ;"
+                            (click)="routerModal(vehicleCount.noTransmit,'No Transmission')">{{vehicleCount.noTransmit}}
+                        </ion-row>
+                    </ion-col>
+                    <!-- <ion-col *ngIf="loginData.includes('No Transmission') && entryPoint =='vts'">
+                        <ion-row style="font-size: xx-small; place-content: center;">NOTRANSMIT</ion-row>
+                        <ion-row class="statusBar" style="background-color:#000000 ;"
+                            (click)="routerModal(vehicleCount.noTransmit,'No Transmission')">{{vehicleCount.noTransmit}}
+                        </ion-row>
+                    </ion-col> -->
+                    <ion-col size=2.4 *ngIf="loginData.includes('Overspeed') && entryPoint =='vts' || 'VTS'">
+                        <ion-row style="font-size: xx-small; place-content: center;">Overspeed</ion-row>
+                        <ion-row class="statusBar" style="background-color:#f28918;"
+                            (click)="routerModal(vehicleCount.Towed,'Towed')">{{vehicleCount.Overspeed}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size=2.4 *ngIf="loginData.includes('Towed') && entryPoint =='vts' || 'VTS'">
+                        <ion-row style="font-size: xx-small; place-content: center;">TOWED</ion-row>
+                        <ion-row class="statusBar" style="background-color:#c200b8;"
+                            (click)="routerModal(vehicleCount.Towed,'Towed')">{{vehicleCount.Towed}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size=2.4 *ngIf="loginData.includes('Yet_to_transmit') && entryPoint =='vts' || 'VTS'">
+                        <ion-row style="font-size: xx-small; place-content: center;">YETTOTRANSMIT</ion-row>
+                        <ion-row class="statusBar" style="background-color:#7d410f;"
+                            (click)="routerModal(vehicleCount.Yet_to_transmit,'Yet_to_transmit')">
+                            {{vehicleCount.Yet_to_transmit}}
+                        </ion-row>
+                    </ion-col>
+                    <ion-col size=2.4 *ngIf="loginData.includes('Online') && entryPoint =='vts' || 'VTS'">
+                        <ion-row style="font-size: xx-small; place-content: center;">ONLINE</ion-row>
+                        <ion-row class="statusBar" style="background-color:#00E1BC;"
+                            (click)="routerModal(vehicleCount.Online,'Online')">{{vehicleCount.Online}}
+                        </ion-row>
+                    </ion-col>
+                </ion-segment>
+                </ion-row>
+        
+            <ion-row>
+                <ion-col size='12'>
+                    <div id="totalVehicleStatus"
+                        style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                    </div>
+                </ion-col>
+            </ion-row>
+        </ion-card-content>
+    </ion-card>
+
+
+    <div *ngIf='myPlatform != "desktop"'>
+        <div> 
+            <!-- ********************* Alert Count Summery Card   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Alert Count Summery") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Alert Count Summary </ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Alert Count Summery") == true'>
+                <ion-card-content style="padding:0px">
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="alertsAndCounts($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let alertsAndCounts of summaryStatusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{alertsAndCounts.status}}' checked value="{{alertsAndCounts.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{alertsAndCounts.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="alertCountSummery" *ngIf="alertChartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="alertshowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+             <!-- ********************* Unused Vehicles Summary   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Unused Vehicles Summary") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="8">Unused Vehicles Summary</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Unused Vehicles Summary") == true'>
+                <ion-card-content style="padding : 0px">
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="unUsedVehicleStatus($event)">
+                        <ion-row style="margin-left: 20%;">
+                            <ion-col size='4' *ngFor="let unUsedVehicleStatus of summaryStatus">
+                                <ion-row *ngIf='unUsedVehicleStatus.status != "Current"'>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                            id='{{unUsedVehicleStatus.status}}' checked [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            value="{{unUsedVehicleStatus.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='9'>
+                                        <ion-label style="font-size: 9px;">{{unUsedVehicleStatus.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <!-- <ion-row>
+                                    <ion-col size='12'>
+                                        <div id="unUsedVehicleStatus" style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;"></div>
+                                    </ion-col>
+                                </ion-row> -->
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="unUsedVehicleStatus"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* TOP 5 Door Open   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Power Fail") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Top 5 Power Fail</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+
+            <ion-card class="card" *ngIf='showDashbordChart.includes("Top 5 Power Fail") == true'>
+                <ion-card-content>
+                    <ion-radio-group class="radio" allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="noOfPowerFail($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let noOfPowerFail of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{noOfPowerFail.status}}' checked value="{{noOfPowerFail.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{noOfPowerFail.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="noOfPowerFail"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+
+
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* TOP 5 Door Open   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Door Open") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Top 5 Door Open</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card class="card" *ngIf='showDashbordChart.includes("Top 5 Door Open") == true'>
+                <ion-card-content>
+                    <ion-radio-group class="radio" allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="noOfDoorOpen($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let noOfDoorOpen of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{noOfDoorOpen.status}}' checked value="{{noOfDoorOpen.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{noOfDoorOpen.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="noOfDoorOpen"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+
+
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* Odometer Summery Card   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Odometer Summary") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Odometer Summary</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Odometer Summary") == true'>
+                <ion-card-content style="padding:0px">
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" (ionChange)="odometer($event)" >
+                        <ion-row style="margin-left: 20%;">
+                            <ion-col size='4' *ngFor="let odometer of summaryStatus">
+                                <ion-row *ngIf='odometer.status != "Current"'>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{odometer.status}}' checked value="{{odometer.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='9'>
+                                        <ion-label style="font-size: 9px;">{{odometer.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="odometerSummery"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+            <!-- ********************* Speedometer Summery Card   ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Speedometer Summary") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Speedometer Summary </ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Speedometer Summary") == true'>
+                <ion-card-content style="padding:0px">
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" (ionChange)="speedometer($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let speedometer of summaryStatusChanger">
+                                <ion-row *ngIf='speedometer.status == "Yesterday"'>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{speedometer.status}}' checked value="{{speedometer.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{speedometer.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="speedometerSummery" ></div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* Total Hrs Distribution Summary  ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Distribution Summary") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Distribution Summary</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Distribution Summary") == true'>
+                <ion-card-content>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group"
+                        (ionChange)="totalHrsDistributionSummary($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let totalHrsDistribution of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{totalHrsDistribution.status}}' checked
+                                            value="{{totalHrsDistribution.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{totalHrsDistribution.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="totalHrsDistributionChart"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </div>
+        <!-- ********************* Over Speed Alert Card    ************************** -->
+        <div>
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Overspeed Vehicles") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="8">Top 5 Overspeed Vehicles</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Top 5 Overspeed Vehicles") == true'>
+                <ion-img src="/assets/dashboard_background/overspeedimg.png"
+                    style="height: 75%;position: absolute;bottom: 23px;left: 68px;"></ion-img>
+                <ion-card-content>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="overspeedStatus($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let overSpeedStatus of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{overSpeedStatus.status}}' checked value="{{overSpeedStatus.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{overSpeedStatus.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="overspeedvehicles" *ngIf="Overspeedchartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 280;height: 200px;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="OverspeedshowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* Un Used Assert Card    ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Unused Assets") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Top 5 Unused Assets</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Top 5 Unused Assets") == true'>
+                <ion-card-content>
+                    <ion-img src="/assets/dashboard_background/unusedassert.png"
+                        style="height: 75%;position: absolute;bottom: 23px;left: 72px;"></ion-img>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group" 
+                        (ionChange)="unUsedAssert($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let unUsedAssertStatus of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;" [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            id='{{unUsedAssertStatus.status}}' checked
+                                            value="{{unUsedAssertStatus.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{unUsedAssertStatus.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="unUsedAssert" *ngIf="unUsedAssertchartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 280;height: 200px;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="unUsedAssertshowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* Engine Hours Card    ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Engine Hours") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="6">Top 5 Engine Hours</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="3"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Top 5 Engine Hours") == true'>
+                <ion-card-content>
+                    <ion-img src="/assets/dashboard_background/enginehrs.png"
+                        style="height: 75%;position: absolute;bottom: 23px;left: 39px;"></ion-img>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group"  (ionChange)="engineHours($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let engineHoursStatus of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                            id='{{engineHoursStatus.status}}' checked [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            value="{{engineHoursStatus.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{engineHoursStatus.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="engineHours" *ngIf="Top5Enginechartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 280;height: 200px;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="Top5EngineshowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+
+            <!-- ********************* Vehicles Odometer Card    ************************** -->
+            <ion-row *ngIf='showDashbordChart.includes("Top 5 Odometer Vehicles") == true'
+                style="margin-top: 7px; padding-top: 15px;">
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+                <ion-col class="vehicleStatusHeading" size="8">Top 5 Odometer Vehicles</ion-col>
+                <ion-col style="border-top: 0.5px solid rgba(128, 128, 128, 0.5); padding:0px;align-self: center;"
+                    size="2"></ion-col>
+            </ion-row>
+            <ion-card *ngIf='showDashbordChart.includes("Top 5 Odometer Vehicles") == true'>
+                <ion-card-content>
+                    <ion-img src="/assets/dashboard_background/top5odometervehicles.png"
+                        style="height: 75%;position: absolute;bottom: 23px;left: 68px;"></ion-img>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group"
+                        (ionChange)="vehicleOdometer($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let vehicleOdometerStatus of statusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                            id='{{vehicleOdometerStatus.status}}' checked [ngClass]="{'checkboxIos': isIosPlatform == true}"
+                                            value="{{vehicleOdometerStatus.status}}"></ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8'>
+                                        <ion-label style="font-size: 9px;">{{vehicleOdometerStatus.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="vehicleOdometer" *ngIf="Top5odameterchartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 280;height: 200px;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="Top5odametershowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </div>
+
+    </div>
+
+    <!-- ********************************* Desktop Web  View ****************************************************** -->
+    <ion-row>
+        <ion-col size="6"
+            [ngClass]='{"displayDesktop": (myPlatform === "desktop" && showDashbordChart.includes("Current Vehicle Status") == true), "displayOthers":(myPlatform !== "desktop" && showDashbordChart.includes("Current Vehicle Status") == true)}'>
+            <ion-card class="card">
+                <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                    Current Vehicle Status</ion-card-header>
+                <ion-card-content>
+                    <ion-row>
+                        <ion-col size="7">
+                            <div id="totalVehicleStatusDesktop"
+                                style="text-align: -webkit-center;position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                        </ion-col>
+                        <ion-col size="4">
+                            <div style="font-size: 11px;">
+                                <ion-row *ngIf="loginData.includes('Running')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#1eb15d;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        RUNNING
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.running}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Good')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#1eb15d;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        GOOD
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.good}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('DoorOpen')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#FF851B;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        DOOROPEN
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.dooropen}}
+                                    </ion-col>
+                                </ion-row>
+                               
+                                <ion-row *ngIf="loginData.includes('Stop')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#FF0000;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        STOP
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.stop}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('HighTemp')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#FF0000;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        HIGHTEMP
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.hightemp}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Idle')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#1f5baa;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        IDLE
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.idle}}
+                                    </ion-col>
+                                </ion-row>
+                                
+                                <ion-row *ngIf="loginData.includes('Geofence')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#1f5baa;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        GEOFENCE
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.geofence}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('PowerFail')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#412525;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        POWERFAIL
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.powerfail}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('No Transmission')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#000000;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        NOTRANSMIT
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.noTransmit}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Overspeed')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#FF851B;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        OVERSPEED
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.Overspeed}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Towed')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#c200b8;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        TOWED
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.Towed}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Yet_to_transmit')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#7d410f;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        YET TO TRASMIT
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.Yet_to_transmit}}
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row *ngIf="loginData.includes('Online')">
+                                    <ion-col size="2">
+                                        <div class="circle" style="border-color:#00E1BC;"></div>
+                                    </ion-col>
+                                    <ion-col size="7">
+                                        ONLINE
+                                    </ion-col>
+                                    <ion-col size="3">
+                                        {{vehicleCount.Online}}
+                                    </ion-col>
+                                </ion-row>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+
+        <ion-col size="6"
+            [ngClass]='{"displayDesktop": (myPlatform === "desktop" && showDashbordChart.includes("Current Vehicle Status") == true), "displayOthers":(myPlatform !== "desktop" && showDashbordChart.includes("Current Vehicle Status") == true)}'>
+            <ion-card class="card" style="height: 100%;">
+                <ion-card-header style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+
+                    Alert Count Summary
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-radio-group allow-empty-selection="false" name="radio-group"
+                        (ionChange)="alertsAndCounts($event)">
+                        <ion-row>
+                            <ion-col size='4' *ngFor="let alertsAndCounts of summaryStatusChanger">
+                                <ion-row>
+                                    <ion-col size='3'>
+                                        <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                            id='{{alertsAndCounts.status}}' checked value="{{alertsAndCounts.status}}">
+                                        </ion-radio>
+                                    </ion-col>
+                                    <ion-col size='8' style="padding: 2px;">
+                                        <ion-label style="font-size: 9px;">{{alertsAndCounts.status}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-col>
+                        </ion-row>
+                    </ion-radio-group>
+                    <ion-row>
+                        <ion-col size='12'>
+                            <div id="alertCountSummery" *ngIf="alertChartdata"
+                                style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                            </div>
+                            <ion-img src="assets/background_img/NoData.svg" *ngIf="alertshowNodata"
+                            style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                        </ion-col>
+                    </ion-row>
+
+
+                </ion-card-content>
+            </ion-card>
+        </ion-col>
+        
+    </ion-row>
+    <div *ngIf='myPlatform == "desktop"'>
+        <ion-row>
+
+            <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Power Fail") == true'>
+                <ion-card class="card">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Top 5 Power Fail
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group class="radio" allow-empty-selection="false" name="radio-group"
+                            (ionChange)="noOfPowerFail($event)">
+                            <ion-row>
+                                <ion-col size='4' *ngFor="let noOfPowerFail of statusChanger">
+                                    <ion-row>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                id='{{noOfPowerFail.status}}' checked value="{{noOfPowerFail.status}}">
+                                            </ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{noOfPowerFail.status}}</ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+
+                        <ion-row>
+                            <ion-col size='12'>
+                                <div id="noOfPowerFail"
+                                    style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                                </div>
+                            </ion-col>
+
+
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+            <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Door Open") == true'>
+                <ion-card class="card">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Top 5 Door Open
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group class="radio" allow-empty-selection="false" name="radio-group"
+                            (ionChange)="noOfDoorOpen($event)">
+                            <ion-row>
+                                <ion-col size='4' *ngFor="let noOfDoorOpen of statusChanger">
+                                    <ion-row>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                id='{{noOfDoorOpen.status}}' checked value="{{noOfDoorOpen.status}}">
+                                            </ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{noOfDoorOpen.status}}</ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+
+                        <ion-row>
+                            <ion-col size='12'>
+                                <div id="noOfDoorOpen"
+                                    style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                                </div>
+                            </ion-col>
+
+
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+        </ion-row>
+        <ion-row>
+
+            <ion-col size="4" *ngIf='showDashbordChart.includes("Unused Vehicles Summary") == true'>
+                <ion-card class="card">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Unused Vehicles Summary
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group class="radio" allow-empty-selection="false" name="radio-group"
+                            (ionChange)="unUsedVehicleStatus($event)">
+                            <ion-row style="margin-left: 22%;"> 
+                                <ion-col size='4' *ngFor="let unUsedVehicleStatus of summaryStatus">
+                                    <ion-row *ngIf='unUsedVehicleStatus.status != "Current"'>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                id='{{unUsedVehicleStatus.status}}' checked
+                                                value="{{unUsedVehicleStatus.status}}"></ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{unUsedVehicleStatus.status}}
+                                            </ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+
+                        <ion-row>
+                            <ion-col size='12'>
+                                <div id="unUsedVehicleStatus"
+                                    style="position: relative; overflow: hidden; max-width: 800px; width: 300; height: 200;">
+                                </div>
+                            </ion-col>
+
+
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+            <ion-col size="4" *ngIf='showDashbordChart.includes("Odometer Summary") == true'>
+                <ion-card class="card">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Odometer Summary
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group allow-empty-selection="false" name="radio-group"
+                            (ionChange)="odometer($event)">
+                            <ion-row style="margin-left: 22%;">
+                                <ion-col size='4' *ngFor="let odometer of summaryStatus">
+                                    <ion-row *ngIf='odometer.status != "Current"'>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                id='{{odometer.status}}' checked value="{{odometer.status}}">
+                                            </ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{odometer.status}}</ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                        <ion-row>
+                            <ion-col size='12'>
+                                <div id="odometerSummery" 
+                                    style="position: relative; overflow: hidden; max-width: 800px; width: 400; height: 400;">
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+            <ion-col size="4" *ngIf='showDashbordChart.includes("Speedometer Summary") == true'>
+                <ion-card class="card">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Speedometer Summary
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group allow-empty-selection="false" name="radio-group"
+                            (ionChange)="speedometer($event)">
+                            <ion-row>
+                                <ion-col size='4' *ngFor="let speedometer of summaryStatusChanger">
+                                    <ion-row *ngIf='speedometer.status == "Yesterday"'>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                id='{{speedometer.status}}' checked value="{{speedometer.status}}">
+                                            </ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{speedometer.status}}</ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                        <ion-row>
+                            <ion-col size='12'>
+                                <div id="speedometerSummery"></div>
+                            </ion-col>
+                        </ion-row>
+
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="5" *ngIf='showDashbordChart.includes("Distribution Summary") == true'>
+                <ion-card class="card" style="height: 515px;">
+                    <ion-card-header
+                        style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                        Distribution Summary
+                    </ion-card-header>
+                    <ion-card-content>
+                        <ion-radio-group allow-empty-selection="false" name="radio-group"
+                            (ionChange)="totalHrsDistributionSummary($event)">
+                            <ion-row>
+                                <ion-col size='4' *ngFor="let totalHrsDistribution of statusChanger">
+                                    <ion-row>
+                                        <ion-col size='3'>
+                                            <ion-radio color='danger'
+                                                style="position: relative; overflow: hidden;width: 12px; height: 12px;"
+                                                id='{{totalHrsDistribution.status}}' checked
+                                                value="{{totalHrsDistribution.status}}"></ion-radio>
+                                        </ion-col>
+                                        <ion-col size='8' style="padding: 2px;">
+                                            <ion-label style="font-size: 9px;">{{totalHrsDistribution.status}}
+                                            </ion-label>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-col>
+                            </ion-row>
+                        </ion-radio-group>
+                        <ion-row style="padding-top: 73px;">
+                            <ion-col size='12'>
+
+                                <div id="totalHrsDistributionChart" style=" max-width: 800px; width: 300;"></div>
+
+                            </ion-col>
+                        </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+            </ion-col>
+
+
+
+            <ion-col size="7" style="padding: 0px;">
+                <ion-row>
+                    <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Overspeed Vehicles") == true'>
+                        <ion-card class="card">
+                            <ion-card-header
+                                style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                                Top 5 Overspeed Vehicles
+                            </ion-card-header>
+                            <ion-img src="assets/dashboard_background/overspeedimg.png"
+                                style="height: 75%;position: absolute;bottom: 12px;left: 78px;"></ion-img>
+                            <ion-card-content>
+                                <ion-radio-group allow-empty-selection="false" name="radio-group"
+                                    (ionChange)="overspeedStatus($event)">
+                                    <ion-row>
+                                        <ion-col size='4' *ngFor="let overSpeedStatus of statusChanger">
+                                            <ion-row>
+                                                <ion-col size='3'>
+                                                    <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                        id='{{overSpeedStatus.status}}' checked
+                                                        value="{{overSpeedStatus.status}}"></ion-radio>
+                                                </ion-col>
+                                                <ion-col size='8' style="padding: 2px;">
+                                                    <ion-label style="font-size: 9px;">{{overSpeedStatus.status}}
+                                                    </ion-label>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-radio-group>
+                                <ion-row>
+                                    <ion-col size='12'>
+                                        <div id="overspeedvehicles" *ngIf="Overspeedchartdata"
+                                            style="position: relative; overflow: hidden; max-width: 800px; width: 280;">
+                                        </div>
+                                        <ion-img src="assets/background_img/NoData.svg" *ngIf="OverspeedshowNodata"
+                                        style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Unused Assets") == true'>
+                        <ion-card class="card">
+                            <ion-card-header
+                                style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                                Top 5 Unused Assets
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-img src="assets/dashboard_background/unusedassert.png"
+                                    style="height: 75%;position: absolute;bottom: 12px;left: 78px;"></ion-img>
+                                <ion-radio-group allow-empty-selection="false" name="radio-group"
+                                    (ionChange)="unUsedAssert($event)">
+                                    <ion-row>
+                                        <ion-col size='4' *ngFor="let unUsedAssertStatus of statusChanger">
+                                            <ion-row>
+                                                <ion-col size='3'>
+                                                    <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                        id='{{unUsedAssertStatus.status}}' checked
+                                                        value="{{unUsedAssertStatus.status}}"></ion-radio>
+                                                </ion-col>
+                                                <ion-col size='8' style="padding: 2px;">
+                                                    <ion-label style="font-size: 9px;">{{unUsedAssertStatus.status}}
+                                                    </ion-label>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-radio-group>
+                                <ion-row>
+                                    <ion-col size='12'>
+                                        <div id="unUsedAssert" *ngIf="unUsedAssertchartdata"
+                                            style="position: relative; overflow: hidden; max-width: 800px; width: 280;">
+                                        </div>
+                                        <ion-img src="assets/background_img/NoData.svg" *ngIf="unUsedAssertshowNodata"
+                                        style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Engine Hours") == true'>
+                        <ion-card class="card">
+                            <ion-card-header
+                                style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                                Top 5 Engine Hours
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-img src="assets/dashboard_background/enginehrs.png"
+                                    style="height: 75%;position: absolute;bottom: 12px;left: 78px;"></ion-img>
+                                <ion-radio-group allow-empty-selection="false" name="radio-group"
+                                    (ionChange)="engineHours($event)">
+                                    <ion-row>
+                                        <ion-col size='4' *ngFor="let engineHoursStatus of statusChanger">
+                                            <ion-row>
+                                                <ion-col size='3'>
+                                                    <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                        id='{{engineHoursStatus.status}}' checked
+                                                        value="{{engineHoursStatus.status}}"></ion-radio>
+                                                </ion-col>
+                                                <ion-col size='8' style="padding: 2px;">
+                                                    <ion-label style="font-size: 9px;">{{engineHoursStatus.status}}
+                                                    </ion-label>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-radio-group>
+                                <ion-row>
+                                    <ion-col size='12'>
+                                        <div id="engineHours" *ngIf="Top5Enginechartdata"
+                                            style="position: relative; overflow: hidden; max-width: 800px; width: 280;">
+                                        </div>
+                                        <ion-img src="assets/background_img/NoData.svg" *ngIf="Top5EngineshowNodata"
+                                        style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                    <ion-col size="6" *ngIf='showDashbordChart.includes("Top 5 Odometer Vehicles") == true'>
+                        <ion-card class="card">
+                            <ion-card-header
+                                style="text-align: center;background-color: #6C2A84;font-weight: bold;color: white;">
+                                Top 5 Odometer Vehicles
+                            </ion-card-header>
+                            <ion-card-content>
+                                <ion-img src="assets/dashboard_background/top5odometervehicles.png"
+                                    style="height: 75%;position: absolute;bottom: 12px;left: 78px;"></ion-img>
+                                <ion-radio-group allow-empty-selection="false" name="radio-group"
+                                    (ionChange)="vehicleOdometer($event)">
+                                    <ion-row>
+                                        <ion-col size='4' *ngFor="let vehicleOdometerStatus of statusChanger">
+                                            <ion-row>
+                                                <ion-col size='3'>
+                                                    <ion-radio color='danger' style="width: 12px; height: 12px;"
+                                                        id='{{vehicleOdometerStatus.status}}' checked
+                                                        value="{{vehicleOdometerStatus.status}}"></ion-radio>
+                                                </ion-col>
+                                                <ion-col size='8' style="padding: 2px;">
+                                                    <ion-label style="font-size: 9px;">{{vehicleOdometerStatus.status}}
+                                                    </ion-label>
+                                                </ion-col>
+                                            </ion-row>
+                                        </ion-col>
+                                    </ion-row>
+                                </ion-radio-group>
+                                <ion-row>
+                                    <ion-col size='12'>
+                                        <div id="vehicleOdometer" *ngIf="Top5odameterchartdata"
+                                            style="position: relative; overflow: hidden; max-width: 800px; width: 280;">
+                                        </div>
+                                        <ion-img src="assets/background_img/NoData.svg" *ngIf="Top5odametershowNodata"
+                                        style="height: 24.5vh;bottom: 0px;left: 120px;"></ion-img>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-card-content>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </div>
+</ion-content>

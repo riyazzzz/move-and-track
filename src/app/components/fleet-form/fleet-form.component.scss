@@ -1,0 +1,132 @@
+*{
+    margin: 0px;
+    font-size:14px;
+ }
+.input-item{
+    height: 36px;
+    background-color: lightgray;
+    --padding-start:10px;
+}
+.normal{
+    font-size: 16px;
+    color: #9c27b0;
+    font-weight: bold;
+    padding-left: 10px;
+}
+.armoron{
+    font-size: 16px;
+    color: #f6b220;
+    font-weight: bold;
+    padding: 10px;
+}
+.wrapper-container{
+    margin: auto;
+}
+
+ion-icon{
+   font-size: 20px;
+}
+// @media only screen and (min-width: 1024px) {
+//     .wrapper-form{
+//       padding: 0px 20px;
+//     }
+    
+// }
+.scroll{
+    overflow-y:scroll;
+}
+
+.input-label{
+    padding: 16px 0px;
+}
+.select-icon {
+    height: 33px !important;
+}
+.pro-text{
+    font-size:10;
+    margin: 10px auto;
+    border-radius:2px;
+    color:rgb(3, 247, 206);
+    background:black;
+    opacity:0.6;
+    text-align:center;
+}
+.login-status{
+    font-size:10px;
+    text-align:center;
+    background-color:black;
+    color:white;
+    border-radius: 2px;
+    width:70%;
+    margin:auto;
+    padding:10px;
+}
+.progress-wrapper{
+    width:50%;
+    background: whitesmoke;
+    border-radius: 3px;
+    position: absolute;
+    top: 40%;
+    left: 27%;
+    z-index: 999;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(90, 90, 90); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+
+
+.hours-label{
+    line-height: 3;
+    font-size: 12px; 
+    padding-left: 10px; 
+  }
+  .input-item-hours{
+    border: 1px solid lightgrey;
+    background: white;
+    padding: 3px;
+    width: 100%;
+    outline: none;
+    font-size: 13px; 
+  }
+  .colon-hours{
+      font-weight: bold;
+      line-height: 2.5;
+     
+  }
+
+  @media only screen and (min-width: 320px) {
+    .wrapper-form{
+      padding: 0px 7px !important;
+    }
+    
+}
+@media only screen and (min-width: 1024px) {
+    .wrapper-form{
+      padding: 0px 20px !important;
+    }
+    
+}
+
+.input-new{
+    width:100%;
+    border:none;
+    outline:none;
+}

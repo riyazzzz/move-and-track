@@ -1,0 +1,150 @@
+.container {
+    padding: 0px;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+#circle {
+    //   background: red;
+    //   width: 20px;
+    //   height: 20px;
+    //   border-radius: 50%;
+    padding: 6px;
+    position: absolute;
+    display: inline-block;
+    content: "";
+    /* top: 13px; */
+    left: 1px;
+    border-radius: 50%;
+    // background-color: #1aba7e;
+    // background-color: #737373;
+    // background-color: #dddddd;
+    border: 3px solid #dddddd;
+}
+.routBus{
+        font-weight: bold;
+        padding: 10px;
+        justify-content: center;
+        font-size: 19px;
+        color: #000000;
+}
+.passedCircle{
+    background-color: #737373;
+}
+.nonPassedCircle{
+    background-color: #dddddd;
+}
+.stoppingTest {
+    font-family: cursive;
+    font-size: 25px;
+    color: black;
+}
+.distanceTravelled {
+    align-self: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+.container li {
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.container li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #ddd;
+    width: 5px;
+    height: 100%;
+}
+.container li {
+    // padding: 30px 30px;
+    // position: relative;
+    padding: 19px 12px 0px 25px;
+    position: relative;
+}
+
+.addressRow {
+    text-transform: uppercase;
+    font-size: 10px;
+    padding-top: 9px;
+}
+
+.selected div {
+    color: tomato;
+}
+.container li span {
+    position: absolute;
+    left: -8px;
+    font-size: 12px;
+    /* background-color: #fff; */
+    /* padding: 10px 0; */
+    top: 29px;
+    /* color: #aaa; */
+}
+.icon-size {
+    font-size: 18px;
+    padding: 9px;
+}
+.time-icon {
+    font-size: 24px;
+}
+// .header_border {
+//     border-bottom: 1px solid lightgray;
+// }
+
+// #route_area {
+//     color: #7b7b7b;
+// }
+// .circle {
+//     background: rgb(247, 206, 73);
+//     align-self: center;
+//     width: 13px;
+//     height: 13px;
+//     border-radius: 50%;
+// }
+
+// .line {
+//     border-top: 3px solid rgb(247, 206, 73);
+//     align-self: center;
+// }
+
+// .circle2 {
+//     background: rgb(247, 206, 73);
+//     align-self: center;
+//     width: 13px;
+//     height: 13px;
+//     border-radius: 50%;
+// }
+// .col_line {
+//     margin: 0px;
+//     padding: 0px;
+//     align-self: center;
+// }
+// .line_Straight_left {
+//     border-right: 3px solid rgb(247, 206, 73);
+//     height: 27px;
+//     margin-top: -8px;
+//     margin-bottom: -8px;
+// }
+
+// .line_Straight_right {
+//     border-right: 3px solid rgb(247, 206, 73);
+//     height: 27px;
+//     margin-top: -8px;
+//     margin-bottom: -8px;
+// }
+
+// .icon_home {
+//     font-size: 35px;
+// }
+
+// .active {
+//     background: red;
+//     align-self: center;
+//     width: 13px;
+//     height: 13px;
+//     border-radius: 50%;
+// }

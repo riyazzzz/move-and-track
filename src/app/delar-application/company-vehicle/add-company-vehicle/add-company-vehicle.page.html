@@ -1,0 +1,55 @@
+<ion-header >
+  <ion-toolbar mode="md" class="appHeader" >
+    <ion-grid class='background' >
+      <ion-row >
+        <ion-col size="1" style='align-self: center;'>
+          <ion-icon (click)= 'getBack()' name="arrow-round-back"></ion-icon>
+        </ion-col>
+        <ion-col style='padding: 0px;'>
+          <ion-title>{{header}} Company Vehicle</ion-title>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class='background'>
+  <form class='formPadding' [formGroup]="companyVehicle">
+    <ion-item>
+      <ion-icon slot="start" name="car"></ion-icon>
+      <ion-input formControlName="plateNo" placeholder="Plate No"></ion-input>
+    </ion-item>
+    <ion-item class="appLightBackground labelSpacing">
+      <ion-icon slot="start"  ios="ios-phone-portrait" md="md-phone-portrait"></ion-icon>
+      <ion-label class='textcolor'>Imei No</ion-label>
+      <ion-select formControlName="imeiNo" placeHolder = 'Imei'>
+        <ion-select-option *ngFor="let unAssignImei of unAssignImei" [value]="unAssignImei">
+          {{unAssignImei}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="appLightBackground labelSpacing">
+      <ion-icon slot="start"  name="cog"></ion-icon>
+      <ion-label class='textcolor'>Assert Category</ion-label>
+      <ion-select [formControlName]="assert" placeHolder = 'Assert Category'>
+        <ion-select-option *ngFor="let assertCategories of assertCategories" [value]="assertCategories">
+          {{assertCategories}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="appLightBackground labelSpacing">
+      <ion-icon  slot="start"  ios="ios-body" md="md-body"></ion-icon>
+      <ion-label class='textcolor'>Fleet Manager</ion-label>
+      <ion-select multiple="true" formControlName="fleetManager" placeHolder = 'Fleet Manager'>
+        <ion-select-option *ngFor="let fleetManager of fleetManager" [value]="fleetManager">
+          {{fleetManager}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </form> 
+  <ion-col *ngIf = 'header != "Edit"'  size="6" offset="4">
+    <ion-button (click)="onSubmit()" shape="round">
+      <ion-icon name="add-circle-outline"></ion-icon>Add
+    </ion-button>
+  </ion-col>
+  </ion-content>

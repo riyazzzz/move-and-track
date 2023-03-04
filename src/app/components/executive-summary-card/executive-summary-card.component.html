@@ -1,0 +1,183 @@
+<ion-card-content style="padding: 0px" *ngIf="x.length != 0">
+  <ion-grid style="padding: 0px">
+    <ion-row style="padding: 0px; align-items: center">
+      <ion-col
+        size="6"
+        class="legendFlex textCenter"
+        style="align-items: center"
+      >
+        <ion-col size="2" style="padding: 0px"
+          ><img
+            width="15px"
+            height="15px"
+            src="assets/executive_summary_icon/vehicle.svg"
+        /></ion-col>
+        <ion-col size="10" style="padding: 0px" class="fontBoldAndSize">{{
+          x.plateNo | uppercase
+        }}</ion-col>
+      </ion-col>
+      <ion-col
+        size="6"
+        class="legendFlex textCenter"
+        style="align-items: center"
+      >
+        <ion-col size="2" style="padding: 0px"
+          ><img
+            width="15px"
+            height="15px"
+            src="assets/executive_summary_icon/operator.svg"
+        /></ion-col>
+        <ion-col size="10" style="padding: 0px" class="fontBoldAndSize">{{
+          x.operatorName | titlecase
+        }}</ion-col>
+      </ion-col>
+    </ion-row>
+    <ion-row class="headDetail" style="margin: 0px 5px">
+      <ion-col size="4">
+        <ion-row class="textCenter">Max-Speed</ion-row>
+        <ion-row
+          class="legendFlex textCenter"
+          class="fontBoldAndSize"
+          style="align-items: center"
+        >
+          <!-- <div class="circle"></div> -->
+        </ion-row>
+        <ion-row
+          class="legendFlex textCenter"
+          class="fontBoldAndSize"
+          style="align-items: center"
+        >
+          {{ x.maxSpeed }}
+        </ion-row>
+      </ion-col>
+      <ion-col size="4">
+        <ion-row class="textCenter">Odometer</ion-row>
+        <ion-row
+          class="fontBoldAndSize"
+          style="align-items: center; justify-content: center"
+        >
+          <!-- <img width="15px" height="15px" src="assets/icon/odometer.svg"> -->
+          {{ x.odometer }}</ion-row
+        >
+      </ion-col>
+      <ion-col size="4" class="textCenter">
+        <ion-row class="textCenter">Alert Count</ion-row>
+        <ion-row class="legendFlex textCenter" class="fontBoldAndSize">
+          <!-- <ion-item class="legendFlex textCenter"> -->
+
+          <ion-label style="text-align: center" class="fontBoldAndSize">
+            {{ total }}
+          </ion-label>
+
+          <!-- <ion-select *ngIf= "" style='text-align: center;' interface="action-sheet">
+              <ion-select-option style='text-align: center;' *ngFor="let alarm of x.alertCount| keyvalue">
+                {{alarm.key + ' - ' + alarm.value}}
+              </ion-select-option> 
+              </ion-select> -->
+          <!-- </ion-item> -->
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <!-- <ion-row style="margin-top: 2px;">
+      <ion-col size="3">
+        Duration
+      </ion-col>
+      <ion-col size="9" class="legendFont">
+        <ion-col size="3" class="legendFlex">
+          <div class="square green"></div>
+          <ion-label>Running</ion-label>
+        </ion-col>
+        <ion-col size="3" class="legendFlex">
+          <div class="square red"></div>
+          <ion-label>Stop</ion-label>
+        </ion-col>
+        <ion-col size="3" class="legendFlex">
+          <div class="square blue"></div>
+          <ion-label>Idle</ion-label>
+        </ion-col>
+        <ion-col size="3" class="legendFlex">
+          <div class="square pink"></div>
+          <ion-label>Towed</ion-label>
+        </ion-col>
+      </ion-col>
+    </ion-row> -->
+    <ion-row class="fontSmall" style="margin-top: 2px">
+      <ion-col size="2.5" offset="0.25" class="green roundedCorner">
+        <ion-row class="textCenter">{{ x.runningDuration }}</ion-row>
+      </ion-col>
+      <ion-col size="2.5" offset="0.5" class="red roundedCorner">
+        <ion-row class="textCenter">{{ x.stopDuration }}</ion-row>
+      </ion-col>
+      <ion-col size="2.5" offset="0.5" class="blue roundedCorner">
+        <ion-row class="textCenter">{{ x.idleDuration }}</ion-row>
+      </ion-col>
+      <ion-col size="2.5" offset="0.5" class="pink roundedCorner">
+        <ion-row class="textCenter">{{ x.towedDuration }}</ion-row>
+      </ion-col>
+    </ion-row>
+    <ion-row class="topMargin" style="margin-top: 8px">
+      <ion-col size="5.5" offset="0.25" class="headDetail" style="padding: 0px">
+        <ion-row>
+          <div class="locationHead">Begin Location</div>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="dateTimecols1">
+            <div class="dateTimeHead">
+              <ion-icon name="clock" style="padding-right: 5px"></ion-icon>Time
+            </div>
+            <span style="font-size: 10px">{{
+              x.beginTime | date : "mediumTime"
+            }}</span>
+          </ion-col>
+
+          <ion-col size="6" class="dateTimecols1">
+            <div class="dateTimeHead1">
+              <ion-icon name="calendar" style="padding-right: 5px"></ion-icon
+              >Date
+            </div>
+            <span style="font-size: 10px">{{ x.beginTime | date }}</span>
+          </ion-col>
+          <!-- <ion-col size="6" class="dateTimecols1"><span style="color: grey;"><ion-icon name="clock" style="padding-right: 5px ;"></ion-icon>Time -</span> {{x.beginTime |date : 'mediumTime'}}</ion-col>
+          <ion-col size="6" class="dateTimecols1"><span style="color: grey;"> <ion-icon name="calendar" style="padding-right: 5px ;"></ion-icon>Date - </span>  {{x.beginTime |date}}</ion-col> -->
+        </ion-row>
+
+        <ion-row>
+          <p class="location">
+            <span style="font-size: 11px">{{ x.beginLocation }}</span>
+          </p>
+        </ion-row>
+      </ion-col>
+      <ion-col size="5.5" offset="0.5" class="headDetail" style="padding: 0px">
+        <ion-row>
+          <div class="locationHead">End Location</div>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" class="dateTimecols1">
+            <div class="dateTimeHead">
+              <ion-icon name="clock" style="padding-right: 5px"></ion-icon>Time
+            </div>
+            <span style="font-size: 10px">{{
+              x.endTime | date : "mediumTime"
+            }}</span>
+          </ion-col>
+
+          <ion-col size="6" class="dateTimecols1">
+            <div class="dateTimeHead1">
+              <ion-icon name="calendar" style="padding-right: 5px"></ion-icon
+              >Date
+            </div>
+            <span style="font-size: 10px">{{ x.endTime | date }}</span>
+          </ion-col>
+          <!-- <ion-col size="6" class="dateTimecols1"><span style="color: grey;"><ion-icon name="clock" style="padding-right: 5px ;"></ion-icon>Time -</span>  {{x.endTime |date : 'mediumTime'}}</ion-col>
+          <ion-col size="6" class="dateTimecols1"><span style="color: grey;"> <ion-icon name="calendar" style="padding-right: 5px ;"></ion-icon>Date - </span>  {{x.endTime |date}}</ion-col> -->
+        </ion-row>
+        <ion-row>
+          <p class="location">
+            <span style="font-size: 11px">{{ x.endLocation }}</span>
+          </p>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-card-content>

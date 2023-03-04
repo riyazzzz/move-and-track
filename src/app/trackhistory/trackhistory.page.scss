@@ -1,0 +1,10 @@
+.range-slider {
+    position: absolute;
+    width: 53%;
+    top: 0px;
+    height: var(--height);
+    /* contain: size layout style; */
+    cursor: grab;
+    touch-action: pan-x;
+    flex: 4 1 0%;
+}

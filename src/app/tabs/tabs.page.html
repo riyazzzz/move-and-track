@@ -1,0 +1,23 @@
+<ion-tabs  #myTabs (ionTabsDidChange)="tabChanged()" >
+  <ion-tab-bar *ngIf='myPlatform != "desktop" && appName != "Armoron" &&  appName !=  "ParentApp" ' slot="bottom" class="appTab">
+    <ion-tab-button [tab]="dashboardUrl" [ngClass]="{'selectedTabStyle': selectedTab === 'members','tabStyle': selectedTab !== 'members'}">
+      <ion-icon name="home"></ion-icon>
+      <ion-label >Dashboard</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button [tab]="gridViewUrl" [ngClass]="{'selectedTabStyle': selectedTab === 'gridview','tabStyle': selectedTab !== 'gridview'}">
+      <ion-icon name="list"></ion-icon>
+      <ion-label >Grid view</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button [tab]="mapViewUrl" [ngClass]="{'selectedTabStyle': selectedTab === 'mapview','tabStyle': selectedTab !== 'mapview'}">
+      <ion-icon name="map" ></ion-icon>
+      <ion-label >Map view</ion-label>
+    </ion-tab-button>
+    
+    <ion-tab-button [tab]="alertsUrl" [ngClass]="{'selectedTabStyle': selectedTab === 'alerts','tabStyle': selectedTab !== 'alerts'}">
+      <ion-icon name="alert" ></ion-icon>
+      <ion-label >Alerts</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

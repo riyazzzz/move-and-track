@@ -1,0 +1,45 @@
+<ion-header *ngIf="myPlatform !='desktop'">
+  <ion-toolbar mode="md" class="appHeader">
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <ion-icon icon="md-arrow-back" style="color:rgb(0, 0, 0), text-" (click)='getBack()'></ion-icon>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col  size="10">
+                  <ion-title style="padding:0px 12px;">Door open count</ion-title>
+              </ion-col>
+              <ion-col size="2" style="text-align: -webkit-right;">
+                <div class="pdf-wrapper" (click)="createPdf()"></div>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-row>
+  <ion-col size="12" size-sm="12" size-md="6" size-lg="6" *ngFor="let data of displayData" style="padding:0px"> 
+    <ion-card>
+      <ion-card-content   style="padding: 0px;">
+        <ion-row>
+          <ion-col class="center" size=5 style="padding: 0px;">
+            {{data.plateNo}}
+          </ion-col>
+          <ion-col size=5 style="padding: 0px;">
+            <ion-row class="size colcenter center" >
+              COUNT
+            </ion-row>
+            <ion-row class="timestamp center">
+              {{data.count}}
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+</ion-col>    
+</ion-row>
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+  <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>

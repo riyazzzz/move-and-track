@@ -1,0 +1,80 @@
+<ion-content class="content-style label-style">
+  <ion-row>
+  <ion-col>
+  <form [formGroup]="salesForm">
+  <ion-row class="total-data">
+  <ion-col>
+    <ion-row class="content-style">
+      <ion-col size="4" class="col-content">
+      Invoice Number :
+      </ion-col>
+      <ion-col size="7">
+      <ion-input class="label-style"  formControlName="InvoiceNo" placeholder="Enter Invoice Number"></ion-input>
+      </ion-col>
+      </ion-row>
+  <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Dealer Name :
+  </ion-col>
+  <ion-col size="7">
+  <ionic-selectable class="label-style selectable-input" formControlName="distributor" placeholder="Select Dealer Name"
+  [items]="Dealer"  [canSearch]="true" (onChange)="getdealerlist($event)"
+ [hasVirtualScroll]="true" [disabledItems]="data">
+</ionic-selectable>
+  </ion-col>
+  </ion-row>
+  
+  <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Sales Date :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="label-style" type="date" [max]="maxDate" formControlName="salesdate" ></ion-input>
+  </ion-col>
+  </ion-row>
+   <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Sales Quantity :
+  </ion-col>
+  <ion-col size="7">
+  <ion-input class="label-style" formControlName="salesqty" placeholder="Enter the Sales Quantity"></ion-input>
+  </ion-col>
+  </ion-row>
+  
+   <ion-row class="content-style">
+  <ion-col size="4" class="col-content">
+  Serial Number :
+  </ion-col>
+  <ion-col size="6">
+  <ion-input class="label-style"  formControlName="SerialNo" placeholder="Enter Serial Number"></ion-input>
+  </ion-col>
+  <ion-col size="1">
+    <ion-button (click)="click($event)">+</ion-button>
+    </ion-col>
+  </ion-row>
+  </ion-col>
+  </ion-row>
+  </form>
+  
+  <ion-row class="content-style">
+  <ion-col>
+        <jqxGrid *ngIf="isshow" #myGrid [theme]="'material'" [width]="'99%'" [autoheight]="true"
+     [showfilterrow]="false" [rowsheight]="30" [source]="dataAdapter" [columns]="columns" [showstatusbar]="true"
+     [statusbarheight]="30" [showaggregates]="true" [sortable]="false" [filterable]="false" [columns]="columns" [columnsresize]="true" [enabletooltips]="true"
+      [pageable]="false" [selectionmode]="'singlerow'" style="font-size: 10px;text-align: center !important">
+    </jqxGrid>
+  </ion-col>
+  </ion-row>
+  
+  <ion-row class="content-style">
+  <ion-col style="text-align: center !important;padding: 20px;">
+  <ion-button class="button" type="submit" [disabled]="!salesForm.valid"(click)="submitBtn()">Submit</ion-button>
+  <ion-button class="button" type="cancel" (click)="cancelBtn()">Cancel</ion-button>
+  </ion-col>
+  </ion-row>
+  
+  </ion-col>
+  </ion-row>
+  </ion-content>
+  
+  

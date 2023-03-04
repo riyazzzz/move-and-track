@@ -1,0 +1,272 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-row class="toolbar">
+      <ion-title *ngIf="myPlatform != 'desktop'"
+        >Renewal Status Update</ion-title
+      >
+      <ion-title *ngIf="myPlatform == 'desktop'"
+        >Device Status Update Details</ion-title
+      >
+      <ion-col
+        size="4"
+        *ngIf="myPlatform == 'desktop'"
+        style="text-align: right"
+      >
+        <ion-button class="submitBtn" size="small" (click)="newfunc()"
+          >Export</ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{ selectedUpperCol: 'true' }"
+        routerLink="/tabs-login/esim-ca-report"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Ca Status Update</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{ selectedUpperCol: 'true' }"
+        routerLink="/tabs-login/esim-renewal-status-update"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Renewal Status Update</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{ selectedUpperCol: 'true' }"
+        routerLink="/tabs-login/device-topup-status-update"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Topup Status Update</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{ selectedUpperCol: 'true' }"
+        routerLink="/tabs-login/device-extend-status-update"
+        routerLinkActive="selected"
+        size="1.9"
+      >
+        <ion-label>Extend 1 Yr Status Update</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="myPlatform != 'desktop'">
+      <ion-col class="form-field">
+        <ion-row class="form-field">
+          <ion-col>
+            <ion-row class="upperRows">
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 1  }"
+                (click)="SearchData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 1</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 2}"
+                (click)="SearchData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 2</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 3}"
+                (click)="SearchData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 3</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 4}"
+                (click)="SearchData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 4</ion-label>
+              </ion-col>
+              <ion-col
+                [ngClass]="{selectedUpperCols:'true',select:renewal == 5}"
+                (click)="SearchData(2)"
+                size="2.4"
+              >
+                <ion-label>Renewal 5</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="myPlatform == 'desktop'" class="upperRow">
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 1  }"
+        (click)="SearchData(1)"
+        size="1.2"
+      >
+        <ion-label>Renewal 1</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 2}"
+        (click)="SearchData(2)"
+        size="1.2"
+      >
+        <ion-label>Renewal 2</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 3}"
+        (click)="SearchData(3)"
+        size="1.2"
+      >
+        <ion-label>Renewal 3</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 4}"
+        (click)="SearchData(4)"
+        size="1.2"
+      >
+        <ion-label>Renewal 4</ion-label>
+      </ion-col>
+      <ion-col
+        [ngClass]="{selectedUpperCol:'true',selected:renewal == 5}"
+        (click)="SearchData(5)"
+        size="1.2"
+      >
+        <ion-label>Renewal 5</ion-label>
+      </ion-col>
+      <!-- <ion-col style="text-align: end">
+        <ion-chip class="owl" (click)="customFilter('yellow')"
+          >1 Week Left</ion-chip
+        >
+        <ion-chip class="days" (click)="customFilter('orange')"
+          >15 Days Left</ion-chip
+        >
+        <ion-chip class="oml" (click)="customFilter('blue')"
+          >One Month Left
+        </ion-chip>
+        <ion-chip class="exp" (click)="customFilter('red')">Expired</ion-chip>
+      </ion-col> -->
+    </ion-row>
+
+    <ion-row class="wrapper-container">
+      <ion-col size="12">
+        <!-- <form [formGroup]="RenewalReportForm">
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="6" size-md="6">
+              <ion-label class="label-head">Renewal Request Number:</ion-label>
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="RenewalRequestNo"
+                placeholder="Select Renewal Request Number"
+                [items]="renewalRequestNo"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+                [disabledItems]="data"
+              >
+              </ionic-selectable>
+            </ion-col>
+
+            <ion-col
+              size="12"
+              size-lg="3"
+              size-md="3"
+              style="margin: 25px 0px 0px; text-align: center"
+            >
+              <ion-button
+                class="submitbtn"
+                (click)="SearchData()"
+                [disabled]="!RenewalReportForm.valid"
+                >Search</ion-button
+              >
+              <ion-button class="submitbtn" (click)="clear(1)"
+                >Clear</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form> -->
+        <!-- <ion-row style="padding: 10px" *ngIf="show">
+          <ion-col size="12">
+            <ion-label
+              ><span class="dealer-label">Invoice No:</span
+              ><span class="dealer-data">{{details.invoiceno}}</span
+              ><span class="dealer-label">Total Qty:</span
+              ><span class="dealer-data">{{details.totalquantity}}</span
+              ><span class="dealer-label">Sales Date:</span
+              ><span class="dealer-data">{{details.saledate}}</span>
+              <span class="dealer-label">Box No:</span
+            ><span class="dealer-data">{{details.serialno}}</span
+            >
+              <span class="dealer-label">Distributor:</span
+              ><span class="dealer-data"
+                >{{details.saledistributor}}</span
+              ></ion-label
+            >
+          </ion-col>
+        </ion-row> -->
+        <ion-row>
+          <ion-col style="margin: 10px 0px 0px">
+            <ion-label>
+              <span class="dealer-label">Total Selected Row :</span>
+              <span class="dealer-data">{{selectedRow?.length}}</span>
+            </ion-label>
+          </ion-col>
+          <ion-col style="margin: 10px 0px 0px; text-align: end">
+            <ion-button
+              class="submitbtn"
+              (click)="bulkstatusModel()"
+              [disabled]="checkbutton"
+              >Status Update</ion-button
+            >
+          </ion-col>
+        </ion-row>
+
+        <ion-row style="padding: 10px">
+          <ion-col size="12">
+            <jqxGrid
+              #myGrid
+              [selectionmode]="'checkbox'"
+              (onRowclick)="myGridOnRowclick($event)"
+              (onRowselect)="myGridOnRowSelect($event)"
+              (onRowunselect)="myGridOnRowSelect($event)"
+              [theme]="'material'"
+              [enablebrowserselection]="true"
+              [width]="'99.5%'"
+              [autoheight]="true"
+              [source]="dataAdapter"
+              [columns]="columns"
+              [filterable]="true"
+              [sortable]="true"
+              [columnsresize]="true"
+              [enabletooltips]="true"
+              [pageable]="true"
+              [showfilterrow]="true"
+              style="
+                font-size: 16px;
+                text-align: center !important;
+                margin: auto;
+                cursor: pointer;
+              "
+              [columns]="columns"
+            >
+            </jqxGrid>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

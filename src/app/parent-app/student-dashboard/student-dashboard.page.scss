@@ -1,0 +1,90 @@
+.padding0px {
+    padding: 0px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.padding-top-10 {
+    padding-top: 10px;
+}
+
+.padding-bottom-10 {
+    padding-bottom: 10px;
+}
+
+.trip-detail {
+    font-weight: bold;
+    color: black;
+}
+
+.border {
+    border-top: 2px solid #ececec;
+    padding-top: 9px;
+}
+
+.name-style {
+    font-size: 17px;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+.student-icon {
+    font-size: 46px;
+}
+.location-icon {
+    font-size: 24px;
+}
+.class-sec {
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.circle {
+    padding: 6px;
+    position: absolute;
+    display: inline-block;
+    content: "";
+    top: 13px;
+    left: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 3px solid #ececec;
+}
+.border-line {
+    border-bottom: 3px solid;
+    width: 50%;
+    padding: 4px;
+}
+
+.fixline {
+    height: 70px;
+    font-size: smaller;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+.rowCenter {
+    justify-content: center;
+}
+
+.countSize {
+    font-size: large;
+    font-weight: bolder;
+    font-family: sans-serif;
+}
+
+
+.fontFamily{
+    font-family: sans-serif;
+}
+.iconCall{
+    font-size: 31px;
+}

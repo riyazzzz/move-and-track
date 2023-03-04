@@ -1,0 +1,36 @@
+<ion-row  class="container">
+      <ion-col size="12" size-sm="12" size-lg="4"   size-md="4"   class="contact-panal" [ngClass]="ticketCard">
+          <ion-row style="margin:0px;padding: 0px;">
+              <ion-col size="12"  *ngFor="let items of ticket">
+              <ion-card style="cursor: pointer;"
+               [ngClass]="[items.status == '3' ? 'border-pending':'', items.status == '5' ? 'border-closed':'' ,items.status == '4' ? 'border-closed':'' , items.status == '2' ? 'border-open':'']"
+               (click)="getConversation(items.id,items.subject);">
+              <app-ticketconnector [items]="items"></app-ticketconnector>
+          </ion-card>
+        </ion-col>
+    </ion-row>       
+  </ion-col>
+    <!-- <ion-col *ngIf="!ticketConversation && myPlatform == 'desktop'"  style="position:absolute;left:15%;overflow-y:hidden;">
+      <app-nodata-image ></app-nodata-image>
+        </ion-col> -->
+  ​<ion-col  *ngIf="!ticketConversation && myPlatform == 'desktop'"  style="overflow-y:hidden;width: fit-content;">
+    <app-nodata-image ></app-nodata-image>
+ </ion-col>
+<ion-col *ngIf="ticketConversation" size="12" size-sm="12" size-lg="8"   size-md="8"  >
+  <app-conversation-tab [id]="tabId" [sub]="tabSub"  *ngIf="ticketConversation"></app-conversation-tab>
+    </ion-col>
+     </ion-row>
+      <ion-fab *ngIf="myPlatform == 'desktop'" class="botmRow" (click)="openModel()" horizontal="end" vertical="center" slot="fixed" edge>
+      <ion-fab-button *ngIf='fabButton' style="--background:#6c2a84;height: 30px;position:fixed;top: 1em;
+      right: 10px;width: 30px;" >
+        <ion-icon name="add" class="add-icon"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab *ngIf="myPlatform !== 'desktop'" class="botmRow" (click)="openModel()" horizontal="end" vertical="center" slot="fixed" edge>
+    <ion-fab-button *ngIf='fabButton' color="primary" style="position:fixed;bottom: 4em;
+    right: 10px;">
+      <ion-icon name="add" class="add-icon"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+  
+  

@@ -1,0 +1,27 @@
+<ion-header style="padding:10px">
+  <ion-row>
+      <ion-icon name="arrow-back" (click)="getBack()"></ion-icon>
+  </ion-row>
+  <ion-row>
+      <ion-label class="ticket-header"> Create Ticket </ion-label>
+  </ion-row>
+</ion-header>
+<ion-content>
+  <form [formGroup]="newTicket">
+  <ion-row>
+      <ion-col style="padding: 17px;">
+          <ion-label class="input-label">Subject</ion-label>
+          <ion-item>
+              <ion-input formControlName="subject" type="text"></ion-input>
+          </ion-item>
+          <ion-label class="input-label">Description</ion-label>
+              <ion-textarea rows="2" formControlName="description" type="text" maxlength="300"></ion-textarea> 
+      </ion-col>
+  </ion-row>
+  </form>
+  <ion-row>
+      <ion-col size="5" offset="3">
+          <ion-button shape="round" style="width:100%;font-size: 12px;" [disabled]='!newTicket.valid' (click)="createTickets()">Submit</ion-button>
+      </ion-col>
+  </ion-row>
+</ion-content>

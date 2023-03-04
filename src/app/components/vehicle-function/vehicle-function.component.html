@@ -1,0 +1,115 @@
+<ion-row *ngIf="show" class="center" style="align-items: center;">
+    <ion-col *ngIf="vehicleActivity.includes('Detail View') " class="padding" (click)="eventEmmiter('gridview')"  [ngClass]='{"selectedTab": zoneType === "gridview", "unSelectedTab":zoneType != "gridview"}'>
+        <ion-row class="center">
+            <ion-icon style="font-size: 20px;" name="md-browsers"></ion-icon>
+        </ion-row>
+        <ion-row class="center">Detail</ion-row>
+      </ion-col>
+
+  <ion-col *ngIf="vehicleActivity.includes('Live Track')" class="padding" (click)="eventEmmiter('livetrack')" [ngClass]='{"selectedTab": zoneType === "livetrack", "unSelectedTab":zoneType != "livetrack"}'>
+    <ion-row class="center">
+      <!-- <ion-img class="imageWidth" src="assets/icon/livetrack.svg"></ion-img> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['livetrack']"  [attr.d]="model['liveTrack']" />
+    </svg>
+    </ion-row>
+    <ion-row class="center">Track</ion-row>
+  </ion-col>
+
+
+  <ion-col *ngIf="vehicleActivity.includes('Track History') " class="padding" (click)="eventEmmiter('trackhistory')" [ngClass]='{"selectedTab": zoneType === "trackhistory", "unSelectedTab":zoneType != "trackhistory"}'>
+    <ion-row class="center" >
+     <!-- <ion-img class="imageWidth" src="assets/icon/trackhistory.svg"></ion-img> -->
+       <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['trackhistory']"  [attr.d]="model['trackhistory']" /> -->
+    </svg>
+    </ion-row>
+    <ion-row class="center" class="ion-text-center">History</ion-row>
+  </ion-col>
+
+
+  <ion-col *ngIf="vehicleActivity.includes('Reports') " class="padding" (click)="eventEmmiter('reports')"  [ngClass]='{"selectedTab": zoneType === "reports", "unSelectedTab":zoneType != "reports"}'>
+    <ion-row class="center" class="center">
+      <!-- <ion-img class="imageWidth" src="assets/icon/reports.svg"></ion-img> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['reports']"  [attr.d]="model['reports']" />
+    </svg>
+    </ion-row>
+    <ion-row class="center">Reports</ion-row>
+  </ion-col>
+
+
+  <ion-col *ngIf="vehicleActivity.includes('Nearby') "  class="padding" (click)="eventEmmiter('nearby')" [ngClass]='{"selectedTab": zoneType === "nearby", "unSelectedTab":zoneType != "nearby"}'>
+    <ion-row class="center" >
+      <!-- <ion-img class="imageWidth" src="assets/icon/nearby.svg"></ion-img> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['nearby']"  [attr.d]="model['nearby']" />
+    </svg>
+    </ion-row>
+    <ion-row class="center">Nearby</ion-row>
+  </ion-col>
+
+  <ion-col *ngIf="vehicleActivity.includes('GeoFence') " class="padding" (click)="eventEmmiter('geofence')" [ngClass]='{"selectedTab": zoneType === "geofence", "unSelectedTab":zoneType != "geofence"}'>
+    <ion-row class="center" >
+      <!-- <ion-img class="imageWidth" [ngClass]="color['geofence']" src="assets/icon/geofence.svg"></ion-img> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['geofence']"  [attr.d]="model['geofence']" /> 
+     </svg>
+    </ion-row>
+    <ion-row class="center">GeoFence</ion-row>
+  </ion-col>
+
+
+  <ion-col *ngIf="vehicleActivity.includes('Immobilize') " class="padding" (click)="eventEmmiter('gridview')" (click)="openActionModal('Immobilize')" [ngClass]='{"selectedTab": zoneType === "Immobilize", "unSelectedTab":zoneType != "Immobilize"}'>
+    <ion-row class="center" >
+      <!-- <ion-img class="imageWidth" src="assets/icon/immobilize.svg"></ion-img> -->
+      <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6mm" height="6mm" version="1.1"
+      style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+      viewBox="0 0 846.66 846.66" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path [attr.fill]="color['Immobilize']"  [attr.d]="model['Immobilize']" />
+     </svg>
+    </ion-row>
+    <ion-row class="center">Immobilize</ion-row>
+  </ion-col>
+
+  <ion-col *ngIf="vehicleActivity.includes('Settings') "  class="padding" (click)="eventEmmiter('settings')" [ngClass]='{"selectedTab": zoneType === "settings", "unSelectedTab":zoneType != "settings"}'>
+    <ion-row class="center"  style="font-size: 20px;">
+      <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+    </ion-row>
+    <ion-row class="center">Settings</ion-row>
+  </ion-col>
+  <!-- <ion-col *ngIf="vehicleActivity.includes('Settings') "  class="padding" (click)="eventEmmiter('trip')" [ngClass]='{"selectedTab": zoneType === "trip", "unSelectedTab":zoneType != "trip"}'>
+    <ion-row class="center"  style="font-size: 20px;">
+      <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+    </ion-row> 
+    <ion-row class="center">Trip</ion-row>
+  </ion-col> -->
+  <ion-col *ngIf="vehicleActivity.includes('Trip') "  class="padding" (click)="eventEmmiter('trip')" [ngClass]='{"selectedTab": zoneType === "trip", "unSelectedTab":zoneType != "trip"}'>
+    <ion-row class="center"  style="height: 20px;">
+      <svg id="trip-route-travel-dot-connection-relationship" style="enable-background:new 0 0 15 13;" 
+      version="1.1" viewBox="0 0 15 13"  xml:space="preserve" width="6mm" height="6mm"  xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink">
+       <path [attr.fill]="color['trip']"  [attr.d]="model['trip']" /></svg>
+     </ion-row> 
+    <ion-row class="center">Trip</ion-row>
+  </ion-col>
+  <ion-col *ngIf="vehicleActivity.includes('Navigation') " class="padding" (click)='navigateToGoogle()' style="background-color: white;" >
+    <ion-row class="center" >
+
+      <ion-icon style="font-size: 20px;" name="ios-navigate"></ion-icon>
+    </ion-row>
+    <ion-row class="center">Navigation</ion-row>
+  </ion-col>
+
+
+</ion-row>

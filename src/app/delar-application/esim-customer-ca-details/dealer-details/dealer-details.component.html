@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Dealer Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="form-field">
+    <ion-col>
+      <form [formGroup]="dealerForm">
+        <ion-row class="total-data">
+          <ion-col>
+            <ion-row class="content-style">
+              <ion-col size="3" class="col-content">IMEI No :</ion-col>
+              <ion-col size="4">
+                <ion-input
+                  class="label-style"
+                  type="text"
+                  formControlName="imeino"
+                  disabled
+                  placeholder="Enter the Imei No"
+                ></ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="form-field">
+          <ion-col size="12" size-lg="4" size-md="4">
+            <ion-label class="label-head">Dealer Details:</ion-label>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="padding: 5px">
+    <ion-col size="12">
+      <jqxGrid
+        #myGrid
+        [theme]="'material'"
+        [width]="'99.5%'"
+        [autoheight]="true"
+        [source]="dataAdapter"
+        [pagesizeoptions]="page"
+        [enablebrowserselection]="true"
+        [columns]="columns"
+        [filterable]="true"
+        [sortable]="true"
+        [columnsresize]="true"
+        [enabletooltips]="true"
+        [pageable]="true"
+        [showfilterrow]="true"
+        style="
+          font-size: 16px;
+          text-align: center !important;
+          margin: auto;
+          cursor: pointer;
+        "
+      >
+      </jqxGrid>
+    </ion-col>
+  </ion-row>
+  <ion-row class="form-field">
+    <ion-col>
+      <ion-row class="form-field">
+        <ion-col size="12" size-lg="4" size-md="4">
+          <ion-label class="label-head">Company Details:</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row style="padding: 5px">
+        <ion-col size="12">
+          <jqxGrid
+            #myGrid
+            [theme]="'material'"
+            [width]="'99.5%'"
+            [autoheight]="true"
+            [source]="dataAdapter1"
+            [enablebrowserselection]="true"
+            [pagesizeoptions]="page"
+            [columns]="columns1"
+            [filterable]="true"
+            [sortable]="true"
+            [columnsresize]="true"
+            [enabletooltips]="true"
+            [pageable]="true"
+            [showfilterrow]="true"
+            style="
+              font-size: 16px;
+              text-align: center !important;
+              margin: auto;
+              cursor: pointer;
+            "
+          >
+          </jqxGrid>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+</ion-content>
