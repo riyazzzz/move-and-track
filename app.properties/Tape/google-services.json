@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "808945027776",
+    "project_id": "tape-dealer",
+    "storage_bucket": "tape-dealer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:808945027776:android:b97437ae01ac2e11703b25",
+        "android_client_info": {
+          "package_name": "com.mvt.tape"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "808945027776-9un1ist1c1djvkctoctv2ps3eq92tq56.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGVSEeEfQo1h6a4p_LYkaFJ80OHi01_uA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "808945027776-9un1ist1c1djvkctoctv2ps3eq92tq56.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

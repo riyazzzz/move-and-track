@@ -1,0 +1,8 @@
+{
+  "name": "Move n Track",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

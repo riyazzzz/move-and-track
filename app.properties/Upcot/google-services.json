@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1024599391517",
+    "firebase_url": "https://upcot-mvt.firebaseio.com",
+    "project_id": "upcot-mvt",
+    "storage_bucket": "upcot-mvt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1024599391517:android:0b61f89194eef71e82f5f4",
+        "android_client_info": {
+          "package_name": "com.upcotmvt.upcot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1024599391517-6ufeprkmjp197av2fuva50c0o9eag1ql.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJqhgB7qWeYKLnNRP4pYMNUrpOb-im0ro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1024599391517-6ufeprkmjp197av2fuva50c0o9eag1ql.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

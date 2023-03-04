@@ -1,0 +1,14 @@
+{
+  "/Web": {
+    "target": "http://46.151.213.223:8090/",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  },
+  "/Admin": {
+    "target": "http://46.151.213.223:8090/",
+    "changeOrigin": true,
+    "secure": false,
+    "logLevel": "debug"
+  }
+}

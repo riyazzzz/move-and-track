@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "653457990344",
+    "firebase_url": "https://tracalogicmvt.firebaseio.com",
+    "project_id": "tracalogicmvt",
+    "storage_bucket": "tracalogicmvt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:653457990344:android:264ff7aa18749dd0",
+        "android_client_info": {
+          "package_name": "com.eittracalogic.tracalogic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "653457990344-l1hon5jq1ddv5208clqctinha53scplo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdXTstU2BMY3ezdlFWJ5IWzC7-YkhMobA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "653457990344-l1hon5jq1ddv5208clqctinha53scplo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "653457990344-un21fdgl97vcp07r8h06qklq4k5jp04f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.eittracalogic.tracalogic"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

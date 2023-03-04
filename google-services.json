@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "799537904544",
+    "firebase_url": "https://moveandtrack.firebaseio.com",
+    "project_id": "moveandtrack",
+    "storage_bucket": "moveandtrack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799537904544:android:122f02f3906ebb38b302c5",
+        "android_client_info": {
+          "package_name": "com.mvt.apm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "799537904544-8f6q533moordajaahuf4qij9a7uf38a0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUCJAZpxe0r5LUhkNh-tXdLCx2GdYwnA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "799537904544-8f6q533moordajaahuf4qij9a7uf38a0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "799537904544-ug77ili3igskibrh2jboprq33fmne6cb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mvt.apm"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

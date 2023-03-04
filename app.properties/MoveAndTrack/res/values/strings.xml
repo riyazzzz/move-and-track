@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Move and track</string>
+    <string name="title_activity_main">Move and track</string>
+    <string name="package_name">com.mvt.apmkt</string>
+    <string name="custom_url_scheme">com.mvt.apmkt</string>
+</resources>
