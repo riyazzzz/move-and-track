@@ -6,7 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { EsimHomePage } from './esim-home.page';
-
+import { DashboardgridComponent } from '../components/dashboardgrid/dashboardgrid.component';
+import { TableModule } from 'smart-webcomponents-angular/table';
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +20,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TableModule
   ],
-  declarations: [EsimHomePage]
+  declarations: [EsimHomePage, DashboardgridComponent],
+  entryComponents: [DashboardgridComponent]
 })
-export class EsimHomePageModule {}
+export class EsimHomePageModule { }

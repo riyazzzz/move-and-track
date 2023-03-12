@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>End User Vehicle Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="wrapper-container">
+        <form [formGroup]="addCompany">
+          <ion-row class="content-style">
+            <ion-col size="3" class="col-content">IMEI No :</ion-col>
+            <ion-col size="4">
+              <ion-input
+                class="label-style"
+                type="text"
+                formControlName="imeiNo"
+                disabled
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row class="form-field">
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-label class="label">Contact No :</ion-label>
+              <ion-input
+                type="text"
+                formControlName="contactNo"
+                placeholder="Enter the Contact No"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-label class="label">Plate No :</ion-label>
+              <ion-input
+                type="text"
+                formControlName="plateNo"
+                placeholder="Enter the Plate No"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-label class="label">Assests :</ion-label>
+              <ion-select
+                class="input"
+                formControlName="assetCategory"
+                placeholder="Select the Asset category"
+              >
+                <ion-select-option
+                  *ngFor="let Category of assertCategories"
+                  [value]="Category"
+                  >{{ Category }}</ion-select-option
+                >
+              </ion-select>
+            </ion-col>
+
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-label class="label">Engine No :</ion-label>
+              <ion-input
+                type="text"
+                formControlName="engineno"
+                placeholder="Enter the Engine No"
+                class="input"
+              ></ion-input>
+            </ion-col>
+
+            <ion-col size="12" size-lg="4" size-md="4">
+              <ion-label class="label">Chassis No :</ion-label>
+              <ion-input
+                type="text"
+                formControlName="chassisno"
+                placeholder="Enter the Chassis No"
+                class="input"
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col style="text-align: center; padding: 15px"
+              ><ion-button
+                [disabled]="!addCompany.valid"
+                (click)="onSubmit()"
+                id="btn"
+                >Submit</ion-button
+              >
+              <ion-button (click)="cancelBtn()" id="btn">Cancel</ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row></ion-grid
+  ></ion-content
+>

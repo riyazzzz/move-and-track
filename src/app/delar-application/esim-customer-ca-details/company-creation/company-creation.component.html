@@ -1,0 +1,232 @@
+<ion-header>
+  <ion-toolbar mode="md" class="dealerHeader">
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+    <ion-title>Company Vehicle Creation</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="wrapper-container">
+        <form [formGroup]="addCompany">
+          <ion-row class="content-style">
+            <ion-col size="3" class="col-content">IMEI No :</ion-col>
+            <ion-col size="4">
+              <ion-input
+                class="label-style"
+                type="text"
+                formControlName="imeiNo"
+                disabled
+              ></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col size="12" class="label-text">Company info</ion-col>
+          </ion-row>
+
+          <ion-row class="form-field">
+            <ion-col size="7" size-lg="5" size-md="5">
+              <input
+                class="input col"
+                type="search"
+                list="cars"
+                formControlName="companyId"
+                (focusout)="checkCompany(event)"
+                placeholder="Select the Company Name"
+              />
+
+              <datalist id="cars">
+                <option *ngFor="let names of companyId">{{ names }}</option>
+              </datalist>
+            </ion-col>
+
+            <ion-col
+              size="3"
+              size-lg="3"
+              size-md="3"
+              style="text-align: end; padding: 15px"
+            >
+              <ion-button class="submitbtn" (click)="viewcompany()"
+                >+ Add Company</ion-button
+              >
+            </ion-col>
+          </ion-row>
+
+          <ion-row *ngIf="companydetails">
+            <ion-col>
+              <ion-row>
+                <ion-col class="label-text">Company Details</ion-col>
+                <ion-col style="text-align: end"
+                  ><span
+                    ><ion-icon
+                      style="font-size: 22px"
+                      name="close-circle-outline"
+                      (click)="dismisscompany()"
+                    ></ion-icon></span
+                ></ion-col>
+              </ion-row>
+
+              <ion-row class="form-field">
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Company Name :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="companyName"
+                    placeholder="Company name"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Email :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="email"
+                    placeholder="Enter the Email address"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Contact No :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="contactNo"
+                    placeholder="Enter the Contact Number"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Address :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="address"
+                    placeholder="Enter the Address"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">City :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="city"
+                    placeholder="Enter the City"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Country :</ion-label>
+                  <ion-select
+                    class="input"
+                    formControlName="country"
+                    placeHolder="Country"
+                  >
+                    <ion-select-option
+                      *ngFor="let country of country"
+                      [value]="country"
+                    >
+                      {{ country }}
+                    </ion-select-option>
+                  </ion-select>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col style="text-align: center; padding: 15px"
+                  ><ion-button
+                    [disabled]="!addCompany.valid"
+                    (click)="onadd()"
+                    id="btn"
+                    >Submit</ion-button
+                  >
+                  <ion-button (click)="cancelBtn()" id="btn">Cancel</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-col></ion-row
+          >
+        </form>
+
+        <ion-row *ngIf="assests">
+          <ion-col>
+            <form [formGroup]="vehicle">
+              <ion-row>
+                <ion-col size="12" class="label-text">Assets</ion-col>
+              </ion-row>
+
+              <ion-row class="form-field">
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Plate No :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="plateNo"
+                    placeholder="Enter the Plate No"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Assests :</ion-label>
+                  <ion-select
+                    class="input"
+                    formControlName="assetCategory"
+                    placeholder="Select the Asset category"
+                  >
+                    <ion-select-option
+                      *ngFor="let Category of assertCategories"
+                      [value]="Category"
+                      >{{ Category }}</ion-select-option
+                    >
+                  </ion-select>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Engine No :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="engineno"
+                    placeholder="Enter the Engine No"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+
+                <ion-col size="12" size-lg="4" size-md="4">
+                  <ion-label class="label">Chassis No :</ion-label>
+                  <ion-input
+                    type="text"
+                    formControlName="chassisno"
+                    placeholder="Enter the Chassis No"
+                    class="input"
+                  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col style="text-align: center; padding: 15px"
+                  ><ion-button
+                    [disabled]="!vehicle.valid"
+                    (click)="onSubmit()"
+                    id="btn"
+                    >Submit</ion-button
+                  >
+                  <ion-button (click)="cancelBtn()" id="btn">Cancel</ion-button>
+                </ion-col>
+              </ion-row>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row></ion-grid
+  >
+</ion-content>

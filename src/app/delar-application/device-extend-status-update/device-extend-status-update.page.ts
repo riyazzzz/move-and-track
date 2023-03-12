@@ -7,6 +7,7 @@ import { AjaxService } from "src/app/services/ajax.service";
 import { CommonService } from "src/app/services/common.service";
 import { ExportExcelService } from "src/app/services/export-excel.service";
 import { serverUrl } from "src/environments/environment";
+import { BulkExtendComponent } from "./bulk-extend/bulk-extend.component";
 import { ExtendCommentComponent } from "./extend-comment/extend-comment.component";
 
 @Component({
@@ -24,10 +25,11 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
   dataString: any;
   tableData: any;
   detail: any;
-  page = [];
+  data = "";
   show: boolean = false;
   selectedRow: any;
   myPlatform: any;
+  checkbutton: boolean = true;
 
   constructor(
     private ajaxService: AjaxService,
@@ -41,7 +43,7 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
 
   getdatas() {
     this.commonService.presentLoader();
-    this.page = [];
+
     var url =
       serverUrl.web +
       "/esim/getDealerExtendOneYearRequestAll?companyid=apm" +
@@ -49,7 +51,7 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
     this.ajaxService.ajaxGet(url).subscribe((res) => {
       this.tableData = res;
       this.commonService.dismissLoader();
-      this.page = ["100", "200", "500", "1000"];
+
       this.renderer = (row: number, column: any, value: string) => {
         if (value == "" || null || undefined) {
           return "--";
@@ -232,9 +234,52 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
     }
   }
 
+  async bulkstatusModel(row) {
+    let selectdata = this.myGrid.getselectedrowindexes();
+    var arr = [];
+    for (let i = 0; i < selectdata.length; i++) {
+      arr.push({
+        iccidno:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]].iccidno1,
+        validityperiod:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]]
+            .validityperiod,
+        createdby:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]].createdby,
+      });
+    }
+    const isModalOpened = await this.modalController.getTop();
+    if (!isModalOpened) {
+      const modal = await this.modalController.create({
+        component: BulkExtendComponent,
+        cssClass: "statusform",
+        componentProps: {
+          value: arr,
+        },
+      });
+      modal.onDidDismiss().then((d) => {
+        if (d.data.data == "Extend One Year Status Updated Successfully") {
+          this.myGrid.clearselection();
+          this.getdatas();
+          this.data = d.data.data;
+        }
+      });
+      return await modal.present();
+    }
+  }
+
+  myGridOnRowclick(event: any): void {
+    this.selectedRow = event.args.row.bounddata;
+  }
+
   myGridOnRowSelect(event: any): void {
-    this.selectedRow = event.args.row;
-    this.show = true;
+    this.selectedRow = this.myGrid.getselectedrowindexes();
+
+    if (this.selectedRow.length > 0) {
+      this.checkbutton = false;
+    } else {
+      this.checkbutton = true;
+    }
   }
 
   newfunc() {
@@ -271,12 +316,17 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
     };
     this.ete.exportExcel(reportData);
   }
+  ngAfterViewInit() {
+    this.myGrid.pagesizeoptions(["100", "200", "500", "1000"]);
+  }
 
   ngOnInit() {
     this.myPlatform = this.platform.platforms()[0];
     if (this.myPlatform == "tablet") {
       this.myPlatform = "desktop";
     }
+  }
+  ionViewWillEnter() {
     this.getdatas();
   }
 }

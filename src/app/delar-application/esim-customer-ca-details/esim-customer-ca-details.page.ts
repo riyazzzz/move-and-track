@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ModalController, Platform } from "@ionic/angular";
+import { AlertController, ModalController, Platform } from "@ionic/angular";
 import { IonicSelectableComponent } from "ionic-selectable";
 import { jqxGridComponent } from "jqwidgets-ng/jqxgrid";
 import { AjaxService } from "src/app/services/ajax.service";
@@ -8,9 +8,13 @@ import { CommonService } from "src/app/services/common.service";
 import { ExportExcelService } from "src/app/services/export-excel.service";
 import { serverUrl } from "src/environments/environment";
 import { AssignDealerComponent } from "./assign-dealer/assign-dealer.component";
+import { CertificateCreationComponent } from "./certificate-creation/certificate-creation.component";
 import { CommentComponent } from "./comment/comment.component";
+import { CompanyCreationComponent } from "./company-creation/company-creation.component";
+import { ConfirmPopupComponent } from "./confirm-popup/confirm-popup.component";
 import { CustomerRenewalRequestComponent } from "./customer-renewal-request/customer-renewal-request.component";
 import { DealerDetailsComponent } from "./dealer-details/dealer-details.component";
+import { EndUserCreationComponent } from "./end-user-creation/end-user-creation.component";
 import { EsimTopupPopupComponent } from "./esim-topup-popup/esim-topup-popup.component";
 import { RequestPageComponent } from "./request-page/request-page.component";
 import { StatusDetailsComponent } from "./status-details/status-details.component";
@@ -28,13 +32,14 @@ export class EsimCustomerCaDetailsPage implements OnInit {
   dataAdapter: any;
   renderer: (row: number, column: any, value: string) => string;
   myPlatform: any;
-  selectedRow = [];
+  selectedRow: any = [];
   tableData: any;
   color;
   show: boolean = false;
   renewalbutton: boolean = true;
   rowColor;
   respone: any;
+  result: any;
 
   constructor(
     private platform: Platform,
@@ -42,7 +47,8 @@ export class EsimCustomerCaDetailsPage implements OnInit {
     private modalController: ModalController,
     private ajaxService: AjaxService,
     private commonService: CommonService,
-    private ete: ExportExcelService
+    private ete: ExportExcelService,
+    private alertController: AlertController
   ) {}
   ngOnInit(): void {}
 
@@ -86,6 +92,24 @@ export class EsimCustomerCaDetailsPage implements OnInit {
       }
     });
     return await modal.present();
+  }
+
+  TopupCheck() {
+    let selectdata = this.myGrid.getselectedrowindexes();
+    let arr = [];
+    for (let i = 0; i < selectdata.length; i++) {
+      arr.push({
+        imei: this.myGrid["attrSource"]["originaldata"][selectdata[i]].imei,
+      });
+    }
+    const url = serverUrl.web + "/esim/saveEsimTopupCheck";
+    this.ajaxService.ajaxPostWithBody(url, arr).subscribe((res) => {
+      if (res.message == "Success") {
+        this.requestForTopUp();
+      } else {
+        this.commonService.showConfirm(res.message);
+      }
+    });
   }
 
   async requestForTopUp() {
@@ -164,7 +188,30 @@ export class EsimCustomerCaDetailsPage implements OnInit {
     return await modal.present();
   }
 
-  async requestForoneyeartop() {
+  async requestoneyearModel() {
+    const alert = await this.alertController.create({
+      header: "Confirm",
+      backdropDismiss: false,
+      message: "Are you sure you want to Extend 1 Year ?",
+      buttons: [
+        {
+          text: "Cancel",
+          role: "cancel",
+          handler: (data) => {},
+        },
+        {
+          text: "Ok",
+          handler: (data) => {
+            this.requestForoneyeartop();
+          },
+        },
+      ],
+    });
+    await alert.present();
+  }
+
+  requestForoneyeartop() {
+    this.commonService.presentLoader();
     let selectdata = this.myGrid.getselectedrowindexes();
     let arr = [];
     for (let i = 0; i < selectdata.length; i++) {
@@ -190,6 +237,7 @@ export class EsimCustomerCaDetailsPage implements OnInit {
       "/esim/saveEsimExtendOneYearRequest?companyid=apm&dealerid=" +
       localStorage.getItem("userName");
     this.ajaxService.ajaxPostWithBody(url, arr).subscribe((res) => {
+      this.commonService.dismissLoader();
       if (res.message == "Extend One Year Request Saved Successfully") {
         this.myGrid.clearselection();
         this.getdatas();
@@ -466,7 +514,7 @@ export class EsimCustomerCaDetailsPage implements OnInit {
           cellsrenderer: this.renderer,
           cellsalign: "center",
           align: "center",
-          width: 90,
+          width: 120,
         },
         {
           text: "Created by",
@@ -476,6 +524,39 @@ export class EsimCustomerCaDetailsPage implements OnInit {
           align: "center",
           width: 135,
         },
+
+        {
+          text: "",
+          columntype: "button",
+          cellsalign: "center",
+          align: "center",
+          width: 120,
+          cellsrenderer: (): string => {
+            return this.myPlatform == "desktop"
+              ? "Vehicle"
+              : "<button>Vehicle</button>";
+          },
+          buttonclick: (row): void => {
+            this.checkvehicle();
+          },
+        },
+
+        {
+          text: "",
+          columntype: "button",
+          cellsalign: "center",
+          align: "center",
+          width: 120,
+          cellsrenderer: (): string => {
+            return this.myPlatform == "desktop"
+              ? "Certificate"
+              : "<button>Certificate</button>";
+          },
+          buttonclick: (row): void => {
+            this.getmessage();
+          },
+        },
+
         {
           text: "",
           columntype: "button",
@@ -527,9 +608,113 @@ export class EsimCustomerCaDetailsPage implements OnInit {
     });
   }
 
+  getmessage() {
+    const url =
+      serverUrl.web +
+      "/global/getCertificateDetails?imei=" +
+      this.selectedRow.imei;
+    this.ajaxService.ajaxGetPerference(url).subscribe((res) => {
+      if (res.message) {
+        this.commonService.showConfirm(res.message);
+      } else if (res.message == "") {
+        this.result = res;
+        this.CertificateModel();
+      }
+    });
+  }
+
+  async CertificateModel() {
+    const isModalOpened = await this.modalController.getTop();
+    const modal = await this.modalController.create({
+      component: CertificateCreationComponent,
+      cssClass: "viewserialfrom",
+      componentProps: {
+        value: this.result,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.data.data == "Certificate Saved Successfully") {
+        this.show = false;
+        this.data = data.data.data;
+        this.getdatas(1);
+      }
+    });
+    return await modal.present();
+  }
+
+  checkvehicle() {
+    const url =
+      serverUrl.web +
+      "/site/getvehiclevalidation?imei=" +
+      this.selectedRow.imei;
+    this.ajaxService.ajaxGetPerference(url).subscribe((res) => {
+      if (res.message == "success") {
+        this.confirm();
+      } else {
+        this.commonService.showConfirm(res.message);
+      }
+    });
+  }
+
+  async confirm() {
+    const isModalOpened = await this.modalController.getTop();
+    const modal = await this.modalController.create({
+      component: ConfirmPopupComponent,
+      cssClass: "vehiclecreation",
+      componentProps: {
+        value: this.selectedRow,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.data.data == 1) {
+        this.vehiclecreationModel();
+      } else {
+        this.enduserModel();
+      }
+    });
+    return await modal.present();
+  }
+
+  async vehiclecreationModel() {
+    const isModalOpened = await this.modalController.getTop();
+    const modal = await this.modalController.create({
+      component: CompanyCreationComponent,
+      cssClass: "viewserialfrom",
+      componentProps: {
+        value: this.selectedRow,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.data.data == "Successfully Presisted") {
+        this.show = false;
+        this.data = data.data.data;
+        this.getdatas(1);
+      }
+    });
+    return await modal.present();
+  }
+
+  async enduserModel() {
+    const isModalOpened = await this.modalController.getTop();
+    const modal = await this.modalController.create({
+      component: EndUserCreationComponent,
+      cssClass: "viewserialfrom",
+      componentProps: {
+        value: this.selectedRow,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      if (data.data.data == "Added Successfully") {
+        this.show = false;
+        this.data = data.data.data;
+        this.getdatas(1);
+      }
+    });
+    return await modal.present();
+  }
+
   async viewModel(row) {
     const isModalOpened = await this.modalController.getTop();
-
     const modal = await this.modalController.create({
       component: StatusDetailsComponent,
       cssClass: "viewserialfrom",

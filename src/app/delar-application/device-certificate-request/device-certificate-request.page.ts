@@ -78,6 +78,14 @@ export class DeviceCertificateRequestPage implements OnInit {
           width: 180,
         },
         {
+          text: "Request by",
+          datafield: "renewalrequestby",
+          cellsrenderer: this.renderer,
+          cellsalign: "center",
+          align: "center",
+          width: 120,
+        },
+        {
           text: "Requested Period",
           datafield: "validityperiod",
           cellsrenderer: this.renderer,
@@ -206,7 +214,6 @@ export class DeviceCertificateRequestPage implements OnInit {
     if (this.myPlatform == "tablet") {
       this.myPlatform = "desktop";
     }
-    this.getdatas();
   }
 
   ngAfterViewInit() {

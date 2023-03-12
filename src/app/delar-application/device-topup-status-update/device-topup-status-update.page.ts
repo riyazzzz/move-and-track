@@ -7,6 +7,7 @@ import { AjaxService } from "src/app/services/ajax.service";
 import { CommonService } from "src/app/services/common.service";
 import { ExportExcelService } from "src/app/services/export-excel.service";
 import { serverUrl } from "src/environments/environment";
+import { BulkTopupComponent } from "./bulk-topup/bulk-topup.component";
 import { ExtendCommentComponent } from "./extend-comment/extend-comment.component";
 
 @Component({
@@ -22,6 +23,7 @@ export class DeviceTopupStatusUpdatePage implements OnInit {
   myGrid: jqxGridComponent;
   columns: any;
   dataString: any;
+  data = "";
   tableData: any;
   detail: any;
   page = [];
@@ -30,6 +32,7 @@ export class DeviceTopupStatusUpdatePage implements OnInit {
   myPlatform: any;
   maxDate: string;
   today = new Date();
+  checkbutton: boolean = true;
 
   constructor(
     private ajaxService: AjaxService,
@@ -232,9 +235,53 @@ export class DeviceTopupStatusUpdatePage implements OnInit {
       return await modal.present();
     }
   }
+
+  async bulkstatusModel(row) {
+    let selectdata = this.myGrid.getselectedrowindexes();
+    var arr = [];
+    for (let i = 0; i < selectdata.length; i++) {
+      arr.push({
+        iccidno:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]].iccidno1,
+        validityperiod:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]]
+            .validityperiod,
+        createdby:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]].createdby,
+      });
+    }
+    const isModalOpened = await this.modalController.getTop();
+    if (!isModalOpened) {
+      const modal = await this.modalController.create({
+        component: BulkTopupComponent,
+        cssClass: "statusform",
+        componentProps: {
+          value: arr,
+        },
+      });
+      modal.onDidDismiss().then((d) => {
+        if (d.data.data == "Topup Status Updated Successfully") {
+          this.myGrid.clearselection();
+          this.getdatas();
+          this.data = d.data.data;
+        }
+      });
+      return await modal.present();
+    }
+  }
+
+  myGridOnRowclick(event: any): void {
+    this.selectedRow = event.args.row.bounddata;
+  }
+
   myGridOnRowSelect(event: any): void {
-    this.selectedRow = event.args.row;
-    this.show = true;
+    this.selectedRow = this.myGrid.getselectedrowindexes();
+
+    if (this.selectedRow.length > 0) {
+      this.checkbutton = false;
+    } else {
+      this.checkbutton = true;
+    }
   }
 
   newfunc() {

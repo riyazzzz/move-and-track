@@ -1,0 +1,36 @@
+<ion-row>
+  <ion-col>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Select the Option</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group>
+            <ion-item>
+              <ion-label>Company Vehicle Creation</ion-label>
+              <ion-radio
+                (click)="selectedValue = 1"
+                slot="start"
+                checked
+              ></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>End User Vehicle Creation</ion-label>
+              <ion-radio (click)="selectedValue = 2" slot="start"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+
+      <ion-row>
+        <ion-col style="text-align: center; padding: 15px"
+          ><ion-button (click)="get()" id="btn">Submit</ion-button>
+          <ion-button (click)="cancelBtn()" id="btn">Cancel</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-col>
+</ion-row>

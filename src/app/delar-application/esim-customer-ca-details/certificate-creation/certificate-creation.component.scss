@@ -1,0 +1,41 @@
+.input {
+  border: 1px solid #e5e5e5;
+  height: 42px;
+  line-height: 18px;
+  --padding-start: 15px;
+  margin-top: 7px;
+  background: #e8e8e8;
+}
+@media only screen and(min-width:320px) and(max-width:1023px) {
+  .wrapper-container {
+    border: none;
+    margin: 8px 0 0;
+    padding: 0;
+  }
+  .label-text {
+    font-size: 14px;
+  }
+}
+@media only screen and(min-width:1024px) {
+  .wrapper-container {
+    margin: 8px 1px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .form-field {
+    zoom: 80%;
+  }
+
+  #submitbtn {
+    width: 80%;
+  }
+}
+
+.form-field {
+  margin: -5px 5px 0px;
+  border-radius: 7px;
+}
+#btn {
+  --background: #6252ee;
+}

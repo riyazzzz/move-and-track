@@ -8,6 +8,7 @@ import { IonicModule } from "@ionic/angular";
 import { DeviceTopupStatusUpdatePage } from "./device-topup-status-update.page";
 import { SharedModModule } from "src/app/shared-mod/shared-mod.module";
 import { ExtendCommentComponent } from "./extend-comment/extend-comment.component";
+import { BulkTopupComponent } from "./bulk-topup/bulk-topup.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: "extend-comment",
     component: ExtendCommentComponent,
+  },
+  {
+    path: "bulk-topup",
+    component: BulkTopupComponent,
   },
 ];
 
@@ -29,6 +34,10 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [DeviceTopupStatusUpdatePage, ExtendCommentComponent],
+  declarations: [
+    DeviceTopupStatusUpdatePage,
+    ExtendCommentComponent,
+    BulkTopupComponent,
+  ],
 })
 export class DeviceTopupStatusUpdatePageModule {}

@@ -23,7 +23,7 @@ export class DeviceExtendOneyearRequestDetailsPage implements OnInit {
   dataString: any;
   tableData: any;
   detail: any;
-  page = [];
+
   show: boolean = false;
   selectedRow: any;
   myPlatform: any;
@@ -40,7 +40,7 @@ export class DeviceExtendOneyearRequestDetailsPage implements OnInit {
 
   getdatas() {
     this.commonService.presentLoader();
-    this.page = [];
+
     var url =
       serverUrl.web +
       "/esim/getDealerExtendOneYearAll?companyid=apm" +
@@ -49,7 +49,6 @@ export class DeviceExtendOneyearRequestDetailsPage implements OnInit {
     this.ajaxService.ajaxGet(url).subscribe((res) => {
       this.tableData = res;
       this.commonService.dismissLoader();
-      this.page = ["100", "200", "500", "1000"];
       this.renderer = (row: number, column: any, value: string) => {
         if (value == "" || null || undefined) {
           return "--";
@@ -238,12 +237,17 @@ export class DeviceExtendOneyearRequestDetailsPage implements OnInit {
     };
     this.ete.exportExcel(reportData);
   }
+  ngAfterViewInit() {
+    this.myGrid.pagesizeoptions(["100", "200", "500", "1000"]);
+  }
 
   ngOnInit() {
     this.myPlatform = this.platform.platforms()[0];
     if (this.myPlatform == "tablet") {
       this.myPlatform = "desktop";
     }
+  }
+  ionViewWillEnter() {
     this.getdatas();
   }
 }

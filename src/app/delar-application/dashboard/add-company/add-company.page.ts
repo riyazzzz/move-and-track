@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { app, serverUrl } from "src/environments/environment";
 import { AjaxService } from "src/app/services/ajax.service";
 import { CommonService } from "src/app/services/common.service";
 import { Location } from "@angular/common";
+import { ModalController } from "@ionic/angular";
 
 @Component({
   selector: "app-add-company",

@@ -62,7 +62,15 @@ export class ViewImeiComponent implements OnInit {
         cellsrenderer: this.renderer,
         cellsalign: "left",
         align: "left",
-        width: 350,
+        width: 175,
+      },
+      {
+        text: "Renewal No",
+        datafield: "renewalno",
+        cellsrenderer: this.renderer,
+        cellsalign: "left",
+        align: "left",
+        width: 175,
       },
       {
         text: "",

@@ -1,0 +1,406 @@
+<ion-header>
+  <ion-toolbar
+    [ngClass]="{
+      dealerHeader: appName != 'Armoron',
+      'header-background-color': appName == 'Armoron'
+    }"
+    mode="md"
+  >
+    <ion-buttons slot="start">
+      <ion-icon
+        (click)="cancelBtn()"
+        name="arrow-back"
+        style="padding: 10px"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
+
+    <!-- <ion-title *ngIf="value2 == 'add'">Add Company</ion-title>
+    <ion-title *ngIf="value2 == 'new'">Edit Company</ion-title> -->
+
+    <ion-title *ngIf="value2 == 'add'">Add Company</ion-title>
+    <ion-title *ngIf="value2 == 'edit'">Edit Company</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngIf="appName != 'Armoron'">
+      <ion-col size="12" class="form-field">
+        <form class="formPadding" [formGroup]="checkno">
+          <ion-row *ngIf="value2 == 'add'" style="justify-content: right">
+            <ion-col size="12" size-lg="6">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="number"
+                formControlName="phoneno"
+                placeholder="Enter Mobile No"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-lg="6" style="text-align: center">
+              <ion-button
+                (click)="check()"
+                [disabled]="!checkno.valid"
+                id="submitbtn"
+              >
+                Check
+              </ion-button>
+              <ion-button
+                (click)="clear()"
+                [disabled]="!checkno.valid"
+                id="submitbtn"
+              >
+                Clear
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+        <form class="formPadding" [formGroup]="addCompany">
+          <ion-row>
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="companyName"
+                placeholder="Company name"
+                [disabled]="value2 == 'add' ? 'false' : 'true'"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="loginId"
+                placeholder="Login id"
+                [disabled]="value2 == 'add' ? 'false' : 'true'"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="password"
+                placeholder="Password"
+                [disabled]="value2 == 'add' ? 'false' : 'true'"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="email"
+                placeholder="Email id"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="number"
+                formControlName="contactNo"
+                placeholder="Contact number"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="address"
+                placeholder="Address"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col size="12" size-sm="12" size-lg="6" size-md="12">
+              <ion-input
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                type="text"
+                formControlName="city"
+                placeholder="City"
+              ></ion-input>
+            </ion-col>
+            <!------->
+            <ion-col
+              *ngIf="value2 == 'add'"
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+            >
+              <ion-select
+                class="heading"
+                [ngClass]="{
+                  armoron: appName == 'Armoron',
+                  heading: appName != 'Armoron'
+                }"
+                formControlName="country"
+                placeHolder="Country"
+              >
+                <ion-select-option
+                  *ngFor="let country of country"
+                  [value]="country"
+                >
+                  {{ country }}
+                </ion-select-option>
+              </ion-select>
+            </ion-col>
+
+            <ion-col
+              *ngIf="value2 == 'edit'"
+              size="12"
+              size-sm="12"
+              size-lg="6"
+              size-md="12"
+            >
+              <ionic-selectable
+                class="input selectable-input"
+                formControlName="country"
+                placeholder="Select the Country Name"
+                [items]="country"
+                [canSearch]="true"
+                [hasVirtualScroll]="true"
+              >
+              </ionic-selectable>
+            </ion-col>
+          </ion-row>
+        </form>
+
+        <ion-col size="12">
+          <ion-row>
+            <ion-col
+              *ngIf="value2 == 'add'"
+              size="12"
+              style="text-align: center"
+            >
+              <ion-button
+                (click)="onadd()"
+                [disabled]="!addCompany.valid"
+                id="submitbtn"
+              >
+                Add
+              </ion-button>
+            </ion-col>
+
+            <ion-col
+              *ngIf="value2 == 'edit'"
+              size="12"
+              style="text-align: center"
+            >
+              <ion-button
+                (click)="onedit()"
+                [disabled]="!addCompany.valid"
+                id="submitbtn"
+              >
+                Edit
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="appName == 'Armoron'">
+      <form style="width: 100%" [formGroup]="addCompany">
+        <!-- <ion-list> -->
+        <!-- <ion-item>
+          <ion-label position="fixed">First_name:</ion-label>
+          <ion-input formControlName="firstName" type="text" placeholder="First name">
+          </ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label position="fixed">Last_name:</ion-label>
+          <ion-input formControlName="lastname" type="text" placeholder="Last_name">
+          </ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label position="fixed">DOB:</ion-label>
+          <ion-input formControlName="date" type="date">
+          </ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label position="fixed">Mobile:</ion-label>
+        
+          </ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label position="fixed">Mobile:</ion-label>
+          <ion-input type="text" formControlName="email" placeholder="Email id">
+          </ion-input>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label>Gender</ion-label>
+          <ion-select formControlName="gender">
+            <ion-select-option value="male">Male</ion-select-option>
+            <ion-select-option value="female">Female</ion-select-option>
+          </ion-select>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label>Address</ion-label>
+          <ion-textarea formControlName="address" type="text" placeholder="Address"></ion-textarea>
+        </ion-item> -->
+        <!-- <ion-item>
+          <ion-label>Country</ion-label>
+          <ion-select formControlName="country" placeHolder="Country">
+            <ion-select-option *ngFor="let country of country" [value]="country">
+              {{country}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item> -->
+        <!-- </ion-list> -->
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >First name</ion-label
+            >
+            <ion-input type="text" formControlName="firstName"></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Last name</ion-label
+            >
+            <ion-input type="text" formControlName="lastname"></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="stacked"
+              >Date of birth</ion-label
+            >
+            <ion-input type="date" formControlName="date"></ion-input>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Mobile</ion-label
+            >
+            <ion-input
+              formControlName="contactNo"
+              type="text"
+              readonly
+            ></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Email id</ion-label
+            >
+            <ion-input
+              type="text"
+              formControlName="email"
+              placeholder="Email id"
+            ></ion-input>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Gender</ion-label
+            >
+            <ion-select formControlName="gender">
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Address</ion-label
+            >
+            <ion-textarea
+              formControlName="address"
+              type="text"
+              placeholder="Address"
+            ></ion-textarea>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >City</ion-label
+            >
+            <ion-input
+              type="text"
+              formControlName="city"
+              placeholder="City"
+            ></ion-input>
+          </ion-item>
+        </ion-card>
+        <ion-card>
+          <ion-item>
+            <ion-label style="color: #b1b1b1" position="floating"
+              >Country</ion-label
+            >
+            <ion-select formControlName="country" placeHolder="Country">
+              <ion-select-option
+                *ngFor="let country of country"
+                [value]="country"
+              >
+                {{ country }}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-card>
+
+        <ion-row class="signin">
+          <ion-col>
+            <ion-button
+              (click)="onSubmit()"
+              [ngClass]="{
+                appBackground: appName != 'Armoron',
+                'header-background-color': appName == 'Armoron'
+              }"
+              shape="full"
+              expand="block"
+              >Submit</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-row>
+  </ion-grid>
+</ion-content>

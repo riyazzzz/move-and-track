@@ -99,6 +99,7 @@
     "rxjs": "^6.5.3",
     "rxjs-compat": "^6.5.4",
     "rxjs-websockets": "^8.0.0",
+    "smart-webcomponents-angular": "^15.0.0",
     "tslib": "^1.9.0",
     "xlsx": "^0.16.9",
     "zone.js": "~0.9.1"

@@ -49,8 +49,8 @@ export class ExtendCommentComponent implements OnInit {
 
   submitBtn() {
     var data = {
-      iccidno: this.value.bounddata.iccidno1,
-      topupvaliditymonth: this.value.bounddata.validityperiod,
+      iccidno: this.value.iccidno1,
+      topupvaliditymonth: this.value.validityperiod,
       comment: this.topupForm.value.comment,
       createdby: localStorage.getItem("userName"),
     };
@@ -71,9 +71,9 @@ export class ExtendCommentComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     if (Object.keys(this.value).length != 0) {
-      console.log(this.value.bounddata.validityperiod);
+      console.log(this.value.validityperiod);
       this.topupForm.patchValue({
-        topupvaliditymonth: this.value.bounddata.validityperiod,
+        topupvaliditymonth: this.value.validityperiod,
       });
     }
   }

@@ -1,50 +1,121 @@
 <ion-header>
   <ion-toolbar class="dealerHeader">
     <ion-title>Dashboard</ion-title>
-    <ion-button slot="end">
-      <ion-icon name="notifications-outline"></ion-icon>
-    </ion-button>
+  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+<ion-row style="justify-content: end;margin-right: 10px;align-items: center;">
+<ion-col size="3">
+  <ion-list>
+    <ion-item>
+    <ion-select style="margin-left: 30%;" placeholder="Select dealer" (ionChange)="handleChange($event)">
+      <ion-select-option *ngFor="let d of data" >{{d}}</ion-select-option>
+    </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-col>
+
+</ion-row>
+
   <ion-row>
-    <ion-col>
-      <ion-card>
-        <ion-card-header style="text-align: center; font-weight: bold"
-          >Sales</ion-card-header
-        >
-        <ion-card-content>
-          <ion-radio-group
-            allow-empty-selection="false"
-            name="radio-group"
-          ></ion-radio-group>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
 
-    <ion-col>
-      <ion-card>
-        <ion-card-header>CA Request</ion-card-header>
-        <ion-card-content>
-          <ion-radio-group
-            allow-empty-selection="false"
-            name="radio-group"
-          ></ion-radio-group>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
 
-    <ion-col>
-      <ion-card>
-        <ion-card-header>Renewal Request</ion-card-header>
-        <ion-card-content>
-          <ion-radio-group
-            allow-empty-selection="false"
-            name="radio-group"
-          ></ion-radio-group>
-        </ion-card-content>
+
+   <ion-col size="12">
+     <ion-row style="justify-content: center;">
+        <button class="button">
+          Pending CA 
+        </button>
+       </ion-row>
+      <ion-card id="1">
+      
+        <app-dashboardgrid [dealer]="dealer" [grid]="1">
+      
+        </app-dashboardgrid>
+      
       </ion-card>
-    </ion-col>
+
+   </ion-col>
   </ion-row>
+<ion-row>
+
+<ion-col size="12">
+  <ion-row style="justify-content: center;">
+    <button class="button">
+      Pending Renewal 
+    </button>
+  </ion-row>
+ 
+    <ion-card id="1">
+    
+      <app-dashboardgrid [dealer]="dealer" [grid]="2">
+    
+      </app-dashboardgrid>
+    
+    
+    </ion-card>
+</ion-col>
+</ion-row>
+
+    
+
+    <ion-row>
+    
+    <ion-col size="6">
+      <ion-row style="justify-content: center;">
+        <button class="button">
+          Pending Extra 1 Year
+        </button>
+      </ion-row>
+
+        <ion-card id="1">
+        
+        
+          <app-dashboardgrid [dealer]="dealer" [grid]="3" >
+        
+          </app-dashboardgrid>
+        
+        </ion-card>
+    </ion-col>
+      <ion-col size="6">
+        <ion-row style="justify-content: center;">
+          <button class="button">
+            Pending Topup
+          </button>
+        </ion-row>
+    
+        <ion-card id="1">
+      
+      
+          <app-dashboardgrid  [dealer]="dealer" [grid]="4" >
+      
+          </app-dashboardgrid>
+      
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  <ion-row style="justify-content: center;">
+  
+    <ion-col size="6">
+      <ion-row style="justify-content: center;">
+        <button class="button">
+          Pending BSNL Certificate
+        </button>
+      </ion-row>
+    
+      <ion-card id="1">
+  
+  
+        <app-dashboardgrid [dealer]="dealer" [grid]="5" >
+  
+        </app-dashboardgrid>
+  
+      </ion-card>
+    </ion-col>
+    
+  </ion-row>
+  
+  
 </ion-content>

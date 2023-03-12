@@ -1,0 +1,20 @@
+<ion-row>
+  <!-- <ion-chip [ngClass]="{'ion-chip':true,selected:variable == 1}" (click)="variable=1">One</ion-chip>
+  <ion-chip [ngClass]="{'ion-chip':true,selected:variable == 2}" (click)="variable=2">Two</ion-chip>
+  <ion-chip [ngClass]="{'ion-chip':true,selected:variable == 3}" (click)="variable=3">Three</ion-chip> -->
+</ion-row>
+
+
+<div [ngClass]="{isempty:true,show:endis == false,hide:endis == true}" >
+ 
+  <smart-table  [filtering]="filtering" [filterRow]="filterRow" [freezeHeader]="freezeHeader" #table
+    [sortMode]="'one'" id="table" class="table-hover table-font" [dataSource]="dataSource" [columns]="columns"
+    [paging]="paging" (onReady)="handleReady($event)">
+  </smart-table>
+</div>
+<div  [ngClass]="{isempty:true,show:endis == true ,hide:endis == false}">
+<img src="../../../../assets/3582365.jpg" />
+<div class="empty-state__message">
+  No Data Found
+</div>
+  </div>

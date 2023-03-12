@@ -8,6 +8,7 @@ import { IonicModule } from "@ionic/angular";
 import { DeviceExtendStatusUpdatePage } from "./device-extend-status-update.page";
 import { SharedModModule } from "src/app/shared-mod/shared-mod.module";
 import { ExtendCommentComponent } from "./extend-comment/extend-comment.component";
+import { BulkExtendComponent } from "./bulk-extend/bulk-extend.component";
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: "extend-comment",
     component: ExtendCommentComponent,
+  },
+  {
+    path: "bulk-extend",
+    component: BulkExtendComponent,
   },
 ];
 
@@ -29,6 +34,10 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
   ],
-  declarations: [DeviceExtendStatusUpdatePage, ExtendCommentComponent],
+  declarations: [
+    DeviceExtendStatusUpdatePage,
+    ExtendCommentComponent,
+    BulkExtendComponent,
+  ],
 })
 export class DeviceExtendStatusUpdatePageModule {}

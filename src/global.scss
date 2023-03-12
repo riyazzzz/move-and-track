@@ -13,6 +13,9 @@
 
 @import "~@ionic/angular/css/core.css";
 
+
+@import '../node_modules/smart-webcomponents-angular/source/styles/smart.default.css';
+
 /* Basic CSS for apps built with Ionic */
 
 @import "~@ionic/angular/css/normalize.css";
@@ -276,4 +279,11 @@ span[id^="myGrid"] {
 }
 .hidespeed .ol-zoom.ol-unselectable.ol-control {
   display: none;
+}
+.smart {
+  background-color: orange;
+  border-radius: 15px;
+  padding: 3px 10px 3px 10px;
+  font-size: 11px;
+
 }

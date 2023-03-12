@@ -18,6 +18,10 @@ import { FileUploadModule } from "ng2-file-upload";
 import { AssignDealerComponent } from "./assign-dealer/assign-dealer.component";
 import { DealerlistComponent } from "./dealerlist/dealerlist.component";
 import { AssigndealerPipe } from "src/app/services/assign-dealer-pipe-ca-page";
+import { CertificateCreationComponent } from "./certificate-creation/certificate-creation.component";
+import { ConfirmPopupComponent } from "./confirm-popup/confirm-popup.component";
+import { CompanyCreationComponent } from "./company-creation/company-creation.component";
+import { EndUserCreationComponent } from "./end-user-creation/end-user-creation.component";
 
 const routes: Routes = [
   {
@@ -56,6 +60,22 @@ const routes: Routes = [
     path: "dealerlist",
     component: DealerlistComponent,
   },
+  {
+    path: "certificate-creation",
+    component: CertificateCreationComponent,
+  },
+  {
+    path: "company-creation",
+    component: CompanyCreationComponent,
+  },
+  {
+    path: "confirm-popup",
+    component: ConfirmPopupComponent,
+  },
+  {
+    path: "end-user-creation",
+    component: EndUserCreationComponent,
+  },
 ];
 
 @NgModule({
@@ -80,6 +100,10 @@ const routes: Routes = [
     CustomerRenewalRequestComponent,
     AssignDealerComponent,
     DealerlistComponent,
+    CertificateCreationComponent,
+    CompanyCreationComponent,
+    ConfirmPopupComponent,
+    EndUserCreationComponent,
   ],
 })
 export class EsimCustomerCaDetailsPageModule {}

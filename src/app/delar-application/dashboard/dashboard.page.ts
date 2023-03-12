@@ -13,6 +13,8 @@ import { AjaxService } from "../../services/ajax.service";
 import { AddImeiCompanyPage } from "./add-imei-company/add-imei-company.page";
 import { jqxGridComponent } from "jqwidgets-ng/jqxgrid";
 import { CompanyDetailsComponent } from "./company-details/company-details.component";
+import { AddCompanyPage } from "./add-company/add-company.page";
+import { CreateCompanyComponent } from "./create-company/create-company.component";
 @Component({
   selector: "app-dashboard",
   templateUrl: "./dashboard.page.html",
@@ -299,8 +301,53 @@ export class DashboardPage implements OnInit {
     private commonService: CommonService
   ) {}
 
+  async addModel(data) {
+    const isModalOpened = await this.modalController.getTop();
+    if (!isModalOpened) {
+      const modal = await this.modalController.create({
+        component: CreateCompanyComponent,
+        cssClass: "addcompanyform",
+        componentProps: {
+          value2: data == "add" ? "add" : "edit",
+        },
+      });
+      modal.onDidDismiss().then((data) => {
+        if (data.data.data == "Successfully Presisted") {
+          this.getdata();
+        }
+      });
+      return await modal.present();
+    }
+  }
+
+  async editModel(data) {
+    if (this.selectedRow) {
+      const modal = await this.modalController.create({
+        component: CreateCompanyComponent,
+        cssClass: "editcompanyform",
+        componentProps: {
+          value: this.selectedRow,
+          value2: data == "add" ? "add" : "edit",
+        },
+      });
+      modal.onDidDismiss().then((data) => {
+        if (data.data.data == "updated successfully") {
+          this.myGrid.clearselection();
+          this.selectedRow = "";
+          this.getdata();
+        }
+      });
+
+      return await modal.present();
+    } else {
+      this.commonService.presentToast("Please Select a row to edit");
+      return "";
+    }
+  }
+
   getdata() {
     this.commonService.presentLoader();
+    this.page = [];
     var url =
       serverUrl.web +
       "/global/getcompanylist?suffix=" +
