@@ -14,61 +14,75 @@
 
 <ion-content>
   <ion-row class="tabrow">
-    <div class="wrap">
-      <button
-        (click)="switchGrid(1)"
-        [ngClass]="{button:true,select:showGrid==1}"
-      >
-        Pending CA
-      </button>
-    </div>
-    <div class="wrap">
-      <button
-        (click)="switchGrid(2)"
-        [ngClass]="{button:true,select:showGrid==2}"
-      >
-        Pending Renewal
-      </button>
-    </div>
-    <div class="wrap">
-      <button
-        (click)="switchGrid(3)"
-        [ngClass]="{button:true,select:showGrid==3}"
-      >
-        Pending Extend 1 Year
-      </button>
-    </div>
-    <div class="wrap">
-      <button
-        (click)="switchGrid(4)"
-        [ngClass]="{button:true,select:showGrid==4}"
-      >
-        Pending Topup
-      </button>
-    </div>
-  </ion-row>
-
-  <ion-row
-    class="tabrow"
-    style="justify-content: end;
-    align-items: center;
-    margin-right: 35%;
-    margin-top: -65px;"
-  >
-    <ion-col size="4">
-      <ion-list style="margin-left: 37%;">
-        <ion-item class="dealerView">
-          <ion-select
-            style="margin-left: 30%"
-            placeholder="Select dealer"
-            (ionChange)="handleChange($event)"
+    <ion-col size="7">
+      <ion-row>
+        <div class="wrap">
+          <button
+            (click)="switchGrid(1)"
+            [ngClass]="{button:true,select:showGrid==1}"
           >
-            <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+            Pending CA
+          </button>
+        </div>
+        <div class="wrap">
+          <button
+            (click)="switchGrid(2)"
+            [ngClass]="{button:true,select:showGrid==2}"
+          >
+            Pending Renewal
+          </button>
+        </div>
+        <div class="wrap">
+          <button
+            (click)="switchGrid(3)"
+            [ngClass]="{button:true,select:showGrid==3}"
+          >
+            Pending Extend 1 Year
+          </button>
+        </div>
+        <div class="wrap">
+          <button
+            (click)="switchGrid(4)"
+            [ngClass]="{button:true,select:showGrid==4}"
+          >
+            Pending Topup
+          </button>
+        </div>
+      </ion-row>
+    </ion-col>
+
+    <ion-col size="5">
+      <ion-select
+        class="input selectable-input"
+        style="margin-left: 30%"
+        placeholder="Select dealer"
+        (ionChange)="handleChange($event)"
+      >
+        <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
+      </ion-select>
     </ion-col>
   </ion-row>
+
+  <!-- <ion-row
+    class="tabrow"
+    style="
+      justify-content: end;
+      align-items: center;
+      margin-right: 35%;
+      margin-top: -65px;
+    "
+  >
+    <ion-col size="4">
+      <ion-select
+        class="input selectable-input"
+        style="margin-left: 30%"
+        placeholder="Select dealer"
+        (ionChange)="handleChange($event)"
+      >
+        <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
+      </ion-select>
+    </ion-col>
+  </ion-row> -->
 
   <ion-row *ngIf="showGrid == 1">
     <ion-col size="12">

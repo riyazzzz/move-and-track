@@ -2,8 +2,6 @@ ion-button {
   --background: #6252ee;
 }
 
-
-
 .wrap {
   margin-left: 10px;
   height: 100%;
@@ -12,6 +10,18 @@ ion-button {
   justify-content: center;
 }
 
+.input {
+  border: 1px solid #e5e5e5;
+  height: 42px;
+  line-height: 18px;
+  --padding-start: 15px;
+  background: #e8e8e8;
+  margin: 7px;
+}
+.selectable-input {
+  padding: 8px 11px 4px 8px;
+  margin-top: 5px;
+}
 .button {
   width: auto;
   height: 45px;
