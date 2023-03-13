@@ -6,29 +6,43 @@
 </ion-header>
 
 <ion-content>
-<ion-row style="justify-content: end;margin-right: 10px;align-items: center;">
-<ion-col size="3">
-  <ion-list>
-    <ion-item>
-    <ion-select style="margin-left: 30%;" placeholder="Select dealer" (ionChange)="handleChange($event)">
-      <ion-select-option *ngFor="let d of data" >{{d}}</ion-select-option>
-    </ion-select>
-    </ion-item>
-  </ion-list>
-</ion-col>
+
+
+<ion-row class="tabrow">
+  <div class="wrap">
+    <button (click)="switchGrid(1)" [ngClass]="{button:true,select:showGrid==1}" >Pending CA</button>
+  </div>
+  <div class="wrap">
+    <button (click)="switchGrid(2)"  [ngClass]="{button:true,select:showGrid==2}" >Pending Renewal</button>
+  </div>
+  <div class="wrap">
+    <button (click)="switchGrid(3)"   [ngClass]="{button:true,select:showGrid==3}">Pending Extend 1 Year</button>
+  </div>
+  <div class="wrap">
+    <button (click)="switchGrid(4)"  [ngClass]="{button:true,select:showGrid==4}" >Pending Topup</button>
+  </div>
+  
+</ion-row>
+
+<ion-row class="tabrow" style="justify-content: start;align-items: center;margin-left: 22px;">
+  <ion-col size="3">
+    <ion-list>
+      <ion-item class="dealerView">
+        <ion-select style="margin-left: 30%;" placeholder="Select dealer" (ionChange)="handleChange($event)">
+          <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+  </ion-col>
 
 </ion-row>
 
-  <ion-row>
+  <ion-row *ngIf="showGrid == 1">
 
 
 
    <ion-col size="12">
-     <ion-row style="justify-content: center;">
-        <button class="button">
-          Pending CA 
-        </button>
-       </ion-row>
+  
       <ion-card id="1">
       
         <app-dashboardgrid [dealer]="dealer" [grid]="1">
@@ -39,14 +53,10 @@
 
    </ion-col>
   </ion-row>
-<ion-row>
+<ion-row  *ngIf="showGrid == 2">
 
 <ion-col size="12">
-  <ion-row style="justify-content: center;">
-    <button class="button">
-      Pending Renewal 
-    </button>
-  </ion-row>
+ 
  
     <ion-card id="1">
     
@@ -61,14 +71,10 @@
 
     
 
-    <ion-row>
+    <ion-row  *ngIf="showGrid == 3">
     
-    <ion-col size="6">
-      <ion-row style="justify-content: center;">
-        <button class="button">
-          Pending Extra 1 Year
-        </button>
-      </ion-row>
+    <ion-col size="12">
+     
 
         <ion-card id="1">
         
@@ -79,12 +85,10 @@
         
         </ion-card>
     </ion-col>
-      <ion-col size="6">
-        <ion-row style="justify-content: center;">
-          <button class="button">
-            Pending Topup
-          </button>
-        </ion-row>
+    </ion-row>
+    <ion-row *ngIf="showGrid == 4">
+      <ion-col size="12">
+     
     
         <ion-card id="1">
       
@@ -96,14 +100,10 @@
         </ion-card>
       </ion-col>
     </ion-row>
-  <ion-row style="justify-content: center;">
+  <!-- <ion-row style="justify-content: center;">
   
     <ion-col size="6">
-      <ion-row style="justify-content: center;">
-        <button class="button">
-          Pending BSNL Certificate
-        </button>
-      </ion-row>
+   
     
       <ion-card id="1">
   
@@ -115,7 +115,7 @@
       </ion-card>
     </ion-col>
     
-  </ion-row>
+  </ion-row> -->
   
   
 </ion-content>

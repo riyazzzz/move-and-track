@@ -13,6 +13,7 @@ import { CommonService } from "src/app/services/common.service";
 export class EsimHomePage implements OnInit {
 
   makeFilter;
+  showGrid = '1'
   data;
   dealer = 'apm-sa'
   constructor(
@@ -27,6 +28,11 @@ export class EsimHomePage implements OnInit {
     })
   }
 
+
+
+  switchGrid(d) {
+    this.showGrid = d
+  }
 
 
 

@@ -64,7 +64,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
   async showLoading() {
     const loading = await this.loadingCtrl.create({
       message: 'Please wait...',
-      duration: 20000,
+      duration: 8000,
     });
 
     loading.present();
@@ -211,6 +211,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
     // })
   }
   pendingRenewalDashboard() {
+    this.showLoading()
     this.columns = [{
       label: 'IMEI No',
       dataField: 'imei',
@@ -296,6 +297,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
     let url = serverUrl.web + '/esim/getDealerRenewalPending?companyid=apm&dealer=' + this.dealer
     this.ajaxService.ajaxGet(url).subscribe(res => {
+      this.loadingCtrl.dismiss()
       this.enablebanner(res.length)
       this.data = [{ "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007320", "invoiceno": "", "iccidno1": "8991102105467081515F", "iccidno2": "8991102105467081515F", "imei": "865006044572114", "sim1": "915754200118563", "sim2": "915752184724702", "plateno": "KL07CE4417", "contactno": "9846608006", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-29", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-19", "priviouscardenddate": "2022-10-18", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-29T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }, { "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007605", "invoiceno": "", "iccidno1": "8991102105467083933F", "iccidno2": "8991102105467083933F", "imei": "865006044586338", "sim1": "915754200187426", "sim2": "915752184724944", "plateno": "KL-04-AF-0266", "contactno": "9846066966", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-08", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-22", "priviouscardenddate": "2022-10-21", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-08T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }]
       this.dataSource = new window.Smart.DataAdapter({
@@ -328,6 +330,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
   pendingExtra1YearDashboard
     () {
+    this.showLoading()
     this.columns = [{
       label: 'Imei No',
       dataField: 'imei',
@@ -354,6 +357,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
     let url = serverUrl.web + '/esim/getDealerExtendOneYearPending?companyid=apm&dealer=' + this.dealer
     this.ajaxService.ajaxGet(url).subscribe(res => {
+      this.loadingCtrl.dismiss()
       this.enablebanner(res.length)
       this.data = [{ "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007320", "invoiceno": "", "iccidno1": "8991102105467081515F", "iccidno2": "8991102105467081515F", "imei": "865006044572114", "sim1": "915754200118563", "sim2": "915752184724702", "plateno": "KL07CE4417", "contactno": "9846608006", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-29", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-19", "priviouscardenddate": "2022-10-18", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-29T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }, { "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007605", "invoiceno": "", "iccidno1": "8991102105467083933F", "iccidno2": "8991102105467083933F", "imei": "865006044586338", "sim1": "915754200187426", "sim2": "915752184724944", "plateno": "KL-04-AF-0266", "contactno": "9846066966", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-08", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-22", "priviouscardenddate": "2022-10-21", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-08T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }]
       this.dataSource = new window.Smart.DataAdapter({
@@ -374,6 +378,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
   }
   pendingTopupDashboard
     () {
+    this.showLoading()
     this.columns = [{
       label: 'Imei No',
       dataField: 'imei',
@@ -401,6 +406,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
     let url = serverUrl.web + '/esim/getDealerTopupPending?companyid=apm&dealer=' + this.dealer
     this.ajaxService.ajaxGet(url).subscribe(res => {
+      this.loadingCtrl.dismiss()
       this.enablebanner(res.length)
       this.data = [{ "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007320", "invoiceno": "", "iccidno1": "8991102105467081515F", "iccidno2": "8991102105467081515F", "imei": "865006044572114", "sim1": "915754200118563", "sim2": "915752184724702", "plateno": "KL07CE4417", "contactno": "9846608006", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-29", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-19", "priviouscardenddate": "2022-10-18", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-29T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }, { "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007605", "invoiceno": "", "iccidno1": "8991102105467083933F", "iccidno2": "8991102105467083933F", "imei": "865006044586338", "sim1": "915754200187426", "sim2": "915752184724944", "plateno": "KL-04-AF-0266", "contactno": "9846066966", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-08", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-22", "priviouscardenddate": "2022-10-21", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-08T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }]
       this.dataSource = new window.Smart.DataAdapter({
@@ -421,6 +427,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
   }
   pendingBSNLCertificateDashboard
     () {
+    this.showLoading()
     this.columns = [{
       label: 'IMEI No',
       dataField: 'imei',
@@ -448,6 +455,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
     let url = serverUrl.web + '/esim/getDealerCertificatePending?companyid=apm&dealer=' + this.dealer
     this.ajaxService.ajaxGet(url).subscribe(res => {
+      this.loadingCtrl.dismiss()
       this.enablebanner(res.length)
       this.data = [{ "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007320", "invoiceno": "", "iccidno1": "8991102105467081515F", "iccidno2": "8991102105467081515F", "imei": "865006044572114", "sim1": "915754200118563", "sim2": "915752184724702", "plateno": "KL07CE4417", "contactno": "9846608006", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-29", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-19", "priviouscardenddate": "2022-10-18", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-29T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }, { "renewalrequestid": "RE-00110", "vltdsno": "APM1K2I102100007605", "invoiceno": "", "iccidno1": "8991102105467083933F", "iccidno2": "8991102105467083933F", "imei": "865006044586338", "sim1": "915754200187426", "sim2": "915752184724944", "plateno": "KL-04-AF-0266", "contactno": "9846066966", "validityperiod": "1 Year", "renewalrequestdate": "2022-12-08", "renewalrequestby": "sabbtech", "priviouscommercialactivationdate": "2021-10-22", "priviouscardenddate": "2022-10-21", "priviouscardstatus": "PD", "cardactivationdate": "", "cardenddate": "", "cardstatus": "", "purcomment": null, "comment": "", "renewalno": 1, "headerid": 316, "companyid": "apm", "serialno": "SABB-0025-BOX-01", "slotno": "SABB-0025", "totalbox": 1, "renewalrequestdate1": "2022-12-08T00:00:00.000+00:00", "createddate": "2023-01-28", "createdby": "apm-sa", "renewalmessage": "Selected ICCID is not yet activated thus it cannot be Requested for Renewal", "rowcolor": null }]
       this.dataSource = new window.Smart.DataAdapter({
@@ -503,17 +511,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
 
   }
   ngOnInit() {
-    if (this.grid == 1) {
-      this.pendingCADashboard();
-    } else if (this.grid == 2) {
-      this.pendingRenewalDashboard()
-    } else if (this.grid == 3) {
-      this.pendingExtra1YearDashboard()
-    } else if (this.grid == 4) {
-      this.pendingTopupDashboard()
-    } else if (this.grid == 5) {
-      this.pendingBSNLCertificateDashboard()
-    }
+
 
     console.log(this.data)
     if (this.value != undefined) {
