@@ -487,7 +487,7 @@ export class DashboardgridComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.dealer != '') {
+    if (this.dealer != 'apm-sa') {
       if (this.grid == 1) {
         this.pendingCADashboard();
       } else if (this.grid == 2) {

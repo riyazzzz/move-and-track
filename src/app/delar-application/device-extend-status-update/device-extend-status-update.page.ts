@@ -241,6 +241,7 @@ export class DeviceExtendStatusUpdatePage implements OnInit {
       arr.push({
         iccidno:
           this.myGrid["attrSource"]["originaldata"][selectdata[i]].iccidno1,
+        imei: this.myGrid["attrSource"]["originaldata"][selectdata[i]].imei,
         validityperiod:
           this.myGrid["attrSource"]["originaldata"][selectdata[i]]
             .validityperiod,

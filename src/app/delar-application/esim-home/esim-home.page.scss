@@ -5,7 +5,7 @@ ion-button {
 
 .button {
     padding: 9px 2em;
-    border: none;
+    border: 2px solid #2c9caf;
     border-radius: 5px;
     font-weight: bold;
     letter-spacing: 5px;
@@ -15,7 +15,7 @@ ion-button {
     font-size: 15px;
     position: relative;
     overflow: hidden;
-    outline: 2px solid #2c9caf;
+
 }
 
 button:hover {
@@ -41,3 +41,14 @@ button::before {
 button:hover::before {
     width: 250%;
 }
+
+ion-card{
+    border: 2px solid #2c9caf;
+    border-radius: 5px;
+    color: #2c9caf;
+    -webkit-transition: all 1000ms;
+    transition: all 1000ms;
+    font-size: 15px;
+    position: relative;
+    overflow: hidden;
+    }
