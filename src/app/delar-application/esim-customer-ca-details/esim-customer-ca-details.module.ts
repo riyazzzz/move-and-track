@@ -22,6 +22,7 @@ import { CertificateCreationComponent } from "./certificate-creation/certificate
 import { ConfirmPopupComponent } from "./confirm-popup/confirm-popup.component";
 import { CompanyCreationComponent } from "./company-creation/company-creation.component";
 import { EndUserCreationComponent } from "./end-user-creation/end-user-creation.component";
+import { QRCodeModule } from "angular2-qrcode";
 
 const routes: Routes = [
   {
@@ -82,6 +83,7 @@ const routes: Routes = [
   imports: [
     SharedModModule,
     IonicSelectableModule,
+    QRCodeModule,
     FileUploadModule,
     CommonModule,
     FormsModule,

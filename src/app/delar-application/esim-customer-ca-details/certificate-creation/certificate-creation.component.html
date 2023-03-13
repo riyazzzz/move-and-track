@@ -86,6 +86,488 @@
             </ion-col>
           </ion-row>
         </form>
+
+        <ion-row>
+          <ion-col size="12">
+            <div id="pdf2" hidden>
+              <!-- <td>{{pdfDate}}</td> -->
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th
+                          style="
+                            text-align: start;
+                            z-index: 1;
+                            position: relative;
+                            top: 18px;
+                          "
+                          colspan="12"
+                        >
+                          <img src="{{ Apmlogo }}" />
+                        </th>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span style="font-size: 20px; font-weight: bold"
+                            >APM KINGSTRACK TECHNOLOGIES</span
+                          ><br />No.813, 5th floor Nizara Bonanza,<br />
+                          Opp LIC Building, Anna Salai,<br />
+                          Chennai - 600002,Tamil Nadu.
+                        </td>
+                        <td>
+                          <qr-code
+                            [value]="values"
+                            [size]="width"
+                            [level]="level"
+                          ></qr-code>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <td
+                          style="text-align: start; border-top: 2px solid"
+                          colspan="12"
+                        >
+                          <br />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="text-align: start; text-align: justify"
+                          colspan="12"
+                        >
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This
+                          is to certify that the Electronic VTS device is fitted
+                          as per the details given below. it is checked, sealed
+                          and is functioning in all manners, Device will not
+                          function if tampered or not having proper GSM/GPS
+                          signals.<br />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th
+                          style="text-align: start; border-bottom: 1px solid"
+                          colspan="12"
+                        >
+                          Vehicle Details:
+                        </th>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Registration No:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.RegistraionNo }}</span
+                          >
+                        </td>
+
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Chassis No:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.ChassisNo }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Engine No:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.EngineNo }}</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th
+                          style="text-align: start; border-bottom: 1px solid"
+                          colspan="12"
+                        >
+                          <b>Vehicle Owner Details:</b>
+                        </th>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Name:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.OwnerName }}</span
+                          >
+                        </td>
+
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Address:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.OwnerAddress }}</span
+                          >
+                        </td>
+
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Phone:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.PhoneNo }}</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th
+                          style="text-align: start; border-bottom: 1px solid"
+                          colspan="12"
+                        >
+                          Distributer Details:
+                        </th>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Distributer Name:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.distributerName }}</span
+                          >
+                        </td>
+
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Address:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.distributerAddress }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Phone Number:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.distributerNo }}</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%; justify-content: space-between">
+                      <tr>
+                        <th
+                          style="text-align: start; border-bottom: 1px solid"
+                          colspan="12"
+                        >
+                          VLTD Details:
+                        </th>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Unique Identification No:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.uniqueno }}</span
+                          >
+                        </td>
+
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          IMEI Number:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.imeiNumber }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          CCID:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.ccid }}</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Certificate No:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.CertificateNo }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          VLTD Model :<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.VltdModelNo }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          TAC NO:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.tagno }}</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          * Valid Upto:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.validupto }}</span
+                          >
+                        </td>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Warranty Upto:<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.warrantyupto }}</span
+                          >
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th
+                          style="text-align: start; border-bottom: 1px solid"
+                          colspan="12"
+                        >
+                          Service Engineer:
+                        </th>
+                      </tr>
+                      <tr>
+                        <td
+                          style="font-size: 13px; width: 30%; padding-top: 10px"
+                        >
+                          Service Engineer Name :<span
+                            style="
+                              font-weight: bold;
+                              font-size: 13px;
+                              text-transform: uppercase;
+                            "
+                          >
+                            {{ TotalcertificateData.InstallationName }}</span
+                          ><br />
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th style="text-align: center" colspan="12">
+                          PRODUCT SATISFACTION REPORT
+                        </th>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 16px; text-align: justify">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This
+                          is to certify that following vehicle has been
+                          installed and activated with ICAT approved IRNSS
+                          Vehicle Location Tracking Device as per AIS-140
+                          Standard, The device warranty is void if device is
+                          tampered or the seal is Broken by unauthorized
+                          technicians or individual
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <table style="width: 100%; border: transparent">
+                <tr>
+                  <td>
+                    <table style="width: 100%">
+                      <tr>
+                        <th style="text-align: center" colspan="12">
+                          ACKNOWLEDGEMENT
+                        </th>
+                      </tr>
+                      <tr>
+                        <td style="font-size: 16px; text-align: justify">
+                          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This
+                          is to acknowledge and confirm that we have got our
+                          vehicle installed with above vehicle location tracking
+                          unit. We have checked the performance of the vehicle
+                          after installation and we confirm VLD is functioning
+                          as per AIS-140 norms. We are satisfied with the
+                          performance of the device in all respects, we
+                          undertake not to raise any dispute or any legal claims
+                          against M/S APM kingstrack Technologies,In the event
+                          that the above mentioned function is found
+                          broken/torn/tampered/after expiry & warranty date
+                        </td>
+                      </tr>
+                      <br />
+                      <tr>
+                        <td>
+                          <br />
+                          <table style="width: 100%">
+                            <br />
+                            <td style="font-size: 13px">
+                              Dealer Seal & Signature
+                            </td>
+                            <td style="text-align: center; font-size: 13px">
+                              Customer Signature
+                            </td>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </ion-col>
+        </ion-row>
       </ion-col>
     </ion-row>
   </ion-grid>

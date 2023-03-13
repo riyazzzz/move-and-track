@@ -4,6 +4,7 @@ import {
   ToastController,
   LoadingController,
   Platform,
+  ModalController,
 } from "@ionic/angular";
 import { BehaviorSubject, Subject } from "rxjs";
 
@@ -95,7 +96,8 @@ export class CommonService {
     public router: Router,
     public fileOpener: FileOpener,
     private platform: Platform,
-    private pdfLogo: PdfLogoService
+    private pdfLogo: PdfLogoService,
+    private modalController: ModalController
   ) {}
 
   async presentAlert(header, msg) {
@@ -128,6 +130,23 @@ export class CommonService {
     });
     await confirm.present();
   }
+
+  async showConfirmcer(msg) {
+    const confirm = await this.alertController.create({
+      header: "Message",
+      message: msg,
+      buttons: [
+        {
+          text: "Ok",
+          handler: (data) => {
+            this.modalController.dismiss();
+          },
+        },
+      ],
+    });
+    await confirm.present();
+  }
+
   async presentLoader() {
     this.isLoading = true;
 
