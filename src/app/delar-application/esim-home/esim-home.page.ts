@@ -1,48 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AlertController, Platform } from "@ionic/angular";
 import { AjaxService } from "src/app/services/ajax.service";
 import { CommonService } from "src/app/services/common.service";
 
-
 @Component({
-  selector: 'app-esim-home',
-  templateUrl: './esim-home.page.html',
-  styleUrls: ['./esim-home.page.scss'],
+  selector: "app-esim-home",
+  templateUrl: "./esim-home.page.html",
+  styleUrls: ["./esim-home.page.scss"],
 })
 export class EsimHomePage implements OnInit {
-
   makeFilter;
-  showGrid = '1'
+  showGrid = "1";
   data;
-  dealer = 'apm-sa'
+  myPlatform: any;
+  dealer = "apm-sa";
   constructor(
     private ajaxService: AjaxService,
+    public platform: Platform,
     private router: Router,
     private alertController: AlertController,
-    private commonService: CommonService,) { }
+    private commonService: CommonService
+  ) {}
   ngOnInit(): void {
-    let url = 'https://mvt.apmkingstrack.com/fleettracking/esim/getDealer'
-    this.ajaxService.ajaxGet(url).subscribe(res => {
-      this.data = res
-    })
+    this.myPlatform = this.platform.platforms()[0];
+    if (this.myPlatform == "tablet") {
+      this.myPlatform = "desktop";
+    }
+    let url = "https://mvt.apmkingstrack.com/fleettracking/esim/getDealer";
+    this.ajaxService.ajaxGet(url).subscribe((res) => {
+      this.data = res;
+    });
   }
-
-
 
   switchGrid(d) {
-    this.showGrid = d
+    this.showGrid = d;
   }
-
-
 
   handleChange(e) {
-    this.dealer = e.detail.value
-
+    this.dealer = e.detail.value;
   }
-
-
-
-
-
 }

@@ -58,6 +58,7 @@ export class EndUserCreationComponent implements OnInit {
       imeiNo: ["", Validators.required],
       contactNo: ["", Validators.required],
       plateNo: ["", Validators.required],
+      address: ["", Validators.required],
       assetCategory: ["", Validators.required],
       engineno: [""],
       chassisno: [""],
@@ -69,6 +70,7 @@ export class EndUserCreationComponent implements OnInit {
       imeiNo: "",
       contactNo: "",
       plateNo: "",
+      address: "",
       assetCategory: "",
       engineno: "",
       chassisno: "",
@@ -81,6 +83,26 @@ export class EndUserCreationComponent implements OnInit {
     });
   }
 
+  onadd() {
+    if (this.addCompany.value.contactNo.toString().length != 10) {
+      this.commonService.presentToast("Enter the 10 Digit Contact Number");
+    } else if (this.addCompany.valid) {
+      const url =
+        serverUrl.web +
+        "/global/validate/contact?contactNo=" +
+        this.addCompany.value.contactNo;
+      this.ajaxService.ajaxGet(url).subscribe((res) => {
+        if (res.message == "Not Available") {
+          this.onSubmit();
+        } else {
+          this.commonService.showConfirm(res.message);
+        }
+      });
+    } else {
+      this.commonService.presentToast("Fill required field..");
+    }
+  }
+
   onSubmit() {
     var data;
     data = {
@@ -89,6 +111,7 @@ export class EndUserCreationComponent implements OnInit {
       imeiNo: this.value.imei,
       icon: this.addCompany.value.assetCategory,
       plateNo: this.addCompany.value.plateNo,
+      address: this.addCompany.value.address,
       engineno: this.addCompany.value.engineno,
       chassisno: this.addCompany.value.chassisno,
     };

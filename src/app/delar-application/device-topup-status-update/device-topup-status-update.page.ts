@@ -243,6 +243,7 @@ export class DeviceTopupStatusUpdatePage implements OnInit {
       arr.push({
         iccidno:
           this.myGrid["attrSource"]["originaldata"][selectdata[i]].iccidno1,
+        imei: this.myGrid["attrSource"]["originaldata"][selectdata[i]].imei,
         validityperiod:
           this.myGrid["attrSource"]["originaldata"][selectdata[i]]
             .validityperiod,
@@ -263,7 +264,6 @@ export class DeviceTopupStatusUpdatePage implements OnInit {
         if (d.data.data == "Topup Status Updated Successfully") {
           this.myGrid.clearselection();
           this.getdatas();
-          this.data = d.data.data;
         }
       });
       return await modal.present();

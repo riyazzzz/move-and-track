@@ -18,19 +18,32 @@
       <form [formGroup]="topupForm">
         <ion-row class="form-field">
           <ion-col>
-            <ion-row>
-              <ion-col size="5" style="align-self: center; text-align: center"
-                >Validity Requested :</ion-col
-              >
-              <ion-col size="7">
-                <ion-input
-                  class="input"
-                  formControlName="topupvaliditymonth"
-                  disabled
-                ></ion-input>
+            <ion-row style="padding: 10px">
+              <ion-col size="12">
+                <jqxGrid
+                  #myGrid
+                  [theme]="'material'"
+                  [width]="'99.5%'"
+                  [autoheight]="true"
+                  [source]="dataAdapter"
+                  [columns]="columns"
+                  [filterable]="true"
+                  [sortable]="true"
+                  [columnsresize]="true"
+                  [enablebrowserselection]="true"
+                  [enabletooltips]="true"
+                  [pageable]="true"
+                  [showfilterrow]="true"
+                  style="
+                    font-size: 16px;
+                    text-align: center !important;
+                    margin: auto;
+                    cursor: pointer;
+                  "
+                >
+                </jqxGrid>
               </ion-col>
             </ion-row>
-
             <ion-row>
               <ion-col size="5" style="align-self: center; text-align: center">
                 <ion-label class="col-content">Comment :</ion-label></ion-col

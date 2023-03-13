@@ -1,64 +1,60 @@
 ion-button {
---background: #6252ee;
+  --background: #6252ee;
 }
 
+ion-card {
+  border: 2px solid #2c9caf;
+  border-radius: 5px;
+  color: #2c9caf;
+  -webkit-transition: all 1000ms;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+}
 
+.wrap {
+  margin-left: 10px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-ion-card{
-    border: 2px solid #2c9caf;
-    border-radius: 5px;
-    color: #2c9caf;
-    -webkit-transition: all 1000ms;
-    transition: all 1000ms;
-    font-size: 15px;
-    position: relative;
-    overflow: hidden;
-    }
+.button {
+  width: auto;
+  height: 45px;
+  font-family: "Roboto", sans-serif;
+  font-size: 11px;
+  //   text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  margin-left: 2px;
+  border-radius: 10%;
+}
 
- 
-    
-    .wrap {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .button {
-        width: auto;
-        height: 45px;
-        font-family: "Roboto",
-        sans-serif;
-        font-size: 11px;
-        text-transform: uppercase;
-        letter-spacing: 2.5px;
-        font-weight: 500;
-        color: #000;
-        background-color: #fff;
-        border: none;
-        box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-        -webkit-transition: all 0.3s ease 0s;
-        transition: all 0.3s ease 0s;
-        cursor: pointer;
-        outline: none;
-        margin-left: 2px;
-    }
-   
+.select {
+  background-color: #2c9caf;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
 
-    .select{
-background-color: #2c9caf;
-box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-color: #fff;
-transform: translateY(-7px);
-    }
-    
-    .button:hover {
-        background-color: #2c9caf;
-        box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
-        color: #fff;
-        transform: translateY(-7px);
-    }
-    .tabrow{
-                margin-left: 20px;
-                margin-top: 20px;
-    }
+.button:hover {
+  background-color: #2c9caf;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+.tabrow {
+  margin-left: 20px;
+  margin-top: 20px;
+}

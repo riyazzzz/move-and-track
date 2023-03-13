@@ -63,6 +63,7 @@ export class BulkExtendComponent implements OnInit {
     const url = serverUrl.web + "/esim/saveEsimBulkExtendOneYearStatus";
     this.ajaxService.ajaxPostWithBody(url, arr).subscribe((res) => {
       if (res.message == "Extend One Year Status Updated Successfully") {
+        this.commonService.showConfirm(res.message);
         this.modalController.dismiss({
           data: "Extend One Year Status Updated Successfully",
         });

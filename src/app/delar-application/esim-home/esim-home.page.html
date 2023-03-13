@@ -1,105 +1,101 @@
 <ion-header>
   <ion-toolbar class="dealerHeader">
+    <ion-buttons *ngIf="myPlatform == 'desktop'" slot="start">
+      <ion-icon
+        routerLink="/tabs-login/esim-dashboard"
+        name="arrow-back"
+        style="padding: 10px; cursor: pointer"
+        slot="start"
+      ></ion-icon>
+    </ion-buttons>
     <ion-title>Dashboard</ion-title>
-  
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-row class="tabrow">
+    <div class="wrap">
+      <button
+        (click)="switchGrid(1)"
+        [ngClass]="{button:true,select:showGrid==1}"
+      >
+        Pending CA
+      </button>
+    </div>
+    <div class="wrap">
+      <button
+        (click)="switchGrid(2)"
+        [ngClass]="{button:true,select:showGrid==2}"
+      >
+        Pending Renewal
+      </button>
+    </div>
+    <div class="wrap">
+      <button
+        (click)="switchGrid(3)"
+        [ngClass]="{button:true,select:showGrid==3}"
+      >
+        Pending Extend 1 Year
+      </button>
+    </div>
+    <div class="wrap">
+      <button
+        (click)="switchGrid(4)"
+        [ngClass]="{button:true,select:showGrid==4}"
+      >
+        Pending Topup
+      </button>
+    </div>
+  </ion-row>
 
-
-<ion-row class="tabrow">
-  <div class="wrap">
-    <button (click)="switchGrid(1)" [ngClass]="{button:true,select:showGrid==1}" >Pending CA</button>
-  </div>
-  <div class="wrap">
-    <button (click)="switchGrid(2)"  [ngClass]="{button:true,select:showGrid==2}" >Pending Renewal</button>
-  </div>
-  <div class="wrap">
-    <button (click)="switchGrid(3)"   [ngClass]="{button:true,select:showGrid==3}">Pending Extend 1 Year</button>
-  </div>
-  <div class="wrap">
-    <button (click)="switchGrid(4)"  [ngClass]="{button:true,select:showGrid==4}" >Pending Topup</button>
-  </div>
-  
-</ion-row>
-
-<ion-row class="tabrow" style="justify-content: start;align-items: center;margin-left: 22px;">
-  <ion-col size="3">
-    <ion-list>
-      <ion-item class="dealerView">
-        <ion-select style="margin-left: 30%;" placeholder="Select dealer" (ionChange)="handleChange($event)">
-          <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
-  </ion-col>
-
-</ion-row>
+  <ion-row
+    class="tabrow"
+    style="justify-content: start; align-items: center; margin-left: 22px"
+  >
+    <ion-col size="3">
+      <ion-list>
+        <ion-item class="dealerView">
+          <ion-select
+            style="margin-left: 30%"
+            placeholder="Select dealer"
+            (ionChange)="handleChange($event)"
+          >
+            <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 
   <ion-row *ngIf="showGrid == 1">
-
-
-
-   <ion-col size="12">
-  
-      <ion-card id="1">
-      
-        <app-dashboardgrid [dealer]="dealer" [grid]="1">
-      
-        </app-dashboardgrid>
-      
-      </ion-card>
-
-   </ion-col>
-  </ion-row>
-<ion-row  *ngIf="showGrid == 2">
-
-<ion-col size="12">
- 
- 
-    <ion-card id="1">
-    
-      <app-dashboardgrid [dealer]="dealer" [grid]="2">
-    
-      </app-dashboardgrid>
-    
-    
-    </ion-card>
-</ion-col>
-</ion-row>
-
-    
-
-    <ion-row  *ngIf="showGrid == 3">
-    
     <ion-col size="12">
-     
-
-        <ion-card id="1">
-        
-        
-          <app-dashboardgrid [dealer]="dealer" [grid]="3" >
-        
-          </app-dashboardgrid>
-        
-        </ion-card>
+      <ion-card id="1">
+        <app-dashboardgrid [dealer]="dealer" [grid]="1"> </app-dashboardgrid>
+      </ion-card>
     </ion-col>
-    </ion-row>
-    <ion-row *ngIf="showGrid == 4">
-      <ion-col size="12">
-     
-    
-        <ion-card id="1">
-      
-      
-          <app-dashboardgrid  [dealer]="dealer" [grid]="4" >
-      
-          </app-dashboardgrid>
-      
-        </ion-card>
-      </ion-col>
-    </ion-row>
+  </ion-row>
+  <ion-row *ngIf="showGrid == 2">
+    <ion-col size="12">
+      <ion-card id="1">
+        <app-dashboardgrid [dealer]="dealer" [grid]="2"> </app-dashboardgrid>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="showGrid == 3">
+    <ion-col size="12">
+      <ion-card id="1">
+        <app-dashboardgrid [dealer]="dealer" [grid]="3"> </app-dashboardgrid>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="showGrid == 4">
+    <ion-col size="12">
+      <ion-card id="1">
+        <app-dashboardgrid [dealer]="dealer" [grid]="4"> </app-dashboardgrid>
+      </ion-card>
+    </ion-col>
+  </ion-row>
   <!-- <ion-row style="justify-content: center;">
   
     <ion-col size="6">
@@ -116,6 +112,4 @@
     </ion-col>
     
   </ion-row> -->
-  
-  
 </ion-content>
