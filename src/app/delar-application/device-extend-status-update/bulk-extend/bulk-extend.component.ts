@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ModalController, Platform } from "@ionic/angular";
+import { jqxGridComponent } from "jqwidgets-ng/jqxgrid";
 import { AjaxService } from "src/app/services/ajax.service";
 import { CommonService } from "src/app/services/common.service";
 import { serverUrl } from "src/environments/environment";
@@ -13,6 +14,14 @@ import { serverUrl } from "src/environments/environment";
 export class BulkExtendComponent implements OnInit {
   topupForm: FormGroup;
   @Input() value: any;
+  tableData: any;
+  source: { localdata: any };
+  dataAdapter: any;
+  renderer: (row: number, column: any, value: string) => string;
+  @ViewChild("myGrid", { static: false })
+  myGrid: jqxGridComponent;
+  columns: any;
+  dataString: any;
 
   constructor(
     private platform: Platform,
@@ -28,7 +37,6 @@ export class BulkExtendComponent implements OnInit {
     var month = ("0" + (now.getMonth() + 1)).slice(-2);
     var today = now.getFullYear() + "-" + month + "-" + day;
     this.topupForm = this.formBuilder.group({
-      extendoneyearvaliditymonth: ["", Validators.required],
       comment: ["", Validators.required],
     });
   }
@@ -48,28 +56,56 @@ export class BulkExtendComponent implements OnInit {
   }
 
   submitBtn() {
-    var data = [];
-    this.value.map((d) => {
-      let { validityperiod, ...rest } = d;
-      data.push({
-        ...rest,
-        extendoneyearvaliditymonth:
-          this.topupForm.value.extendoneyearvaliditymonth,
-        comment: this.topupForm.value.comment,
-      });
+    const arr = [];
+    this.value.map((data) => {
+      arr.push({ ...data, comment: this.topupForm.value.comment });
     });
     const url = serverUrl.web + "/esim/saveEsimBulkExtendOneYearStatus";
-    this.ajaxService
-      .ajaxPostWithBody(url, JSON.stringify(data))
-      .subscribe((res) => {
-        if (res.message == "Extend One Year Status Updated Successfully") {
-          this.modalController.dismiss({
-            data: "Extend One Year Status Updated Successfully",
-          });
-        } else {
-          this.commonService.showConfirm(res.message);
-        }
-      });
+    this.ajaxService.ajaxPostWithBody(url, arr).subscribe((res) => {
+      if (res.message == "Extend One Year Status Updated Successfully") {
+        this.modalController.dismiss({
+          data: "Extend One Year Status Updated Successfully",
+        });
+      } else {
+        this.commonService.showConfirm(res.message);
+      }
+    });
+  }
+
+  getdatas() {
+    this.tableData = this.value;
+    this.renderer = (row: number, column: any, value: string) => {
+      if (value == "" || null || undefined) {
+        return "--";
+      } else {
+        return (
+          '<span  style="line-height:32px;font-size:11px;color:darkblue;margin:auto;padding:0px 5px">' +
+          value +
+          "</span>"
+        );
+      }
+    };
+    this.source = { localdata: this.tableData };
+    this.dataAdapter = new jqx.dataAdapter(this.source);
+    this.columns = [
+      {
+        text: "IMEI No",
+        datafield: "imei",
+        cellsrenderer: this.renderer,
+        cellsalign: "center",
+        align: "center",
+        width: 210,
+      },
+
+      {
+        text: "Topup Requested",
+        datafield: "validityperiod",
+        cellsrenderer: this.renderer,
+        cellsalign: "center",
+        align: "center",
+        width: 210,
+      },
+    ];
   }
 
   ngOnInit() {
@@ -77,8 +113,9 @@ export class BulkExtendComponent implements OnInit {
     if (Object.keys(this.value).length != 0) {
       console.log(this.value.validityperiod);
       this.topupForm.patchValue({
-        extendoneyearvaliditymonth: this.value[0].validityperiod,
+        extendoneyearvaliditymonth: this.value.validityperiod,
       });
+      this.getdatas();
     }
   }
 }
