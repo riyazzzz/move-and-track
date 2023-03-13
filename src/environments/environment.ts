@@ -123,8 +123,8 @@ switch (appName) {
     break;
 
   case "MnT Live":
-    urlValue = "http://" + "192.168.0.113:8081" + "/fleettracking";
-    // urlValue = "https://" + host.apmKT + "/fleettracking";
+    // urlValue = "http://" + "192.168.0.113:8081" + "/fleettracking";
+    urlValue = "https://" + host.apmKT + "/fleettracking";
     //urlValue = "http://"+host.localIp;
     cacheURL = "https://" + host.apmKT + "/Admin";
     webSocketUrl = "wss://" + host.apmKT;
