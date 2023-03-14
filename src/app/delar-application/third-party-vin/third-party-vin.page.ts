@@ -18,7 +18,7 @@ export class ThirdPartyVinPage implements OnInit {
   @Input() value;
   @ViewChild("selectComponent", { static: false })
   selectComponent: IonicSelectableComponent;
-  @ViewChild("myGrid", { static: false }) myGrid: jqxGridComponent;
+  @ViewChild("myGrid", { static: false }) myGrid: any;
   columns: any;
   source: { localdata: any };
   dataAdapter: any;
@@ -28,7 +28,7 @@ export class ThirdPartyVinPage implements OnInit {
   serverlist: any;
   apiurl: any;
   thirdpartyurl: any;
-  selectedRow: any;
+  selectedRow: any = [];
   tableData: any;
   show: boolean = false;
   showButton: boolean = true;
@@ -140,20 +140,27 @@ export class ThirdPartyVinPage implements OnInit {
   }
 
   delete() {
-    var arr = [];
-    arr.push({
-      thirdpartyservers: this.selectedRow.thirdpartyserver,
-      vin: this.selectedRow.vin,
-    });
+    let selectdata = this.myGrid.getselectedrowindexes();
+    let arr = [];
+    for (let i = 0; i < selectdata.length; i++) {
+      arr.push({
+        thirdpartyservers:
+          this.myGrid["attrSource"]["originaldata"][selectdata[i]]
+            .thirdpartyserver,
+        vin: this.myGrid["attrSource"]["originaldata"][selectdata[i]].vin,
+      });
+    }
     const url = serverUrl.web + "/global/DeleteThirdpartyVins";
     this.ajaxService.ajaxPostWithString(url, arr).subscribe((response) => {
       let res = JSON.parse(response);
       if (res.message == "third party vins removed successfully") {
         this.commonService.showConfirm("Third Party Vins Removed Successfully");
-        this.refresh();
-        this.myGrid.clearselection();
-        this.modalController.dismiss();
-        this.selectedRow = "";
+        this.clear();
+
+        // this.refresh();
+        // this.myGrid.clearselection();
+        // this.modalController.dismiss();
+        // this.selectedRow = "";
       } else {
         this.commonService.showConfirm("Please Contact Support Team");
       }

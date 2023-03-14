@@ -14,7 +14,7 @@
 
 <ion-content>
   <ion-row class="tabrow">
-    <ion-col size="7">
+    <ion-col>
       <ion-row>
         <div class="wrap">
           <button
@@ -50,41 +50,34 @@
         </div>
       </ion-row>
     </ion-col>
-
-    <ion-col size="5">
-      <ion-select
+    <!-- <ion-col size="5">
+      <ionic-selectable
         class="input selectable-input"
-        style="margin-left: 30%"
-        placeholder="Select dealer"
+        placeholder="Select the Dealer"
         (ionChange)="handleChange($event)"
+        [items]="data"
+        [canSearch]="true"
+        [hasVirtualScroll]="true"
       >
-        <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
-      </ion-select>
+      </ionic-selectable>
+    </ion-col> -->
+  </ion-row>
+
+  <ion-row class="tabrows">
+    <ion-col size="3">
+      <ionic-selectable
+        class="input selectable-input"
+        placeholder="Select the Dealer"
+        (onChange)="handleChange($event)"
+        [items]="data"
+        [canSearch]="true"
+        [hasVirtualScroll]="true"
+      >
+      </ionic-selectable>
     </ion-col>
   </ion-row>
 
-  <!-- <ion-row
-    class="tabrow"
-    style="
-      justify-content: end;
-      align-items: center;
-      margin-right: 35%;
-      margin-top: -65px;
-    "
-  >
-    <ion-col size="4">
-      <ion-select
-        class="input selectable-input"
-        style="margin-left: 30%"
-        placeholder="Select dealer"
-        (ionChange)="handleChange($event)"
-      >
-        <ion-select-option *ngFor="let d of data">{{d}}</ion-select-option>
-      </ion-select>
-    </ion-col>
-  </ion-row> -->
-
-  <ion-row *ngIf="showGrid == 1">
+  <ion-row *ngIf="showGrid == 1" style="margin-top: -10px">
     <ion-col size="12">
       <ion-card id="1">
         <app-dashboardgrid [dealer]="dealer" [grid]="1"> </app-dashboardgrid>
@@ -113,20 +106,4 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <!-- <ion-row style="justify-content: center;">
-  
-    <ion-col size="6">
-   
-    
-      <ion-card id="1">
-  
-  
-        <app-dashboardgrid [dealer]="dealer" [grid]="5" >
-  
-        </app-dashboardgrid>
-  
-      </ion-card>
-    </ion-col>
-    
-  </ion-row> -->
 </ion-content>

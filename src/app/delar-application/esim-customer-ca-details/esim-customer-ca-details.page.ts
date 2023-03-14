@@ -627,7 +627,7 @@ export class EsimCustomerCaDetailsPage implements OnInit {
     const isModalOpened = await this.modalController.getTop();
     const modal = await this.modalController.create({
       component: CertificateCreationComponent,
-      cssClass: "viewserialfrom",
+      cssClass: "certificateForm",
       componentProps: {
         value: this.result,
       },

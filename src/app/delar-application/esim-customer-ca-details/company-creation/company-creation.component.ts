@@ -76,6 +76,17 @@ export class CompanyCreationComponent implements OnInit {
     this.assests = true;
   }
 
+  omit_special_char(event) {
+    var k;
+    k = event.charCode; //         k = event.keyCode;  (Both can be used)
+    return (
+      (k > 64 && k < 91) ||
+      (k > 96 && k < 123) ||
+      k == 8 ||
+      k == 32 ||
+      (k >= 48 && k <= 57)
+    );
+  }
   // createForm() {
   //   this.addCompany = this.formBuilder.group({
   //     companyId: ["", Validators.required],
@@ -117,6 +128,7 @@ export class CompanyCreationComponent implements OnInit {
 
   reset() {
     this.addCompany.patchValue({
+      companyId: "",
       companyName: "",
       email: "",
       contactNo: "",
@@ -137,15 +149,15 @@ export class CompanyCreationComponent implements OnInit {
   }
 
   checkCompany() {
-    if (this.addCompany.value.companyName.length != 0) {
+    if (this.addCompany.value.companyId.length != 0) {
       const url =
         serverUrl.web +
         "/global/getDealerAddressInfo?companyid=" +
-        this.addCompany.value.companyName;
+        this.addCompany.value.companyId;
       this.ajaxService.ajaxGet(url).subscribe((res) => {
         if (Object.keys(res).length == 0) {
           this.commonService.showConfirm("Company Does Not Exits");
-          this.clear();
+          this.reset();
         }
       });
     }

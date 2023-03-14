@@ -18,8 +18,8 @@
       <ion-col size="12" class="wrapper-container">
         <form [formGroup]="addCompany">
           <ion-row class="content-style">
-            <ion-col size="3" class="col-content">IMEI No :</ion-col>
-            <ion-col size="4">
+            <ion-col size="9" class="col-content">IMEI No :</ion-col>
+            <ion-col size="3">
               <ion-input
                 type="text"
                 formControlName="imeiNo"
@@ -29,39 +29,46 @@
           </ion-row>
 
           <ion-row>
-            <ion-col size="12" class="label-text">Company info</ion-col>
-          </ion-row>
-
-          <ion-row>
             <ion-col>
-              <ion-row
-                class="form-field"
-                style="border: 2px solid #e5e5e5; border-radius: 10px"
-              >
-                <ion-col size="7" size-lg="5" size-md="5">
-                  <input
-                    class="input col"
-                    type="search"
-                    list="cars"
-                    formControlName="companyId"
-                    (focusout)="checkCompany(event)"
-                    placeholder="Select the Company Name"
-                  />
+              <ion-row>
+                <ion-col size="12" class="label-text">Company info</ion-col>
+              </ion-row>
 
-                  <datalist id="cars">
-                    <option *ngFor="let names of companyId">{{ names }}</option>
-                  </datalist>
-                </ion-col>
-
-                <ion-col
-                  size="3"
-                  size-lg="3"
-                  size-md="3"
-                  style="text-align: end; padding: 15px"
-                >
-                  <ion-button class="submitbtn" (click)="viewcompany()"
-                    >+ Add Company</ion-button
+              <ion-row>
+                <ion-col>
+                  <ion-row
+                    class="form-field"
+                    style="border: 2px solid #e5e5e5; border-radius: 10px"
                   >
+                    <ion-col size="7" size-lg="5" size-md="5">
+                      <input
+                        class="input col"
+                        type="search"
+                        list="cars"
+                        formControlName="companyId"
+                        (keypress)="omit_special_char($event)"
+                        (focusout)="checkCompany(event)"
+                        placeholder="Select the Company Name"
+                      />
+
+                      <datalist id="cars">
+                        <option *ngFor="let names of companyId">
+                          {{ names }}
+                        </option>
+                      </datalist>
+                    </ion-col>
+
+                    <ion-col
+                      size="3"
+                      size-lg="3"
+                      size-md="3"
+                      style="text-align: end; padding: 15px"
+                    >
+                      <ion-button class="submitbtn" (click)="viewcompany()"
+                        >+ Add Company</ion-button
+                      >
+                    </ion-col>
+                  </ion-row>
                 </ion-col>
               </ion-row>
             </ion-col>
@@ -74,7 +81,8 @@
                 <ion-col style="text-align: end"
                   ><span
                     ><ion-icon
-                      style="font-size: 22px"
+                      title="Close"
+                      class="dismiss"
                       name="close-circle-outline"
                       (click)="dismisscompany()"
                     ></ion-icon></span

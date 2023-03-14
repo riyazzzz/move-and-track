@@ -7,6 +7,7 @@ import { CommonService } from "src/app/services/common.service";
 import { ExportExcelService } from "src/app/services/export-excel.service";
 import { serverUrl } from "src/environments/environment";
 import { AddEsimRenewalStatusUpdateComponent } from "./add-esim-renewal-status-update/add-esim-renewal-status-update.component";
+import { CertificateComponent } from "./certificate/certificate.component";
 import { CommentComponent } from "./comment/comment.component";
 import { RenewalBulkstatusComponent } from "./renewal-bulkstatus/renewal-bulkstatus.component";
 import { RenewalHistoryDetailsComponent } from "./renewal-history-details/renewal-history-details.component";
@@ -34,7 +35,7 @@ export class EsimRenewalStatusUpdatePage implements OnInit {
   @ViewChild("myGrid", { static: false }) myGrid: any;
   columns: any;
   tableData: any;
-  selectedRow = [];
+  selectedRow: any = [];
   Invoice: any;
   SerialNo: any;
   Dealer: any;
@@ -44,6 +45,8 @@ export class EsimRenewalStatusUpdatePage implements OnInit {
   checkbutton: boolean = true;
   myPlatform: any;
   renewal: Number = 1;
+  data: any = "";
+  result: any;
 
   constructor(
     private platform: Platform,
@@ -309,6 +312,21 @@ export class EsimRenewalStatusUpdatePage implements OnInit {
             width: 120,
             cellsrenderer: (): string => {
               return this.myPlatform == "desktop"
+                ? "Certificate"
+                : "<button>Certificate</button>";
+            },
+            buttonclick: (row): void => {
+              this.getmessage();
+            },
+          },
+          {
+            text: "",
+            columntype: "button",
+            cellsalign: "center",
+            align: "center",
+            width: 120,
+            cellsrenderer: (): string => {
+              return this.myPlatform == "desktop"
                 ? "Comments"
                 : "<button>Comments</button>";
             },
@@ -374,6 +392,42 @@ export class EsimRenewalStatusUpdatePage implements OnInit {
       });
       return await modal.present();
     }
+  }
+
+  getmessage() {
+    const url =
+      serverUrl.web +
+      "/global/getCertificateDetails?imei=" +
+      this.selectedRow.imei +
+      "&renewalno=" +
+      this.selectedRow.renewalno;
+    this.ajaxService.ajaxGetPerference(url).subscribe((res) => {
+      if (res.message) {
+        this.commonService.showConfirm(res.message);
+      } else if (res.message == "") {
+        this.result = res;
+        this.CertificateModel();
+      }
+    });
+  }
+
+  async CertificateModel() {
+    const isModalOpened = await this.modalController.getTop();
+    const modal = await this.modalController.create({
+      component: CertificateComponent,
+      cssClass: "certificateForm",
+      componentProps: {
+        value: this.result,
+      },
+    });
+    modal.onDidDismiss().then((data) => {
+      this.selectedRow = undefined;
+      this.myGrid.clearselection();
+      if (data.data.data == "saved success") {
+        this.SearchData();
+      }
+    });
+    return await modal.present();
   }
 
   async CommentModel(row) {

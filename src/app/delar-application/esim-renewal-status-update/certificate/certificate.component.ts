@@ -6,11 +6,11 @@ import { CommonService } from "src/app/services/common.service";
 import { serverUrl } from "src/environments/environment";
 
 @Component({
-  selector: "app-certificate-creation",
-  templateUrl: "./certificate-creation.component.html",
-  styleUrls: ["./certificate-creation.component.scss"],
+  selector: "app-certificate",
+  templateUrl: "./certificate.component.html",
+  styleUrls: ["./certificate.component.scss"],
 })
-export class CertificateCreationComponent implements OnInit {
+export class CertificateComponent implements OnInit {
   certificatedetails: FormGroup;
   @Input() value: any;
   // TotalcertificateData: Object = {};

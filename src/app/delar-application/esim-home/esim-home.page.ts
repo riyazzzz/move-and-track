@@ -27,7 +27,8 @@ export class EsimHomePage implements OnInit {
     if (this.myPlatform == "tablet") {
       this.myPlatform = "desktop";
     }
-    let url = "https://mvt.apmkingstrack.com/fleettracking/esim/getDealer";
+    let url =
+      "https://mvt.apmkingstrack.com/fleettracking/global/getesimdealerlist";
     this.ajaxService.ajaxGet(url).subscribe((res) => {
       this.data = res;
     });
@@ -38,6 +39,6 @@ export class EsimHomePage implements OnInit {
   }
 
   handleChange(e) {
-    this.dealer = e.detail.value;
+    this.dealer = e.value;
   }
 }

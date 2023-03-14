@@ -13,6 +13,8 @@ import { RenewalBulkstatusComponent } from "./renewal-bulkstatus/renewal-bulksta
 import { RenewalHistoryDetailsComponent } from "./renewal-history-details/renewal-history-details.component";
 import { SimUpdateComponent } from "./sim-update/sim-update.component";
 import { CommentComponent } from "./comment/comment.component";
+import { CertificateComponent } from "./certificate/certificate.component";
+import { QRCodeModule } from "angular2-qrcode";
 
 const routes: Routes = [
   {
@@ -39,10 +41,15 @@ const routes: Routes = [
     path: "comment",
     component: CommentComponent,
   },
+  {
+    path: "certificate",
+    component: CertificateComponent,
+  },
 ];
 
 @NgModule({
   imports: [
+    QRCodeModule,
     SharedModModule,
     IonicSelectableModule,
     ReactiveFormsModule,
@@ -58,6 +65,7 @@ const routes: Routes = [
     RenewalHistoryDetailsComponent,
     SimUpdateComponent,
     CommentComponent,
+    CertificateComponent,
   ],
 })
 export class EsimRenewalStatusUpdatePageModule {}

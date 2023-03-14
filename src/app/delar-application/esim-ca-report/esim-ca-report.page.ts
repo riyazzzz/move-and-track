@@ -348,7 +348,7 @@ export class EsimCaReportPage implements OnInit {
               width: 120,
               cellsrenderer: (): string => {
                 return this.myPlatform == "desktop"
-                  ? "Certificate"
+                  ? "BSNL Certificate"
                   : "<button>Certificate</button>";
               },
               buttonclick: (row): void => {

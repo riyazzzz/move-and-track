@@ -1,29 +1,31 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { FormsModule } from "@angular/forms";
+import { Routes, RouterModule } from "@angular/router";
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from "@ionic/angular";
 
-import { EsimHomePage } from './esim-home.page';
-import { DashboardgridComponent } from '../components/dashboardgrid/dashboardgrid.component';
-import { TableModule } from 'smart-webcomponents-angular/table';
+import { EsimHomePage } from "./esim-home.page";
+import { DashboardgridComponent } from "../components/dashboardgrid/dashboardgrid.component";
+import { TableModule } from "smart-webcomponents-angular/table";
+import { IonicSelectableModule } from "ionic-selectable";
 const routes: Routes = [
   {
-    path: '',
-    component: EsimHomePage
-  }
+    path: "",
+    component: EsimHomePage,
+  },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    IonicSelectableModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TableModule
+    TableModule,
   ],
   declarations: [EsimHomePage, DashboardgridComponent],
-  entryComponents: [DashboardgridComponent]
+  entryComponents: [DashboardgridComponent],
 })
-export class EsimHomePageModule { }
+export class EsimHomePageModule {}
